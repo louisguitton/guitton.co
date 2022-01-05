@@ -9,7 +9,9 @@ import Image from "next/image";
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
-    allBlogs,
+    allBlogs: allBlogs.sort((post1, post2) =>
+      post1.date > post2.date ? -1 : 1
+    ),
     // For SEO
     host: process.env.BASE_URL!,
     url: new URL("/posts", process.env.BASE_URL).href,

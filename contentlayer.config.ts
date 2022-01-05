@@ -5,6 +5,8 @@ import {
   ComputedFields,
 } from "contentlayer/source-files";
 
+import remarkGfm from 'remark-gfm';
+
 const computedFields: ComputedFields = {
   fnSlug: {
     type: "string",
@@ -103,4 +105,10 @@ const OtherPage = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "content",
   documentTypes: [Blog, OtherPage],
+  mdx: {
+    // Ref: List of remark plugins https://github.com/remarkjs/remark/blob/main/doc/plugins.md#list-of-plugins
+    remarkPlugins: [remarkGfm],
+    // Ref: List of rehype plugins https://github.com/rehypejs/rehype/blob/main/doc/plugins.md#list-of-plugins
+    rehypePlugins: []
+  }
 });
