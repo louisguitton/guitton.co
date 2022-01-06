@@ -1,7 +1,5 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
-
-import { allBlogs } from ".contentlayer/data";
-import type { Blog } from ".contentlayer/types";
+import { Blog } from "../../lib/types";
+import { getAllPosts } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import BlogLayout from "../../components/BlogLayout";
 import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from "next-seo";
@@ -9,14 +7,14 @@ import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from "next-seo";
 const componentsUsedInPosts = {};
 
 export const getStaticPaths: GetStaticPaths = () => ({
-  paths: allBlogs.map((p) => ({
-    params: { slug: p.slug ? p.slug : p.fnSlug },
+  paths: getAllPosts().map((p) => ({
+    params: { slug: p.slug },
   })),
   fallback: false,
 });
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const post = allBlogs.find((post) => post.slug === params?.slug)!;
+  const post = getAllPosts().find((post) => post.slug === params?.slug)!;
   return {
     props: {
       // for content
@@ -33,8 +31,6 @@ const PostPage: NextPage<{ post: Blog; host: string; url: string }> = ({
   host,
   url,
 }) => {
-  const Component = useMDXComponent(post.body.code);
-
   return (
     <>
       <NextSeo
@@ -96,7 +92,7 @@ const PostPage: NextPage<{ post: Blog; host: string; url: string }> = ({
       />
 
       <BlogLayout post={post}>
-        <Component components={componentsUsedInPosts} />
+        {post.content}
       </BlogLayout>
     </>
   );

@@ -1,7 +1,5 @@
-const { withContentlayer } = require("next-contentlayer");
-
 /** @type {import('next').NextConfig} */
-module.exports = withContentlayer()({
+module.exports = {
   reactStrictMode: true,
   images: {
     domains: ["guitton.co", "cdn.devdojo.com"],
@@ -10,4 +8,4 @@ module.exports = withContentlayer()({
     locales: ["en"],
     defaultLocale: "en",
   },
-});
+};

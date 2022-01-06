@@ -1,5 +1,5 @@
-import type { Blog } from ".contentlayer/types";
 import moment from "moment";
+import { Blog } from "../lib/types";
 
 // Ref: https://tailwindcss.com/docs/typography-plugin
 const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {

@@ -4,16 +4,17 @@ import Hero from "../components/Hero";
 import { FeaturedPostsData, Post } from "../lib/types";
 import useSWR, { SWRConfig } from "swr";
 import fetcher from "../lib/fetcher";
-import { allBlogs } from ".contentlayer/data";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { getGoogleAnalyticsFeaturedPosts } from "../lib/google";
 import { cacheConfig } from "../lib/constants";
 import { NextSeo } from "next-seo";
+import { getAllPosts } from "../lib/posts";
 
 export const getStaticProps: GetStaticProps = async () => {
   const results = await getGoogleAnalyticsFeaturedPosts("365daysAgo");
   return {
     props: {
+      allBlogs: getAllPosts(),
       // SWR fallback data
       fallback: {
         "/api/ga/featured-posts?startDate=365daysAgo": results,
@@ -26,7 +27,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-function FeaturedSection() {
+const FeaturedSection: React.FC<{ allBlogs: Post[] }> = ({ allBlogs }) => {
   const { data: featuredPosts } = useSWR<FeaturedPostsData>(
     "/api/ga/featured-posts?startDate=365daysAgo"
   );
@@ -41,12 +42,7 @@ function FeaturedSection() {
     );
     if (p)
       posts.push({
-        title: p.title,
-        slug: p.slug ? p.slug : p.fnSlug,
-        date: p.date,
-        categories: p.categories,
-        series: p.series,
-        image: p.image,
+        ...p,
         views: featuredPost.views,
       });
   });
@@ -54,33 +50,34 @@ function FeaturedSection() {
   const hardcodedPosts: Post[] = [
     {
       title: "The Gaming Revolution has Taken Over",
-      slug: "#",
+      slug: "hardcoded-1",
       categories: ["Gaming"],
+      series: [],
+      draft: false,
       date: "2020-03-16",
+      lastmod: "2020-03-16",
+      summary: "",
       image: "https://cdn.devdojo.com/images/may2021/blog-img-1.jpg",
       views: 3,
     },
     {
       title: "Learn How to Create Beautiful Photos",
-      slug: "#",
+      slug: "hardcoded-2",
       categories: ["Lifestyle"],
+      series: [],
+      draft: false,
       date: "2020-03-10",
+      lastmod: "2020-03-10",
+      summary: "",
       image: "https://cdn.devdojo.com/images/may2021/blog-img-2.jpg",
       views: 5,
     },
-    {
-      title: "The Ultimate List of the Fastest Vehicles",
-      slug: "#",
-      categories: ["Cars"],
-      date: "2020-02-20",
-      image: "https://cdn.devdojo.com/images/may2021/blog-img-3.jpg",
-      views: 7,
-    },
   ];
   return <FeaturedPosts posts={posts.concat(hardcodedPosts)} />;
-}
+};
 
 const Index: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  allBlogs,
   fallback,
   url,
 }) => {
@@ -105,7 +102,7 @@ const Index: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           // refreshInterval is in ms
           refreshInterval: cacheConfig.frontend * 1000,
         }}>
-        <FeaturedSection />
+        <FeaturedSection allBlogs={allBlogs} />
       </SWRConfig>
     </>
   );
