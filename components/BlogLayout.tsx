@@ -19,7 +19,7 @@ const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
           </span>
         </p>
       </div>
-      <div className="mx-auto mt-6 prose text-gray-500 prose-indigo">
+      <div className="mx-auto mt-6 prose prose-indigo">
         {children}
       </div>
     </article>

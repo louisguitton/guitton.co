@@ -20,7 +20,6 @@ Next + markdown
 
 ## TODO
 
-- [ ] add Anchors
 - [ ] generate sitemap.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-sitemap.mjs
   - [ ] compare with https://guitton.co/sitemap.xml
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
