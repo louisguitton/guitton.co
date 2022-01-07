@@ -20,15 +20,18 @@ Next + markdown
 
 ## TODO
 
-- [ ] generate sitemap.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-sitemap.mjs
-  - [ ] compare with https://guitton.co/sitemap.xml
+Critical path:
+
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
   - [ ] compare with https://guitton.co/index.xml
 - [ ] add Google Analytics
-- [ ] add breadcrumbs https://tailwindui.com/components/application-ui/navigation/breadcrumbs
 
-- [ ] setup about and other pages to use contentlayer OtherPage model
+Nice to haves:
+
+- [ ] add breadcrumbs https://tailwindui.com/components/application-ui/navigation/breadcrumbs
 - [ ] add SSG support for tweets
+
+Next steps
 
 - [ ] add search page for the lolz https://docs.google.com/presentation/d/1Iqb4rz1txVASXHpdjwogbiDvetVkjI9GMa7lQoIh7j4/edit#slide=id.g10a562423c5_0_4
 - [ ] add mentions page that combines:

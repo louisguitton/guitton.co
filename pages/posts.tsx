@@ -4,8 +4,8 @@ import Link from "next/link";
 import moment from "moment";
 import clsx from "clsx";
 import Image from "next/image";
-import { Blog } from "../../lib/types";
-import { getAllPosts } from "../../lib/posts";
+import { Blog } from "../lib/types";
+import { getAllPosts } from "../lib/posts";
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
