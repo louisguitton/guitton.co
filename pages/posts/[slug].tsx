@@ -8,6 +8,7 @@ import { bundleMDX } from "mdx-bundler";
 import { getMDXComponent } from "mdx-bundler/client";
 import React from "react";
 import remarkGfm from "remark-gfm";
+import remarkToc from "remark-toc";
 
 const componentsUsedInPosts = {};
 
@@ -31,7 +32,11 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { code: mdxSource } = await bundleMDX({
     source: post.content,
     xdmOptions(options) {
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        [remarkToc, { maxDepth: 3, tight: true }],
+        remarkGfm,
+      ];
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         [rehypePrismPlus, { ignoreMissing: true }],
