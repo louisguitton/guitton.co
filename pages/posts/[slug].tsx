@@ -3,15 +3,17 @@ import { getAllPosts } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import BlogLayout from "../../components/BlogLayout";
 import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from "next-seo";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import rehypePrism from "rehype-prism-plus";
+import rehypePrismPlus from "rehype-prism-plus";
+import { bundleMDX } from "mdx-bundler";
+import { getMDXComponent } from "mdx-bundler/client";
+import React from "react";
+import remarkGfm from "remark-gfm";
 
 const componentsUsedInPosts = {};
 
 type Props = {
   post: Blog;
-  content: MDXRemoteSerializeResult<Record<string, unknown>>;
+  content: string;
   host: string;
   url: string;
 };
@@ -26,10 +28,15 @@ export const getStaticPaths: GetStaticPaths = () => ({
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const post = getAllPosts().find((post) => post.slug === params?.slug)!;
 
-  const mdxSource = await serialize(post.content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [rehypePrism],
+  const { code: mdxSource } = await bundleMDX({
+    source: post.content,
+    xdmOptions(options) {
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        [rehypePrismPlus, { ignoreMissing: true }],
+      ];
+      return options;
     },
   });
 
@@ -46,6 +53,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
+  const MDXComponent = React.useMemo(() => getMDXComponent(content), [content]);
+
   return (
     <>
       <NextSeo
@@ -107,7 +116,7 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
       />
 
       <BlogLayout post={post}>
-        <MDXRemote {...content} components={componentsUsedInPosts} />
+        <MDXComponent components={componentsUsedInPosts} />
       </BlogLayout>
     </>
   );
