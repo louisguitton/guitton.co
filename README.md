@@ -2,9 +2,14 @@
 
 ## References
 
-Next + Contentlayer
+Next + Tailwind + MDX
 
-- https://github.com/contentlayerdev/next-contentlayer-example
+- https://github.com/timlrx/tailwind-nextjs-starter-blog#extend--customize
+
+Note on MDX support:
+
+- mdx v1 libraries such as `next-mdx-remote`
+- mdx v2 libraries such as `mdx-bundler`
 
 Next + markdown
 

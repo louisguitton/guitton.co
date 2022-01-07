@@ -1,6 +1,7 @@
 import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
 import Head from "next/head";
 import "../styles/globals.css";
+import "../styles/prism.css";
 import type { AppProps } from "next/app";
 import Page from "../components/Page";
 import SEO from "../next-seo.config";

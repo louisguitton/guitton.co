@@ -3,8 +3,18 @@ import { getAllPosts } from "../../lib/posts";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import BlogLayout from "../../components/BlogLayout";
 import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from "next-seo";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import rehypePrism from "rehype-prism-plus";
 
 const componentsUsedInPosts = {};
+
+type Props = {
+  post: Blog;
+  content: MDXRemoteSerializeResult<Record<string, unknown>>;
+  host: string;
+  url: string;
+};
 
 export const getStaticPaths: GetStaticPaths = () => ({
   paths: getAllPosts().map((p) => ({
@@ -13,12 +23,21 @@ export const getStaticPaths: GetStaticPaths = () => ({
   fallback: false,
 });
 
-export const getStaticProps: GetStaticProps = ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const post = getAllPosts().find((post) => post.slug === params?.slug)!;
+
+  const mdxSource = await serialize(post.content, {
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [rehypePrism],
+    },
+  });
+
   return {
     props: {
       // for content
       post,
+      content: mdxSource,
       // For SEO
       host: process.env.BASE_URL!,
       url: new URL(`/posts/${post.slug}`, process.env.BASE_URL).href,
@@ -26,11 +45,7 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
   };
 };
 
-const PostPage: NextPage<{ post: Blog; host: string; url: string }> = ({
-  post,
-  host,
-  url,
-}) => {
+const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
   return (
     <>
       <NextSeo
@@ -92,7 +107,7 @@ const PostPage: NextPage<{ post: Blog; host: string; url: string }> = ({
       />
 
       <BlogLayout post={post}>
-        {post.content}
+        <MDXRemote {...content} components={componentsUsedInPosts} />
       </BlogLayout>
     </>
   );
