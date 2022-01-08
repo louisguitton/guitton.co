@@ -64,7 +64,7 @@ const ListPostsPage: NextPage<{
               )}>
               <a className="relative w-full h-40 overflow-hidden sm:w-1/3">
                 <Image
-                  className="w-full h-auto transition duration-300 ease-out transform scale-100 bg-cover hover:scale-105"
+                  className="object-none transition duration-300 ease-out transform scale-100 hover:scale-105"
                   src={p.image}
                   layout="fill"
                   alt={p.title}

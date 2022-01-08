@@ -36,7 +36,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
           alt={post.title}
           className="absolute inset-0 object-cover object-center transition duration-300 ease-out transform scale-100 group-hover:scale-105"
         />
-        <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90"></span>
+        <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90" />
         {post.categories ? (
           <span
             className={clsx(
