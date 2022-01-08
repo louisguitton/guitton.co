@@ -57,6 +57,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     })
   }
 
+  // console.log(req.body);
   const { ['full-name']: fullName, company, email, message } = req.body
 
   try {
