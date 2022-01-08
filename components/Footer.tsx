@@ -1,78 +1,87 @@
 // Ref: https://devdojo.com/tails/app#_ Footer 3
 
-import clsx from "clsx";
-import Link from "next/link";
-import { px } from "../styles/constants";
+import clsx from 'clsx'
+import Link from 'next/link'
+import { px } from '../styles/constants'
 
 function isExternal(href: string) {
-  return href.startsWith("http");
+  return href.startsWith('http')
 }
 
 const navigation = {
   site: [
-    { name: "Home", href: "/" },
-    { name: "Blog", href: "/posts" },
-    { name: "About", href: "/about" },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/posts' },
+    { name: 'Contact', href: '/contact' },
     // TODO: { name: "Resume", href: "/resume" },
     // TODO: { name: "Freelance", href: "/freelance" },
   ],
+  api: [
+    { name: 'Featured Posts', href: '/api/ga/featured-posts' },
+    { name: 'Page Views', href: '/api/ga/page-views' },
+    { name: 'Github Contributions', href: '/api/github/contributions' },
+    { name: 'Github Stars', href: '/api/github/stars' },
+  ],
   social: [
-    { name: "Twitter", href: "https://twitter.com/louis_guitton" },
-    { name: "Github", href: "https://github.com/louisguitton" },
+    { name: 'Twitter', href: 'https://twitter.com/louis_guitton' },
+    { name: 'Github', href: 'https://github.com/louisguitton' },
     {
-      name: "Discord",
-      href: "https://discordapp.com/users/217929937842208768",
+      name: 'Discord',
+      href: 'https://discordapp.com/users/217929937842208768',
     },
   ],
   other: [
     // TODO: { name: "Contact", href: "/contact" },
-    { name: "Awesome Tutos", href: "https://awesome-tutos.guitton.co/" },
-    { name: "2055", href: "https://louisguitton.github.io/2055/" },
+    { name: 'Awesome Tutos', href: 'https://awesome-tutos.guitton.co/' },
+    { name: '2055', href: 'https://louisguitton.github.io/2055/' },
     // TODO: { name: "Feed", href: "#" },
   ],
-};
+}
 
 const Footer: React.FC = () => {
   return (
-    <footer className={clsx(px, "pt-12")} aria-labelledby="footer-heading">
-      <div
-        className={clsx("grid grid-cols-3 gap-8", "border-t border-gray-200")}>
-        <div className={clsx("col-span-3", "text-sm text-gray-500", "pt-8")}>
+    <footer className={clsx(px, 'pt-12')} aria-labelledby="footer-heading">
+      <div className={clsx('grid grid-cols-4 gap-8', 'border-t border-gray-200')}>
+        <div className={clsx('col-span-4', 'text-sm text-gray-500', 'pt-8')}>
           Made in 🇩🇪 Berlin with TypeScript, NextJS, TailwindCSS, and Vercel.
         </div>
         {Object.entries(navigation).map(([key, value]) => {
           return (
             <nav
               aria-labelledby="footer-navigation"
-              className={clsx("col-span-1", "flex flex-col", "space-y-2")}
-              key={key}>
+              className={clsx('col-span-1', 'flex flex-col', 'space-y-2')}
+              key={key}
+            >
               <p
                 className={clsx(
-                  "mb-1",
-                  "text-xs font-semibold tracking-wider text-gray-400 uppercase"
-                )}>
+                  'mb-1',
+                  'text-xs font-semibold tracking-wider text-gray-400 uppercase'
+                )}
+              >
                 {key}
               </p>
               {value.map((item) => (
                 <Link key={item.name} href={item.href}>
                   <a
                     className="text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary"
-                    target={isExternal(item.href) ? "_blank" : "_self"}>
+                    target={isExternal(item.href) ? '_blank' : '_self'}
+                  >
                     {item.name}
                   </a>
                 </Link>
               ))}
             </nav>
-          );
+          )
         })}
-        <div className="col-span-3">
+        <div className="col-span-4">
           <p className="mb-6 text-sm text-gray-500">
             © Copyright 2022 Louis Guitton. All Rights Reserved.
           </p>
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -12,6 +12,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/posts" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const Header: React.FC = () => {
