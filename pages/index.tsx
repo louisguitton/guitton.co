@@ -84,8 +84,10 @@ const Index: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <NextSeo
+        title="Home"
         canonical={url}
         openGraph={{
+          title: "guitton.co | Home",
           url: url,
         }}
       />

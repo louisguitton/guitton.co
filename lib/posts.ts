@@ -10,7 +10,6 @@ import { BlogFrontMatter, Blog } from "./types";
 
 // TODO: be smarter (recursive or other)
 const postsDirectory = join(process.cwd(), "content/posts");
-console.log(postsDirectory);
 
 /** Get file names under /posts */
 export function getPostSlugs(): string[] {

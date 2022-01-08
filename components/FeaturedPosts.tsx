@@ -1,32 +1,35 @@
-import clsx from "clsx";
-import moment from "moment";
-import Image from "next/image";
-import Link from "next/link";
-import { Post } from "../lib/types";
-import { EyeIcon } from "@heroicons/react/outline";
+import clsx from 'clsx'
+import moment from 'moment'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Post } from '../lib/types'
+import { EyeIcon } from '@heroicons/react/outline'
+import { logEvent } from './GAScript'
 
 interface Dictionary<T> {
-  [Key: string]: T;
+  [Key: string]: T
 }
 
 const colors: Dictionary<string> = {
-  Data: "bg-purple-500",
-  Gaming: "bg-pink-500",
-  Lifestyle: "bg-green-500",
-  Cars: "bg-red-500",
-};
+  Data: 'bg-purple-500',
+  Gaming: 'bg-pink-500',
+  Lifestyle: 'bg-green-500',
+  Cars: 'bg-red-500',
+}
 
 const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <Link href={`/posts/${post.slug}`} passHref>
       <a
         className={clsx(
-          "relative flex flex-col items-start justify-end",
-          "px-5 pb-5",
+          'relative flex flex-col items-start justify-end',
+          'px-5 pb-5',
           // width & height
-          "h-96 col-span-12 md:col-span-6 lg:col-span-4",
-          "overflow-hidden bg-gray-800 cursor-pointer group"
-        )}>
+          'h-96 col-span-12 md:col-span-6 lg:col-span-4',
+          'overflow-hidden bg-gray-800 cursor-pointer group'
+        )}
+        onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}
+      >
         <Image
           src={post.image}
           layout="fill"
@@ -37,11 +40,12 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
         {post.categories ? (
           <span
             className={clsx(
-              "px-2 py-0.5",
+              'px-2 py-0.5',
               colors[post.categories[0]],
-              "inline relative mb-3",
-              "text-white text-xs uppercase"
-            )}>
+              'inline relative mb-3',
+              'text-white text-xs uppercase'
+            )}
+          >
             {post.categories[0]}
           </span>
         ) : (
@@ -51,10 +55,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
           {post.title}
         </span>
         <span className="relative flex text-xs text-white opacity-90">
-          <span className="mr-2">
-            {moment(post.date).format("MMMM Do, YYYY")}
-          </span>
-          ·
+          <span className="mr-2">{moment(post.date).format('MMMM Do, YYYY')}</span>·
           <span className="ml-2 font-semibold align-middle has-tooltip">
             {post.views} <EyeIcon className="inline-block w-4 h-4 ml-1" />
             <span className="mt-4 -ml-16 text-xs tooltip w-28">(since 1 year)</span>
@@ -62,18 +63,14 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
         </span>
       </a>
     </Link>
-  );
-};
+  )
+}
 
 const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
   return (
     <section className="relative pt-16 pb-10">
       <div className="flex justify-between w-full pb-5">
-        <h2
-          className={clsx(
-            "px-3 py-2 bg-gray-800",
-            "text-sm font-medium text-white uppercase"
-          )}>
+        <h2 className={clsx('px-3 py-2 bg-gray-800', 'text-sm font-medium text-white uppercase')}>
           Most Read Articles
         </h2>
       </div>
@@ -83,7 +80,7 @@ const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default FeaturedPosts;
+export default FeaturedPosts

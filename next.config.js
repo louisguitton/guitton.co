@@ -8,4 +8,8 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  publicRuntimeConfig: {
+    appVersion: "2.0.0",
+    googleAnalyticsId: 'G-SYZ6E13PWV'
+  }
 };
