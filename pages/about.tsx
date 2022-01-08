@@ -48,7 +48,7 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
       <div className="overflow-hidden shadow sm:rounded-lg">
         <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg font-medium leading-6 text-gray-900">About me</h3>
-          <p className="max-w-2xl mt-1 text-sm text-gray-500">No, I'm not Louis Vuitton.</p>
+          <p className="max-w-2xl mt-1 text-sm text-gray-500">No, I&apos;m not Louis Vuitton.</p>
         </div>
         <div className="px-4 py-5 border-t border-gray-200 sm:px-6">
           <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
@@ -115,7 +115,7 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
                   <li>OneFootball Medienliga team - ⚽️ football team</li>
                   <li>Entrepreneur First BE1 - 🦡 startup incubator alumni</li>
                   <li>Blogging for Devs - blogger community</li>
-                  <li>Scott's Bass Lesson - 🎸 online bass school</li>
+                  <li>Scott&apos;s Bass Lesson - 🎸 online bass school</li>
                 </ul>
               </dd>
             </div>
