@@ -28,6 +28,7 @@ Next + markdown
 
 Critical path:
 
+- [ ] milk tailwind-nextjs-starter-blog typescript code for more goodies
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
   - [ ] compare with https://guitton.co/index.xml
 
