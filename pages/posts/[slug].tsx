@@ -11,12 +11,9 @@ import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import { h, s } from 'hastscript'
-import Script from 'next/script'
+import { s } from 'hastscript'
 
-const componentsUsedInPosts = {
-  Script,
-}
+const componentsUsedInPosts = {}
 
 type Props = {
   post: Blog
