@@ -14,7 +14,7 @@ const navigation = {
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/posts' },
     { name: 'Contact', href: '/contact' },
-    // TODO: { name: "Resume", href: "/resume" },
+    { name: 'Resume', href: '/resume' },
     // TODO: { name: "Freelance", href: "/freelance" },
   ],
   api: [
@@ -32,7 +32,6 @@ const navigation = {
     },
   ],
   other: [
-    // TODO: { name: "Contact", href: "/contact" },
     { name: 'Awesome Tutos', href: 'https://awesome-tutos.guitton.co/' },
     { name: '2055', href: 'https://louisguitton.github.io/2055/' },
     // TODO: { name: "Feed", href: "#" },
@@ -41,7 +40,7 @@ const navigation = {
 
 const Footer: React.FC = () => {
   return (
-    <footer className={clsx(px, 'pt-12')} aria-labelledby="footer-heading">
+    <footer className={clsx(px, 'pt-12', 'print:hidden')} aria-labelledby="footer-heading">
       <div className={clsx('grid grid-cols-4 gap-8', 'border-t border-gray-200')}>
         <div className={clsx('col-span-4', 'text-sm text-gray-500', 'pt-8')}>
           Made in 🇩🇪 Berlin with TypeScript, NextJS, TailwindCSS, and Vercel.

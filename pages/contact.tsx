@@ -162,12 +162,12 @@ const Postcard = () => (
       />
     </div>
     <div className="col-span-1 pl-8 row-span-full">
-      <div className={clsx('relative row-span-2', 'h-28')}>
+      <div className={clsx('relative row-span-2', 'h-28', 'grid grid-cols-3')}>
         <button
           type="submit"
           className={clsx(
-            'absolute inset-y-0 right-0',
-            'w-1/3 h-28',
+            'col-end-[-1] col-span-1',
+            'h-28',
             'inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
           )}
         >

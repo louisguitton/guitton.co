@@ -17,6 +17,14 @@
   @apply visible z-50
 }
 
+/* Ref: https://stackoverflow.com/questions/28150929/why-website-printed-with-chrome-is-using-mobile-layout/49918477 */
+@media print {
+  @page {
+    size: 250mm 358mm;
+    margin: 10mm;
+  }
+}
+
 /* Start purging... */
 @tailwind utilities;
 /* Stop purging. */

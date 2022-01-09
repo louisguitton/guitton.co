@@ -19,7 +19,7 @@ const Header: React.FC = () => {
   const router = useRouter();
 
   return (
-    <Disclosure as="header" className={clsx(px, "pb-12")}>
+    <Disclosure as="header" className={clsx(px, "pb-12", "print:hidden")}>
       {({ open }) => (
         <nav aria-labelledby="primary-navigation">
           <div className="flex items-center justify-between h-16">
