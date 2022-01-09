@@ -25,7 +25,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
           'relative flex flex-col items-start justify-end',
           'px-5 pb-5',
           // width & height
-          'h-96 col-span-12 md:col-span-6 lg:col-span-4',
+          'h-96 col-span-12 md:col-span-6 lg:col-span-4 print:col-span-4',
           'overflow-hidden bg-gray-800 cursor-pointer group'
         )}
         onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}

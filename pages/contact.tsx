@@ -38,9 +38,9 @@ const RegularForm = ({
   <form
     action="/api/amazon/send-email"
     method="POST"
-    className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
+    className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 print:col-span-2 print:gap-x-8"
   >
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <label htmlFor="full-name" className="block text-sm font-medium text-gray-700">
         Full name
       </label>
@@ -54,7 +54,7 @@ const RegularForm = ({
         />
       </div>
     </div>
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <label htmlFor="company" className="block text-sm font-medium text-gray-700">
         Company
       </label>
@@ -68,7 +68,7 @@ const RegularForm = ({
         />
       </div>
     </div>
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
         Email
       </label>
@@ -82,7 +82,7 @@ const RegularForm = ({
         />
       </div>
     </div>
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <label htmlFor="message" className="block text-sm font-medium text-gray-700">
         Message
       </label>
@@ -96,7 +96,7 @@ const RegularForm = ({
         />
       </div>
     </div>
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <div className="flex items-start">
         <div className="flex-shrink-0">
           <Switch
@@ -132,7 +132,7 @@ const RegularForm = ({
         </div>
       </div>
     </div>
-    <div className="sm:col-span-2">
+    <div className="sm:col-span-2 print:col-span-2">
       <button
         type="submit"
         className="inline-flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
@@ -231,17 +231,17 @@ export default function Contact() {
         <FancyDots className="translate-x-1/2 left-full" />
         <FancyDots className="bottom-0 -translate-x-1/2 right-full" />
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl print:text-4xl">
             Send me a postcard
           </h2>
           <p className="mt-4 text-lg leading-6 text-gray-500">
             You can just say Hi, or Thanks or share an interesting opportunity.
           </p>
         </div>
-        <div className="mt-12 sm:hidden">
+        <div className="mt-12 sm:hidden print:hidden">
           <RegularForm agreed={agreed} setAgreed={setAgreed} />
         </div>
-        <div className="hidden mt-12 sm:block">
+        <div className="hidden mt-12 sm:block print:block">
           <Postcard />
         </div>
       </div>

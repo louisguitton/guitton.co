@@ -59,18 +59,18 @@ const ListPostsPage: NextPage<{
             <div
               key={p.slug}
               className={clsx(
-                "flex flex-col sm:flex-row items-center py-5",
+                "flex flex-col sm:flex-row print:flex-row items-center py-5",
                 !isLast && "border-b border-gray-900"
               )}>
-              <a className="relative w-full h-40 overflow-hidden sm:w-1/3">
+              <a className="relative w-full h-40 overflow-hidden sm:w-1/3 print:w-1/3">
                 <Image
-                  className="object-none transition duration-300 ease-out transform scale-100 sm:object-cover hover:scale-105"
+                  className="object-none transition duration-300 ease-out transform scale-100 sm:object-cover print:object-cover hover:scale-105"
                   src={p.image}
                   layout="fill"
                   alt={p.title}
                 />
               </a>
-              <div className="w-full pt-2 pl-5 sm:pt-0 sm:w-2/3">
+              <div className="w-full pt-2 pl-5 sm:pt-0 sm:w-2/3 print:pt-0 print:w-2/3">
                 <h2 className="relative mb-3 text-xl font-bold leading-tight">
                   <Link href={`/posts/${p.slug}`}>
                     <a>{p.title}</a>

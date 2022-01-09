@@ -8,20 +8,20 @@ function isExternal(href: string) {
   return href.startsWith('http')
 }
 
-const navigation = {
+const navigation: { [key: string]: { name: string; href: string; indented?: boolean }[] } = {
   site: [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
+    { name: 'Resume', href: '/resume', indented: true },
     { name: 'Blog', href: '/posts' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Resume', href: '/resume' },
     // TODO: { name: "Freelance", href: "/freelance" },
   ],
   api: [
-    { name: 'Featured Posts', href: '/api/ga/featured-posts' },
-    { name: 'Page Views', href: '/api/ga/page-views' },
-    { name: 'Github Contributions', href: '/api/github/contributions' },
-    { name: 'Github Stars', href: '/api/github/stars' },
+    { name: '/api/ga/featured-posts', href: '/api/ga/featured-posts' },
+    { name: '/api/ga/page-views', href: '/api/ga/page-views' },
+    { name: '/api/github/contributions', href: '/api/github/contributions' },
+    { name: '/api/github/stars', href: '/api/github/stars' },
   ],
   social: [
     { name: 'Twitter', href: 'https://twitter.com/louis_guitton' },
@@ -63,7 +63,10 @@ const Footer: React.FC = () => {
               {value.map((item) => (
                 <Link key={item.name} href={item.href}>
                   <a
-                    className="text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary"
+                    className={clsx(
+                      'text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary',
+                      item.indented && 'pl-5'
+                    )}
                     target={isExternal(item.href) ? '_blank' : '_self'}
                   >
                     {item.name}

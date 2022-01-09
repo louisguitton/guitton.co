@@ -29,7 +29,7 @@ const Header: React.FC = () => {
                   <ShoppingBagIcon className="w-8 h-8 fill-primary-600" />
                   <span
                     className={clsx(
-                      "hidden sm:block",
+                      "hidden sm:block print:block",
                       "text-xl font-black text-gray-900",
                       "select-none"
                     )}>
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
                   </span>
                 </a>
               </Link>
-              <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <div className="hidden sm:ml-6 sm:flex sm:space-x-8 print:ml-6 print:flex print:space-x-8">
                 {navigation.map((nav) => {
                   return (
                     <Link key={nav.name} href={nav.href}>
@@ -57,7 +57,7 @@ const Header: React.FC = () => {
                 })}
               </div>
             </div>
-            <div className="flex -mr-2 sm:hidden">
+            <div className="flex -mr-2 sm:hidden print:hidden">
               <Disclosure.Button
                 className={clsx(
                   "inline-flex justify-center p-2",
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
           </div>
 
           <Disclosure.Panel
-            className={clsx("sm:hidden", "pt-2 pb-3 space-y-1")}>
+            className={clsx("sm:hidden print:hidden", "pt-2 pb-3 space-y-1")}>
             {navigation.map((nav) => {
               return (
                 <Disclosure.Button
