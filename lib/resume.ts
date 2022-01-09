@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next"
+import { JsonResume } from '../types/resume/JsonResume'
 
-const resume = {
+export const resume: JsonResume = {
   $schema: 'https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json',
   awards: [],
   basics: {
@@ -47,7 +47,6 @@ const resume = {
         city: 'Paris',
         countryCode: 'FR',
       },
-      score: '',
       startDate: '2012-12-31',
       studyType: 'MSc',
       url: 'https://mines-paristech.eu/',
@@ -140,7 +139,10 @@ const resume = {
         "<b>Data Engineering</b>: Refactored parts of OneFootball's analytics stack: roll out <i>airflow</i> for scheduling and ingestion, roll out <i>dbt</i> for data modeling on the Amazon Redshift Data Warehouse. Architecture design and code reviews.",
       ],
       keywords: ['Data-centric NLP', 'RecSys', 'MLOps'],
-      location: 'Berlin, DE',
+      location: {
+        city: 'Berlin',
+        countryCode: 'DE',
+      },
       name: 'OneFootball',
       position: 'Senior Machine Learning Engineer',
       startDate: '2018-10-31',
@@ -154,7 +156,10 @@ const resume = {
         '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
         '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
       ],
-      location: 'Berlin, DE',
+      location: {
+        city: 'Berlin',
+        countryCode: 'DE',
+      },
       name: 'Freelance',
       position: 'Software Engineer and Data Scientist',
       startDate: '2017-06-30',
@@ -167,7 +172,10 @@ const resume = {
         '<b>CTO</b>: Failed raising 1M\u20ac seed round as CTO after 4 months incubation.',
         "<b>Computer Vision</b>: Used deep learning computer vision to build a scalable hiring personality screening. Worked with Isabelle Guyon's research group.",
       ],
-      location: 'Berlin, DE',
+      location: {
+        city: 'Berlin',
+        countryCode: 'DE',
+      },
       name: 'Entrepreneur First',
       position: 'Entrepreneur in residence',
       startDate: '2018-04-30',
@@ -179,7 +187,10 @@ const resume = {
       highlights: [
         '<b>Deep Learning</b>: Built a Neural Networks recommendation engine in <i>tensorflow</i> to coach eSports players.',
       ],
-      location: 'Berlin, DE',
+      location: {
+        city: 'Berlin',
+        countryCode: 'DE',
+      },
       name: 'DOJO Madness',
       position: 'Data Scientist',
       startDate: '2016-08-31',
@@ -189,7 +200,10 @@ const resume = {
     {
       endDate: '2016-06-30',
       highlights: [],
-      location: 'Paris, FR',
+      location: {
+        city: 'Paris',
+        countryCode: 'FR',
+      },
       name: 'Ekimetrics',
       position: 'Data Science Intern',
       startDate: '2016-01-31',
@@ -200,7 +214,10 @@ const resume = {
     {
       endDate: '2015-09-30',
       highlights: [],
-      location: 'Brighton, UK',
+      location: {
+        city: 'Brighton',
+        countryCode: 'UK',
+      },
       name: 'EDF Energy',
       position: 'R&D Engineer',
       startDate: '2015-02-28',
@@ -211,7 +228,10 @@ const resume = {
     {
       endDate: '2014-12-31',
       highlights: [],
-      location: 'Singapore, SG',
+      location: {
+        city: 'Singapore',
+        countryCode: 'SG',
+      },
       name: 'Bosch Southeast Asia',
       position: 'R&D Engineer Intern',
       startDate: '2014-06-30',
@@ -220,8 +240,4 @@ const resume = {
       website: 'https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/',
     },
   ],
-}
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  return res.status(200).json(resume)
 }

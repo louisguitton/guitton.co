@@ -22,6 +22,10 @@ Next + markdown
 
 Critical path:
 
+- resume
+  - make it work
+  - complete types with json schema fields that I don't use
+  - add SEO
 - [ ] Freelance page?
 - [ ] migrate most read posts with images
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs

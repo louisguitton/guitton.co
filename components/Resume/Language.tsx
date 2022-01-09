@@ -1,12 +1,8 @@
 // Ref: https://github.com/phoinixi/jsonresume-theme-stackoverflow/blob/master/style.css
 import clsx from 'clsx'
 import { FC } from 'react'
+import { Language } from '../../types/resume/Language'
 import { Section } from './Section'
-
-type Language = {
-  fluency: string
-  language: string
-}
 
 const Language: FC<{ languages: Language[] }> = ({ languages }) => {
   if (languages) {

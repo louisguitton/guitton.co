@@ -1,10 +1,21 @@
 import { PrinterIcon } from '@heroicons/react/solid'
-import useSWR from 'swr'
+import { GetStaticProps, NextPage } from 'next'
 import Education from '../components/Resume/Education'
 import Language from '../components/Resume/Language'
 import Projects from '../components/Resume/Projects'
 import Skills from '../components/Resume/Skills'
-import fetcher from '../lib/fetcher'
+import Work from '../components/Resume/Work'
+import { resume } from '../lib/resume'
+import { JsonResume } from '../types/resume/JsonResume'
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {
+    resume: resume,
+    // For SEO
+    host: process.env.BASE_URL!,
+    url: new URL('/resume', process.env.BASE_URL).href,
+  },
+})
 
 const PrintButton = () => {
   return (
@@ -20,20 +31,22 @@ const PrintButton = () => {
     </div>
   )
 }
-const Resume = () => {
-  const { data, error } = useSWR<any>('/api/resume', fetcher)
 
-  if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
+  resume,
+  host,
+  url,
+}) => {
   return (
+    // TODO: add SEO stuff
     <div>
       <PrintButton />
       {/* Basics */}
-      {/* Work */}
-      <Projects projects={data.projects} />
-      <Skills skills={data.skills} />
-      <Education educations={data.education} />
-      <Language languages={data.languages} />
+      <Work works={resume.work} />
+      <Projects projects={resume.projects} />
+      <Skills skills={resume.skills} />
+      <Education educations={resume.education} />
+      <Language languages={resume.languages} />
     </div>
   )
 }
