@@ -1,13 +1,13 @@
 ---
 slug: dbt-artifacts
-title: "How to Parse dbt Artifacts"
-date: "2020-12-20"
-lastmod: "2020-12-21"
+title: 'How to Parse dbt Artifacts'
+date: '2020-12-20'
+lastmod: '2020-12-21'
 summary: >
   In this post, I'll show you how to get started with dbt artifacts, and how to parse them to unlock applications valuable to your use case.
 categories:
   - Data
-image: /images/alexander-schimmeck-gUtcrNunbCM-unsplash.jpg
+image: /images/dbt-artifacts/alexander-schimmeck-gUtcrNunbCM-unsplash.jpg
 series:
   - Metadata Series
 ---
@@ -29,7 +29,7 @@ I hope you'll find this post useful, and if you do, let me know [on twitter](htt
 
 ## When are Artifacts Produced
 
-![dbt](/images/dbt.png "dbt")
+![dbt](/images/dbt-artifacts/dbt.png 'dbt')
 
 A word of warning: dbt's current minor version as of writing is v0.18.1 and multiple improvements to artifacts are coming in dbt's next version v0.19.0, but that doesn't change the content of this post.
 
@@ -76,7 +76,7 @@ But it's interesting to note that `manifest` can be refreshed by other commands 
 
 ## Parsing Artifacts from the Command Line with `jq`
 
-![jq command line](/images/jq.png "jq command line")
+![jq command line](/images/dbt-artifacts/jq.png 'jq command line')
 
 To get started with parsing dbt artifacts for your own use case,
 I suggest to use [`jq`](https://stedolan.github.io/jq/), the
@@ -152,7 +152,7 @@ cat target/manifest.json | jq '.nodes | ...' > my_data_of_interest.json
 
 ## Parsing Artifacts from Python with `pydantic`
 
-![pydantic](/images/pydantic.png "pydantic")
+![pydantic](/images/dbt-artifacts/pydantic.png 'pydantic')
 
 Once you get a better idea of what data you need,
 you might want to develop more custom logic around dbt artifacts.
