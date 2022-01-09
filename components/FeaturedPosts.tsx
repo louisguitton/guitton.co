@@ -13,8 +13,8 @@ interface Dictionary<T> {
 const colors: Dictionary<string> = {
   Data: 'bg-purple-500',
   Code: 'bg-pink-500',
-  Lifestyle: 'bg-green-500',
-  Cars: 'bg-red-500',
+  ML: 'bg-green-500',
+  Ideas: 'bg-red-500',
 }
 
 const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {

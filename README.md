@@ -28,14 +28,13 @@ Next + markdown
 
 Critical path:
 
-- [ ] migrate most read posts with images
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
   - [ ] compare with https://guitton.co/index.xml
 
 Nice to haves:
 
 - [ ] add breadcrumbs https://tailwindui.com/components/application-ui/navigation/breadcrumbs
-- [ ] add SSG support for tweets
+- [ ] add SSG support for tweets and gists
 
 Next steps
 

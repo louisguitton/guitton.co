@@ -4,7 +4,7 @@ title: 'A lightweight alternative to Amundsen for your dbt project'
 # "Rethinking the search over your dbt models"
 # "Building a lightweight search engine over your dbt models"
 date: '2021-01-17'
-lastmod: '2021-04-27'
+lastmod: '2022-01-09'
 summary: >
   In this post, I'll show you how to build a lightweight data catalog
   on top of dbt artifacts using Algolia.
@@ -14,33 +14,6 @@ series:
   - Metadata Series
 image: /images/dbt-search/hero.png
 ---
-
-<!-- # Six Questions (30 min)
-
-- What is the most important point?
-You can use dbt artifacts, Algolia's free tier, HTML and JS to build
-a lightweight data discovery search engine.
-
-- Why is that the most important point? (what can you achieve with it)
-Data discovery is one common growing pains of dbt projects. You can now build
-a search engine over your dbt models packed with metadata.
-
-- Why should people care? (what's the benefit)
-Break knowledge silos around your data models.
-Not doing this can lead to self-service analytics using the wrong model for their dashboard.
-
-- What is the easiest way to understand the most important point?
-Seeing the search engine in action and playing with it on a the gitlab dbt project.
-
-- How do you want the reader to feel?
-Data governance, data lineage, data discovery don't need to be complicated topics and you can
-get started on those roadmaps with a lightwieght open source solution.
-
-- What should the reader do next?
-Star `dbt-metadata-utils` and setup the search engine on their own project.
--->
-
-<!-- # Hook + Outline -->
 
 If you've been using `dbt` for a little while, chances are your project has more than 50 models.
 Chances are more than 10 people are building dashboards based on those models.
@@ -53,7 +26,7 @@ on top of your dbt metadata to answer all these questions. I hope to show you th
 data governance, data lineage, and data discovery don't need to be complicated topics
 and that you can get started today on those roadmaps with my lightweight open source solution.
 
-LIVE DEMO: <http://dbt-metadata-utils.guitton.co>
+LIVE DEMO: http://dbt-metadata-utils.guitton.co
 
 ## Data Governance is Ripe
 
@@ -74,11 +47,10 @@ of models. This can become important for Data Analysts building dashboards and l
 but also for Data Engineers looking to "pull the thread" when debugging a model.
 Those use cases can be summarised with the two following ["Jobs to be done"](https://firstround.com/review/build-products-that-solve-real-problems-with-this-lightweight-jtbd-framework/):
 
-<!-- center -->
 
 <figure>
     <img src="/images/dbt-search/jtbd.png"
-         alt="Jobs to be Done">
+         alt="Jobs to be Done"/>
     <figcaption>Data discovery can solve 2 'Jobs to be Done'</figcaption>
 </figure>
 
@@ -104,7 +76,7 @@ As Paco Nathan writes p.115 of the book [Data Teams by Jesse Anderson](https://w
 <figure>
     <img src="/images/dbt-search/amundsen_logo.png"
          alt="Amundsen logo"
-         class="w-[500px]">
+         className="w-[500px]"/>
     <figcaption>Amundsen and other heavyweight tools are the go-to solution for data discovery</figcaption>
 </figure>
 
@@ -113,6 +85,7 @@ What if we wanted a lightweight solution instead, like `dbt Docs`?
 
 <details>
 <summary>More on metadata engines</summary>
+
 Related tools:
 
 - [Amundsen](https://www.amundsen.io/) (Lyft)
@@ -136,7 +109,8 @@ Great resources to go further:
 
 - [EthicalML/awesome-production-machine-learning](https://github.com/EthicalML/awesome-production-machine-learning#metadata-management)
 - [Teardown: What You Need To Know on Data Discovery Platforms](https://eugeneyan.com/writing/data-discovery-platforms/) and [eugeneyan/applied-ml](https://github.com/eugeneyan/applied-ml#data-discovery)
-  </details>
+
+</details>
 
 <details>
 <summary>More on self-service analytics</summary>
@@ -151,11 +125,11 @@ Great resources to go further:
 
 In his great [Teardown of Data Discovery Platforms](https://eugeneyan.com/writing/data-discovery-platforms/),
 Eugene Yan summarizes really well the features of Amundsen and other metadata engines. He splits
-them in 3 categories: features to {{< em background-color="#fa5252" color="white">}}find data{{</em>}}, features to {{< em background-color="#4c6ef5" color="white">}}understand data{{</em>}} and features to {{< em background-color="#fab005" color="white">}}use data{{</em>}}.
+them in 3 categories: features to <em background-color="#fa5252" color="white">find data</em>, features to <em background-color="#4c6ef5" color="white">understand data</em> and features to <em background-color="#fab005" color="white">use data</em>.
 
 <figure>
     <img src="/images/dbt-search/amundsen.png"
-         alt="Amundsen logo">
+         alt="Amundsen logo"/>
     <figcaption>Architecture of your friendly neighbourhood metadata engine</figcaption>
 </figure>
 
@@ -170,7 +144,7 @@ Those features have also varying returns, not represented here.
 <figure>
     <img src="/images/dbt-search/amundsen_features.png"
          alt="Amundsen features"
-         class="h-[800px]">
+         className="h-[800px]"/>
     <figcaption>Taxonomy of 10 features from metadata engines, cost opinions are my own</figcaption>
 </figure>
 
@@ -178,8 +152,7 @@ The key thing to realise is that Lyft might have spent a 15⭐️-cost on Amunds
 But what if we wanted to build a 3⭐️-cost metadata engine? What features and technologies would you pick?
 
 <details>
-<summary> <b>2021-02-09 Update</b>: <i>The Ground paper from Rise labs</i>
-</summary>
+<summary>2021-02-09 Update: The Ground paper from Rise labs</summary>
 
 In the seminal paper [Ground: A Data Context Service - RISE Lab](https://rise.cs.berkeley.edu/blog/publication/ground-data-context-service-2/),
 Rise labs have outlined those features with much better terminology that
@@ -207,15 +180,13 @@ for you at the table level and I will leverage later that graph to propagate tag
 
 In other words, with schemas, descriptions and data lineage, dbt Docs covers the category
 
-<em background-color="#4c6ef5" color="white">
-  Features to Understand
-</em> from the above diagram. So **what is missing from dbt Docs to rival with Amundsen**? Only a way
+<em background-color="#4c6ef5" color="white">Features to Understand</em> from the above diagram. So **what is missing from dbt Docs to rival with Amundsen**? Only a way
 to sublime the work that is already happening in your dbt repository. And that is Search.
 
 <figure>
     <img src="/images/dbt-search/algolia_logo.png"
          alt="Algolia logo"
-         class="w-[500px]">
+         className="w-[500px]"/>
     <figcaption>Algolia market themselves as a 'flexible search platform'</figcaption>
 </figure>
 
@@ -235,7 +206,7 @@ More generally, to extend our lightweight metadata engine, we would add metadata
 parsers to collect and organise that metadata. We would then _index_ that metadata in our search engine.
 Examples of metadata sources are:
 
-- dbt artifacts (_See my post on [how to parse dbt artifacts]("/posts/2020-12-20-dbt-artifacts.md#available-data-in-dbt-artifacts")_)
+- dbt artifacts (_See my post on [how to parse dbt artifacts](/posts/2020-12-20-dbt-artifacts.md#available-data-in-dbt-artifacts) _)
 - git metadata
 - BI tool metadata database (e.g. who queries what, who curates what)
 - data warehouse admin views (e.g. for Redshift: [`stl_insert`](https://docs.aws.amazon.com/redshift/latest/dg/r_STL_INSERT.html),
@@ -280,10 +251,11 @@ so I'll spare you the rest: it also supports **search-as-you-type** and **facete
 - [Search Multiple Indices | Algolia Documentation](https://www.algolia.com/doc/api-reference/api-methods/multiple-queries/)
 - [The Flask Mega-Tutorial Part XVI: Full-Text Search - miguelgrinberg.com](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-full-text-search): Flask and ElasticSearch
 - [Implementing faceted search with Django and PostgreSQL](https://simonwillison.net/2017/Oct/5/django-postgresql-faceted-search/)
-  </details>
+
+</details>
 
 To build this search capability, you could use different technologies. I attended [a talk at Europython 2020
-from Paolo Melchiorre]("/posts/2020-07-27-europython2020#paolo-melchiorre") advocating for using good-old
+from Paolo Melchiorre](/posts/2020-07-27-europython2020#paolo-melchiorre) advocating for using good-old
 PostgreSQL's full text search. To my knowledge though, you don't get search as you type.
 This is one of the reasons why people tend to go for ElasticSearch or Algolia. To choose between them, this is then
 a buy or build decision: more engineering resources vs "throwing money" at the serverless Algolia.
@@ -295,7 +267,7 @@ a <em background-color="#5f3dc4" color="white">faceting attribute</em> (i.e. a f
 
 <figure>
     <img src="/images/dbt-search/search.png"
-        alt="Structuring Documents for Search">
+        alt="Structuring Documents for Search"/>
     <figcaption>Keys in searchable documents are 1 of 3 types</figcaption>
 </figure>
 
@@ -313,12 +285,10 @@ Keep in mind that we started with 2 use cases ('Jobs to be Done'), so each perso
 a different metric. For example, for "dashboard builders", the goal could be to downrank the corner case models
 so that only models that are "central" are used. But for "data auditors", the goal might be to prioritise
 the models that need attention first. In our case, we will focus on the first persona, and we will use
-a PageRank-like algorithm (degree centrality [as shown in my previous post]("/posts/2020-12-20-dbt-artifacts.md#example-application-2-compute-model-centrality-with-networkx")).
+a PageRank-like algorithm (degree centrality [as shown in my previous post](/posts/2020-12-20-dbt-artifacts.md#example-application-2-compute-model-centrality-with-networkx)).
 This is great at the start of your self-service analytics journey: dashboard builders might not know
 what are the good tables yet, so a good proxy is to look at which models are reused by your dbt comitters.
 Later, you could do like Amundsen and rely on the query logs to boost the models that are used the most.
-
-<!-- note: difference between "orderBy" and "customRanking" -->
 
 ## Putting it together in the dbt-metadata-utils repository
 
@@ -341,13 +311,13 @@ listed on the dbt docs: the [jaffle_shop codebase](https://github.com/fishtown-a
 <figure>
     <img src="/images/dbt-search/bad_f_vegemite-cheese-jaffle.jpg"
         alt="Structuring Documents for Search"
-        class="h-[200px]">
+        className="h-[200px]"/>
     <figcaption>I had no clue about Jaffles, and then I used dbt</figcaption>
 </figure>
 
 Create an environment file in which you will need to fill in the values from the Algolia dashboard:
 
-```sh {linenos=table,hl_lines=["2-4",8]}
+```shell {linenos=table,hl_lines=["2-4",8]}
 # .env file
 ALGOLIA_ADMIN_API_KEY=
 ALGOLIA_SEARCH_ONLY_API_KEY=
@@ -363,7 +333,7 @@ GIT_METADATA_CACHE_PATH=data/git_metadata
 
 And then run the 4 make commands:
 
-```sh
+```shell
 $ make install  # best is to install inside a virtual environment
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -385,9 +355,9 @@ Server running at http://localhost:3000
 ✨  Built in 1.03s.
 ```
 
-If you navigate to <http://localhost:3000>, you should see a UI that looks like this:
+If you navigate to http://localhost:3000, you should see a UI that looks like this:
 
-![Search UI on jaffle_shop](localhost_3000_.png)
+![Search UI on jaffle_shop](/images/dbt-search/localhost_3000_.png)
 
 I didn't dwell on details, but **our metadata engine's features are**:
 
@@ -401,7 +371,7 @@ I didn't dwell on details, but **our metadata engine's features are**:
 
 ## Conclusion
 
-LIVE DEMO: <http://dbt-metadata-utils.guitton.co>
+LIVE DEMO: http://dbt-metadata-utils.guitton.co
 
 There you have it! A lightweight data governance tool on top of dbt artifacts and Algolia.
 I hope this showed you that data governance doesn't need to be a complicated topic,
@@ -410,7 +380,7 @@ and that by using a knowledge graph of metadata, you can get a head start on you
 Leave a star on the [github project](https://github.com/louisguitton/dbt-metadata-utils), and let me know your thoughts [on twitter](https://twitter.com/louis_guitton).
 I enjoyed building this project and writing this post because it lies at the intersection
 of three of my areas of interest: NLP, Analytics and Engineering. I cover those three topics
-in other places [on my blog]("/posts/").
+in other places [on my blog](/posts/).
 
 ## Resources
 
