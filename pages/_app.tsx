@@ -12,7 +12,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fab)
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction =
+  process.env.NODE_ENV === 'production' || process.env.VERCEL_ENV === 'production'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
