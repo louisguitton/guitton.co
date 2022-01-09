@@ -1,17 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
 import { BreadcrumbJsonLd, NextSeo } from "next-seo";
-import type { Blog } from ".contentlayer/types";
-import { allBlogs } from ".contentlayer/data";
 import Link from "next/link";
 import moment from "moment";
 import clsx from "clsx";
 import Image from "next/image";
+import { Blog } from "../lib/types";
+import { getAllPosts } from "../lib/posts";
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
-    allBlogs: allBlogs.sort((post1, post2) =>
-      post1.date > post2.date ? -1 : 1
-    ),
+    allBlogs: getAllPosts(),
     // For SEO
     host: process.env.BASE_URL!,
     url: new URL("/posts", process.env.BASE_URL).href,
@@ -57,25 +55,24 @@ const ListPostsPage: NextPage<{
 
         {allBlogs.map((p, index, row) => {
           const isLast = index + 1 === row.length;
-          const slug = p.slug ? p.slug : p.fnSlug;
           return (
             <div
-              key={slug}
+              key={p.slug}
               className={clsx(
-                "flex flex-col sm:flex-row items-center py-5",
+                "flex flex-col sm:flex-row print:flex-row items-center py-5",
                 !isLast && "border-b border-gray-900"
               )}>
-              <a className="relative w-full h-40 overflow-hidden sm:w-1/3">
+              <a className="relative w-full h-40 overflow-hidden sm:w-1/3 print:w-1/3">
                 <Image
-                  className="w-full h-auto transition duration-300 ease-out transform scale-100 bg-cover hover:scale-105"
+                  className="object-none transition duration-300 ease-out transform scale-100 sm:object-cover print:object-cover hover:scale-105"
                   src={p.image}
                   layout="fill"
                   alt={p.title}
                 />
               </a>
-              <div className="w-full pt-2 pl-5 sm:pt-0 sm:w-2/3">
+              <div className="w-full pt-2 pl-5 sm:pt-0 sm:w-2/3 print:pt-0 print:w-2/3">
                 <h2 className="relative mb-3 text-xl font-bold leading-tight">
-                  <Link href={`/posts/${slug}`}>
+                  <Link href={`/posts/${p.slug}`}>
                     <a>{p.title}</a>
                   </Link>
                 </h2>

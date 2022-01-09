@@ -1,9 +1,18 @@
-import { DefaultSeo, SocialProfileJsonLd } from "next-seo";
-import Head from "next/head";
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import Page from "../components/Page";
-import SEO from "../next-seo.config";
+import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
+import Head from 'next/head'
+import '../styles/globals.css'
+import '../styles/prism.css'
+import '../styles/socials.css'
+import type { AppProps } from 'next/app'
+import Page from '../components/Page'
+import SEO from '../next-seo.config'
+import GAScript from '../components/GAScript'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fab)
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         {/* Ref: https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/ */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        {isProduction && <GAScript />}
       </Head>
 
       <DefaultSeo {...SEO} />
@@ -23,12 +34,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         // Ref: https://nextjs.org/docs/advanced-features/custom-app#caveats
         url="https://guitton.co"
         sameAs={[
-          "https://github.com/louisguitton",
-          "https://twitter.com/louis_guitton",
-          "https://discordapp.com/users/217929937842208768",
-          "https://stackoverflow.com/users/3823815/louis-guitton",
-          "https://linkedin.com/in/louisguitton/",
-          "https://goodreads.com/user/show/58757583-louis",
+          'https://github.com/louisguitton',
+          'https://twitter.com/louis_guitton',
+          'https://discordapp.com/users/217929937842208768',
+          'https://stackoverflow.com/users/3823815/louis-guitton',
+          'https://linkedin.com/in/louisguitton/',
+          'https://goodreads.com/user/show/58757583-louis',
         ]}
       />
 
@@ -36,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </Page>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
