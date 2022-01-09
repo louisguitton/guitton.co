@@ -1,9 +1,13 @@
 import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
 import type { GetStaticProps, NextPage } from 'next'
-import { PaperClipIcon } from '@heroicons/react/solid'
+import { CheckIcon, ExclamationIcon, PaperClipIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import useSWR from 'swr'
+import fetcher from '../lib/fetcher'
+import { ReactElement } from 'react'
+import moment from 'moment'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
@@ -14,6 +18,50 @@ export const getStaticProps: GetStaticProps = async () => ({
 })
 
 const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
+  const { data, error } = useSWR<
+    {
+      createdAt: string
+      url: string
+      title: string
+      repository: string
+      repositoryDescription: string
+    }[]
+  >('/api/github/contributions?limit=5', fetcher)
+  let githubState: ReactElement = <></>
+  if (error) githubState = <div>failed to load</div>
+  if (!data) githubState = <div>loading...</div>
+  if (data) {
+    console.log(data)
+
+    githubState = (
+      <ul>
+        {data.map((contrib, i) => {
+          return (
+            <a
+              key={i}
+              href={contrib.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no-underline"
+            >
+              <li className="flex justify-between">
+                <span className="flex items-center space-x-2">
+                  <CheckIcon className="w-4 h-4 text-gray-400" />
+                  <span>
+                    {contrib.title} on <b>{contrib.repository}</b>
+                  </span>
+                </span>
+                <span className="font-light text-gray-500">
+                  {moment(contrib.createdAt).format('MMMM DD, YYYY')}
+                </span>
+              </li>
+            </a>
+          )
+        })}
+      </ul>
+    )
+  }
+
   return (
     <>
       <NextSeo
@@ -46,10 +94,10 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
         ]}
       />
 
-      <section id="about-card">
+      <section id="about-card" className="pb-4">
         <div className="overflow-hidden shadow sm:rounded-lg print:rounded-lg">
           <div className="px-4 py-5 sm:px-6 print:px-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">About me</h3>
+            <h2 className="text-lg font-medium leading-6 text-gray-900">About me</h2>
             <p className="max-w-2xl mt-1 text-sm text-gray-500">No, I&apos;m not Louis Vuitton.</p>
           </div>
           <div className="px-4 py-5 border-t border-gray-200 sm:px-6 print:px-6">
@@ -194,8 +242,33 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
           </div>
         </div>
       </section>
-      <section id="feed"></section>
-      <section id="freelance"></section>
+      <section id="feed" className="pb-4 prose max-w-none">
+        <h2>Last Open Source Contributions</h2>
+        {githubState}
+      </section>
+      <section id="freelance" className="prose">
+        <h2>Freelance Services</h2>
+        Since 2015, I offer freelance services on the side of my main job.
+        <ol>
+          <li>
+            {' '}
+            <em>Data Solutions</em>: Built data stack for entrepreneurship NGO and fintech startup.
+            Deliver airflow workshop for automotive digital lab.
+          </li>
+          <li>
+            <em>Teaching</em>: Built and taught ML and IoT classes for engineering MBA in Paris.
+          </li>
+          <li>
+            <em>Websites or MVPs</em>: Built 10+ websites for friends and family with either (in
+            order of complexity) Google Sites, Wordpress, Hugo, NextJS.
+          </li>
+        </ol>
+        If you&apos;re interested in my services,{' '}
+        <Link href={'/contact'}>
+          <a>feel free to reach out</a>
+        </Link>
+        .
+      </section>
     </>
   )
 }

@@ -28,7 +28,6 @@ Next + markdown
 
 Critical path:
 
-- [ ] Freelance page?
 - [ ] migrate most read posts with images
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
   - [ ] compare with https://guitton.co/index.xml
