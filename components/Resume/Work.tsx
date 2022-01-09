@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { FC } from 'react'
 import { Work } from '../../types/resume/Work'
 import ItemDetails from './ItemDetails'
@@ -15,17 +14,18 @@ const Work: FC<{ works: Work[] }> = ({ works }) => {
         <div className="grid grid-cols-1 space-y-2">
           {works.map((work, i) => {
             return (
-              <section key={i} className="text-xs">
+              <section key={i} className="min-w-full text-xs">
                 <TimedHeader
                   name={work.position}
                   org={work.name}
                   startDate={work.startDate}
                   endDate={work.endDate}
+                  includeMonth={true}
                 />
 
                 <div className="flex space-x-2">
                   <Location location={work.location} />
-                  <URL website={work.website} />
+                  <URL website={work.url} />
                 </div>
                 <Keywords keywords={work.keywords} itemIndex={i} />
                 <ItemDetails summary={work.summary} highlights={work.highlights} itemIndex={i} />

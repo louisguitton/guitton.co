@@ -1,26 +1,33 @@
+import { Award } from './Award'
 import { Basics } from './Basics'
+import { Certificate } from './Certificate'
 import { Education } from './Education'
+import { Interest } from './Interest'
 import { Language } from './Language'
 import { Project } from './Project'
+import { Publication } from './Publication'
+import { Reference } from './Reference'
 import { Skill } from './Skill'
+import { Volunteer } from './Volunteer'
 import { Work } from './Work'
 
 export type JsonResume = {
   $schema: string
-  awards: any[]
+  awards: Award[]
   basics: Basics
   education: Education[]
-  interests: any[]
+  interests: Interest[]
   languages: Language[]
   meta: {
     canonical: string
-    lastModified: string
     version: string
+    lastModified: string
   }
   projects: Project[]
-  publications: any[]
-  references: any[]
+  publications: Publication[]
+  references: Reference[]
   skills: Skill[]
-  volunteer: any[]
+  volunteer: Volunteer[]
   work: Work[]
+  certificates: Certificate[]
 }

@@ -1,4 +1,5 @@
 export type Skill = {
-  keywords: string[]
   name: string
+  level?: string;
+  keywords: string[]
 }

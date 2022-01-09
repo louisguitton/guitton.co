@@ -15,7 +15,7 @@ export const Section: FC<{ name: string }> = ({ name, children }) => {
     <section className="mb-4 bg-white">
       <SectionHeader>{name.toUpperCase()}</SectionHeader>
 
-      <section id={name} className="flex flex-wrap justify-start">
+      <section id={name} className="flex flex-wrap">
         {children}
       </section>
     </section>

@@ -1,17 +1,14 @@
-const colors = require("tailwindcss/colors");
+const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         primary: colors.pink,
-        secondary: "#ecc94b",
+        secondary: '#ecc94b',
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require('@tailwindcss/forms'),],
-};
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+}

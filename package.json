@@ -10,6 +10,8 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@aws-sdk/client-ses": "^3.46.0",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@google-analytics/data": "^2.8.0",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",

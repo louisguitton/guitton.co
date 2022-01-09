@@ -1,10 +1,7 @@
 import { PrinterIcon } from '@heroicons/react/solid'
 import { GetStaticProps, NextPage } from 'next'
-import Education from '../components/Resume/Education'
-import Language from '../components/Resume/Language'
-import Projects from '../components/Resume/Projects'
-import Skills from '../components/Resume/Skills'
-import Work from '../components/Resume/Work'
+import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
+import JsonResumeLayout from '../components/Resume/JsonResumeLayout'
 import { resume } from '../lib/resume'
 import { JsonResume } from '../types/resume/JsonResume'
 
@@ -38,16 +35,37 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
   url,
 }) => {
   return (
-    // TODO: add SEO stuff
-    <div>
-      <PrintButton />
-      {/* Basics */}
-      <Work works={resume.work} />
-      <Projects projects={resume.projects} />
-      <Skills skills={resume.skills} />
-      <Education educations={resume.education} />
-      <Language languages={resume.languages} />
-    </div>
+    <>
+      <NextSeo
+        title="Resumé"
+        description="My CV using https://jsonresume.org/"
+        canonical={url}
+        openGraph={{
+          title: 'guitton.co | Resumé',
+          description: 'My CV using https://jsonresume.org/',
+          url: url,
+        }}
+      />
+      <BreadcrumbJsonLd
+        itemListElements={[
+          {
+            position: 1,
+            name: 'guitton.co',
+            item: host,
+          },
+          {
+            position: 2,
+            name: 'resume',
+            item: url,
+          },
+        ]}
+      />
+
+      <div>
+        <PrintButton />
+        <JsonResumeLayout resume={resume} />
+      </div>
+    </>
   )
 }
 

@@ -1,5 +1,3 @@
-import { LocationMarkerIcon } from '@heroicons/react/solid'
-import moment from 'moment'
 import { FC } from 'react'
 import { Education } from '../../types/resume/Education'
 import Keywords from './Keywords'
@@ -13,7 +11,7 @@ const Education: FC<{ educations: Education[] }> = ({ educations }) => {
       <Section name="education">
         {educations.map((education, i) => {
           return (
-            <section key={i} className="text-xs">
+            <section key={i} className="min-w-full text-xs">
               <TimedHeader
                 name={`${education.studyType} ${education.area}`}
                 org={education.institution}

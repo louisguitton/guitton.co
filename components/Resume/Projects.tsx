@@ -12,7 +12,7 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
         <div className="grid grid-cols-1">
           {projects.map((project, i) => {
             return (
-              <section key={i}>
+              <section key={i} className='min-w-full'>
                 <header>
                   <div className="inline text-xs font-semibold">{project.name}</div>
                 </header>

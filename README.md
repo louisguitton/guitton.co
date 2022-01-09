@@ -18,14 +18,16 @@ Next + markdown
 - https://nextjs.org/learn/basics/dynamic-routes/render-markdown
 - https://github.com/forestryio/next-blog-forestry
 
+## Notes on JSON Resume implementation
+
+- types were adapted from code generated from the jsonschema available at https://github.com/jsonresume/resume-schema/blob/master/schema.json using https://tryjsonschematypes.appspot.com/#typescript
+- components were adapted from https://github.com/phoinixi/jsonresume-theme-stackoverflow/tree/master/theme/partials
+- styles were adapted from https://github.com/phoinixi/jsonresume-theme-stackoverflow/blob/master/style.css
+
 ## TODO
 
 Critical path:
 
-- resume
-  - make it work
-  - complete types with json schema fields that I don't use
-  - add SEO
 - [ ] Freelance page?
 - [ ] migrate most read posts with images
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs

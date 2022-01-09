@@ -1,3 +1,4 @@
+import { Network } from '../types/resume/Basics'
 import { JsonResume } from '../types/resume/JsonResume'
 
 export const resume: JsonResume = {
@@ -5,7 +6,7 @@ export const resume: JsonResume = {
   awards: [],
   basics: {
     email: 'admin@guitton.co',
-    image: 'louis.jpeg',
+    image: '/images/louis.jpg',
     label: 'Senior Machine Learning Engineer at OneFootball',
     location: {
       city: 'Berlin',
@@ -15,26 +16,32 @@ export const resume: JsonResume = {
     phone: '+33 6 70 98 12 56',
     profiles: [
       {
-        network: 'Linkedin',
+        network: 'linkedin' as Network,
         url: 'https://www.linkedin.com/in/louisguitton/',
         username: 'louisguitton',
       },
       {
-        network: 'Github',
+        network: 'github' as Network,
         url: 'https://github.com/louisguitton',
         username: 'louisguitton',
       },
       {
-        network: 'Stack Overflow',
+        network: 'stack-overflow' as Network,
         url: 'https://stackoverflow.com/users/3823815/louis-guitton',
         username: 'louis-guitton',
       },
+      {
+        network: 'discord' as Network,
+        url: 'https://discordapp.com/users/217929937842208768',
+        username: 'laguitte#6016'
+      }
     ],
     summary:
       'Looking for a Senior Machine Learning Engineering position where I can grow and evolve as an engineer.\n Seeking the opportunity to influence the technology within a company.',
     url: 'https://guitton.co/',
     website: 'https://guitton.co/',
   },
+  certificates: [],
   education: [
     {
       area: 'Executive Engineering',
@@ -148,7 +155,7 @@ export const resume: JsonResume = {
       startDate: '2018-10-31',
       summary:
         'Develop and deploy machine learning solutions for a football media platform with news, stats, highlights and match streams.',
-      website: 'https://onefootball.com/',
+      url: 'https://onefootball.com/',
     },
     {
       highlights: [
@@ -164,7 +171,7 @@ export const resume: JsonResume = {
       position: 'Software Engineer and Data Scientist',
       startDate: '2017-06-30',
       summary: 'Curiosity-driven side hustle with reasonable hours',
-      website: 'https://guitton.co/freelance/',
+      url: 'https://guitton.co/freelance/',
     },
     {
       endDate: '2018-06-30',
@@ -180,7 +187,7 @@ export const resume: JsonResume = {
       position: 'Entrepreneur in residence',
       startDate: '2018-04-30',
       summary: 'London-based accelerator turning strangers into startup founders.',
-      website: 'https://www.joinef.com/',
+      url: 'https://www.joinef.com/',
     },
     {
       endDate: '2018-03-31',
@@ -195,7 +202,7 @@ export const resume: JsonResume = {
       position: 'Data Scientist',
       startDate: '2016-08-31',
       summary: 'Mobile app AI coach for League of Legends competitive gamers.',
-      website: 'https://www.bayesholding.com/',
+      url: 'https://www.bayesholding.com/',
     },
     {
       endDate: '2016-06-30',
@@ -209,7 +216,7 @@ export const resume: JsonResume = {
       startDate: '2016-01-31',
       summary:
         'Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers.',
-      website: 'https://ekimetrics.com/',
+      url: 'https://ekimetrics.com/',
     },
     {
       endDate: '2015-09-30',
@@ -223,7 +230,7 @@ export const resume: JsonResume = {
       startDate: '2015-02-28',
       summary:
         'Software development within the Digital Innovation team of R&D UK centre of an energy leader.',
-      website: 'https://www.edfenergy.com/about/research-development',
+      url: 'https://www.edfenergy.com/about/research-development',
     },
     {
       endDate: '2014-12-31',
@@ -237,7 +244,7 @@ export const resume: JsonResume = {
       startDate: '2014-06-30',
       summary:
         'Data mining for photovoltaics energy storage optimisation within he Power Electronics R&D team.',
-      website: 'https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/',
+      url: 'https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/',
     },
   ],
 }

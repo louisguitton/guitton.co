@@ -2,10 +2,15 @@ import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
 import Head from 'next/head'
 import '../styles/globals.css'
 import '../styles/prism.css'
+import '../styles/socials.css'
 import type { AppProps } from 'next/app'
 import Page from '../components/Page'
 import SEO from '../next-seo.config'
 import GAScript from '../components/GAScript'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fab)
 
 const isProduction = process.env.NODE_ENV === 'production'
 

@@ -8,7 +8,7 @@ const Language: FC<{ languages: Language[] }> = ({ languages }) => {
   if (languages) {
     return (
       <Section name="languages">
-        <div className="grid w-full grid-cols-1 sm:grid-cols-3">
+        <div className="grid w-full grid-cols-1 sm:grid-cols-3 print:grid-cols-3">
           {languages.map((language, i) => {
             return (
               <div key={i} className="block col-span-1">
