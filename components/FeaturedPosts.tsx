@@ -12,7 +12,7 @@ interface Dictionary<T> {
 
 const colors: Dictionary<string> = {
   Data: 'bg-purple-500',
-  Gaming: 'bg-pink-500',
+  Code: 'bg-pink-500',
   Lifestyle: 'bg-green-500',
   Cars: 'bg-red-500',
 }

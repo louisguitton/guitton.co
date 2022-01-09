@@ -243,7 +243,7 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
         </div>
       </section>
       <section id="feed" className="pb-4 prose max-w-none">
-        <h2>Last Open Source Contributions</h2>
+        <h2>Latest Open Source Contributions</h2>
         {githubState}
       </section>
       <section id="freelance" className="prose">
