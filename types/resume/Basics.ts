@@ -21,7 +21,7 @@ export type Basics = {
   label: string
   image: string
   email: string
-  phone: string
+  phone?: string
   url: string
   summary: string
   location: Location

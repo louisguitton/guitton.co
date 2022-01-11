@@ -4,7 +4,7 @@ import Keywords from './Keywords'
 import { Section } from './Section'
 
 const Skills: FC<{ skills: Skill[] }> = ({ skills }) => {
-  if (skills) {
+  if (skills.length) {
     return (
       <Section name="skills">
         <div className="grid w-full grid-cols-1 sm:grid-cols-3 print:grid-cols-3">

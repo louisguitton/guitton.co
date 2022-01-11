@@ -63,6 +63,7 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
 
       <div>
         <PrintButton />
+        <div className='py-1'></div>
         <JsonResumeLayout resume={resume} />
       </div>
     </>

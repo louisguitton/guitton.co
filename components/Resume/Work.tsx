@@ -8,7 +8,7 @@ import TimedHeader from './TimedHeader'
 import URL from './URL'
 
 const Work: FC<{ works: Work[] }> = ({ works }) => {
-  if (works) {
+  if (works.length) {
     return (
       <Section name="work experience">
         <div className="grid grid-cols-1 space-y-2">

@@ -5,7 +5,7 @@ import { Language } from '../../types/resume/Language'
 import { Section } from './Section'
 
 const Language: FC<{ languages: Language[] }> = ({ languages }) => {
-  if (languages) {
+  if (languages.length) {
     return (
       <Section name="languages">
         <div className="grid w-full grid-cols-1 sm:grid-cols-3 print:grid-cols-3">

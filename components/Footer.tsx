@@ -1,5 +1,7 @@
 // Ref: https://devdojo.com/tails/app#_ Footer 3
 
+import { IconName } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { px } from '../styles/constants'
@@ -8,7 +10,9 @@ function isExternal(href: string) {
   return href.startsWith('http')
 }
 
-const navigation: { [key: string]: { name: string; href: string; indented?: boolean }[] } = {
+const navigation: {
+  [key: string]: { name: string; href: string; indented?: boolean; icon?: string }[]
+} = {
   site: [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -24,11 +28,17 @@ const navigation: { [key: string]: { name: string; href: string; indented?: bool
     { name: '/api/github/stars', href: '/api/github/stars' },
   ],
   social: [
-    { name: 'Twitter', href: 'https://twitter.com/louis_guitton' },
-    { name: 'Github', href: 'https://github.com/louisguitton' },
+    { name: 'Twitter', href: 'https://twitter.com/louis_guitton', icon: 'twitter' },
+    { name: 'Github', href: 'https://github.com/louisguitton', icon: 'github' },
     {
       name: 'Discord',
       href: 'https://discordapp.com/users/217929937842208768',
+      icon: 'discord',
+    },
+    {
+      name: 'Stackoverflow',
+      href: 'https://stackoverflow.com/users/3823815/louis-guitton',
+      icon: 'stack-overflow',
     },
   ],
   other: [
@@ -65,11 +75,18 @@ const Footer: React.FC = () => {
                   <a
                     className={clsx(
                       'text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary',
-                      item.indented && 'pl-5'
+                      item.indented && 'pl-5',
+                      'flex space-x-1 items-center'
                     )}
                     target={isExternal(item.href) ? '_blank' : '_self'}
                   >
-                    {item.name}
+                    {item.icon && (
+                      <FontAwesomeIcon
+                        icon={['fab', item.icon as IconName]}
+                        className={clsx('w-4 h-4', item.icon)}
+                      />
+                    )}
+                    <span>{item.name}</span>
                   </a>
                 </Link>
               ))}

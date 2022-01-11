@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const Keywords: FC<{ keywords?: string[]; itemIndex: number }> = ({ keywords, itemIndex }) => {
-  if (keywords) {
+  if (keywords && keywords.length) {
     return (
       <ul className="flex flex-wrap my-2 text-xs bg-transparent">
         {keywords.map((keyword, j) => (

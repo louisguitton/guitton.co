@@ -6,7 +6,7 @@ import { Section } from './Section'
 import TimedHeader from './TimedHeader'
 
 const Education: FC<{ educations: Education[] }> = ({ educations }) => {
-  if (educations) {
+  if (educations.length) {
     return (
       <Section name="education">
         {educations.map((education, i) => {

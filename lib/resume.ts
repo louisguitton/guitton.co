@@ -1,19 +1,31 @@
 import { Network } from '../types/resume/Basics'
 import { JsonResume } from '../types/resume/JsonResume'
 
+/**
+ * Ref: https://leerob.io/blog/resume
+ *
+ * - Omit unnecessary information (GPA, projects, internships, phone number).
+ * - keep clear start and end dates for experience
+ * - keep skill section, great for ATS
+ * - add clear metrics to bullet points in experience
+ * - keep it 1 page
+ * - keep about section short, leave the rest on linkedin or website
+ */
+const includeEducationCourse = false
+const includeLanguages = false
+const includeInternships = false
 export const resume: JsonResume = {
   $schema: 'https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json',
   awards: [],
   basics: {
     email: 'admin@guitton.co',
     image: '/images/louis.jpg',
-    label: 'Senior Machine Learning Engineer at OneFootball',
+    label: 'Tech Lead NFT, Machine Learning Engineer',
     location: {
       city: 'Berlin',
       countryCode: 'DE',
     },
     name: 'Louis Guitton',
-    phone: '+33 6 70 98 12 56',
     profiles: [
       {
         network: 'linkedin' as Network,
@@ -25,19 +37,8 @@ export const resume: JsonResume = {
         url: 'https://github.com/louisguitton',
         username: 'louisguitton',
       },
-      {
-        network: 'stack-overflow' as Network,
-        url: 'https://stackoverflow.com/users/3823815/louis-guitton',
-        username: 'louis-guitton',
-      },
-      {
-        network: 'discord' as Network,
-        url: 'https://discordapp.com/users/217929937842208768',
-        username: 'laguitte#6016'
-      }
     ],
-    summary:
-      'Looking for a Senior Machine Learning Engineering position where I can grow and evolve as an engineer.\n Seeking the opportunity to influence the technology within a company.',
+    summary: 'Looking for an environment where I can grow as an engineer and influence technology.',
     url: 'https://guitton.co/',
     website: 'https://guitton.co/',
   },
@@ -45,9 +46,11 @@ export const resume: JsonResume = {
   education: [
     {
       area: 'Executive Engineering',
-      courses: [
-        'Thesis: Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers',
-      ],
+      courses: includeEducationCourse
+        ? [
+            'Thesis: Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers',
+          ]
+        : [],
       endDate: '2016-12-31',
       institution: 'MINES ParisTech PSL',
       location: {
@@ -60,24 +63,22 @@ export const resume: JsonResume = {
     },
   ],
   interests: [],
-  languages: [
-    {
-      fluency: 'Native Speaker',
-      language: 'French',
-    },
-    {
-      fluency: 'Fluent',
-      language: 'English',
-    },
-    {
-      fluency: 'Basic',
-      language: 'German',
-    },
-    // {
-    //   fluency: 'Basic',
-    //   language: 'Chinese',
-    // },
-  ],
+  languages: includeLanguages
+    ? [
+        {
+          fluency: 'Native Speaker',
+          language: 'French',
+        },
+        {
+          fluency: 'Fluent',
+          language: 'English',
+        },
+        {
+          fluency: 'Basic',
+          language: 'German',
+        },
+      ]
+    : [],
   meta: {
     canonical: 'https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json',
     lastModified: '2017-12-24T15:53:00',
@@ -86,28 +87,12 @@ export const resume: JsonResume = {
   projects: [
     {
       entity: 'guitton.co',
-      highlights: [
-        '1k+ users per month',
-        'Ranking #1 on google.com for <i>fastapi monitoring</i> and for <i>amundsen dbt</i>',
-      ],
+      highlights: [],
       keywords: ['Static Site Generators', 'Serverless', 'SEO'],
       name: 'Blogging',
-      summary: 'Sharing my thougts and learning to write.',
+      summary:
+        'Sharing my thougts with 1k+ users per month. Ranking #1 on google.com for <i>"fastapi monitoring"</i> and for <i>"amundsen dbt"</i>',
       url: 'https://guitton.co/posts',
-    },
-    {
-      name: 'Journaling',
-      summary:
-        'Journaling with <i>Obsidian</i> for research use as well as personal use. Applying Knowledge Graphs.',
-    },
-    {
-      name: 'Accounting',
-      summary:
-        'Using plaintext double-entry accounting for your personal finances with <i>beancount</i>.',
-    },
-    {
-      name: 'Football',
-      summary: 'Playing football and analysing your Strava data.',
     },
   ],
   publications: [],
@@ -192,7 +177,7 @@ export const resume: JsonResume = {
     {
       endDate: '2018-03-31',
       highlights: [
-        '<b>Deep Learning</b>: Built a Neural Networks recommendation engine in <i>tensorflow</i> to coach eSports players.',
+        '<b>Deep Learning</b>: Built a Neural Networks recommendation engine with <i>tensorflow</i> and betting odds.',
       ],
       location: {
         city: 'Berlin',
@@ -204,47 +189,52 @@ export const resume: JsonResume = {
       summary: 'Mobile app AI coach for League of Legends competitive gamers.',
       url: 'https://www.bayesholding.com/',
     },
-    {
-      endDate: '2016-06-30',
-      highlights: [],
-      location: {
-        city: 'Paris',
-        countryCode: 'FR',
-      },
-      name: 'Ekimetrics',
-      position: 'Data Science Intern',
-      startDate: '2016-01-31',
-      summary:
-        'Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers.',
-      url: 'https://ekimetrics.com/',
-    },
-    {
-      endDate: '2015-09-30',
-      highlights: [],
-      location: {
-        city: 'Brighton',
-        countryCode: 'UK',
-      },
-      name: 'EDF Energy',
-      position: 'R&D Engineer',
-      startDate: '2015-02-28',
-      summary:
-        'Software development within the Digital Innovation team of R&D UK centre of an energy leader.',
-      url: 'https://www.edfenergy.com/about/research-development',
-    },
-    {
-      endDate: '2014-12-31',
-      highlights: [],
-      location: {
-        city: 'Singapore',
-        countryCode: 'SG',
-      },
-      name: 'Bosch Southeast Asia',
-      position: 'R&D Engineer Intern',
-      startDate: '2014-06-30',
-      summary:
-        'Data mining for photovoltaics energy storage optimisation within he Power Electronics R&D team.',
-      url: 'https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/',
-    },
-  ],
+  ].concat(
+    includeInternships
+      ? [
+          {
+            endDate: '2016-06-30',
+            highlights: [],
+            location: {
+              city: 'Paris',
+              countryCode: 'FR',
+            },
+            name: 'Ekimetrics',
+            position: 'Data Science Intern',
+            startDate: '2016-01-31',
+            summary:
+              'Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers.',
+            url: 'https://ekimetrics.com/',
+          },
+          {
+            endDate: '2015-09-30',
+            highlights: [],
+            location: {
+              city: 'Brighton',
+              countryCode: 'UK',
+            },
+            name: 'EDF Energy',
+            position: 'R&D Engineer',
+            startDate: '2015-02-28',
+            summary:
+              'Software development within the Digital Innovation team of R&D UK centre of an energy leader.',
+            url: 'https://www.edfenergy.com/about/research-development',
+          },
+          {
+            endDate: '2014-12-31',
+            highlights: [],
+            location: {
+              city: 'Singapore',
+              countryCode: 'SG',
+            },
+            name: 'Bosch Southeast Asia',
+            position: 'R&D Engineer Intern',
+            startDate: '2014-06-30',
+            summary:
+              'Data mining for photovoltaics energy storage optimisation within he Power Electronics R&D team.',
+            url: 'https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/',
+          },
+        ]
+      : []
+  ),
 }
