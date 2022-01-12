@@ -120,6 +120,7 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
           ],
         }}
       />
+      {/* double check the generated JSON-LD in https://search.google.com/test/rich-results */}
       <BlogJsonLd
         url={url}
         title={post.title}
@@ -129,6 +130,7 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
         authorName="Louis Guitton"
         description={post.summary}
       />
+      {/* double check the generated JSON-LD in https://search.google.com/test/rich-results */}
       <BreadcrumbJsonLd
         // TODO: add support to next-seo for multiple breadcrumb trails
         // currently it overrides with the last one

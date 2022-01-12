@@ -13,8 +13,8 @@ const JsonResumeLayout: FC<{ resume: JsonResume }> = ({ resume }) => {
       <Basics basics={resume.basics} />
       <Work works={resume.work} />
       <Projects projects={resume.projects} />
-      <Skills skills={resume.skills} />
       <Education educations={resume.education} />
+      <Skills skills={resume.skills} />
       <Language languages={resume.languages} />
     </div>
   )

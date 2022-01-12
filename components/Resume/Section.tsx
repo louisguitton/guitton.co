@@ -12,7 +12,7 @@ const SectionHeader: FC = ({ children }) => {
 
 export const Section: FC<{ name: string }> = ({ name, children }) => {
   return (
-    <section className="mb-4 bg-white">
+    <section className="mb-3 bg-white">
       <SectionHeader>{name.toUpperCase()}</SectionHeader>
 
       <section id={name} className="flex flex-wrap">

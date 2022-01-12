@@ -15,7 +15,7 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
               <section key={i} className="min-w-full">
                 <div className="flex">
                   <div className="inline text-xs font-semibold">
-                    {project.name} on <URL website={project.url} /> -{' '}
+                    {project.name} on <URL website={project.url} />
                   </div>
                   <ItemDetails
                     summary={project.summary}

@@ -122,47 +122,52 @@ export const resume: JsonResume = {
   volunteer: [],
   work: [
     {
-      description: 'Awesome football media company',
       highlights: [
-        '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
-        '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
-        '<b>First Data Science hire</b>: Defined the Data Science project plan and the MLOps stack. Built quick wins like <i>prophet</i> forecasting or <i>XGBoost</i> classification for tabular data or templated news generation slackbot.',
-        '<b>Data Consumption</b>: [for humans] introduced <i>Metabase</i>. [for machines] built blueprints for programmatic data consumption using APIs, emails, slackbots, Redshift Data API, Redis or S3 unloads.',
-        "<b>Data Engineering</b>: Refactored parts of OneFootball's analytics stack: roll out <i>airflow</i> for scheduling and ingestion, roll out <i>dbt</i> for data modeling on the Amazon Redshift Data Warehouse. Architecture design and code reviews.",
+        'Built blockchain MVP including smart contract, frontend, and backend.',
+        'Hired, managed and growed one MLE intern.',
+        'Set the technical bar for Data Science, Data Engineering, and Data Analytics.',
+        'Designed and implemented a human-in-the-loop entity linking system for news tagging in 7 languages.',
+        'Used knowledge graphs, language models, text classification and topic modeling.',
+        // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
+        // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
+        // '<b>First Data Science hire</b>: Defined the Data Science project plan and the MLOps stack. Built quick wins like <i>prophet</i> forecasting or <i>XGBoost</i> classification for tabular data or templated news generation slackbot.',
+        // '<b>Data Consumption</b>: [for humans] introduced <i>Metabase</i>. [for machines] built blueprints for programmatic data consumption using APIs, emails, slackbots, Redshift Data API, Redis or S3 unloads.',
+        // "<b>Data Engineering</b>: Refactored parts of OneFootball's analytics stack: roll out <i>airflow</i> for scheduling and ingestion, roll out <i>dbt</i> for data modeling on the Amazon Redshift Data Warehouse. Architecture design and code reviews.",
       ],
-      keywords: ['Data-centric NLP', 'RecSys', 'MLOps'],
       location: {
         city: 'Berlin',
         countryCode: 'DE',
       },
       name: 'OneFootball',
-      position: 'Senior Machine Learning Engineer',
+      position: 'Tech Lead NFT and Principal Machine Learning Engineer',
       startDate: '2018-10-31',
       summary:
-        'Develop and deploy machine learning solutions for a football media platform with news, stats, highlights and match streams.',
+        'Football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.',
       url: 'https://onefootball.com/',
     },
     {
       highlights: [
-        '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
-        '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
-        '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
+        'Data Solutions, teaching and open source'
+        // '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
+        // '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
+        // '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
       ],
       location: {
         city: 'Berlin',
         countryCode: 'DE',
       },
-      name: 'Freelance',
-      position: 'Software Engineer and Data Scientist',
+      name: 'Side Hustle',
+      position: 'Freelance Software Engineer and Data Scientist',
       startDate: '2017-06-30',
-      summary: 'Curiosity-driven side hustle with reasonable hours',
-      url: 'https://guitton.co/freelance/',
+      summary: '',
+      url: 'https://guitton.co/about#freelance',
     },
     {
       endDate: '2018-06-30',
       highlights: [
-        '<b>CTO</b>: Failed raising 1M\u20ac seed round as CTO after 4 months incubation.',
-        "<b>Computer Vision</b>: Used deep learning computer vision to build a scalable hiring personality screening. Worked with Isabelle Guyon's research group.",
+        // scalable hiring personality screening
+        // Worked with Isabelle Guyon's research group
+        '<b>Entrepreneurship</b>: Developed an idea using computer vision, went in front of angel investors.',
       ],
       location: {
         city: 'Berlin',
@@ -171,13 +176,13 @@ export const resume: JsonResume = {
       name: 'Entrepreneur First',
       position: 'Entrepreneur in residence',
       startDate: '2018-04-30',
-      summary: 'London-based accelerator turning strangers into startup founders.',
+      summary: 'World-wide deep-tech incubator investing in early-career co-founders.',
       url: 'https://www.joinef.com/',
     },
     {
       endDate: '2018-03-31',
       highlights: [
-        '<b>Deep Learning</b>: Built a Neural Networks recommendation engine with <i>tensorflow</i> and betting odds.',
+        '<b>Deep Learning & Big Data</b>: Built bettings odds models and a recommendation engine with <i>tensorflow</i>.',
       ],
       location: {
         city: 'Berlin',
@@ -186,7 +191,7 @@ export const resume: JsonResume = {
       name: 'DOJO Madness',
       position: 'Data Scientist',
       startDate: '2016-08-31',
-      summary: 'Mobile app AI coach for League of Legends competitive gamers.',
+      summary: 'ESports startup selling analytics and coaching tools to gamers.',
       url: 'https://www.bayesholding.com/',
     },
   ].concat(
