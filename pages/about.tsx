@@ -97,7 +97,7 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
       <section id="about-card" className="pb-4">
         <div className="overflow-hidden shadow sm:rounded-lg print:rounded-lg">
           <div className="px-4 py-5 sm:px-6 print:px-6">
-            <h2 className="text-lg font-medium leading-6 text-gray-900">About me</h2>
+            <h1 className="text-lg font-medium leading-6 text-gray-900">About me</h1>
             <p className="max-w-2xl mt-1 text-sm text-gray-500">No, I&apos;m not Louis Vuitton.</p>
           </div>
           <div className="px-4 py-5 border-t border-gray-200 sm:px-6 print:px-6">

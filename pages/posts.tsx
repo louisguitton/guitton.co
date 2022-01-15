@@ -49,9 +49,9 @@ const ListPostsPage: NextPage<{
 
       <div className="col-span-12 md:col-span-8">
         <div className="relative overflow-hidden border-b-2 border-primary-500">
-          <h2 className="px-3 py-1.5 bg-primary-500 text-white uppercase text-sm inline-block font-medium">
+          <h1 className="px-3 py-1.5 bg-primary-500 text-white uppercase text-sm inline-block font-medium">
             Blog Posts
-          </h2>
+          </h1>
         </div>
 
         {allBlogs.map((p, index, row) => {

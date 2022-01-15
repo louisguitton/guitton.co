@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['guitton.co', 'cdn.devdojo.com', 'cdn-images-1.medium.com'],
+    domains: ['guitton.co'],
   },
   i18n: {
     locales: ['en'],

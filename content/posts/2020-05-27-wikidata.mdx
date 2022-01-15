@@ -32,7 +32,7 @@ At first sight, the syntax is not particularly easy and I've gone through this [
 - Finally, you need to include prefix namespaces to query the WQDS (Wikidata Query Service). There are many prefixes, one for each namespace in SPARQL :
   - `wd:` for items
   - `wdt:` for properties, pointing to the object
-- to doublecheck what prefix links to what resource, use http://prefix.cc/
+- to doublecheck what prefix links to what resource, use https://prefix.cc/
 - to get more than the Wikidata ID as selectable attributes, you need to include them in the WHERE clause using `SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]". }`
 
 Putting this all together we get:

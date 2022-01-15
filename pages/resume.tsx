@@ -38,11 +38,11 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
     <>
       <NextSeo
         title="Resumé"
-        description="My CV using https://jsonresume.org/"
+        description="My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components."
         canonical={url}
         openGraph={{
           title: 'guitton.co | Resumé',
-          description: 'My CV using https://jsonresume.org/',
+          description: 'My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components.',
           url: url,
         }}
       />

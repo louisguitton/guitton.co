@@ -2,6 +2,16 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { Switch } from '@headlessui/react'
 import clsx from 'clsx'
+import { GetStaticProps, NextPage } from 'next'
+import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
+
+export const getStaticProps: GetStaticProps = async () => ({
+  props: {
+    // For SEO
+    host: process.env.BASE_URL!,
+    url: new URL('/contact', process.env.BASE_URL).href,
+  },
+})
 
 const FancyDots = ({ className }: { className: string }) => (
   <svg
@@ -222,29 +232,63 @@ const Postcard = () => (
   </form>
 )
 
-export default function Contact() {
+const ContactPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
   const [agreed, setAgreed] = useState(false)
 
   return (
-    <main>
-      <div className="relative max-w-xl mx-auto">
-        <FancyDots className="translate-x-1/2 left-full" />
-        <FancyDots className="bottom-0 -translate-x-1/2 right-full" />
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl print:text-4xl">
-            Send me a postcard
-          </h2>
-          <p className="mt-4 text-lg leading-6 text-gray-500">
-            You can just say Hi, or Thanks or share an interesting opportunity.
-          </p>
+    <>
+      <NextSeo
+        title="Contact"
+        canonical={url}
+        openGraph={{
+          title: 'guitton.co | Contact',
+          url: url,
+          type: 'profile',
+          profile: {
+            firstName: 'Louis',
+            lastName: 'Guitton',
+            gender: 'male',
+            username: 'louis_guitton',
+          },
+        }}
+      />
+      <BreadcrumbJsonLd
+        itemListElements={[
+          {
+            position: 1,
+            name: 'guitton.co',
+            item: host,
+          },
+          {
+            position: 2,
+            name: 'contact',
+            item: url,
+          },
+        ]}
+      />
+
+      <main>
+        <div className="relative max-w-xl mx-auto">
+          <FancyDots className="translate-x-1/2 left-full" />
+          <FancyDots className="bottom-0 -translate-x-1/2 right-full" />
+          <div className="text-center">
+            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl print:text-4xl">
+              Send me a postcard
+            </h1>
+            <p className="mt-4 text-lg leading-6 text-gray-500">
+              You can just say Hi, or Thanks or share an interesting opportunity.
+            </p>
+          </div>
+          <div className="mt-12 sm:hidden print:hidden">
+            <RegularForm agreed={agreed} setAgreed={setAgreed} />
+          </div>
+          <div className="hidden mt-12 sm:block print:block">
+            <Postcard />
+          </div>
         </div>
-        <div className="mt-12 sm:hidden print:hidden">
-          <RegularForm agreed={agreed} setAgreed={setAgreed} />
-        </div>
-        <div className="hidden mt-12 sm:block print:block">
-          <Postcard />
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
+
+export default ContactPage

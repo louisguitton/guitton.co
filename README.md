@@ -49,3 +49,9 @@ Next steps
   - [ ] https://www.reddit.com/search.json?sort=new&q=site:guitton.co OR author:laguitte OR selftext:"guitton.co"
   - [ ] https://news.ycombinator.com/from?site=guitton.co
   - [ ] https://twitter.com/search?q=%22guitton.co%22%20OR%20%22louis%20guitton%22%20-from%3Alouis_guitton%20-%40louis_guitton%20-bag%20-purse%20-from%3Alouisguitton&src=typed_query&f=live
+
+Tests
+
+- [ ] add test: HTTPS page has internal links to HTTP
+- [ ] add test: link to broken page 404
+- [ ] add test: H1 tag missing or empty

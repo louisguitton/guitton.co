@@ -59,7 +59,7 @@ k proxy
 ```
 
 ```shell
-open http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+open https://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 ```
 
 ## Debbuging the helm deployment
@@ -112,7 +112,7 @@ If you're using a reverse proxy in front of your application, things could fail 
 ```shell
 # open the Ambassador UI
 k port-forward svc/ambassador-private-admin -n ambassador 8877
-open http://localhost:8877/ambassador/v0/diag/
+open https://localhost:8877/ambassador/v0/diag/
 
 # watch Ambassador logs
 k logs -f -n ambassador \
