@@ -206,7 +206,7 @@ More generally, to extend our lightweight metadata engine, we would add metadata
 parsers to collect and organise that metadata. We would then _index_ that metadata in our search engine.
 Examples of metadata sources are:
 
-- dbt artifacts (_See my post on [how to parse dbt artifacts](/posts/2020-12-20-dbt-artifacts.md#available-data-in-dbt-artifacts) _)
+- dbt artifacts (_See my post on [how to parse dbt artifacts](/posts/dbt-artifacts#available-data-in-dbt-artifacts) _)
 - git metadata
 - BI tool metadata database (e.g. who queries what, who curates what)
 - data warehouse admin views (e.g. for Redshift: [`stl_insert`](https://docs.aws.amazon.com/redshift/latest/dg/r_STL_INSERT.html),
@@ -255,7 +255,7 @@ so I'll spare you the rest: it also supports **search-as-you-type** and **facete
 </details>
 
 To build this search capability, you could use different technologies. I attended [a talk at Europython 2020
-from Paolo Melchiorre](/posts/2020-07-27-europython2020#paolo-melchiorre) advocating for using good-old
+from Paolo Melchiorre](/posts/europython-2020#paolo-melchiorre) advocating for using good-old
 PostgreSQL's full text search. To my knowledge though, you don't get search as you type.
 This is one of the reasons why people tend to go for ElasticSearch or Algolia. To choose between them, this is then
 a buy or build decision: more engineering resources vs "throwing money" at the serverless Algolia.
@@ -285,7 +285,7 @@ Keep in mind that we started with 2 use cases ('Jobs to be Done'), so each perso
 a different metric. For example, for "dashboard builders", the goal could be to downrank the corner case models
 so that only models that are "central" are used. But for "data auditors", the goal might be to prioritise
 the models that need attention first. In our case, we will focus on the first persona, and we will use
-a PageRank-like algorithm (degree centrality [as shown in my previous post](/posts/2020-12-20-dbt-artifacts.md#example-application-2-compute-model-centrality-with-networkx)).
+a PageRank-like algorithm (degree centrality [as shown in my previous post](/posts/dbt-artifacts#example-application-2-compute-model-centrality-with-networkx)).
 This is great at the start of your self-service analytics journey: dashboard builders might not know
 what are the good tables yet, so a good proxy is to look at which models are reused by your dbt comitters.
 Later, you could do like Amundsen and rely on the query logs to boost the models that are used the most.

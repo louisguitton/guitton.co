@@ -1,7 +1,16 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { logEvent } from '../components/GAScript'
 
 // Ref: https://tailwindui.com/components/marketing/feedback/404-pages
 export default function Custom404() {
+  const router = useRouter()
+
+  useEffect(() => {
+    logEvent('404_page_reached', 'engagement', router.asPath)
+  }, [router.asPath])
+
   return (
     <div className="px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8 print:grid print:place-items-center">
       <div className="mx-auto max-w-max">

@@ -2,6 +2,7 @@ import { CalendarIcon, CollectionIcon } from '@heroicons/react/solid'
 import moment from 'moment'
 import Image from 'next/image'
 import { Blog } from '../lib/types'
+import PostCategory from './PostCategory'
 
 // Ref: https://tailwindcss.com/docs/typography-plugin
 const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
@@ -26,7 +27,7 @@ const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
           <span className="px-2" />
           <span className="flex items-center font-semibold">
             <CollectionIcon className="w-5 h-5 mr-1" />
-            {post.categories?.join(' - ')}
+            <PostCategory post={post} />
           </span>
         </p>
       </div>

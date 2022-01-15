@@ -34,6 +34,11 @@ Critical path:
 
 Nice to haves:
 
+- [ ] add tutos
+  - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2018-07-22-design.md as tuto
+  - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2019-10-12-project-management.md as tuto
+  - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2020-04-14-cloud-cost-optimisation.md
+  - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2020-05-09-ml-engineer-stack.md
 - [ ] add breadcrumbs https://tailwindui.com/components/application-ui/navigation/breadcrumbs
 - [ ] add SSG support for tweets and gists
 

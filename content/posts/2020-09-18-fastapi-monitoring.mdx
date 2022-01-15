@@ -162,7 +162,7 @@ So how does it look in the code ?
 This is how my application factory looks. If you have any questions, feel free to reach out on [twitter](https://twitter.com/louis_guitton) or open a [github issue](https://github.com/louisguitton/guitton.co/issues).
 I will not share my instrumentation because it is specific to my application, but imagine that you can define any nested spans and that those traces will sent the same way to Jaeger or to DataDog. This makes it really fast to iterate on your instrumentation code (e.g. add or remove spans), and even faster to find performance bottlenecks in your code.
 
-```python
+```python:main.py
 """FastAPI Application factory with OpenTelemetry instrumentation
 sent to Jaeger in dev and to DataDog in staging and production."""
 from fastapi import FastAPI

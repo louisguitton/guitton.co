@@ -1,25 +1,26 @@
-import { GetStaticProps, NextPage } from "next";
-import { BreadcrumbJsonLd, NextSeo } from "next-seo";
-import Link from "next/link";
-import moment from "moment";
-import clsx from "clsx";
-import Image from "next/image";
-import { Blog } from "../lib/types";
-import { getAllPosts } from "../lib/posts";
+import { GetStaticProps, NextPage } from 'next'
+import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
+import Link from 'next/link'
+import moment from 'moment'
+import clsx from 'clsx'
+import Image from 'next/image'
+import { Blog } from '../lib/types'
+import { getAllPosts } from '../lib/posts'
+import PostCategory from '../components/PostCategory'
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: {
     allBlogs: getAllPosts(),
     // For SEO
     host: process.env.BASE_URL!,
-    url: new URL("/posts", process.env.BASE_URL).href,
+    url: new URL('/posts', process.env.BASE_URL).href,
   },
-});
+})
 
 const ListPostsPage: NextPage<{
-  allBlogs: Blog[];
-  host: string;
-  url: string;
+  allBlogs: Blog[]
+  host: string
+  url: string
 }> = ({ allBlogs, host, url }) => {
   return (
     <>
@@ -27,7 +28,7 @@ const ListPostsPage: NextPage<{
         title="Blog"
         canonical={url}
         openGraph={{
-          title: "guitton.co | Blog",
+          title: 'guitton.co | Blog',
           url: url,
         }}
       />
@@ -35,12 +36,12 @@ const ListPostsPage: NextPage<{
         itemListElements={[
           {
             position: 1,
-            name: "guitton.co",
+            name: 'guitton.co',
             item: host,
           },
           {
             position: 2,
-            name: "blog",
+            name: 'blog',
             item: url,
           },
         ]}
@@ -54,14 +55,15 @@ const ListPostsPage: NextPage<{
         </div>
 
         {allBlogs.map((p, index, row) => {
-          const isLast = index + 1 === row.length;
+          const isLast = index + 1 === row.length
           return (
             <div
               key={p.slug}
               className={clsx(
-                "flex flex-col sm:flex-row print:flex-row items-center py-5",
-                !isLast && "border-b border-gray-900"
-              )}>
+                'flex flex-col sm:flex-row print:flex-row items-center py-5',
+                !isLast && 'border-b border-gray-900'
+              )}
+            >
               <a className="relative w-full h-40 overflow-hidden sm:w-1/3 print:w-1/3">
                 <Image
                   className="object-none transition duration-300 ease-out transform scale-100 sm:object-cover print:object-cover hover:scale-105"
@@ -77,22 +79,17 @@ const ListPostsPage: NextPage<{
                   </Link>
                 </h2>
                 <p className="text-sm opacity-50">{p.summary}</p>
-                <span className="relative flex mt-3 text-xs opacity-90">
-                  <span className="mr-1 font-semibold">
-                    {p.categories?.join(" - ")}
-                  </span>
-                  ·
-                  <span className="ml-1">
-                    {moment(p.date).format("MMMM DD, YYYY")}
-                  </span>
+                <span className="relative flex items-center mt-3 text-xs opacity-90">
+                  <PostCategory post={p} />
+                  <span className="ml-1">{moment(p.date).format('MMMM DD, YYYY')}</span>
                 </span>
               </div>
             </div>
-          );
+          )
         })}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ListPostsPage;
+export default ListPostsPage

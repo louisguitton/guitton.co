@@ -2,6 +2,7 @@ import { Blog } from '../../lib/types'
 import { getAllPosts } from '../../lib/posts'
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import BlogLayout from '../../components/BlogLayout'
+import YoutubeEmbed from '../../components/YoutubeEmbed'
 import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from 'next-seo'
 import rehypePrismPlus from 'rehype-prism-plus'
 import { bundleMDX } from 'mdx-bundler'
@@ -11,9 +12,12 @@ import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeCodeTitles from 'rehype-code-titles'
 import { s } from 'hastscript'
 
-const componentsUsedInPosts = {}
+const componentsUsedInPosts = {
+  YoutubeEmbed,
+}
 
 type Props = {
   post: Blog
@@ -70,6 +74,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
             },
           },
         ],
+        rehypeCodeTitles,
         [rehypePrismPlus, { ignoreMissing: true }],
       ]
       return options

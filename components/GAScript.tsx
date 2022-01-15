@@ -9,32 +9,35 @@ import Script from 'next/script'
 import getConfig from 'next/config'
 
 const {
-  publicRuntimeConfig: { appVersion, googleAnalyticsId },
+  publicRuntimeConfig: { appVersion, googleAnalyticsId, isProduction },
 } = getConfig()
 
 const GAScript = () => {
-  return (
-    <>
-      <Script
-        // Examples of scripts that are good candidates to load with afterInteractive strategy include analytics and tag managers
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-      />
+  if (isProduction) {
+    return (
+      <>
+        <Script
+          // Examples of scripts that are good candidates to load with afterInteractive strategy include analytics and tag managers
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+        />
 
-      <Script strategy="afterInteractive" id="ga-script">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${googleAnalyticsId}', {
-              app_name: 'guitton.co',
-              app_version: '${appVersion}',
-              page_path: window.location.pathname,
-            });
-        `}
-      </Script>
-    </>
-  )
+        <Script strategy="afterInteractive" id="ga-script">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${googleAnalyticsId}', {
+                app_name: 'guitton.co',
+                app_version: '${appVersion}',
+                page_path: window.location.pathname,
+              });
+          `}
+        </Script>
+      </>
+    )
+  }
+  return <></>
 }
 
 export default GAScript
@@ -55,9 +58,12 @@ export const logEvent = (
   label: string = '(not set)',
   value?: number
 ) => {
-  window.gtag('event', action, {
-    event_category: category,
-    event_label: label,
-    value: value,
-  })
+  {
+    isProduction &&
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: label,
+        value: value,
+      })
+  }
 }

@@ -5,17 +5,7 @@ import Link from 'next/link'
 import { Post } from '../lib/types'
 import { EyeIcon } from '@heroicons/react/outline'
 import { logEvent } from './GAScript'
-
-interface Dictionary<T> {
-  [Key: string]: T
-}
-
-const colors: Dictionary<string> = {
-  Data: 'bg-purple-500',
-  Code: 'bg-pink-500',
-  ML: 'bg-green-500',
-  Ideas: 'bg-red-500',
-}
+import PostCategory from './PostCategory'
 
 const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
   return (
@@ -37,20 +27,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
           className="absolute inset-0 object-cover object-center transition duration-300 ease-out transform scale-100 group-hover:scale-105"
         />
         <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90" />
-        {post.categories ? (
-          <span
-            className={clsx(
-              'px-2 py-0.5',
-              colors[post.categories[0]],
-              'inline relative mb-3',
-              'text-white text-xs uppercase'
-            )}
-          >
-            {post.categories[0]}
-          </span>
-        ) : (
-          <></>
-        )}
+        <span className="mb-3"><PostCategory post={post} /></span>
         <span className="relative mb-3 text-xl font-bold leading-tight text-white">
           {post.title}
         </span>

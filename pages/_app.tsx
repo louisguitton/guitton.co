@@ -12,8 +12,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 library.add(fab)
 
-const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === 'production'
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -24,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
-      {isProduction && <GAScript />}
+      <GAScript />
 
       <DefaultSeo {...SEO} />
       <SocialProfileJsonLd
