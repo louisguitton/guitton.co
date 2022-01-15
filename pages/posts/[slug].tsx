@@ -14,9 +14,10 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCodeTitles from 'rehype-code-titles'
 import { s } from 'hastscript'
+import {MDXComponents} from 'mdx/types'
 
-const componentsUsedInPosts = {
-  YoutubeEmbed,
+const componentsUsedInPosts: MDXComponents = { // @ts-ignore
+  YoutubeEmbed, 
 }
 
 type Props = {
