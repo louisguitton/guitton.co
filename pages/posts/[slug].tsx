@@ -149,7 +149,7 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
           {
             position: 2,
             name: 'blog',
-            item: new URL(`/posts/`, host).href,
+            item: new URL(`/posts`, host).href,
           },
           {
             position: 3,
