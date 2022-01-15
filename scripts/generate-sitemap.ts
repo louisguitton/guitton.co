@@ -23,7 +23,7 @@ const main = async () => {
         .replace('.md', '')
         .replace('/feed.xml', '')
       const route = path === '/index' ? '' : path
-      if (page === `pages/404.js` || page === `pages/posts/[...slug].js`) {
+      if (page === `pages/404.tsx` || page === `pages/posts/[...slug].js`) {
         return
       }
       return `

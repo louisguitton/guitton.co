@@ -34,6 +34,7 @@ Critical path:
 
 Nice to haves:
 
+- [ ] add 2048 as native and easter-egg on 404 page
 - [ ] add tutos
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2018-07-22-design.md as tuto
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2019-10-12-project-management.md as tuto
