@@ -7,18 +7,22 @@ import { EyeIcon } from '@heroicons/react/outline'
 import { logEvent } from './GAScript'
 import PostCategory from './PostCategory'
 
-const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
+const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
+  post,
+  className,
+  ...rest
+}) => {
   return (
     <Link href={`/posts/${post.slug}`} passHref>
       <a
         className={clsx(
+          className,
           'relative flex flex-col items-start justify-end',
           'px-5 pb-5',
-          // width & height
-          'h-96 col-span-12 md:col-span-6 lg:col-span-4 print:col-span-4',
           'overflow-hidden bg-gray-800 cursor-pointer group'
         )}
         onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}
+        {...rest}
       >
         <Image
           src={post.image}
@@ -27,7 +31,7 @@ const FeaturedPost: React.FC<{ post: Post }> = ({ post }) => {
           className="absolute inset-0 object-cover object-center transition duration-300 ease-out transform scale-100 group-hover:scale-105"
         />
         <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90" />
-        <span className="mb-3"><PostCategory post={post} /></span>
+        <PostCategory post={post} className="mb-3" />
         <span className="relative mb-3 text-xl font-bold leading-tight text-white">
           {post.title}
         </span>
@@ -53,7 +57,11 @@ const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
       </div>
       <div className="grid grid-cols-12 gap-1">
         {posts.map((post) => (
-          <FeaturedPost key={post.slug} post={post} />
+          <FeaturedPost
+            key={post.slug}
+            post={post}
+            className="col-span-12 h-96 md:col-span-6 lg:col-span-4 print:col-span-4"
+          />
         ))}
       </div>
     </section>

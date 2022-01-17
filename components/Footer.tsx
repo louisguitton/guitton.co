@@ -19,7 +19,6 @@ const navigation: {
     { name: 'Resume', href: '/resume', indented: true },
     { name: 'Blog', href: '/posts' },
     { name: 'Contact', href: '/contact' },
-    // TODO: { name: "Freelance", href: "/freelance" },
   ],
   api: [
     { name: '/api/ga/featured-posts', href: '/api/ga/featured-posts' },
@@ -42,8 +41,9 @@ const navigation: {
     },
   ],
   other: [
-    { name: 'Awesome Tutos', href: 'https://awesome-tutos.guitton.co/' },
+    { name: 'Awesome Tutos', href: 'https://awesome-tutos.guitton.co' },
     { name: '2055', href: 'https://louisguitton.github.io/2055/' },
+    { name: 'dbt-metadata-utils', href: 'https://dbt-metadata-utils.guitton.co'}
     // TODO: { name: "Feed", href: "#" },
   ],
 }

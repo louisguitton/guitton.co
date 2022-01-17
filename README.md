@@ -28,13 +28,13 @@ Next + markdown
 
 Critical path:
 
+- [ ] add precommit hooks
 - [ ] milk tailwind-nextjs-starter-blog typescript code for more goodies
 - [ ] generate rss.xml https://github.com/leerob/leerob.io/blob/main/scripts/generate-rss.mjs
   - [ ] compare with https://guitton.co/index.xml
 
 Nice to haves:
 
-- [ ] add 2048 as native and easter-egg on 404 page
 - [ ] add tutos
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2018-07-22-design.md as tuto
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2019-10-12-project-management.md as tuto
@@ -42,6 +42,7 @@ Nice to haves:
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2020-05-09-ml-engineer-stack.md
 - [ ] add breadcrumbs https://tailwindui.com/components/application-ui/navigation/breadcrumbs
 - [ ] add SSG support for tweets and gists
+- [ ] add 2048 as native and easter-egg on 404 page
 
 Next steps
 
@@ -55,4 +56,5 @@ Tests
 
 - [ ] add test: HTTPS page has internal links to HTTP
 - [ ] add test: link to broken page 404
-- [ ] add test: H1 tag missing or empty
+- [ ] add test: H1 tag missing or empty -> easy with jest https://nextjs.org/docs/testing#jest-and-react-testing-library
+- [ ] add test: logevent when clicking on featured post or getting 404

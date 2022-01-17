@@ -14,16 +14,22 @@ const colors: Dictionary<string> = {
   Projects: 'bg-amber-500',
 }
 
-const PostCategory: FC<{ post: BlogFrontMatter }> = ({ post }) => {
+const PostCategory: FC<{ post: BlogFrontMatter; className?: string }> = ({
+  post,
+  className,
+  ...rest
+}) => {
   if (post.categories) {
     return (
       <span
         className={clsx(
+          className,
           'px-2 py-0.5',
           colors[post.categories[0]],
           'inline relative',
           'text-white text-xs uppercase'
         )}
+        {...rest}
       >
         {post.categories[0]}
       </span>
