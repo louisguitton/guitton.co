@@ -62,6 +62,10 @@ const Index: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           title: 'guitton.co | Home',
           url: url,
         }}
+        additionalMetaTags={[
+          { property: 'article:published_time', content: new Date(2019, 5, 14).toISOString() },
+          { property: 'article:modified_time', content: new Date().toISOString() },
+        ]}
       />
 
       <Hero />

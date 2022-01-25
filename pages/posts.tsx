@@ -22,6 +22,15 @@ const ListPostsPage: NextPage<{
   host: string
   url: string
 }> = ({ allBlogs, host, url }) => {
+  const globalLastMod = new Date(
+    Math.max.apply(
+      Math,
+      allBlogs.map(function (b) {
+        return new Date(b.lastmod).getTime()
+      })
+    )
+  ).toISOString()
+
   return (
     <>
       <NextSeo
@@ -31,6 +40,13 @@ const ListPostsPage: NextPage<{
           title: 'guitton.co | Blog',
           url: url,
         }}
+        additionalMetaTags={[
+          { property: 'article:published_time', content: new Date(2019, 5, 14).toISOString() },
+          {
+            property: 'article:modified_time',
+            content: globalLastMod,
+          },
+        ]}
       />
       <BreadcrumbJsonLd
         itemListElements={[

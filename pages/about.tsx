@@ -78,6 +78,10 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
             username: 'louis_guitton',
           },
         }}
+        additionalMetaTags={[
+          { property: 'article:published_time', content: new Date(2019, 5, 14).toISOString() },
+          { property: 'article:modified_time', content: new Date().toISOString() },
+        ]}
       />
       <BreadcrumbJsonLd
         itemListElements={[

@@ -251,6 +251,9 @@ const ContactPage: NextPage<{ host: string; url: string }> = ({ host, url }) => 
             username: 'louis_guitton',
           },
         }}
+        additionalMetaTags={[
+          { property: 'article:published_time', content: new Date(2019, 5, 15).toISOString() },
+        ]}
       />
       <BreadcrumbJsonLd
         itemListElements={[

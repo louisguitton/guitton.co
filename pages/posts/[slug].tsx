@@ -3,7 +3,7 @@ import { getAllPosts } from '../../lib/posts'
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
 import BlogLayout from '../../components/BlogLayout'
 import YoutubeEmbed from '../../components/YoutubeEmbed'
-import { BlogJsonLd, BreadcrumbJsonLd, NextSeo } from 'next-seo'
+import { ArticleJsonLd, BreadcrumbJsonLd, NextSeo } from 'next-seo'
 import rehypePrismPlus from 'rehype-prism-plus'
 import { bundleMDX } from 'mdx-bundler'
 import { getMDXComponent } from 'mdx-bundler/client'
@@ -14,10 +14,11 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeCodeTitles from 'rehype-code-titles'
 import { s } from 'hastscript'
-import {MDXComponents} from 'mdx/types'
+import { MDXComponents } from 'mdx/types'
 
-const componentsUsedInPosts: MDXComponents = { // @ts-ignore
-  YoutubeEmbed, 
+const componentsUsedInPosts: MDXComponents = {
+  // @ts-ignore
+  YoutubeEmbed,
 }
 
 type Props = {
@@ -126,15 +127,23 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
           ],
         }}
       />
-      {/* double check the generated JSON-LD in https://search.google.com/test/rich-results */}
-      <BlogJsonLd
+      {/* 
+      References:
+        - Google has excellent content on JSON-LD https://developers.google.com/search/docs/advanced/structured-data/article
+        - Double check the generated JSON-LD integrates well (for Breadcrumbs, rating stars, prices, ...) https://search.google.com/test/rich-results
+        - JSON-LD reference https://schema.org/Article
+        - next-seo ref https://github.com/garmeeh/next-seo#article-1
+      */}
+      <ArticleJsonLd
         url={url}
         title={post.title}
         images={[post.image]}
         datePublished={post.date}
         dateModified={post.lastmod}
-        authorName="Louis Guitton"
+        authorName={['Louis Guitton']}
         description={post.summary}
+        publisherName="guitton.co"
+        publisherLogo="/images/louis.jpg"
       />
       {/* double check the generated JSON-LD in https://search.google.com/test/rich-results */}
       <BreadcrumbJsonLd

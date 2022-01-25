@@ -45,6 +45,10 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
           description: 'My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components.',
           url: url,
         }}
+        additionalMetaTags={[
+          { property: 'article:published_time', content: new Date(2022, 1, 9).toISOString() },
+          { property: 'article:modified_time', content: new Date(2022, 1, 15).toISOString() },
+        ]}
       />
       <BreadcrumbJsonLd
         itemListElements={[

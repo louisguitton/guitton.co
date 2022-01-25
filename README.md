@@ -35,6 +35,13 @@ Critical path:
 
 Nice to haves:
 
+- [ ] add next auth + stripe + add tutos as info product
+      use https://gumroad.com/ instead?
+      next-auth requirements:
+        - email sending service (SES or mailgrid)
+        - database (supabase) -> next-auth prisma adapter (makes session based authentication seamless)
+- [ ] think of a pricing strategy (e.g. the ML/NLP bundle is separate and more expensive with stuff like the explainable recsys (Pareto archive + graph) and the referent graphs and the seeded topic models)
+- [ ] research SEO implications of this: https://developers.google.com/search/docs/advanced/structured-data/paywalled-content and https://developers.google.com/search/docs/advanced/structured-data/course and https://developers.google.com/search/docs/advanced/structured-data/product
 - [ ] add tutos
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2018-07-22-design.md as tuto
   - [ ] add https://github.com/louisguitton/guitton.co-hugo/blob/master/content/posts/2019-10-12-project-management.md as tuto
