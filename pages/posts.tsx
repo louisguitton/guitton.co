@@ -23,9 +23,8 @@ const ListPostsPage: NextPage<{
   url: string
 }> = ({ allBlogs, host, url }) => {
   const globalLastMod = new Date(
-    Math.max.apply(
-      Math,
-      allBlogs.map(function (b) {
+    Math.max(
+      ...allBlogs.map(function (b) {
         return new Date(b.lastmod).getTime()
       })
     )

@@ -147,7 +147,7 @@ export const resume: JsonResume = {
     },
     {
       highlights: [
-        'Data Solutions, teaching and open source'
+        'Data Solutions, teaching and open source',
         // '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
         // '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
         // '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',

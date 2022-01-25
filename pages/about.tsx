@@ -1,6 +1,6 @@
 import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
 import type { GetStaticProps, NextPage } from 'next'
-import { CheckIcon, ExclamationIcon, PaperClipIcon } from '@heroicons/react/solid'
+import { CheckIcon, PaperClipIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
