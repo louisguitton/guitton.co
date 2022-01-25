@@ -127,7 +127,7 @@ const PostPage: NextPage<Props> = ({ post, content, host, url }) => {
           ],
         }}
       />
-      {/* 
+      {/*
       References:
         - Google has excellent content on JSON-LD https://developers.google.com/search/docs/advanced/structured-data/article
         - Double check the generated JSON-LD integrates well (for Breadcrumbs, rating stars, prices, ...) https://search.google.com/test/rich-results
