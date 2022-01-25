@@ -9,7 +9,7 @@ import Work from './Work'
 
 const JsonResumeLayout: FC<{ resume: JsonResume }> = ({ resume }) => {
   return (
-    <div className='max-w-2xl mx-auto'>
+    <div className="max-w-2xl mx-auto">
       <Basics basics={resume.basics} />
       <Work works={resume.work} />
       <Projects projects={resume.projects} />

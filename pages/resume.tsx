@@ -42,7 +42,8 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
         canonical={url}
         openGraph={{
           title: 'guitton.co | Resumé',
-          description: 'My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components.',
+          description:
+            'My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components.',
           url: url,
         }}
         additionalMetaTags={[
@@ -67,7 +68,7 @@ const Resume: NextPage<{ resume: JsonResume; host: string; url: string }> = ({
 
       <div>
         <PrintButton />
-        <div className='py-1'></div>
+        <div className="py-1"></div>
         <JsonResumeLayout resume={resume} />
       </div>
     </>

@@ -43,7 +43,7 @@ const navigation: {
   other: [
     { name: 'Awesome Tutos', href: 'https://awesome-tutos.guitton.co' },
     { name: '2055', href: 'https://louisguitton.github.io/2055/' },
-    { name: 'dbt-metadata-utils', href: 'https://dbt-metadata-utils.guitton.co'}
+    { name: 'dbt-metadata-utils', href: 'https://dbt-metadata-utils.guitton.co' },
     // TODO: { name: "Feed", href: "#" },
   ],
 }

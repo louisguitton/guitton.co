@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client"
+import { gql } from '@apollo/client'
 
-const lastModified = gql`
+export const lastModified = gql`
   {
     repository(owner: "louisguitton", name: "guitton.co") {
       object(expression: "rewrite") {

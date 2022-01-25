@@ -37,7 +37,10 @@ const sendEmail = async (
           <h1>${subject}</h1>
           <p>Email: ${senderMail}</p>
           <div>
-            ${message.split('\r\n').map((line) => `<p>${line}</p>`).join('')}
+            ${message
+              .split('\r\n')
+              .map((line) => `<p>${line}</p>`)
+              .join('')}
           </div>
           `,
         },
@@ -61,7 +64,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { ['full-name']: fullName, company, email, message } = req.body
 
   try {
-    const data = await sendEmail(fullName, company, email, message)
+    await sendEmail(fullName, company, email, message)
     res.status(200).json({ sent: 'ok' })
   } catch (error) {
     console.error(`❌ Failed to send email: `, error)

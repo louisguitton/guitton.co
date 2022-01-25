@@ -1,19 +1,19 @@
 // GraphQL fragments and assocciated typescript types
 // Ref: https://www.apollographql.com/docs/react/data/fragments/
 
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const CORE_REPO_FIELDS = gql`
   fragment CoreRepoFields on Repository {
     nameWithOwner
     description
   }
-`;
+`
 
 export type CoreRepoQuery = {
-  nameWithOwner: string;
-  description: string;
-};
+  nameWithOwner: string
+  description: string
+}
 
 export const CORE_PR_FIELDS = gql`
   ${CORE_REPO_FIELDS}
@@ -25,14 +25,14 @@ export const CORE_PR_FIELDS = gql`
     title
     url
   }
-`;
+`
 
 export type PRQuery = {
-  repository: CoreRepoQuery;
-  createdAt: string;
-  title: string;
-  url: string;
-};
+  repository: CoreRepoQuery
+  createdAt: string
+  title: string
+  url: string
+}
 
 export const FULL_REPO_FIELDS = gql`
   ${CORE_REPO_FIELDS}
@@ -67,35 +67,35 @@ export const FULL_REPO_FIELDS = gql`
       }
     }
   }
-`;
+`
 
 export interface FullRepoQuery extends CoreRepoQuery {
-  updatedAt: string;
-  createdAt: string;
-  url: string;
+  updatedAt: string
+  createdAt: string
+  url: string
   owner: {
-    login: string;
-    url: string;
-    __typename: string;
-  };
+    login: string
+    url: string
+    __typename: string
+  }
   repositoryTopics: {
     nodes: {
       topic: {
-        name: string;
-      };
-    }[];
-  };
+        name: string
+      }
+    }[]
+  }
   primaryLanguage: {
-    name: string;
-    color: string;
-  };
+    name: string
+    color: string
+  }
   languages: {
     edges: {
-      size: number;
+      size: number
       node: {
-        color: string;
-        name: string;
-      };
-    }[];
-  };
+        color: string
+        name: string
+      }
+    }[]
+  }
 }

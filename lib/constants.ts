@@ -10,4 +10,4 @@
 export const cacheConfig = {
   backend: 1 * 60,
   frontend: 1 * 60,
-};
+}
