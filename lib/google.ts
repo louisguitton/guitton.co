@@ -1,4 +1,4 @@
-/** Google Analyticcs v4 API client
+/** Google Analytics v4 API client
  *
  * References:
  * - https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries#node.js
