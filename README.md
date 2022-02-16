@@ -84,3 +84,8 @@ Add github last modified query:
   }
 }
 ```
+
+- Add post about OF academy module I did about communication
+- add post about flow wallets https://www.youtube.com/watch?v=4xJvcnSZYLA&t=3188s
+- add post about office hours
+- call youtube API to get captions of video, then index the document in search (maybe post NER)

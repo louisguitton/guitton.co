@@ -7,11 +7,12 @@ interface Dictionary<T> {
 }
 
 const colors: Dictionary<string> = {
-  Data: 'bg-purple-500',
-  Code: 'bg-pink-500',
-  ML: 'bg-green-500',
+  Data: 'bg-violet-500',
+  Code: 'bg-sky-500',
+  ML: 'bg-fuchsia-500',
   Ideas: 'bg-red-500',
   Projects: 'bg-amber-500',
+  Web3: 'bg-emerald-500',
 }
 
 const PostCategory: FC<{ post: BlogFrontMatter; className?: string }> = ({
