@@ -1,0 +1,108 @@
+---
+slug: off-heroku
+title: 'A quick and dirty guide if you need to migrate your project off of Heroku'
+date: '2022-10-16'
+lastmod: '2022-10-16'
+summary: >
+  In this post, I'll summarise your migrations options if you're facing.
+categories:
+  - Code
+series:
+  - 
+image: /images/off-heroku/that-feeling-when-b41e92f404.jpg
+---
+
+In a Aug 25th 2022 blogpost, Heroku has communicated about their ["Next Chapter"](https://blog.heroku.com/next-chapter#:~:text=Starting%20October%2026%2C%202022%2C%20we,free%20dynos%20and%20data%20services.):
+> Starting October 26, 2022, we will begin deleting inactive accounts and associated storage for accounts that have been inactive for over a year. Starting November 28, 2022, we plan to stop offering free product plans and plan to start shutting down free dynos and data services.
+
+If you're like me, you have grown up (as a developer) using Heroku's services, and you might find yourself with at least 1 service running on Heroku.
+Worse, if you're like me, you might have missed that announcement and you might have just helped a friend build his wedding website on Heroku, and you're now looking for migration options 😂.
+
+In this blog post, I will try to summarise your options.
+
+## Consider not migrating
+
+**First, assess your architecture**
+In other words, what is Heroku doing for you?
+Let's take a simple use case: you have a hobby project which is web app with a database.
+Heroku hence runs a server ("dyno") and a Postgres DB ("Postgres add-on") for you.
+
+But Heroku also does more. It is what's called a PaaS (platform as a service): continuous integration with Github, and no headaches integration of your services (e.g your DB and your server together).
+
+So when looking for a new solution, ask yourself:
+- do you need a hosted server?
+- do you need a hosted database?
+- do you need PaaS experience?
+
+**Second, understand the cost of cloud resources**
+Heroku hobby developers are spoiled because they get, for free, a server and a DB. 
+It's easy to assume that building a project should be free.
+But any project running on the cloud has costs that can be divided between **compute and storage**. _Someone_ is paying for those costs.
+
+Storage costs have been driven down "thanks" to AWS S3 and its generous free tier. They can mostly be ignored (note: for more advanced projects, you might run into high costs due to AWS egress fees, in which case Cloudflare R2 storage wil get you back into low-cost land).
+
+Compute costs however, are not avoidable in most cases.
+Developer-friendly and cheap options like Digital Ocean have set the benchmark: ~$5 per month for a server and ~$15 per month for a database server.
+
+If we come back to our proto-typical hobby project consisting of a server and a DB, our <em background-color="#fa5252" color="white">cloud costs on the market would realistically be $20 per month minimum</em>.
+If you know your database will stay very small, you can deploy Postgres side-by-side with your application on your existing server, saving you the costs of a dedicated DB server.
+In this scenario, your hobby project would add up to $5 per month (along with more potential ops headaches).
+
+**Finally, estimate your bill if you were to not migrate**
+No need to migrate anything if you're OK with the new pricing model of Heroku.
+Heroku has an [interactive pricing page](https://www.heroku.com/pricing) to help you estimate your costs (make sure to not choose Free or Hobby as those will be sunsetted).
+The cheapest server will be $25 per month. The cheapest database will be $50 per month, so our proto-typical hobby project cloud costs will <em background-color="#fa5252" color="white">jump from $0 per month to $75 per month</em>.
+
+## OK, you want to migrate
+
+Many other developers are facing this situation.
+You can read more experiences in this post: [Ask HN: So you moved off Heroku, where did you go? | Hacker News](https://news.ycombinator.com/item?id=33077118)
+
+The rest of this article is an **opinionated** breakdown of alternatives I can recommend. 
+I expect this advice to grow stale with time: 
+just like advising my friend to tie himself up with Heroku would have been fine 2 months ago and is not anymore (sorry Thibault 😂🙈), the following advice could become stale if the cited companies change their pricnig models, or if their VC cash runs out.
+
+### (Ab)use serverless: [vercel.com](https://vercel.com/)
+
+There are a few free options to deploy static websites (look no further than [Github Pages](https://pages.github.com/)).
+But soon enough, you need more than a static page: e.g. persist data to a database, hide a secret token from clients using an API.
+For those cases, you need a server. But, as explained above, a server has fixed costs.
+With serverless, and typically with AWS Lambda's generous free tier, you can develop the needed backend functionalities "for free".
+Except managing the code and deployment won't be as easy as PaaS.
+
+Vercel is a platform for web developers that provides a PaaS experience: it deploys your static pages and it deploys functions to AWS Lambda under the hood.
+[Official Vercel Runtimes](https://vercel.com/docs/runtimes) are Node.js, Go, Python, Ruby.
+
+For the unlikely scenario in which you need to deploy a PHP application, here are useful links:
+- [vercel-community/php: 🐘 PHP Runtime for ▲ Vercel Serverless Functions](https://github.com/vercel-community/php)
+- [juicyfx/vercel-examples: 📦 Examples and sample projects using Vercel platform](https://github.com/juicyfx/vercel-examples)
+
+Migrating your application to that architecture might be a fair amount of work, but the (absence of) cost and PaaS experience might be worth it.
+
+### Free tier hosted Database: [supabase.io](https://supabase.io/)
+
+If all you need is replacing the Heroku Postgres Add-on, then Supabase is a great option.
+Disclaimer: Supabase is a company graduated from Entrepreneur First, the incubator I was part of in 2018.
+
+[Migrate from Heroku to Supabase | Supabase](https://supabase.com/docs/guides/migrations/heroku)
+
+### Self-hosted PaaS: [coolify.io](https://coolify.io/)
+
+If what you need is a PaaS experience have a look at coolify.
+You first need a running server of your own (see above on compute prices).
+Then you setup "Remote Docker Engine" (which means the server runs Docker Engine and has ports exposed for querying the Engine API).
+Then you add it as destination in coolify, and you get a Heroku-like experience.
+
+This is an open-source solution with a lot of promises and a nascent community.
+The drawback is that you need to bring your own cloud resources (i.e. provision and pay for them separately).
+
+### Managed PaaS
+
+If running your own cloud resources is not an option, there are other fully managed options.
+But keep in mind that running any project incurs compute + storage costs (see section above).
+So I am always suspicious of companies offering free tiers.
+
+Those free tiers might be subsidised for you by them using the VC cash they have raised; they are validating product-market fit with you and might turn off free tier tomorrow.
+If you're OK with that and are ready for the engineering costs of "ejecting" (migrating away from the chosen service), you're fine.
+
+Potential options are [fly.io](https://fly.io/), [railway.app](https://railway.app/), [render.com](https://render.com/).
