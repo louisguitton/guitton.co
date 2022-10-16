@@ -14,7 +14,7 @@ const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
             src={post.image}
             layout="fill"
             alt={post.title}
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
         </div>
         <h1 className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl print:text-4xl">
