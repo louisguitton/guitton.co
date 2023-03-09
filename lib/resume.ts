@@ -2,6 +2,7 @@ import { Network } from '../types/resume/Basics'
 import { JsonResume } from '../types/resume/JsonResume'
 
 /**
+ * ref: https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html
  * Ref: https://leerob.io/blog/resume
  *
  * - Omit unnecessary information (GPA, projects, internships, phone number).
@@ -20,7 +21,7 @@ export const resume: JsonResume = {
   basics: {
     email: 'admin@guitton.co',
     image: '/images/louis.jpg',
-    label: 'Tech Lead NFT, Machine Learning Engineer',
+    label: 'Engineering Manager',
     location: {
       city: 'Berlin',
       countryCode: 'DE',
@@ -107,7 +108,12 @@ export const resume: JsonResume = {
       name: 'NLP',
     },
     {
-      keywords: ['mlflow', 'label-studio', 'SageMaker', 'optuna'],
+      keywords: [
+        'mlflow',
+        'label-studio',
+        'SageMaker',
+        // 'optuna'
+      ],
       name: 'MLOps',
     },
     {
@@ -115,7 +121,12 @@ export const resume: JsonResume = {
       name: 'Data Engineering',
     },
     {
-      keywords: ['TypeScript', 'NextJS', 'TailwindCSS', 'ReactJS'],
+      keywords: [
+        'TypeScript',
+        'NextJS',
+        'TailwindCSS',
+        // 'ReactJS'
+      ],
       name: 'MVP Building',
     },
   ],
@@ -123,7 +134,33 @@ export const resume: JsonResume = {
   work: [
     {
       highlights: [
+        // lead the company through hypergrowth
+        // hired and built 2 teams over 3 months, managed 4 teams at peak
+        // • Accountable for staffing and personnel planning (incl. recruiting)
+        // managed and grown high-performing teams by focusing on the engineers.
+        // building teams that focus on impact, technical excellence, and transparency
         'Built blockchain MVP including smart contract, frontend, and backend.',
+        // delivered MVP 1 month before FIFA competitor
+        // 20k MAUs, 115k at peak 21-27 Aug
+        // 300k total revenue
+        // • Accountable for team performance and business results (profit/loss, meeting annual plan)
+        // • Accountable for product strategy and delivery
+        // • Managing cross department dependencies
+        // • Providing leadership and coaching; responsible for people growth
+      ],
+      location: {
+        city: 'Berlin',
+        countryCode: 'DE',
+      },
+      name: 'OneFootball Labs',
+      position: 'VP of Engineering',
+      startDate: '2022-01-31',
+      endDate: '2023-03-31',
+      summary: 'NFT marketplace for Seria A video moments.',
+      url: 'https://aera.onefootball.com/',
+    },
+    {
+      highlights: [
         'Hired, managed and growed one MLE intern.',
         'Set the technical bar for Data Science, Data Engineering, and Data Analytics.',
         'Designed and implemented a human-in-the-loop entity linking system for news tagging in 7 languages.',
@@ -139,8 +176,9 @@ export const resume: JsonResume = {
         countryCode: 'DE',
       },
       name: 'OneFootball',
-      position: 'Tech Lead NFT and Principal Machine Learning Engineer',
+      position: 'Principal Machine Learning Engineer',
       startDate: '2018-10-31',
+      endDate: '2022-01-31',
       summary:
         'Football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.',
       url: 'https://onefootball.com/',
@@ -156,7 +194,7 @@ export const resume: JsonResume = {
         city: 'Berlin',
         countryCode: 'DE',
       },
-      name: 'Side Hustle',
+      name: 'guitton.co',
       position: 'Freelance Software Engineer and Data Scientist',
       startDate: '2017-06-30',
       summary: '',
@@ -167,7 +205,7 @@ export const resume: JsonResume = {
       highlights: [
         // scalable hiring personality screening
         // Worked with Isabelle Guyon's research group
-        '<b>Entrepreneurship</b>: Developed an idea using computer vision, went in front of angel investors.',
+        '<b>Entrepreneurship</b>: Developed an idea using computer vision, pitch in front of angel investors.',
       ],
       location: {
         city: 'Berlin',
