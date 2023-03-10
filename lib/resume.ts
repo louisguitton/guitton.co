@@ -136,6 +136,7 @@ export const resume: JsonResume = {
       highlights: [
         // lead the company through hypergrowth
         // hired and built 2 teams over 3 months, managed 4 teams at peak
+        // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
         // building teams that focus on impact, technical excellence, and transparency
