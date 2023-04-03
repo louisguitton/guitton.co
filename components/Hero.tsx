@@ -19,7 +19,7 @@ function Hero() {
           <span className="block text-sm font-semibold text-gray-500">
             {/* for SEO we need a space here */}
             <span className="hidden">&nbsp;-&nbsp;</span>
-            Tech Lead NFT and Principal Machine Learning Engineer at <b>OneFootball</b>
+            ex VP of Engineering at <b>OneFootball</b>
           </span>
         </h1>
         <p className="mt-3 text-sm text-gray-500 sm:mt-5 print:mt-5">
