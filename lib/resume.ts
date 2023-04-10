@@ -39,7 +39,8 @@ export const resume: JsonResume = {
         username: 'louisguitton',
       },
     ],
-    summary: 'Looking for an environment where I can grow as an engineer and influence technology.',
+    summary: '',
+    // summary: 'Looking for an environment where I can grow as an engineer and influence technology.',
     url: 'https://guitton.co/',
     website: 'https://guitton.co/',
   },
@@ -89,11 +90,11 @@ export const resume: JsonResume = {
     {
       entity: 'guitton.co',
       highlights: [],
-      keywords: ['Static Site Generators', 'Serverless', 'SEO'],
-      name: 'Blogging',
+      keywords: ['Static Site Generators', 'Serverless', 'SEO', 'Data Science', 'Open Source'],
+      name: 'Blogging and Freelance',
       summary:
-        'Sharing my thougts with 1k+ users per month. Ranking #1 on google.com for <i>"fastapi monitoring"</i> and for <i>"amundsen dbt"</i>',
-      url: 'https://guitton.co/posts',
+        'Freelance Software Engineer and Data Scientist. Sharing my thougts with 1k+ users per month. Ranking #1 on google.com for <i>"fastapi monitoring"</i> and for <i>"amundsen dbt"</i>.',
+      url: 'https://guitton.co',
     },
   ],
   publications: [],
@@ -134,27 +135,28 @@ export const resume: JsonResume = {
   work: [
     {
       highlights: [
-        // lead the company through hypergrowth
-        // hired and built 2 teams over 3 months, managed 4 teams at peak
+        'Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity',
+        'Lead the company through steep headcount growth from 2 people to 45',
+        'Hired and built 2 high-performing engineering teams over 3 months, managed 4 teams at peak',
         // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
         // building teams that focus on impact, technical excellence, and transparency
-        'Built blockchain MVP including smart contract, frontend, and backend.',
+        'Built blockchain MVP including smart contract, frontend, and backend',
         // delivered MVP 1 month before FIFA competitor
         // 20k MAUs, 115k at peak 21-27 Aug
-        // 300k total revenue
-        // • Accountable for team performance and business results (profit/loss, meeting annual plan)
-        // • Accountable for product strategy and delivery
+        // 500k total revenue
+        'Accountable for team performance (20k MAUs, 115k at peak) and business results ($500k revenue)',
+        'Accountable for product strategy and delivery',
         // • Managing cross department dependencies
-        // • Providing leadership and coaching; responsible for people growth
+        'Provided leadership and coaching; responsible for people growth',
       ],
       location: {
         city: 'Berlin',
         countryCode: 'DE',
       },
       name: 'OneFootball Labs',
-      position: 'VP of Engineering',
+      position: 'Co-Founder and VP of Engineering',
       startDate: '2022-01-31',
       endDate: '2023-03-31',
       summary: 'NFT marketplace for Seria A video moments.',
@@ -162,10 +164,10 @@ export const resume: JsonResume = {
     },
     {
       highlights: [
-        'Hired, managed and growed one MLE intern.',
         'Set the technical bar for Data Science, Data Engineering, and Data Analytics.',
         'Designed and implemented a human-in-the-loop entity linking system for news tagging in 7 languages.',
         'Used knowledge graphs, language models, text classification and topic modeling.',
+        'Hired, managed and growed one MLE intern.',
         // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
         // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
         // '<b>First Data Science hire</b>: Defined the Data Science project plan and the MLOps stack. Built quick wins like <i>prophet</i> forecasting or <i>XGBoost</i> classification for tabular data or templated news generation slackbot.',
@@ -184,23 +186,23 @@ export const resume: JsonResume = {
         'Football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.',
       url: 'https://onefootball.com/',
     },
-    {
-      highlights: [
-        'Data Solutions, teaching and open source',
-        // '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
-        // '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
-        // '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
-      ],
-      location: {
-        city: 'Berlin',
-        countryCode: 'DE',
-      },
-      name: 'guitton.co',
-      position: 'Freelance Software Engineer and Data Scientist',
-      startDate: '2017-06-30',
-      summary: '',
-      url: 'https://guitton.co/about#freelance',
-    },
+    // {
+    //   highlights: [
+    //     'Data Solutions, teaching and open source',
+    //     '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
+    //     '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
+    //     '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
+    //   ],
+    //   location: {
+    //     city: 'Berlin',
+    //     countryCode: 'DE',
+    //   },
+    //   name: 'guitton.co',
+    //   position: 'Freelance Software Engineer and Data Scientist',
+    //   startDate: '2017-06-30',
+    //   summary: '',
+    //   url: 'https://guitton.co/about#freelance',
+    // },
     {
       endDate: '2018-06-30',
       highlights: [

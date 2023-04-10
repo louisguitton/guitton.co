@@ -86,11 +86,13 @@ const Basics: FC<{ basics: Basics }> = ({ basics }) => {
         </div>
       </header>
 
-      <section className="w-11/12 mb-4">
-        <div className="min-w-full px-4 py-2 text-xs prose text-blue-900 bg-blue-50">
-          {basics.summary}
-        </div>
-      </section>
+      {basics.summary && (
+        <section className="w-11/12 mb-4">
+          <div className="min-w-full px-4 py-2 text-xs prose text-blue-900 bg-blue-50">
+            {basics.summary}
+          </div>
+        </section>
+      )}
     </>
   )
 }
