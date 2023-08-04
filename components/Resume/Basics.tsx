@@ -18,6 +18,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { Basics } from "../../types/resume/Basics";
 import URL from "./URL";
+
 library.add(faLinkedin, faTwitter, faGithub, faDiscord, faStackOverflow);
 
 const Basics: FC<{ basics: Basics }> = ({ basics }) => {

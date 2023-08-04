@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 import Link from "next/link";
 import GATrack from "../components/GATrack";
+import { seoMetadata } from "./seo";
+
+export const metadata: Metadata = {
+  ...seoMetadata,
+  alternates: { canonical: "https://guitton.co/404" },
+};
 
 // Ref: https://tailwindui.com/components/marketing/feedback/404-pages
 export default function Custom404() {
