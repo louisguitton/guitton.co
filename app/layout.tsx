@@ -1,8 +1,8 @@
-import { cn } from "../@/lib/utils";
-import { bg, px } from "../@/styles/constants";
-import "../@/styles/globals.css";
-import "../@/styles/prism.css";
-import "../@/styles/socials.css";
+import { cn } from "@/lib/utils";
+import { bg, px } from "@/styles/constants";
+import "@/styles/globals.css";
+import "@/styles/prism.css";
+import "@/styles/socials.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 

@@ -7,7 +7,7 @@ import { ShoppingBagIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { px } from "../@/styles/constants";
+import { px } from "../src/styles/constants";
 
 const navigation = [
   { name: "Home", href: "/" },

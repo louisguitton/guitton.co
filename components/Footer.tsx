@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Github, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";
-import { px } from "../@/styles/constants";
+import { px } from "../src/styles/constants";
 
 library.add(faDiscord, faStackOverflow);
 
@@ -19,7 +19,7 @@ const navigation: {
     name: string;
     href: string;
     indented?: boolean;
-    icon?: LucideIcon | FontAwesomeIcon;
+    icon?: LucideIcon | typeof FontAwesomeIcon;
   }[];
 } = {
   site: [

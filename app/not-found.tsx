@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import GATrack from "../components/GATrack";
 
@@ -20,18 +21,12 @@ export default function Custom404() {
               </p>
             </div>
             <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6 print:border-l print:border-transparent print:pl-6">
-              <Link
-                href="/"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-              >
-                Go back home
+              <Link href="/">
+                <Button>Go back home</Button>
               </Link>
 
-              <Link
-                href="https://louisguitton.github.io/2055/"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium border border-transparent rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-              >
-                Play a game
+              <Link href="https://louisguitton.github.io/2055/">
+                <Button variant="outline">Play a game</Button>
               </Link>
             </div>
           </div>
