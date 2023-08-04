@@ -1,6 +1,11 @@
 {
   "name": "guitton-co",
   "private": true,
+  "version": "0.2.0",
+  "engines": {
+    "npm": ">=9.0.0 <10.0.0",
+    "node": ">=18.0.0 <19.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build && npx ts-node scripts/generate-sitemap.ts",
@@ -31,11 +36,10 @@
     "lucide-react": "^0.263.1",
     "mdx-bundler": "^8.0.1",
     "moment": "^2.29.1",
-    "next": "^12.0.8",
-    "next-seo": "^4.28.1",
+    "next": "^13.4.12",
     "prettier": "^2.5.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.0.3",
@@ -59,7 +63,7 @@
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.1",
     "eslint": "^8.5.0",
-    "eslint-config-next": "12.0.7",
+    "eslint-config-next": "^13.4.12",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "postcss": "^8.4.5",
