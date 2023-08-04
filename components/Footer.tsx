@@ -71,27 +71,28 @@ const Footer: React.FC = () => {
                 {key}
               </p>
               {value.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <a
-                    className={clsx(
-                      'text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary',
-                      item.indented && 'pl-5',
-                      'flex space-x-1 items-center'
-                    )}
-                    target={isExternal(item.href) ? '_blank' : '_self'}
-                  >
-                    {item.icon && (
-                      <FontAwesomeIcon
-                        icon={['fab', item.icon as IconName]}
-                        className={clsx('w-4 h-4', item.icon)}
-                      />
-                    )}
-                    <span>{item.name}</span>
-                  </a>
-                </Link>
+                (<Link
+                  key={item.name}
+                  href={item.href}
+                  className={clsx(
+                    'text-sm font-medium text-gray-500 hover:text-gray-700 hover:text-primary',
+                    item.indented && 'pl-5',
+                    'flex space-x-1 items-center'
+                  )}
+                  target={isExternal(item.href) ? '_blank' : '_self'}>
+
+                  {item.icon && (
+                    <FontAwesomeIcon
+                      icon={['fab', item.icon as IconName]}
+                      className={clsx('w-4 h-4', item.icon)}
+                    />
+                  )}
+                  <span>{item.name}</span>
+
+                </Link>)
               ))}
             </nav>
-          )
+          );
         })}
         <div className="col-span-4">
           <p className="mb-6 text-sm text-gray-500">
@@ -100,7 +101,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer

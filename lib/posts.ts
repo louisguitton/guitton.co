@@ -13,7 +13,7 @@ const postsDirectory = join(process.cwd(), 'content/posts')
 
 /** Get file names under /posts */
 export function getPostSlugs(): string[] {
-  return fs.readdirSync(postsDirectory).filter((path) => /\.mdx?$/.test(path))
+  return fs.readdirSync(postsDirectory).filter((path) => /\.mdx?$/.test(path));
 }
 
 export function getPostBySlug(fileName: string): Blog {

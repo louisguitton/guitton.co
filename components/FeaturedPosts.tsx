@@ -13,38 +13,39 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
   ...rest
 }) => {
   return (
-    <Link href={`/posts/${post.slug}`} passHref>
-      <a
-        className={clsx(
-          className,
-          'relative flex flex-col items-start justify-end',
-          'px-5 pb-5',
-          'overflow-hidden bg-gray-800 cursor-pointer group'
-        )}
-        onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}
-        {...rest}
-      >
-        <Image
-          src={post.image}
-          layout="fill"
-          alt={post.title}
-          className="absolute inset-0 object-cover object-center transition duration-300 ease-out transform scale-100 group-hover:scale-105"
-        />
-        <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90" />
-        <PostCategory post={post} className="mb-3" />
-        <span className="relative mb-3 text-xl font-bold leading-tight text-white">
-          {post.title}
+    (<Link
+      href={`/posts/${post.slug}`}
+      passHref
+      className={clsx(
+        className,
+        'relative flex flex-col items-start justify-end',
+        'px-5 pb-5',
+        'overflow-hidden bg-gray-800 cursor-pointer group'
+      )}
+      onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}
+      {...rest}>
+
+      <Image
+        src={post.image}
+        layout="fill"
+        alt={post.title}
+        className="absolute inset-0 object-cover object-center transition duration-300 ease-out transform scale-100 group-hover:scale-105"
+      />
+      <span className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent to-gray-900 opacity-90" />
+      <PostCategory post={post} className="mb-3" />
+      <span className="relative mb-3 text-xl font-bold leading-tight text-white">
+        {post.title}
+      </span>
+      <span className="relative flex text-xs text-white opacity-90">
+        <span className="mr-2">{moment(post.date).format('MMMM Do, YYYY')}</span>·
+        <span className="ml-2 font-semibold align-middle has-tooltip">
+          {post.views} <EyeIcon className="inline-block w-4 h-4 ml-1" />
+          <span className="mt-4 -ml-16 text-xs tooltip w-28">(since 1 year)</span>
         </span>
-        <span className="relative flex text-xs text-white opacity-90">
-          <span className="mr-2">{moment(post.date).format('MMMM Do, YYYY')}</span>·
-          <span className="ml-2 font-semibold align-middle has-tooltip">
-            {post.views} <EyeIcon className="inline-block w-4 h-4 ml-1" />
-            <span className="mt-4 -ml-16 text-xs tooltip w-28">(since 1 year)</span>
-          </span>
-        </span>
-      </a>
-    </Link>
-  )
+      </span>
+
+    </Link>)
+  );
 }
 
 const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {

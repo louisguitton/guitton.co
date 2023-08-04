@@ -24,38 +24,39 @@ const Header: React.FC = () => {
         <nav aria-labelledby="primary-navigation">
           <div className="flex items-center justify-between h-16">
             <div className="flex">
-              <Link href="/">
-                <a className="flex items-center space-x-2">
-                  <ShoppingBagIcon className="w-8 h-8 fill-primary-600" />
-                  <span
-                    className={clsx(
-                      'hidden sm:block print:block',
-                      'text-xl font-black text-gray-900',
-                      'select-none'
-                    )}
-                  >
-                    guitton<span className="text-primary-600">.</span>co
-                  </span>
-                </a>
+              <Link href="/" className="flex items-center space-x-2">
+
+                <ShoppingBagIcon className="w-8 h-8 fill-primary-600" />
+                <span
+                  className={clsx(
+                    'hidden sm:block print:block',
+                    'text-xl font-black text-gray-900',
+                    'select-none'
+                  )}
+                >
+                  guitton<span className="text-primary-600">.</span>co
+                </span>
+
               </Link>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8 print:ml-6 print:flex print:space-x-8">
                 {navigation.map((nav) => {
                   return (
-                    <Link key={nav.name} href={nav.href}>
-                      <a
-                        className={clsx(
-                          'inline-flex  px-1 pt-1',
-                          'text-sm font-medium',
-                          'border-b-2',
-                          router.pathname == nav.href
-                            ? ' text-gray-900 border-primary-500'
-                            : 'text-gray-500  border-transparent hover:border-gray-300 hover:text-gray-700'
-                        )}
-                      >
-                        {nav.name}
-                      </a>
-                    </Link>
-                  )
+                    (<Link
+                      key={nav.name}
+                      href={nav.href}
+                      className={clsx(
+                        'inline-flex  px-1 pt-1',
+                        'text-sm font-medium',
+                        'border-b-2',
+                        router.pathname == nav.href
+                          ? ' text-gray-900 border-primary-500'
+                          : 'text-gray-500  border-transparent hover:border-gray-300 hover:text-gray-700'
+                      )}>
+
+                      {nav.name}
+
+                    </Link>)
+                  );
                 })}
               </div>
             </div>
@@ -102,7 +103,7 @@ const Header: React.FC = () => {
         </nav>
       )}
     </Disclosure>
-  )
+  );
 }
 
 export default Header
