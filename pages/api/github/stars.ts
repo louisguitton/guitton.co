@@ -1,9 +1,9 @@
 // Ref: https://spacejelly.dev/posts/how-to-use-the-github-graphql-api-to-add-your-pinned-repositories-in-next-js-react/
 // Ref: https://docs.github.com/en/graphql/overview/explorer
-import { ApolloClient, createHttpLink, InMemoryCache, gql } from '@apollo/client'
+import { ApolloClient, InMemoryCache, createHttpLink, gql } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
-import { FULL_REPO_FIELDS, FullRepoQuery } from '../../../lib/github-graphql-fragments'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { FULL_REPO_FIELDS, FullRepoQuery } from '../../../lib/github-graphql-fragments'
 
 type RepoLanguage = {
   color: string
@@ -82,7 +82,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const { user } = data
   const nextCursor = user.starredRepositories.edges[limit - 1].cursor
-  console.log(nextCursor)
   const stars = user.starredRepositories.edges.map((edge) => ({
     starredAt: edge.starredAt,
     name: edge.node.nameWithOwner,

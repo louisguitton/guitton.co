@@ -32,8 +32,6 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
   if (error) githubState = <div>failed to load</div>;
   if (!data) githubState = <div>loading...</div>;
   if (data) {
-    console.log(data);
-
     githubState = (
       <ul>
         {data.map((contrib, i) => {
