@@ -8,7 +8,7 @@ export default function Custom404() {
     <div className="px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8 print:grid print:place-items-center">
       <div className="mx-auto max-w-max">
         <main className="sm:flex print:flex">
-          <p className="text-4xl font-extrabold text-primary-600 sm:text-5xl print:text-5xl">
+          <p className="text-4xl font-extrabold text-primary sm:text-5xl print:text-5xl">
             404
           </p>
           <div className="sm:ml-6 print:ml-6">
@@ -26,7 +26,7 @@ export default function Custom404() {
               </Link>
 
               <Link href="https://louisguitton.github.io/2055/">
-                <Button variant="outline">Play a game</Button>
+                <Button variant="secondary">Play a game</Button>
               </Link>
             </div>
           </div>

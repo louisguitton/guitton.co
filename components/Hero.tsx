@@ -1,5 +1,5 @@
-import clsx from 'clsx'
-import Image from 'next/image'
+import clsx from "clsx";
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -8,13 +8,13 @@ function Hero() {
         <h1>
           <span
             className={clsx(
-              'flex mt-1',
-              'text-4xl sm:text-5xl print:text-5xl',
-              'font-extrabold tracking-tight'
+              "flex mt-1",
+              "text-4xl sm:text-5xl print:text-5xl",
+              "font-extrabold tracking-tight"
             )}
           >
             <span className="block text-gray-900">Louis&nbsp;</span>
-            <span className="inline-block text-primary-600">Guitton</span>
+            <span className="inline-block text-primary">Guitton</span>
           </span>
           <span className="block text-sm font-semibold text-gray-500">
             {/* for SEO we need a space here */}
@@ -23,16 +23,17 @@ function Hero() {
           </span>
         </h1>
         <p className="mt-3 text-sm text-gray-500 sm:mt-5 print:mt-5">
-          Building for myself first, for fun and learnings. Experienced with Natural Language
-          Processing, Recommenders Systems, MVP Building and the Flow blockchain.
+          Building for myself first, for fun and learnings. Experienced with
+          Natural Language Processing, Recommenders Systems, MVP Building and
+          the Flow blockchain.
         </p>
       </div>
       <button
         className={clsx(
-          'relative mt-12 sm:mt-0 sm:col-span-6 sm:flex sm:items-center print:mt-0 print:col-span-6 print:flex print:items-center',
-          'rounded-full shadow-lg h-56 w-56',
-          'mx-auto',
-          'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500'
+          "relative mt-12 sm:mt-0 sm:col-span-6 sm:flex sm:items-center print:mt-0 print:col-span-6 print:flex print:items-center",
+          "rounded-full shadow-lg h-56 w-56",
+          "mx-auto",
+          "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         )}
       >
         <Image
@@ -43,7 +44,7 @@ function Hero() {
         />
       </button>
     </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

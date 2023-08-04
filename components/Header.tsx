@@ -26,7 +26,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex">
               <Link href="/" className="flex items-center space-x-2">
-                <ShoppingBagIcon className="w-8 h-8 fill-primary-600" />
+                <ShoppingBagIcon className="w-8 h-8 fill-primary" />
                 <span
                   className={clsx(
                     "hidden sm:block print:block",
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
                     "select-none"
                   )}
                 >
-                  guitton<span className="text-primary-600">.</span>co
+                  guitton<span className="text-primary">.</span>co
                 </span>
               </Link>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8 print:ml-6 print:flex print:space-x-8">
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                         "text-sm font-medium",
                         "border-b-2",
                         pathname == nav.href
-                          ? " text-gray-900 border-primary-500"
+                          ? " text-gray-900 border-primary"
                           : "text-gray-500  border-transparent hover:border-gray-300 hover:text-gray-700"
                       )}
                     >
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
                   "inline-flex justify-center p-2",
                   "text-gray-400 rounded-md",
                   "hover:text-gray-500 hover:bg-gray-100",
-                  "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+                  "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
                 )}
               >
                 <span className="sr-only">Open main menu</span>
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
                     "text-base font-medium",
                     "border-l-4",
                     pathname == nav.href
-                      ? "bg-primary-50 border-primary-500 text-primary-700"
+                      ? "bg-secondary border-primary text-primary"
                       : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700"
                   )}
                 >

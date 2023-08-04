@@ -10,10 +10,12 @@ Urgent:
   - add newsletter signup pointing to Hubspot for Blog
   - replace contact form with leadgen form pointing to Hubspot for Freelance services
 - add Sanity + portable text for Blog, keep MDX compatibility for old posts
+- add services page
 
 High:
 
 - add "Download CV" CTA for resume
+- add past work page
 
 Future:
 
