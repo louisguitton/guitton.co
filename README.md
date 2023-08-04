@@ -1,5 +1,27 @@
 # guitton.co
 
+Urgent:
+
+- migrate to app router
+- add shadcn
+  - fix styles
+  - migrate button
+- add CRM
+  - add newsletter signup pointing to Hubspot for Blog
+  - replace contact form with leadgen form pointing to Hubspot for Freelance services
+- add Sanity + portable text for Blog, keep MDX compatibility for old posts
+
+High:
+
+- add "Download CV" CTA for resume
+
+Future:
+
+- add Speaking page
+- add Engineering Manager Handbook sections behind paywall like "Machine Learning Flashbards"
+- add Search page
+- add Mentions page
+
 ## References
 
 Next + Tailwind + MDX

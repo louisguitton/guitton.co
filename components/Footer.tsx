@@ -4,7 +4,7 @@ import { IconName } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { px } from '../styles/constants'
+import { px } from '../@/styles/constants'
 
 function isExternal(href: string) {
   return href.startsWith('http')

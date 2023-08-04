@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ShoppingBagIcon } from '@heroicons/react/solid'
-import { px } from '../styles/constants'
+import { px } from '../@/styles/constants'
 import { useRouter } from 'next/router'
 
 const navigation = [

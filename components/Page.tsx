@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { bg, px } from '../styles/constants'
+import { bg, px } from '../@/styles/constants'
 
 import Footer from './Footer'
 import Header from './Header'
