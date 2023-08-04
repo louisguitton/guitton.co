@@ -2,15 +2,20 @@
 
 Urgent:
 
-- migrate to app router
-- add shadcn
-  - fix styles
-  - migrate button
-- add CRM
-  - add newsletter signup pointing to Hubspot for Blog
-  - replace contact form with leadgen form pointing to Hubspot for Freelance services
-- add Sanity + portable text for Blog, keep MDX compatibility for old posts
-- add services page
+- [ ] migrate to app router
+  - [x] creating app directory
+  - [x] creating root layout
+  - [x] migrating next/head
+  - [ ] migrating pages
+  - [ ] migrating routing hooks
+  - [ ] migrating data fetching hooks
+  - [x] styling
+- [x] add shadcn
+- [ ] add CRM
+  - [ ] add newsletter signup pointing to Hubspot for Blog
+  - [ ] replace contact form with leadgen form pointing to Hubspot for Freelance services
+- [ ] add Sanity + portable text for Blog, keep MDX compatibility for old posts
+- [ ] add services page
 
 High:
 
