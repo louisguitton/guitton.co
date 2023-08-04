@@ -1,21 +1,15 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { logEvent } from '../components/GAScript'
+import Link from "next/link";
+import GATrack from "../components/GATrack";
 
 // Ref: https://tailwindui.com/components/marketing/feedback/404-pages
 export default function Custom404() {
-  const router = useRouter()
-
-  useEffect(() => {
-    logEvent('404_page_reached', 'engagement', router.asPath)
-  }, [router.asPath])
-
   return (
     <div className="px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8 print:grid print:place-items-center">
       <div className="mx-auto max-w-max">
         <main className="sm:flex print:flex">
-          <p className="text-4xl font-extrabold text-primary-600 sm:text-5xl print:text-5xl">404</p>
+          <p className="text-4xl font-extrabold text-primary-600 sm:text-5xl print:text-5xl">
+            404
+          </p>
           <div className="sm:ml-6 print:ml-6">
             <div className="sm:border-l sm:border-gray-200 sm:pl-6 print:border-l print:border-gray-200 print:pl-6">
               <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl print:text-5xl">
@@ -28,23 +22,22 @@ export default function Custom404() {
             <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6 print:border-l print:border-transparent print:pl-6">
               <Link
                 href="/"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                
-                  Go back home
-                
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              >
+                Go back home
               </Link>
 
               <Link
                 href="https://louisguitton.github.io/2055/"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium border border-transparent rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                
-                  Play a game
-                
+                className="inline-flex items-center px-4 py-2 text-sm font-medium border border-transparent rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+              >
+                Play a game
               </Link>
             </div>
           </div>
         </main>
       </div>
+      <GATrack action="404_page_reached" category="engagement" />
     </div>
   );
 }
