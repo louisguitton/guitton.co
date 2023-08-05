@@ -20,8 +20,8 @@ const isProduction = false;
  */
 export const logEvent = (
   action: string,
-  category: string = "engagement",
-  label: string = "(not set)",
+  category = "engagement",
+  label = "(not set)",
   value?: number
 ) => {
   {

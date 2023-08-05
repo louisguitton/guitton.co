@@ -15,7 +15,7 @@ Urgent:
   - [ ] add newsletter signup pointing to Hubspot for Blog
   - [ ] replace contact form with leadgen form pointing to Hubspot for Freelance services
 - [ ] add Sanity + portable text for Blog, keep MDX compatibility for old posts
-- [ ] add services page
+- [ ] add Freelance Services page
 
 High:
 

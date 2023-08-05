@@ -4,7 +4,7 @@ import { bg, px } from "../src/styles/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Body: React.FC<{}> = ({ children }) => {
+const Body: React.FC = ({ children }) => {
   return (
     <div
       className={clsx(
@@ -19,11 +19,11 @@ const Body: React.FC<{}> = ({ children }) => {
   );
 };
 
-const Container: React.FC<{}> = ({ children }) => {
+const Container: React.FC = ({ children }) => {
   return <main className={clsx("flex-grow", px)}>{children}</main>;
 };
 
-const Page: React.FC<{}> = ({ children }) => {
+const Page: React.FC = ({ children }) => {
   return (
     <Body>
       <Header />

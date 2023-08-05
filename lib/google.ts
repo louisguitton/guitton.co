@@ -5,8 +5,8 @@
  * - https://googleapis.dev/nodejs/analytics-data/latest/index.html
  * - https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema
  */
-import { BetaAnalyticsDataClient, protos } from '@google-analytics/data'
-import { FeaturedPostsData, SitePageViewsData } from './types'
+import { BetaAnalyticsDataClient, protos } from "@google-analytics/data";
+import { FeaturedPostsData, SitePageViewsData } from "./types";
 
 /**
  * Calls Google Analytics v4 API to fetch the most read posts.
@@ -17,61 +17,62 @@ import { FeaturedPostsData, SitePageViewsData } from './types'
  * @returns `limit` posts that are the most read since `startDate`
  */
 export async function getGoogleAnalyticsFeaturedPosts(
-  startDate: string = '30daysAgo',
-  limit: number = 3,
-  raw: boolean = false
+  startDate = "30daysAgo",
+  limit = 3,
+  raw = false
 ): Promise<FeaturedPostsData> {
-  const propertyId = '256193208'
+  const propertyId = "256193208";
 
   const analyticsDataClient = new BetaAnalyticsDataClient({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY,
     },
-  })
+  });
 
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
         startDate: startDate,
-        endDate: 'today',
+        endDate: "today",
       },
     ],
     dimensions: [
       {
-        name: 'pagePath',
+        name: "pagePath",
       },
     ],
     metrics: [
       {
-        name: 'screenPageViews',
+        name: "screenPageViews",
       },
     ],
     dimensionFilter: {
       filter: {
-        fieldName: 'pagePath',
+        fieldName: "pagePath",
         stringFilter: {
           matchType:
-            protos.google.analytics.data.v1beta.Filter.StringFilter.MatchType.PARTIAL_REGEXP,
-          value: 'posts',
+            protos.google.analytics.data.v1beta.Filter.StringFilter.MatchType
+              .PARTIAL_REGEXP,
+          value: "posts",
         },
       },
     },
     limit: limit,
-  })
+  });
 
   if (raw) {
-    console.log(response)
+    console.log(response);
   }
 
   const result = response.rows!.map((p) => ({
     page: p.dimensionValues![0].value!,
     views: parseInt(p.metricValues![0].value!),
     since: startDate,
-  }))
+  }));
 
-  return result
+  return result;
 }
 
 /**
@@ -82,52 +83,53 @@ export async function getGoogleAnalyticsFeaturedPosts(
  * @returns the page views for the site since `startDate`
  */
 export async function getGoogleAnalyticsPageViews(
-  startDate: string = '365daysAgo',
-  raw: boolean = false
+  startDate = "365daysAgo",
+  raw = false
 ): Promise<SitePageViewsData> {
-  const propertyId = '256193208'
+  const propertyId = "256193208";
 
   const analyticsDataClient = new BetaAnalyticsDataClient({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY,
     },
-  })
+  });
 
   const [response] = await analyticsDataClient.runReport({
     property: `properties/${propertyId}`,
     dateRanges: [
       {
         startDate: startDate,
-        endDate: 'today',
+        endDate: "today",
       },
     ],
     dimensions: [],
     metrics: [
       {
-        name: 'screenPageViews',
+        name: "screenPageViews",
       },
     ],
     dimensionFilter: {
       filter: {
-        fieldName: 'pagePath',
+        fieldName: "pagePath",
         stringFilter: {
           matchType:
-            protos.google.analytics.data.v1beta.Filter.StringFilter.MatchType.PARTIAL_REGEXP,
-          value: 'posts',
+            protos.google.analytics.data.v1beta.Filter.StringFilter.MatchType
+              .PARTIAL_REGEXP,
+          value: "posts",
         },
       },
     },
-  })
+  });
 
   if (raw) {
-    console.log(response)
+    console.log(response);
   }
 
   const result = {
     pageViews: parseInt(response.rows![0].metricValues![0].value!),
     since: startDate,
-  }
+  };
 
-  return result
+  return result;
 }
