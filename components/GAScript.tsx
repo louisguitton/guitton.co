@@ -1,3 +1,4 @@
+"use client";
 /**
  * References:
  * - https://developers.google.com/analytics/devguides/collection/gtagjs/events
