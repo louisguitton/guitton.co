@@ -1,17 +1,9 @@
 import { Location } from "./Location";
 
-// Any free Fontawesome brand icon
-// Ref: https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands&m=free
-export enum Network {
-  linkedin = "linkedin",
-  twitter = "twitter",
-  github = "github",
-  stackoverflow = "stack-overflow",
-  discord = "discord",
-}
-
 export type Profile = {
-  network: Network;
+  // Any free Fontawesome brand icon
+  // Ref: https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands&m=free
+  network: "linkedin" | "twitter" | "github" | "stack-overflow" | "discord";
   url: string;
   username: string;
 };

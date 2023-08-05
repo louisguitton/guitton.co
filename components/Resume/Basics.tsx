@@ -19,6 +19,7 @@ import { FC } from "react";
 import { Basics } from "../../types/resume/Basics";
 import URL from "./URL";
 
+// @ts-expect-error: ts(2345)
 library.add(faLinkedin, faTwitter, faGithub, faDiscord, faStackOverflow);
 
 const Basics: FC<{ basics: Basics }> = ({ basics }) => {
@@ -70,6 +71,7 @@ const Basics: FC<{ basics: Basics }> = ({ basics }) => {
                   return (
                     <div key={i} className="flex space-x-0.5 items-center">
                       <FontAwesomeIcon
+                        // @ts-expect-error: ts(2322)
                         icon={["fab", profile.network as IconName]}
                         className={clsx("w-4 h-4", profile.network)}
                       />

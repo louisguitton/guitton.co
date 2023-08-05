@@ -8,6 +8,7 @@ import { Github, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";
 import { px } from "../src/styles/constants";
 
+// @ts-expect-error: ts(2345)
 library.add(faDiscord, faStackOverflow);
 
 function isExternal(href: string) {
@@ -109,7 +110,10 @@ const Footer: React.FC = () => {
                   )}
                   target={isExternal(item.href) ? "_blank" : "_self"}
                 >
-                  {item.icon && <item.icon className={clsx("w-4 h-4")} />}
+                  {
+                    // @ts-expect-error: ts(2741)
+                    item.icon && <item.icon className={clsx("w-4 h-4")} />
+                  }
                   <span>{item.name}</span>
                 </Link>
               ))}
