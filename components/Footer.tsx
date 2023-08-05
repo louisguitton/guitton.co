@@ -1,15 +1,11 @@
 // Ref: https://devdojo.com/tails/app#_ Footer 3
 
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { faDiscord, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Github, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";
 import { px } from "../src/styles/constants";
-
-// @ts-expect-error: ts(2345)
-library.add(faDiscord, faStackOverflow);
 
 function isExternal(href: string) {
   return href.startsWith("http");
@@ -47,17 +43,14 @@ const navigation: {
       name: "Discord",
       href: "https://discordapp.com/users/217929937842208768",
       icon: ({ className }: { className?: string | undefined }) => (
-        <FontAwesomeIcon icon={["fab", "discord"]} className={className} />
+        <FontAwesomeIcon icon={faDiscord} className={className} />
       ),
     },
     {
       name: "Stackoverflow",
       href: "https://stackoverflow.com/users/3823815/louis-guitton",
       icon: ({ className }: { className?: string | undefined }) => (
-        <FontAwesomeIcon
-          icon={["fab", "stack-overflow"]}
-          className={className}
-        />
+        <FontAwesomeIcon icon={faStackOverflow} className={className} />
       ),
     },
   ],

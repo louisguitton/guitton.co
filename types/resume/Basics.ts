@@ -1,9 +1,8 @@
+import { IconDefinition } from "@fortawesome/free-brands-svg-icons";
 import { Location } from "./Location";
 
 export type Profile = {
-  // Any free Fontawesome brand icon
-  // Ref: https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands&m=free
-  network: "linkedin" | "twitter" | "github" | "stack-overflow" | "discord";
+  icon: IconDefinition;
   url: string;
   username: string;
 };

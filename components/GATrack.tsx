@@ -1,12 +1,11 @@
 "use client";
+import getConfig from "next/config";
 import { usePathname } from "next/navigation";
 import { FC, useEffect } from "react";
 
-// TODO: fix https://nextjs.org/docs/app/api-reference/next-config-js/runtime-configuration
-// const {
-//   publicRuntimeConfig: { isProduction },
-// } = getConfig();
-const isProduction = false;
+const {
+  publicRuntimeConfig: { isProduction },
+} = getConfig();
 
 /**
  * Log custom event to Google Analytics
@@ -41,8 +40,8 @@ export const GATrack: FC<{
   const pathname = usePathname();
 
   useEffect(() => {
-    logEvent(action, category, pathname!);
-  }, [pathname]);
+    if (pathname) logEvent(action, category, pathname);
+  }, [action, category, pathname]);
   return <></>;
 };
 

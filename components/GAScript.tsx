@@ -5,13 +5,12 @@
  * - https://support.google.com/analytics/answer/1033068
  * - https://nextjs.org/docs/basic-features/script
  */
+import getConfig from "next/config";
 import Script from "next/script";
 
-// TODO: fix https://nextjs.org/docs/app/api-reference/next-config-js/runtime-configuration
-// const {
-//   publicRuntimeConfig: { isProduction },
-// } = getConfig();
-const isProduction = false;
+const {
+  publicRuntimeConfig: { isProduction, googleAnalyticsId, appVersion },
+} = getConfig();
 
 const GAScript = () => {
   if (isProduction) {

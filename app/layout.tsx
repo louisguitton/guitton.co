@@ -3,10 +3,13 @@ import { bg, px } from "@/styles/constants";
 import "@/styles/globals.css";
 import "@/styles/prism.css";
 import "@/styles/socials.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { SocialProfileJsonLd } from "next-seo";
 import Footer from "../components/Footer";
 import GAScript from "../components/GAScript";
 import Header from "../components/Header";
+config.autoAddCss = false;
 
 export default function RootLayout({
   children,

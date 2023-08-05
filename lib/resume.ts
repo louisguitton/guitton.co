@@ -1,3 +1,4 @@
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { JsonResume } from "../types/resume/JsonResume";
 
 /**
@@ -29,12 +30,12 @@ export const resume: JsonResume = {
     name: "Louis Guitton",
     profiles: [
       {
-        network: "linkedin",
+        icon: faLinkedin,
         url: "https://www.linkedin.com/in/louisguitton/",
         username: "louisguitton",
       },
       {
-        network: "github",
+        icon: faGithub,
         url: "https://github.com/louisguitton",
         username: "louisguitton",
       },
