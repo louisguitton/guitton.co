@@ -1,9 +1,14 @@
 // Ref: https://devdojo.com/tails/app#_ Footer 3
 
-import { faDiscord, faStackOverflow } from "@fortawesome/free-brands-svg-icons";
+import {
+  IconDefinition,
+  faDiscord,
+  faGithub,
+  faStackOverflow,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
-import { Github, LucideIcon, Twitter } from "lucide-react";
 import Link from "next/link";
 import { px } from "../src/styles/constants";
 
@@ -16,7 +21,7 @@ const navigation: {
     name: string;
     href: string;
     indented?: boolean;
-    icon?: LucideIcon | typeof FontAwesomeIcon;
+    icon?: IconDefinition;
   }[];
 } = {
   site: [
@@ -36,22 +41,18 @@ const navigation: {
     {
       name: "Twitter",
       href: "https://twitter.com/louis_guitton",
-      icon: Twitter,
+      icon: faTwitter,
     },
-    { name: "Github", href: "https://github.com/louisguitton", icon: Github },
+    { name: "Github", href: "https://github.com/louisguitton", icon: faGithub },
     {
       name: "Discord",
       href: "https://discordapp.com/users/217929937842208768",
-      icon: ({ className }: { className?: string | undefined }) => (
-        <FontAwesomeIcon icon={faDiscord} className={className} />
-      ),
+      icon: faDiscord,
     },
     {
       name: "Stackoverflow",
       href: "https://stackoverflow.com/users/3823815/louis-guitton",
-      icon: ({ className }: { className?: string | undefined }) => (
-        <FontAwesomeIcon icon={faStackOverflow} className={className} />
-      ),
+      icon: faStackOverflow,
     },
   ],
   other: [
@@ -103,10 +104,9 @@ const Footer: React.FC = () => {
                   )}
                   target={isExternal(item.href) ? "_blank" : "_self"}
                 >
-                  {
-                    // @ts-expect-error: ts(2741)
-                    item.icon && <item.icon className={clsx("w-4 h-4")} />
-                  }
+                  {item.icon && (
+                    <FontAwesomeIcon icon={item.icon} className={"w-4 h-4"} />
+                  )}
                   <span>{item.name}</span>
                 </Link>
               ))}
