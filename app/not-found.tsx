@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import Link from "next/link";
-import GATrack from "../components/GATrack";
 import { seoMetadata } from "./seo";
 
 export const metadata: Metadata = {
   ...seoMetadata,
-  alternates: { canonical: "https://guitton.co/404" },
+  alternates: { canonical: "https://guitton.co/not-found" },
 };
 
 // Ref: https://tailwindui.com/components/marketing/feedback/404-pages
@@ -39,7 +38,6 @@ export default async function Custom404() {
           </div>
         </main>
       </div>
-      <GATrack action="404_page_reached" category="engagement" />
     </div>
   );
 }

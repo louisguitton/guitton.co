@@ -7,7 +7,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { SocialProfileJsonLd } from "next-seo";
 import Footer from "../components/Footer";
-import GAScript from "../components/GAScript";
 import Header from "../components/Header";
 config.autoAddCss = false;
 
@@ -29,7 +28,8 @@ export default function RootLayout({
         <Header />
         <main className={cn("flex-grow", px)}>{children}</main>
         <Footer />
-        <GAScript />
+        {/* TODO: fix TypeError: Cannot destructure property 'publicRuntimeConfig' of 'next_config__WEBPACK_IMPORTED_MODULE_1___default */}
+        {/* <GAScript /> */}
         <SocialProfileJsonLd
           useAppDir={true}
           type="Person"

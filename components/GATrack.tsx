@@ -44,5 +44,3 @@ export const GATrack: FC<{
   }, [action, category, pathname]);
   return <></>;
 };
-
-export default GATrack;
