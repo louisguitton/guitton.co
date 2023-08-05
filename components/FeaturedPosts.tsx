@@ -1,11 +1,11 @@
-import clsx from 'clsx'
-import moment from 'moment'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Post } from '../lib/types'
-import { EyeIcon } from '@heroicons/react/outline'
-import { logEvent } from './GAScript'
-import PostCategory from './PostCategory'
+import { EyeIcon } from "@heroicons/react/outline";
+import clsx from "clsx";
+import moment from "moment";
+import Image from "next/image";
+import Link from "next/link";
+import { Post } from "../lib/types";
+import { logEvent } from "./GATrack";
+import PostCategory from "./PostCategory";
 
 const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
   post,
@@ -13,18 +13,18 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
   ...rest
 }) => {
   return (
-    (<Link
+    <Link
       href={`/posts/${post.slug}`}
       passHref
       className={clsx(
         className,
-        'relative flex flex-col items-start justify-end',
-        'px-5 pb-5',
-        'overflow-hidden bg-gray-800 cursor-pointer group'
+        "relative flex flex-col items-start justify-end",
+        "px-5 pb-5",
+        "overflow-hidden bg-gray-800 cursor-pointer group"
       )}
-      onClick={() => logEvent('featured_post_clicked', undefined, post.slug)}
-      {...rest}>
-
+      onClick={() => logEvent("featured_post_clicked", undefined, post.slug)}
+      {...rest}
+    >
       <Image
         src={post.image}
         layout="fill"
@@ -37,22 +37,31 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
         {post.title}
       </span>
       <span className="relative flex text-xs text-white opacity-90">
-        <span className="mr-2">{moment(post.date).format('MMMM Do, YYYY')}</span>·
+        <span className="mr-2">
+          {moment(post.date).format("MMMM Do, YYYY")}
+        </span>
+        ·
         <span className="ml-2 font-semibold align-middle has-tooltip">
           {post.views} <EyeIcon className="inline-block w-4 h-4 ml-1" />
-          <span className="mt-4 -ml-16 text-xs tooltip w-28">(since 1 year)</span>
+          <span className="mt-4 -ml-16 text-xs tooltip w-28">
+            (since 1 year)
+          </span>
         </span>
       </span>
-
-    </Link>)
+    </Link>
   );
-}
+};
 
 const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
   return (
     <section className="relative pt-16 pb-10">
       <div className="flex justify-between w-full pb-5">
-        <h2 className={clsx('px-3 py-2 bg-gray-800', 'text-sm font-medium text-white uppercase')}>
+        <h2
+          className={clsx(
+            "px-3 py-2 bg-gray-800",
+            "text-sm font-medium text-white uppercase"
+          )}
+        >
           Most Read Articles
         </h2>
       </div>
@@ -66,7 +75,7 @@ const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default FeaturedPosts
+export default FeaturedPosts;
