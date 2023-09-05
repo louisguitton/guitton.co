@@ -10,11 +10,11 @@ Urgent:
   - [ ] migrating pages
 
     - [x] home page
-    - [ ] about page
     - [x] contact page
-    - [ ] resume page
+    - [x] resume page
     - [ ] posts list page
     - [ ] post detail page
+    - [ ] about page
     - [ ] anatomy??
 
   - [ ] migrating routing hooks
