@@ -4,7 +4,6 @@ import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import { Post } from "../lib/types";
-import { logEvent } from "./GATrack";
 import PostCategory from "./PostCategory";
 
 const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
@@ -22,7 +21,6 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
         "px-5 pb-5",
         "overflow-hidden bg-gray-800 cursor-pointer group"
       )}
-      onClick={() => logEvent("featured_post_clicked", undefined, post.slug)}
       {...rest}
     >
       <Image

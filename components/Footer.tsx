@@ -2,8 +2,8 @@
 
 import {
   IconDefinition,
-  faDiscord,
   faGithub,
+  faLinkedin,
   faStackOverflow,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
@@ -45,14 +45,14 @@ const navigation: {
     },
     { name: "Github", href: "https://github.com/louisguitton", icon: faGithub },
     {
-      name: "Discord",
-      href: "https://discordapp.com/users/217929937842208768",
-      icon: faDiscord,
-    },
-    {
       name: "Stackoverflow",
       href: "https://stackoverflow.com/users/3823815/louis-guitton",
       icon: faStackOverflow,
+    },
+    {
+      name: "Linkedin",
+      href: "https://www.linkedin.com/in/louisguitton/",
+      icon: faLinkedin,
     },
   ],
   other: [
@@ -62,7 +62,6 @@ const navigation: {
       name: "dbt-metadata-utils",
       href: "https://dbt-metadata-utils.guitton.co",
     },
-    // TODO: { name: "Feed", href: "#" },
   ],
 };
 

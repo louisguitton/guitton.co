@@ -3,19 +3,30 @@
 Urgent:
 
 - [ ] migrate to app router
+
   - [x] creating app directory
   - [x] creating root layout
   - [x] migrating next/head
   - [ ] migrating pages
+
+    - [x] home page
+    - [ ] about page
+    - [ ] contact page
+    - [ ] resume page
+    - [ ] posts list page
+    - [ ] post detail page
+    - [ ] anatomy??
+
   - [ ] migrating routing hooks
   - [ ] migrating data fetching hooks
   - [x] styling
+
 - [x] add shadcn
+- [ ] add Freelance Services page
 - [ ] add CRM
   - [ ] add newsletter signup pointing to Hubspot for Blog
   - [ ] replace contact form with leadgen form pointing to Hubspot for Freelance services
 - [ ] add Sanity + portable text for Blog, keep MDX compatibility for old posts
-- [ ] add Freelance Services page
 
 High:
 
