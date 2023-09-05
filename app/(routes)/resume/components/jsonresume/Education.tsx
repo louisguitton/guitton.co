@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import { Education } from '../../types/resume/Education'
-import Keywords from './Keywords'
-import Location from './Location'
-import { Section } from './Section'
-import TimedHeader from './TimedHeader'
+import { FC } from "react";
+import Keywords from "./Keywords";
+import Location from "./Location";
+import { Section } from "./Section";
+import TimedHeader from "./TimedHeader";
+import { Education } from "./types";
 
 const Education: FC<{ educations: Education[] }> = ({ educations }) => {
   if (educations.length) {
@@ -21,12 +21,12 @@ const Education: FC<{ educations: Education[] }> = ({ educations }) => {
               <Location location={education.location} />
               <Keywords keywords={education.courses} itemIndex={i} />
             </section>
-          )
+          );
         })}
       </Section>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Education
+export default Education;

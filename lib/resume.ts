@@ -1,5 +1,5 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { JsonResume } from "../types/resume/JsonResume";
+import { JsonResume } from "../app/(routes)/resume/components/jsonresume/types";
 
 /**
  * ref: https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html

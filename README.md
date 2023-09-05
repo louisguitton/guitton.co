@@ -11,7 +11,7 @@ Urgent:
 
     - [x] home page
     - [ ] about page
-    - [ ] contact page
+    - [x] contact page
     - [ ] resume page
     - [ ] posts list page
     - [ ] post detail page

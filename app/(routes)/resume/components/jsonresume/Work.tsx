@@ -1,11 +1,11 @@
-import { FC } from 'react'
-import { Work } from '../../types/resume/Work'
-import ItemDetails from './ItemDetails'
-import Keywords from './Keywords'
-import Location from './Location'
-import { Section } from './Section'
-import TimedHeader from './TimedHeader'
-import URL from './URL'
+import { FC } from "react";
+import ItemDetails from "./ItemDetails";
+import Keywords from "./Keywords";
+import Location from "./Location";
+import { Section } from "./Section";
+import TimedHeader from "./TimedHeader";
+import URL from "./URL";
+import { Work } from "./types";
 
 const Work: FC<{ works: Work[] }> = ({ works }) => {
   if (works.length) {
@@ -28,15 +28,19 @@ const Work: FC<{ works: Work[] }> = ({ works }) => {
                   <URL website={work.url} />
                 </div>
                 <Keywords keywords={work.keywords} itemIndex={i} />
-                <ItemDetails summary={work.summary} highlights={work.highlights} itemIndex={i} />
+                <ItemDetails
+                  summary={work.summary}
+                  highlights={work.highlights}
+                  itemIndex={i}
+                />
               </section>
-            )
+            );
           })}
         </div>
       </Section>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Work
+export default Work;

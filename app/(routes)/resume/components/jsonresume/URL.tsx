@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from "react";
 
 const URL: FC<{ website?: string }> = ({ website }) => {
   if (website) {
@@ -11,9 +11,9 @@ const URL: FC<{ website?: string }> = ({ website }) => {
       >
         {website}
       </a>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default URL
+export default URL;

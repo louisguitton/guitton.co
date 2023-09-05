@@ -1,6 +1,9 @@
-import { FC } from 'react'
+import { FC } from "react";
 
-const Keywords: FC<{ keywords?: string[]; itemIndex: number }> = ({ keywords, itemIndex }) => {
+const Keywords: FC<{ keywords?: string[]; itemIndex: number }> = ({
+  keywords,
+  itemIndex,
+}) => {
   if (keywords && keywords.length) {
     return (
       <ul className="flex flex-wrap my-2 text-xs bg-transparent">
@@ -13,9 +16,9 @@ const Keywords: FC<{ keywords?: string[]; itemIndex: number }> = ({ keywords, it
           </li>
         ))}
       </ul>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Keywords
+export default Keywords;

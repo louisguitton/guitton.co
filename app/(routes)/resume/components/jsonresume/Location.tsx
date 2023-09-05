@@ -1,6 +1,6 @@
-import { LocationMarkerIcon } from '@heroicons/react/solid'
-import { FC } from 'react'
-import { Location } from '../../types/resume/Location'
+import { LocationMarkerIcon } from "@heroicons/react/solid";
+import { FC } from "react";
+import { Location } from "./types";
 
 const Location: FC<{ location?: Location }> = ({ location }) => {
   if (location) {
@@ -9,9 +9,9 @@ const Location: FC<{ location?: Location }> = ({ location }) => {
         <LocationMarkerIcon className="w-4 h-4" />
         <span className="">{`${location.city}, (${location.countryCode})`}</span>
       </span>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Location
+export default Location;

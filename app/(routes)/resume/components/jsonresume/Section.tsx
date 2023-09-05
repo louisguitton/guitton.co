@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from "react";
 
 const SectionHeader: FC = ({ children }) => {
   return (
@@ -7,8 +7,8 @@ const SectionHeader: FC = ({ children }) => {
         {children}
       </h2>
     </header>
-  )
-}
+  );
+};
 
 export const Section: FC<{ name: string }> = ({ name, children }) => {
   return (
@@ -19,5 +19,5 @@ export const Section: FC<{ name: string }> = ({ name, children }) => {
         {children}
       </section>
     </section>
-  )
-}
+  );
+};

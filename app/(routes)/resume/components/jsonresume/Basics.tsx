@@ -6,8 +6,8 @@ import {
 } from "@heroicons/react/outline";
 import Image from "next/image";
 import { FC } from "react";
-import { Basics } from "../../types/resume/Basics";
 import URL from "./URL";
+import { Basics } from "./types";
 
 const Basics: FC<{ basics: Basics }> = ({ basics }) => {
   return (

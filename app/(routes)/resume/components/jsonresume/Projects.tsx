@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import { Project } from '../../types/resume/Project'
-import ItemDetails from './ItemDetails'
-import Keywords from './Keywords'
-import { Section } from './Section'
-import URL from './URL'
+import { FC } from "react";
+import ItemDetails from "./ItemDetails";
+import Keywords from "./Keywords";
+import { Section } from "./Section";
+import URL from "./URL";
+import { Project } from "./types";
 
 const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
   if (projects.length) {
@@ -26,13 +26,13 @@ const Projects: FC<{ projects: Project[] }> = ({ projects }) => {
 
                 <Keywords keywords={project.keywords} itemIndex={i} />
               </section>
-            )
+            );
           })}
         </div>
       </Section>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Projects
+export default Projects;

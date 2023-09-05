@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import { Skill } from '../../types/resume/Skill'
-import Keywords from './Keywords'
-import { Section } from './Section'
+import { FC } from "react";
+import Keywords from "./Keywords";
+import { Section } from "./Section";
+import { Skill } from "./types";
 
 const Skills: FC<{ skills: Skill[] }> = ({ skills }) => {
   if (skills.length) {
@@ -14,13 +14,13 @@ const Skills: FC<{ skills: Skill[] }> = ({ skills }) => {
                 <h3 className="font-semibold">{skill.name}</h3>
                 <Keywords keywords={skill.keywords} itemIndex={i} />
               </div>
-            )
+            );
           })}
         </div>
       </Section>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default Skills
+export default Skills;
