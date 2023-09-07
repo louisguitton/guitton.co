@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import FeaturedPosts from "../../components/FeaturedPosts";
-import Hero from "../../components/Hero";
-import { getAllPosts } from "../../lib/posts";
-import { Post, PostView } from "../../lib/types";
+import FeaturedPosts from "../../../components/FeaturedPosts";
+import Hero from "../../../components/Hero";
+import { getAllPosts } from "../../../lib/posts";
+import { Post, PostView } from "../../../lib/types";
 
 export const metadata: Metadata = {
   metadataBase: new URL("/", process.env.BASE_URL),

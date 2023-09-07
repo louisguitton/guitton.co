@@ -8,15 +8,6 @@ module.exports = {
     locales: ['en'],
     defaultLocale: 'en',
   },
-  serverRuntimeConfig: {
-    // Will only be available on the server side
-    mySecret: 'secret',
-    secondSecret: process.env.SECOND_SECRET, // Pass through env variables
-  },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
-    appVersion: '2.0.0',
-    googleAnalyticsId: 'G-SYZ6E13PWV',
-    isProduction: process.env.NEXT_PUBLIC_NODE_ENV === 'production',
-  },
+  // I drop serverRuntimeConfig and publicRuntimeConfig because of errors like:
+  // "TypeError: Cannot destructure property 'publicRuntimeConfig' of 'next_config__WEBPACK_IMPORTED_MODULE_1___default(...)(...)' as it is undefined."
 }

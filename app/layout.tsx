@@ -1,3 +1,4 @@
+import GAScript from "@/lib/ga/GAScript";
 import { cn } from "@/lib/utils";
 import { bg, px } from "@/styles/constants";
 import "@/styles/globals.css";
@@ -28,8 +29,7 @@ export default function RootLayout({
         <Header />
         <main className={cn("flex-grow", px)}>{children}</main>
         <Footer />
-        {/* TODO: fix TypeError: Cannot destructure property 'publicRuntimeConfig' of 'next_config__WEBPACK_IMPORTED_MODULE_1___default */}
-        {/* <GAScript /> */}
+        <GAScript />
         <SocialProfileJsonLd
           useAppDir={true}
           type="Person"

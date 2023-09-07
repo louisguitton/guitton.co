@@ -1,11 +1,8 @@
 "use client";
-import getConfig from "next/config";
 import { usePathname } from "next/navigation";
 import { FC, useEffect } from "react";
 
-const {
-  publicRuntimeConfig: { isProduction },
-} = getConfig();
+const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === "production";
 
 /**
  * Log custom event to Google Analytics

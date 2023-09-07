@@ -6,12 +6,10 @@
  * - https://support.google.com/analytics/answer/1033068
  * - https://nextjs.org/docs/basic-features/script
  */
-import getConfig from "next/config";
 import Script from "next/script";
 
-const {
-  publicRuntimeConfig: { isProduction, googleAnalyticsId, appVersion },
-} = getConfig();
+const isProduction = process.env.NEXT_PUBLIC_NODE_ENV === "production";
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GA4_TRACKING_ID;
 
 const GAScript = () => {
   if (isProduction) {
@@ -30,7 +28,6 @@ const GAScript = () => {
               gtag('js', new Date());
               gtag('config', '${googleAnalyticsId}', {
                 app_name: 'guitton.co',
-                app_version: '${appVersion}',
                 page_path: window.location.pathname,
               });
           `}
