@@ -7,12 +7,13 @@ Urgent:
   - [x] creating app directory
   - [x] creating root layout
   - [x] migrating next/head
+  - [x] fix GA tracking
   - [ ] migrating pages
 
     - [x] home page
     - [x] contact page
     - [x] resume page
-    - [ ] posts list page
+    - [x] posts list page
     - [ ] post detail page
     - [ ] about page
     - [ ] anatomy??
