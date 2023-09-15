@@ -6,10 +6,43 @@ import "@/styles/prism.css";
 import "@/styles/socials.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { Metadata } from "next";
 import { SocialProfileJsonLd } from "next-seo";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 config.autoAddCss = false;
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://guitton.co"),
+  title: {
+    default: "Louis Guitton",
+    template: "%s | Louis Guitton",
+  },
+  description: "Not Louis Vuitton but a developer and writer.",
+  openGraph: {
+    title: "Louis Guitton",
+    description: "Not Louis Vuitton but a developer and writer.",
+    url: "https://guitton.co",
+    siteName: "Louis Guitton",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Louis Guitton",
+    card: "summary_large_image",
+  },
+};
 
 export default function RootLayout({
   children,
