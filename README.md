@@ -9,14 +9,14 @@ Urgent:
   - [x] migrating next/head
   - [x] fix GA tracking
   - [x] migrate to contentlayer
-  - [ ] migrating pages
+  - [x] migrating pages
 
     - [x] home page
     - [x] contact page
     - [x] resume page
     - [x] posts list page
     - [x] post detail page
-    - [ ] about page
+    - [x] about page
     - [x] anatomy??
 
   - [ ] migrating routing hooks

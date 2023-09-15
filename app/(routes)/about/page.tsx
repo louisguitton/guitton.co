@@ -1,108 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { CheckIcon, PaperClipIcon } from "@heroicons/react/solid";
+import { PaperClipIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
-import moment from "moment";
-import type { GetStaticProps, NextPage } from "next";
-import { BreadcrumbJsonLd, NextSeo } from "next-seo";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement } from "react";
-import useSWR from "swr";
-import fetcher from "../lib/fetcher";
+import GithubContributions from "./components/GithubContributions";
 
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {
-    // For SEO
-    host: process.env.BASE_URL!,
-    url: new URL("/about", process.env.BASE_URL).href,
+export const metadata: Metadata = {
+  metadataBase: new URL("/about", process.env.BASE_URL),
+  title: "About",
+  openGraph: {
+    title: "guitton.co | About",
+    type: "profile",
+    firstName: "Louis",
+    lastName: "Guitton",
+    gender: "male",
+    username: "louis_guitton",
   },
-});
+};
 
-const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
-  const { data, error } = useSWR<
-    {
-      createdAt: string;
-      url: string;
-      title: string;
-      repository: string;
-      repositoryDescription: string;
-    }[]
-  >("/api/github/contributions?limit=5", fetcher);
-  let githubState: ReactElement = <></>;
-  if (error) githubState = <div>failed to load</div>;
-  if (!data) githubState = <div>loading...</div>;
-  if (data) {
-    githubState = (
-      <ul>
-        {data.map((contrib, i) => {
-          return (
-            <a
-              key={i}
-              href={contrib.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline"
-            >
-              <li className="flex justify-between">
-                <span className="flex items-center space-x-2">
-                  <CheckIcon className="w-4 h-4 text-gray-400" />
-                  <span>
-                    {contrib.title} on <b>{contrib.repository}</b>
-                  </span>
-                </span>
-                <span className="font-light text-gray-500">
-                  {moment(contrib.createdAt).format("MMMM DD, YYYY")}
-                </span>
-              </li>
-            </a>
-          );
-        })}
-      </ul>
-    );
-  }
-
+const AboutPage = () => {
   return (
     <>
-      <NextSeo
-        title="About"
-        canonical={url}
-        openGraph={{
-          title: "guitton.co | About",
-          url: url,
-          type: "profile",
-          profile: {
-            firstName: "Louis",
-            lastName: "Guitton",
-            gender: "male",
-            username: "louis_guitton",
-          },
-        }}
-        additionalMetaTags={[
-          {
-            property: "article:published_time",
-            content: new Date(2019, 5, 14).toISOString(),
-          },
-          {
-            property: "article:modified_time",
-            content: new Date().toISOString(),
-          },
-        ]}
-      />
-      <BreadcrumbJsonLd
-        itemListElements={[
-          {
-            position: 1,
-            name: "guitton.co",
-            item: host,
-          },
-          {
-            position: 2,
-            name: "about",
-            item: url,
-          },
-        ]}
-      />
-
       <section id="about-card" className="pb-4">
         <div className="overflow-hidden shadow sm:rounded-lg print:rounded-lg">
           <div className="px-4 py-5 sm:px-6 print:px-6">
@@ -272,7 +191,7 @@ const AboutPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
       </section>
       <section id="feed" className="pb-4 prose max-w-none">
         <h2>Latest Open Source Contributions</h2>
-        {githubState}
+        <GithubContributions />
       </section>
       <section id="freelance" className="prose">
         <h2>Freelance Services</h2>
