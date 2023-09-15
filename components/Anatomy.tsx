@@ -1,111 +1,99 @@
-import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
-import type { GetStaticProps, NextPage } from 'next'
-import * as React from 'react'
-
-export const getStaticProps: GetStaticProps = async () => ({
-  props: {
-    // For SEO
-    host: process.env.BASE_URL!,
-    url: new URL('/anatomy', process.env.BASE_URL).href,
-  },
-})
-
 const Activation = {
-  untargeted: '#d8d8d8',
-  secondary: '#F5BF2A',
-  primary: '#C21515',
-}
+  untargeted: "#d8d8d8",
+  secondary: "#F5BF2A",
+  primary: "#C21515",
+};
 
 type MuscleGroup =
-  | 'quads'
-  | 'right-quad'
-  | 'left-quad'
-  | 'right-transverse-abs'
-  | 'abductors'
-  | 'right-abductor-1'
-  | 'right-abductor-2'
-  | 'left-transverse-abs'
-  | 'left-abductor-1'
-  | 'left-abductor-2'
-  | 'abs'
-  | 'right-abs'
-  | 'left-abs'
-  | 'obliques'
-  | 'right-oblique'
-  | 'left-oblique'
-  | 'chest'
-  | 'right-chest'
-  | 'left-chest'
-  | 'shoulders'
-  | 'right-shoulders'
-  | 'left-shoulders'
-  | 'biceps'
-  | 'right-biceps'
-  | 'left-biceps'
-  | 'forearms'
-  | 'right-forearm'
-  | 'left-forearm'
-  | 'calves'
-  | 'left-calf'
-  | 'right-calf'
-  | 'hamstrings'
-  | 'left-hamstring'
-  | 'right-hamstring'
-  | 'glutes'
-  | 'left-glute'
-  | 'right-glute'
-  | 'right-abductor'
-  | 'left-abductor'
-  | 'hip-flexors'
-  | 'right-hip-flexor'
-  | 'left-hip-flexor'
-  | 'lower-back'
-  | 'left-lower-back'
-  | 'right-lower-back'
-  | 'upperback'
-  | 'left-upperback'
-  | 'right-upperback'
-  | 'traps'
-  | 'left-traps'
-  | 'right-traps'
-  | 'rear-delts'
-  | 'left-rear-delt'
-  | 'right-rear-delt'
-  | 'triceps'
-  | 'left-tricep'
-  | 'right-tricep'
-  | 'neck'
-  | 'right-neck'
-  | 'left-neck'
+  | "quads"
+  | "right-quad"
+  | "left-quad"
+  | "right-transverse-abs"
+  | "abductors"
+  | "right-abductor-1"
+  | "right-abductor-2"
+  | "left-transverse-abs"
+  | "left-abductor-1"
+  | "left-abductor-2"
+  | "abs"
+  | "right-abs"
+  | "left-abs"
+  | "obliques"
+  | "right-oblique"
+  | "left-oblique"
+  | "chest"
+  | "right-chest"
+  | "left-chest"
+  | "shoulders"
+  | "right-shoulders"
+  | "left-shoulders"
+  | "biceps"
+  | "right-biceps"
+  | "left-biceps"
+  | "forearms"
+  | "right-forearm"
+  | "left-forearm"
+  | "calves"
+  | "left-calf"
+  | "right-calf"
+  | "hamstrings"
+  | "left-hamstring"
+  | "right-hamstring"
+  | "glutes"
+  | "left-glute"
+  | "right-glute"
+  | "right-abductor"
+  | "left-abductor"
+  | "hip-flexors"
+  | "right-hip-flexor"
+  | "left-hip-flexor"
+  | "lower-back"
+  | "left-lower-back"
+  | "right-lower-back"
+  | "upperback"
+  | "left-upperback"
+  | "right-upperback"
+  | "traps"
+  | "left-traps"
+  | "right-traps"
+  | "rear-delts"
+  | "left-rear-delt"
+  | "right-rear-delt"
+  | "triceps"
+  | "left-tricep"
+  | "right-tricep"
+  | "neck"
+  | "right-neck"
+  | "left-neck";
 
-type Activity = Partial<Record<MuscleGroup, string>>
+type Activity = Partial<Record<MuscleGroup, string>>;
 
-const spinning: Activity = {
+export const spinning: Activity = {
   quads: Activation.primary,
   hamstrings: Activation.primary,
   glutes: Activation.primary,
   calves: Activation.secondary,
   abs: Activation.secondary,
   obliques: Activation.secondary,
-}
+};
 
-const running: Activity = {
+export const running: Activity = {
   quads: Activation.primary,
   calves: Activation.primary,
   hamstrings: Activation.secondary,
   glutes: Activation.secondary,
   abs: Activation.secondary,
-  'hip-flexors': Activation.secondary,
-}
+  "hip-flexors": Activation.secondary,
+};
 
-const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
+export const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1125 800">
       {/* BASE */}
       {/* TODO: what is this? */}
       <g
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path d="M486.368 394.961s1.302 1.639-6.392-9.225c3.62 1.207 6.185 0 4.374-1.961-1.81-1.961-7.091-14.334-9.052-16.143-1.962-1.811-10.561-4.829-17.502-11.618-6.94-6.789-17.96-28.101-21.279-41.679-3.32-13.58-16.54-37.877-27.756-53.675-6.007-11.995-10.2-21.194-13.126-32.288-2.733-49.273-24.54-63.531-36.734-68.63l.004-.002c-2.506-.804-4.832-1.72-6.723-2.733-16.29-5.04-27.418-13.548-30.042-17.709-.092-3.449-.55-13.11-1.01-21.741 2.342-2.274 6.353-6.426 7.788-9.688 3.2-7.273 3.928-18.582 3.928-34.474 0-15.893-4.661-20.336-9.892-25.165-5.23-4.828-16.688-8.146-21.919-8.146-5.23 0-16.489 2.954-21.719 7.782-5.23 4.829-10.619 8.908-10.619 24.801 0 15.893-1.309 27.783 4.099 35.202 4.885 6.703 5.803 7.414 8.146 9.688-.46 8.631-.919 18.292-1.011 21.741-2.625 4.161-13.753 12.669-30.042 17.709-1.891 1.013-4.216 1.929-6.723 2.733l.004.002c-12.193 5.099-34.001 19.357-36.734 68.63-2.926 11.094-7.118 20.293-13.126 32.288-10.653 14.926-23.228 36.56-26.547 50.139-3.319 13.579-15.548 38.426-22.488 45.215-6.941 6.789-15.54 9.807-17.502 11.618-1.961 1.809-7.242 14.182-9.052 16.143-1.811 1.961.754 3.168 4.374 1.961-7.694 10.864-6.392 9.225-6.392 9.225-5.189 7.524 6.172 11.551 19.107 15.432 12.934 3.88 12.288-.216 14.013-3.019 2.203-3.579 8.578-15.904 10.238-19.675 1.659-3.773 3.923-12.675 2.867-16.145 6.034-14.334 19.16-29.27 25.8-37.115 6.638-7.847 17.184-29.034 22.028-45.867 8.6-13.277 29.159-43.057 32.931-53.619 1.81 2.866 12.431 58.231 12.186 61.012-.231 2.642-8.113 18.337-9.35 25.538-2.691 9.454-8.577 25.358-10.545 36.655-2.411 13.836-4.504 35.542-5.41 45.652-.904 10.108-2.664 43.727 2.518 104.589.311 3.658.199 9.253-.504 14.585-.704 5.331-1.508 28.968-.905 41.139-3.894 8.429-8.14 23.02-7.336 46.556.805 23.537 6.23 77.565 9.448 89.837 3.219 12.271 1.409 19.312-.402 21.726-1.811 2.413-1.811 10.662-.604 13.68-4.828 7.242-10.461 12.673-10.461 12.673s-6.034 1.408-7.643 2.012c-1.61.603-5.231 3.822-5.432 6.437-.201 2.615 3.017 3.823 8.85 5.029 5.834 1.207 26.958-2.011 31.383-3.018 4.426-1.005 7.042-.2 7.846-9.253.805-9.053 0-14.082.805-17.3.804-3.219 2.012-7.847 0-11.267-2.012-3.42-2.414-22.329-2.817-33.392-.402-11.066 4.803-31.472 5.834-39.229 1.058-7.958 5.211-30.219 4.024-57.535.402-21.323 2.413-30.175 4.425-35.003 2.012-4.828 4.828-15.088 5.432-25.951.604-10.862 3.046-18.555 7.443-34.198 4.516-16.063 14.283-66.99 14.283-93.543 2.737.171 4.739.051 5.28.012.541.039 2.544.159 5.282-.012 0 26.553 9.82 77.715 14.281 93.543 4.41 15.64 6.84 23.336 7.444 34.198.604 10.863 3.42 21.123 5.432 25.951 2.012 4.828 4.024 13.68 4.425 35.003-1.192 27.216 2.305 49.812 4.024 57.535 1.699 7.638 6.236 28.163 5.834 39.229-.402 11.063-.805 29.972-2.817 33.392-2.011 3.42-.804 8.048 0 11.267.805 3.218 0 8.247.805 17.3s3.42 8.248 7.847 9.253c4.425 1.007 25.547 4.225 31.382 3.018 5.833-1.206 9.052-2.414 8.851-5.029-.202-2.615-3.823-5.834-5.432-6.437-1.609-.604-7.644-2.012-7.644-2.012s-5.633-5.431-10.461-12.673c1.207-3.018 1.207-11.267-.604-13.68-1.81-2.414-3.621-9.455-.402-21.726 3.218-12.272 8.643-66.3 9.448-89.837.805-23.536-3.442-38.127-7.335-46.556.602-12.171-.201-35.808-.905-41.139-.705-5.332-.832-10.928-.504-14.585 5.062-56.509 3.184-94.409 2.279-104.517-.906-10.109-2.761-31.888-5.172-45.724-1.968-11.297-7.854-27.201-10.545-36.655-1.237-7.201-9.118-22.896-9.35-25.538-.245-2.781 10.376-58.146 12.186-61.012 3.772 10.562 24.332 40.342 32.931 53.619 4.797 19.463 15.39 38.02 22.029 45.867 6.639 7.845 19.765 22.781 25.799 37.115-1.055 3.47 1.208 12.372 2.867 16.145 1.66 3.771 8.035 16.096 10.238 19.675 1.725 2.803 1.078 6.899 14.014 3.019 12.935-3.881 24.295-7.908 19.106-15.432zM1009.299 394.961s1.302 1.639-6.393-9.225c3.621 1.207 6.186 0 4.375-1.961-1.81-1.961-7.091-14.334-9.052-16.143-1.962-1.811-10.562-4.829-17.502-11.618-6.94-6.789-17.96-28.101-21.28-41.679-3.319-13.58-16.54-37.877-27.755-53.675-6.007-11.995-10.2-21.194-13.126-32.288-2.733-49.273-24.54-63.531-36.735-68.63l.005-.002c-2.507-.804-4.832-1.72-6.723-2.733-16.291-5.04-27.418-13.548-30.042-17.709-.092-3.449-.55-13.11-1.01-21.741 2.342-2.274 6.352-6.426 7.788-9.688 3.2-7.273 3.928-18.582 3.928-34.474 0-15.893-4.662-20.336-9.892-25.165-5.231-4.828-16.689-8.146-21.919-8.146s-16.489 2.954-21.72 7.782c-5.229 4.829-10.618 8.908-10.618 24.801 0 15.893-1.309 27.783 4.099 35.202 4.885 6.703 5.802 7.414 8.145 9.688-.46 8.631-.919 18.292-1.01 21.741-2.625 4.161-13.753 12.669-30.042 17.709-1.891 1.013-4.216 1.929-6.723 2.733l.004.002c-12.194 5.099-34.001 19.357-36.734 68.63-2.926 11.094-7.119 20.293-13.126 32.288-10.653 14.926-23.228 36.56-26.547 50.139-3.319 13.579-15.548 38.426-22.488 45.215-6.941 6.789-15.541 9.807-17.502 11.618-1.961 1.809-7.242 14.182-9.052 16.143-1.811 1.961.754 3.168 4.374 1.961-7.695 10.864-6.392 9.225-6.392 9.225-5.189 7.524 6.172 11.551 19.106 15.432 12.935 3.88 12.288-.216 14.014-3.019 2.203-3.579 8.578-15.904 10.238-19.675 1.659-3.773 3.922-12.675 2.867-16.145 6.034-14.334 19.16-29.27 25.799-37.115 6.639-7.847 17.185-29.034 22.029-45.867 8.599-13.277 29.159-43.057 32.93-53.619 1.811 2.866 12.431 58.231 12.187 61.012-.232 2.642-8.113 18.337-9.35 25.538-2.691 9.454-8.577 25.358-10.546 36.655-2.411 13.836-4.503 35.542-5.409 45.652-.904 10.108-2.664 43.727 2.518 104.589.31 3.658.2 9.253-.504 14.585-.704 5.331-1.509 28.968-.905 41.139-3.894 8.429-8.14 23.02-7.336 46.556.805 23.537 6.23 77.565 9.448 89.837 3.219 12.271 1.408 19.312-.402 21.726-1.811 2.413-1.811 10.662-.604 13.68-4.828 7.242-10.461 12.673-10.461 12.673s-6.034 1.408-7.643 2.012c-1.61.603-5.231 3.822-5.432 6.437-.201 2.615 3.017 3.823 8.85 5.029 5.834 1.207 26.958-2.011 31.382-3.018 4.427-1.005 7.042-.2 7.847-9.253.805-9.053 0-14.082.805-17.3.804-3.219 2.011-7.847 0-11.267-2.012-3.42-2.414-22.329-2.818-33.392-.401-11.066 4.804-31.472 5.835-39.229 1.058-7.958 5.21-30.219 4.024-57.535.401-21.323 2.413-30.175 4.425-35.003 2.012-4.828 4.828-15.088 5.431-25.951.605-10.862 3.047-18.555 7.444-34.198 4.515-16.063 14.283-66.99 14.283-93.543 2.737.171 4.74.051 5.28.012.541.039 2.544.159 5.281-.012 0 26.553 9.821 77.715 14.282 93.543 4.41 15.64 6.84 23.336 7.444 34.198.604 10.863 3.42 21.123 5.431 25.951 2.012 4.828 4.025 13.68 4.426 35.003-1.192 27.216 2.305 49.812 4.024 57.535 1.699 7.638 6.235 28.163 5.834 39.229-.403 11.063-.805 29.972-2.817 33.392-2.011 3.42-.804 8.048 0 11.267.805 3.218 0 8.247.805 17.3s3.42 8.248 7.847 9.253c4.424 1.007 25.547 4.225 31.381 3.018 5.833-1.206 9.052-2.414 8.851-5.029-.201-2.615-3.822-5.834-5.432-6.437-1.609-.604-7.643-2.012-7.643-2.012s-5.633-5.431-10.461-12.673c1.207-3.018 1.207-11.267-.604-13.68-1.81-2.414-3.621-9.455-.403-21.726 3.219-12.272 8.644-66.3 9.449-89.837.804-23.536-3.442-38.127-7.336-46.556.603-12.171-.201-35.808-.905-41.139-.704-5.332-.831-10.928-.504-14.585 5.063-56.509 3.185-94.409 2.28-104.517-.906-10.109-2.761-31.888-5.172-45.724-1.968-11.297-7.854-27.201-10.545-36.655-1.238-7.201-9.118-22.896-9.35-25.538-.245-2.781 10.375-58.146 12.186-61.012 3.772 10.562 24.332 40.342 32.931 53.619 4.797 19.463 15.39 38.02 22.029 45.867 6.638 7.845 19.765 22.781 25.799 37.115-1.055 3.47 1.208 12.372 2.867 16.145 1.66 3.771 8.035 16.096 10.238 19.675 1.725 2.803 1.078 6.899 14.014 3.019 12.934-3.881 24.294-7.908 19.106-15.432z" />
@@ -113,7 +101,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="body"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -126,7 +114,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="quads"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -134,7 +122,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M4.97-40.134c-2.449-2.418-4.688-4.638-6.428-7.047-.158-.165-.344-.429-.564-.805-.076-.131-.168-.276-.249-.412a21.659 21.659 0 0 1-.477-.787c-3.796-6.057-11.245-14.828-13.687-6.803-4.228 13.337-8.34 34.139-6.943 67.284 1.616 38.351 16.365 52.717 21.633 52.496 5.268-.223 18.541-5.848 21.808-23.507 1.308-7.07 2.605-19.617 4.712-32.443C24.329-21.024 13.14-32.07 4.97-40.134z"
           style={{
-            fill: (fills['quads'] || fills['right-quad']) ?? Activation.untargeted,
+            fill:
+              (fills["quads"] || fills["right-quad"]) ?? Activation.untargeted,
           }}
           transform="translate(257.488 452.292)"
         />
@@ -143,7 +132,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-4.97-40.134c2.449-2.418 4.688-4.638 6.428-7.047.158-.165.344-.429.564-.805.076-.131.167-.276.249-.412.163-.259.325-.521.476-.787 3.797-6.057 11.246-14.828 13.688-6.803 4.228 13.337 8.34 34.139 6.943 67.284C21.761 49.647 7.012 64.013 1.744 63.792c-5.268-.223-18.541-5.848-21.807-23.507-1.308-7.07-2.605-19.617-4.712-32.443.446-28.866 11.635-39.912 19.805-47.976z"
           style={{
-            fill: (fills['quads'] || fills['left-quad']) ?? Activation.untargeted,
+            fill:
+              (fills["quads"] || fills["left-quad"]) ?? Activation.untargeted,
           }}
           transform="translate(344.452 452.292)"
         />
@@ -151,7 +141,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="others"
         style={{
-          display: 'block',
+          display: "block",
         }}
         fill="gray"
       >
@@ -159,7 +149,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="right-transverse-abs"
           d="M-26.353-85.253s3.682 8.728 25.433 16.705c4.159 11.796 7.296 17.183 15.819 22.979-18.273-1.773-45.121-11.08-44.5-28.533 1.623-5.118 3.248-11.151 3.248-11.151zm6.341 33.546c-1.978 14.387 1.773 30.138 5.728 41.729C-10.33 1.614 14.217 7.567 14.899 51.707c4.737-31.486 6.138-46.066 6.615-56.091.476-10.025-5.456-18.115-14.934-26.323-7.353-6.369-17.746-17.863-26.592-21zM-32.78-64.474s-4.142 16.518-4.654 20.711c-.511 4.193-4.602 36.82-5.011 50.73-.409 13.909-.409 11.25-.409 11.25s3.477-18.921 5.932-27.921c2.455-9.001 7.977-21.888 9.409-26.184 1.432-4.295 3.498-18.205 3.498-18.205s-7.742-6.467-8.765-10.381z"
           style={{
-            fill: fills['right-transverse-abs'] ?? Activation.untargeted,
+            fill: fills["right-transverse-abs"] ?? Activation.untargeted,
           }}
           transform="translate(272.762 409.857)"
         />
@@ -167,7 +157,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="right-abductor-1"
           d="M-20.012-51.707c-1.978 14.387 1.773 30.138 5.728 41.729C-10.33 1.614 14.217 7.567 14.899 51.707c4.737-31.486 6.138-46.066 6.615-56.091.476-10.025-5.456-18.115-14.934-26.323-7.353-6.369-17.746-17.863-26.592-21zM-32.78-64.474s-4.142 16.518-4.654 20.711c-.511 4.193-4.602 36.82-5.011 50.73-.409 13.909-.409 11.25-.409 11.25s3.477-18.921 5.932-27.921c2.455-9.001 7.977-21.888 9.409-26.184 1.432-4.295 3.498-18.205 3.498-18.205s-7.742-6.467-8.765-10.381z"
           style={{
-            fill: (fills['abductors'] || fills['right-abductor-1']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["right-abductor-1"]) ??
+              Activation.untargeted,
           }}
           transform="translate(272.762 409.857)"
         />
@@ -175,7 +167,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="right-abductor-2"
           d="M-32.78-64.474s-4.142 16.518-4.654 20.711c-.511 4.193-4.602 36.82-5.011 50.73-.409 13.909-.409 11.25-.409 11.25s3.477-18.921 5.932-27.921c2.455-9.001 7.977-21.888 9.409-26.184 1.432-4.295 3.498-18.205 3.498-18.205s-7.742-6.467-8.765-10.381z"
           style={{
-            fill: (fills['abductors'] || fills['right-abductor-2']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["right-abductor-2"]) ??
+              Activation.untargeted,
           }}
           transform="translate(272.762 409.857)"
         />
@@ -183,7 +177,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="left-transverse-abs"
           d="M-7.081-63.454s-3.682 8.728-25.433 16.705c-4.159 11.796-7.296 17.183-15.819 22.979 18.274-1.773 45.122-11.08 44.5-28.533-1.623-5.118-3.248-11.151-3.248-11.151zm-6.342 33.547c1.978 14.387-1.772 30.138-5.728 41.729-3.954 11.592-28.501 17.544-29.183 61.684-4.737-31.486-6.138-46.066-6.614-56.091C-55.424 7.39-49.492-.699-40.015-8.907c7.353-6.369 17.746-17.863 26.592-21zM-.654-42.675s4.142 16.518 4.653 20.711c.512 4.193 4.602 36.82 5.011 50.73.409 13.909.409 11.25.409 11.25S5.943 21.095 3.488 12.095C1.033 3.094-4.489-9.793-5.922-14.089c-1.431-4.295-3.497-18.205-3.497-18.205s7.742-6.467 8.765-10.381z"
           style={{
-            fill: fills['left-transverse-abs'] ?? Activation.untargeted,
+            fill: fills["left-transverse-abs"] ?? Activation.untargeted,
           }}
           transform="translate(362.613 388.058)"
         />
@@ -191,7 +185,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="left-abductor-1"
           d="M-13.423-29.907c1.978 14.387-1.772 30.138-5.728 41.729-3.954 11.592-28.501 17.544-29.183 61.684-4.737-31.486-6.138-46.066-6.614-56.091C-55.424 7.39-49.492-.699-40.015-8.907c7.353-6.369 17.746-17.863 26.592-21zM-.654-42.675s4.142 16.518 4.653 20.711c.512 4.193 4.602 36.82 5.011 50.73.409 13.909.409 11.25.409 11.25S5.943 21.095 3.488 12.095C1.033 3.094-4.489-9.793-5.922-14.089c-1.431-4.295-3.497-18.205-3.497-18.205s7.742-6.467 8.765-10.381z"
           style={{
-            fill: (fills['abductors'] || fills['left-abductor-1']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["left-abductor-1"]) ??
+              Activation.untargeted,
           }}
           transform="translate(362.613 388.058)"
         />
@@ -199,7 +195,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           id="left-abductor-2"
           d="M-.654-42.675s4.142 16.518 4.653 20.711c.512 4.193 4.602 36.82 5.011 50.73.409 13.909.409 11.25.409 11.25S5.943 21.095 3.488 12.095C1.033 3.094-4.489-9.793-5.922-14.089c-1.431-4.295-3.497-18.205-3.497-18.205s7.742-6.467 8.765-10.381z"
           style={{
-            fill: (fills['abductors'] || fills['left-abductor-2']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["left-abductor-2"]) ??
+              Activation.untargeted,
           }}
           transform="translate(362.613 388.058)"
         />
@@ -207,7 +205,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="abs"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -215,7 +213,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M5.378-63.041c-20.036 0-19.477 17.294-19.477 22.356 0 5.062 2.604 17.717 2.604 22.356 0 4.641-1.265 12.866-1.265 28.262 0 31.847 20.458 53.108 27.418 53.108V-55.926c0-6.173-4.218-7.115-9.28-7.115z"
           style={{
-            fill: (fills['abs'] || fills['right-abs']) ?? Activation.untargeted,
+            fill: (fills["abs"] || fills["right-abs"]) ?? Activation.untargeted,
           }}
           transform="translate(283.797 299.268)"
         />
@@ -224,7 +222,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-5.378-63.041c-5.062 0-9.28.942-9.28 7.115V63.041c6.96 0 27.418-21.261 27.418-53.108 0-15.396-1.265-23.621-1.265-28.262 0-4.639 2.603-17.294 2.603-22.356 0-5.062.56-22.356-19.476-22.356z"
           style={{
-            fill: (fills['abs'] || fills['left-abs']) ?? Activation.untargeted,
+            fill: (fills["abs"] || fills["left-abs"]) ?? Activation.untargeted,
           }}
           transform="translate(318.143 299.268)"
         />
@@ -232,7 +230,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="obliques"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -240,7 +238,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M7.627 5.17c.965-7.029 1.47-18.055-1.01-27.84-2.481-9.785 1.684-22.605 1.684-22.605C-10.861-40.154-1.2 8.53-1.2 8.53l-5.515 14.838a5.21 5.21 0 0 0 .513 4.676c2.461 3.77 8.164 11.432 17.063 17.231C4.797 34.664 6.663 12.199 7.627 5.17z"
           style={{
-            fill: (fills['obliques'] || fills['right-oblique']) ?? Activation.untargeted,
+            fill:
+              (fills["obliques"] || fills["right-oblique"]) ??
+              Activation.untargeted,
           }}
           transform="translate(257.408 287.435)"
         />
@@ -249,7 +249,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-7.627 5.17c-.965-7.029-1.47-18.055 1.011-27.84 2.48-9.785-1.685-22.605-1.685-22.605C10.861-40.154 1.2 8.53 1.2 8.53l5.515 14.838a5.207 5.207 0 0 1-.513 4.676c-2.461 3.77-8.164 11.432-17.063 17.231C-4.797 34.664-6.662 12.199-7.627 5.17z"
           style={{
-            fill: (fills['obliques'] || fills['left-oblique']) ?? Activation.untargeted,
+            fill:
+              (fills["obliques"] || fills["left-oblique"]) ??
+              Activation.untargeted,
           }}
           transform="translate(344.53 287.435)"
         />
@@ -257,7 +259,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="chest"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -265,7 +267,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M25.872 24.562c4.218-2.812 5.624-7.03 5.765-10.264.14-3.234.422-24.464 0-34.729-.422-10.264-4.922-9-8.015-9.843-3.093-.844-14.722-.897-14.722-.897-4.921.844-13.077 4.64-23.623 11.108-10.545 6.468-11.248 10.827-11.248 10.827s-6.087 7.364 1.506 22.69S-2.53 30.046 7.734 30.608c10.264.562 13.92-3.234 18.138-6.046z"
           style={{
-            fill: (fills['chest'] || fills['right-chest']) ?? Activation.untargeted,
+            fill:
+              (fills["chest"] || fills["right-chest"]) ?? Activation.untargeted,
           }}
           transform="translate(266.17 201.551)"
         />
@@ -274,7 +277,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M14.722-20.063C4.177-26.531-3.979-30.327-8.9-31.171c0 0-11.628.053-14.722.897-3.093.843-7.593-.421-8.014 9.843-.422 10.265-.141 31.495 0 34.729.14 3.234 1.546 7.452 5.765 10.264 4.218 2.812 7.873 6.608 18.138 6.046 10.264-.562 24.606-1.828 32.199-17.154 7.592-15.326 1.505-22.69 1.505-22.69s-.704-4.359-11.249-10.827z"
           style={{
-            fill: (fills['chest'] || fills['left-chest']) ?? Activation.untargeted,
+            fill:
+              (fills["chest"] || fills["left-chest"]) ?? Activation.untargeted,
           }}
           transform="translate(335.768 201.551)"
         />
@@ -282,7 +286,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="shoulders"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -290,7 +294,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-12.429 7.921C-9.265 4.125 12.246-20.07 31.79-22.917 11.121-30.721 1.683-27.04-9.811-17.971-22.457-7.994-29.789 12.897-31.79 30.721c6.116-5.8 16.197-19.004 19.361-22.8z"
           style={{
-            fill: (fills['shoulders'] || fills['right-shoulders']) ?? Activation.untargeted,
+            fill:
+              (fills["shoulders"] || fills["right-shoulders"]) ??
+              Activation.untargeted,
           }}
           transform="translate(240.661 185.742)"
         />
@@ -299,7 +305,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M12.43 7.921c3.164 3.796 13.244 17 19.36 22.8-2.001-17.824-9.334-38.715-21.979-48.692-11.495-9.069-20.932-12.75-41.601-4.946C-12.246-20.07 9.266 4.125 12.43 7.921z"
           style={{
-            fill: (fills['shoulders'] || fills['left-shoulders']) ?? Activation.untargeted,
+            fill:
+              (fills["shoulders"] || fills["left-shoulders"]) ??
+              Activation.untargeted,
           }}
           transform="translate(361.276 185.742)"
         />
@@ -307,7 +315,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="biceps"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -315,7 +323,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-10.902-7.804c-6.627 13.92-10.041 38.174-3.615 42.182C-8.091 38.385 9.781 18.56 18.015-1.266c2.928-25.52 0-37.119 0-37.119-2.009.211-22.291 16.661-28.917 30.581z"
           style={{
-            fill: (fills['biceps'] || fills['right-biceps']) ?? Activation.untargeted,
+            fill:
+              (fills["biceps"] || fills["right-biceps"]) ??
+              Activation.untargeted,
           }}
           transform="translate(217.338 243.905)"
         />
@@ -324,7 +334,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M14.517 34.378c6.426-4.007 3.012-28.262-3.614-42.182-6.627-13.92-26.909-30.371-28.917-30.581 0 0-2.929 11.599 0 37.119C-9.781 18.56 8.091 38.385 14.517 34.378z"
           style={{
-            fill: (fills['biceps'] || fills['left-biceps']) ?? Activation.untargeted,
+            fill:
+              (fills["biceps"] || fills["left-biceps"]) ??
+              Activation.untargeted,
           }}
           transform="translate(384.6 243.905)"
         />
@@ -332,7 +344,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="forearms"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -340,7 +352,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M21.244-35.072C15.421-38.317 2.727-32.236-2.209-24.56c-4.936 7.675-24.429 53.558-17.04 58.217 7.389 4.66 36.827-35.2 40.873-45.673 4.046-10.473 5.014-20.051-.38-23.056z"
           style={{
-            fill: (fills['forearms'] || fills['right-forearm']) ?? Activation.untargeted,
+            fill:
+              (fills["forearms"] || fills["right-forearm"]) ??
+              Activation.untargeted,
           }}
           transform="translate(180.185 317.351)"
         />
@@ -349,7 +363,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-21.244-35.072c-5.394 3.005-4.426 12.583-.38 23.056s33.483 50.333 40.872 45.673c7.39-4.659-12.104-50.542-17.04-58.217-4.936-7.676-17.628-13.757-23.452-10.512z"
           style={{
-            fill: (fills['forearms'] || fills['left-forearm']) ?? Activation.untargeted,
+            fill:
+              (fills["forearms"] || fills["left-forearm"]) ??
+              Activation.untargeted,
           }}
           transform="translate(421.754 317.351)"
         />
@@ -359,7 +375,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="calves"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -367,7 +383,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-1.746-59.968c-6.551.385-17.312 11.309-17.033 26.248.279 14.94 5.305 70.928 6.142 76.932.838 6.004 2.933 17.873 9.077 17.873 4.733 0 8.462-11.332 9.929-16.543.036-.818.115-2.071.263-3.982.837-10.89 4.887-36.302 7.539-43.424 2.653-7.12 4.887-14.939 4.747-24.293-.14-9.355-1.675-33.928-20.664-32.811z"
           style={{
-            fill: (fills['calves'] || fills['left-calf']) ?? Activation.untargeted,
+            fill:
+              (fills["calves"] || fills["left-calf"]) ?? Activation.untargeted,
           }}
           transform="translate(766.601 630.029)"
         />
@@ -376,7 +393,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M1.746-59.968c-18.989-1.117-20.524 23.456-20.664 32.811-.14 9.354 2.094 17.173 4.747 24.293C-11.519 4.258-7.47 29.67-6.632 40.56c.148 1.911.227 3.164.263 3.982 1.467 5.211 5.196 16.543 9.929 16.543 6.144 0 8.239-11.869 9.077-17.873.837-6.004 5.863-61.992 6.142-76.932.279-14.939-10.482-25.863-17.033-26.248z"
           style={{
-            fill: (fills['calves'] || fills['right-calf']) ?? Activation.untargeted,
+            fill:
+              (fills["calves"] || fills["right-calf"]) ?? Activation.untargeted,
           }}
           transform="translate(881.216 630.029)"
         />
@@ -384,7 +402,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="hamstrings"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -392,7 +410,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="m11.272-69.204-.088-.59H2.372c-6.887 4.282-14.32 12.805-21.684 28.556C-17.337-10.58-18.198 69.793-4.515 68.676c13.683-1.117 15.824-7.521 17.558-18.401.621-3.887 1.738-9.21 3.153-14.946 3.116-40.529-.805-85.032-4.924-104.533z"
           style={{
-            fill: (fills['hamstrings'] || fills['left-hamstring']) ?? Activation.untargeted,
+            fill:
+              (fills["hamstrings"] || fills["left-hamstring"]) ??
+              Activation.untargeted,
           }}
           transform="translate(775.922 471.413)"
         />
@@ -401,7 +421,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="m-11.272-69.204.088-.59h8.812c6.887 4.282 14.32 12.805 21.684 28.556C17.337-10.58 18.198 69.793 4.515 68.676c-13.683-1.117-15.824-7.521-17.558-18.401-.621-3.887-1.738-9.21-3.153-14.946-3.116-40.529.805-85.032 4.924-104.533z"
           style={{
-            fill: (fills['hamstrings'] || fills['right-hamstring']) ?? Activation.untargeted,
+            fill:
+              (fills["hamstrings"] || fills["right-hamstring"]) ??
+              Activation.untargeted,
           }}
           transform="translate(871.896 471.413)"
         />
@@ -409,7 +431,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="glutes"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -417,7 +439,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-5.244-36.261c-8.111 0-16.971 20.884-18.716 36.711-.717 6.493-3.53 34.964 7.724 35.388 11.254.423 33.182-2.061 37.643-7.253 4.461-5.192 6.083-10.384 5.881-18.013-.203-7.628-2.23-15.894-8.314-23.311-6.083-7.417-16.197-23.522-23.872-23.522"
           style={{
-            fill: (fills['glutes'] || fills['left-glute']) ?? Activation.untargeted,
+            fill:
+              (fills["glutes"] || fills["left-glute"]) ?? Activation.untargeted,
           }}
           transform="translate(793.117 361.036)"
         />
@@ -426,7 +449,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M5.244-36.261c8.111 0 16.971 20.884 18.716 36.711.716 6.493 3.53 34.964-7.724 35.388-11.254.423-33.182-2.061-37.643-7.253-4.461-5.192-6.083-10.384-5.881-18.013.203-7.628 2.23-15.894 8.313-23.311 6.084-7.417 16.198-23.522 23.872-23.522"
           style={{
-            fill: (fills['glutes'] || fills['right-glute']) ?? Activation.untargeted,
+            fill:
+              (fills["glutes"] || fills["right-glute"]) ??
+              Activation.untargeted,
           }}
           transform="translate(854.701 361.036)"
         />
@@ -434,8 +459,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="abductors"
         style={{
-          display: 'block',
-          fill: fills['abductors'] ?? Activation.untargeted,
+          display: "block",
+          fill: fills["abductors"] ?? Activation.untargeted,
         }}
       >
         <path
@@ -443,7 +468,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-20.639 36.06s-22.45-1.738-24.888-6.239c.445 13.232 4.798 58.073 9.371 78.707 4.575 20.634 11.766 46.685 11.766 46.685-5.454-45.615-.613-98.492 3.751-119.153z"
           style={{
-            fill: (fills['abductors'] || fills['right-abductor']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["right-abductor"]) ??
+              Activation.untargeted,
           }}
           transform="translate(876.23 364.766)"
         />
@@ -452,7 +479,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M20.885 35.81s22.45-1.738 24.888-6.239c-.445 13.232-4.798 58.073-9.372 78.707-4.574 20.634-11.765 46.685-11.765 46.685 5.454-45.615.613-98.492-3.751-119.153z"
           style={{
-            fill: (fills['abductors'] || fills['left-abductor']) ?? Activation.untargeted,
+            fill:
+              (fills["abductors"] || fills["left-abductor"]) ??
+              Activation.untargeted,
           }}
           transform="translate(771.589 364.766)"
         />
@@ -460,7 +489,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="hip-flexors"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -468,7 +497,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M.731 37.006S15.99 54.599 18.615 62.679c-.051-21.275-2.999-40.809-4.67-54.923-1.671-14.115-3.309-21.888-7.297-33.547-2.299-6.72-4.004-12.146-5.245-17.478l-7.169-19.41c-2.582 6.222-6.731 13.734-12.849 17.965 6.093-2.024 13.91 4.899 17.797 13.751C3.069-22.11 7.149-16.382 8.791 6.528c1.642 22.911-2.624 27-8.06 30.478z"
           style={{
-            fill: (fills['hip-flexors'] || fills['right-hip-flexor']) ?? Activation.untargeted,
+            fill:
+              (fills["hip-flexors"] || fills["right-hip-flexor"]) ??
+              Activation.untargeted,
           }}
           transform="translate(876.23 364.766)"
         />
@@ -477,7 +508,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-.731 37.006S-15.99 54.599-18.615 62.679c.052-21.275 3-40.809 4.671-54.923 1.671-14.115 3.308-21.888 7.296-33.547 2.299-6.72 4.004-12.146 5.246-17.478l7.168-19.41c2.582 6.222 6.731 13.734 12.849 17.965-6.093-2.024-13.91 4.899-17.796 13.751C-3.068-22.11-7.148-16.382-8.79 6.528c-1.642 22.911 2.624 27 8.059 30.478z"
           style={{
-            fill: (fills['hip-flexors'] || fills['left-hip-flexor']) ?? Activation.untargeted,
+            fill:
+              (fills["hip-flexors"] || fills["left-hip-flexor"]) ??
+              Activation.untargeted,
           }}
           transform="translate(771.589 364.766)"
         />
@@ -485,7 +518,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="lower-back"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -493,7 +526,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M2.301-16.92C.714-11.704-6.44 3.258-16.285 11.235c2.477 3.637 5.225 6.462 8.21 7.865C3.514 24.545 3.654 28.314 5.608 30.409c1.955 2.094 8.238 5.724 10.471 5.724-.108-5.803.015-36.677.206-72.266-5.9 1.659-10.597 8.089-13.984 19.213z"
           style={{
-            fill: (fills['lower-back'] || fills['left-lower-back']) ?? Activation.untargeted,
+            fill:
+              (fills["lower-back"] || fills["left-lower-back"]) ??
+              Activation.untargeted,
           }}
           transform="translate(802.924 296.577)"
         />
@@ -502,7 +537,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-2.301-16.92c-3.387-11.124-8.084-17.554-13.984-19.213.191 35.589.314 66.463.206 72.266 2.233 0 8.516-3.63 10.471-5.724 1.954-2.095 2.094-5.864 13.683-11.309 2.985-1.403 5.733-4.228 8.21-7.865C6.44 3.258-.714-11.704-2.301-16.92z"
           style={{
-            fill: (fills['lower-back'] || fills['right-lower-back']) ?? Activation.untargeted,
+            fill:
+              (fills["lower-back"] || fills["right-lower-back"]) ??
+              Activation.untargeted,
           }}
           transform="translate(844.893 296.577)"
         />
@@ -510,7 +547,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="upperback"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -518,7 +555,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M23.217 8.932C17.872 1.125 11.39-14.769 7.181-26.585 3.36-36.761 3.595-39.948-1.048-55.984c-4.782 6.753-22.169 18.111-22.169 18.111v25.636s3.27 28.133 4.585 41.496c.844 4.22 5.768 18.004 11.254 26.725C-2.596 51.765 4.86 43.747 8.376 32.635c3.517-11.113 7.175-18.639 14.841-23.703z"
           style={{
-            fill: (fills['upperback'] || fills['left-upperback']) ?? Activation.untargeted,
+            fill:
+              (fills["upperback"] || fills["left-upperback"]) ??
+              Activation.untargeted,
           }}
           transform="translate(790.998 245.534)"
         />
@@ -527,7 +566,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M18.632 29.258c1.315-13.363 4.585-41.495 4.585-41.495v-25.636S5.831-49.231 1.049-55.984C-3.594-39.949-3.359-36.762-7.18-26.586-11.389-14.77-17.871 1.125-23.217 8.932c7.667 5.064 11.325 12.589 14.841 23.701C-4.859 43.746 2.596 51.764 7.378 55.984c5.486-8.721 10.409-22.506 11.254-26.726z"
           style={{
-            fill: (fills['upperback'] || fills['right-upperback']) ?? Activation.untargeted,
+            fill:
+              (fills["upperback"] || fills["right-upperback"]) ??
+              Activation.untargeted,
           }}
           transform="translate(856.82 245.534)"
         />
@@ -535,7 +576,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="traps"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -543,7 +584,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M15.558-50.343C8.08-47.636-4.44-39.156-11.24-35.956c-3.436.93-17.678 6.944-17.678 6.944s-1.838 2.531 8.839 5.697c10.678 3.164 23.291 8.44 23.291 8.44s7.635 32.401 10.594 44.21c2.958 11.809 14.8 31.854 14.8 31.854l1.745-56.594c.215-34.28.405-61.587.405-61.587v-4.197s-6.607 7.736-15.198 10.846z"
           style={{
-            fill: (fills['traps'] || fills['left-traps']) ?? Activation.untargeted,
+            fill:
+              (fills["traps"] || fills["left-traps"]) ?? Activation.untargeted,
           }}
           transform="translate(790.102 192.826)"
         />
@@ -552,7 +594,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-13.806 29.335c2.958-11.809 10.593-44.21 10.593-44.21s12.613-5.276 23.291-8.44c10.678-3.166 8.84-5.697 8.84-5.697s-14.244-6.014-17.68-6.945c-6.799-3.2-19.318-11.679-26.796-14.386-8.591-3.11-15.198-10.846-15.198-10.846v4.197s.189 27.307.404 61.586l1.745 56.595s11.843-20.045 14.801-31.854z"
           style={{
-            fill: (fills['traps'] || fills['right-traps']) ?? Activation.untargeted,
+            fill:
+              (fills["traps"] || fills["right-traps"]) ?? Activation.untargeted,
           }}
           transform="translate(857.716 192.826)"
         />
@@ -560,8 +603,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="rear-delts"
         style={{
-          display: 'block',
-          fill: fills['rear-delts'] ?? Activation.untargeted,
+          display: "block",
+          fill: fills["rear-delts"] ?? Activation.untargeted,
         }}
       >
         <path
@@ -569,7 +612,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M28.294-11.171C15.424-15.883-4.48-22.564-5.324-24.674c-21.312 16.036-22.97 49.348-22.97 49.348s7.004-5.038 11.199-6.445c19.718-4.079 37.139-19.553 45.389-29.4z"
           style={{
-            fill: (fills['rear-delts'] || fills['left-rear-delt']) ?? Activation.untargeted,
+            fill:
+              (fills["rear-delts"] || fills["left-rear-delt"]) ??
+              Activation.untargeted,
           }}
           transform="translate(760.637 192.826)"
         />
@@ -578,7 +623,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M17.096 18.228c4.195 1.407 11.198 6.446 11.198 6.446S26.636-8.638 5.324-24.674c-.843 2.111-20.747 8.791-33.618 13.503 8.251 9.847 25.672 25.32 45.39 29.399z"
           style={{
-            fill: (fills['rear-delts'] || fills['right-rear-delt']) ?? Activation.untargeted,
+            fill:
+              (fills["rear-delts"] || fills["right-rear-delt"]) ??
+              Activation.untargeted,
           }}
           transform="translate(887.181 192.826)"
         />
@@ -586,7 +633,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="triceps"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -594,7 +641,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M19.45-9.643c-.409-9.833-.356-17.499.019-21.063-6.934 4.002-15.263 6.517-17.931 7.383-2.799.91-6.809 5.02-9.696 8.383-2.1 2.627-3.87 5.273-5.063 7.81-3.868 8.219-6.396 18.938-6.647 27.509 4.818-3.037 11.951-8.478 18.184-17.043C-4.647 13.473-5 23.918-4.825 30.706 1.156 26.071 7.237 18.644 9.397 14.443 13.168 7.112 19.869.41 19.45-9.643z"
           style={{
-            fill: (fills['triceps'] || fills['left-tricep']) ?? Activation.untargeted,
+            fill:
+              (fills["triceps"] || fills["left-tricep"]) ??
+              Activation.untargeted,
           }}
           transform="translate(743.188 240.652)"
         />
@@ -603,7 +652,9 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M19.868 20.379c-.251-8.572-2.779-19.289-6.647-27.508-1.194-2.537-2.964-5.183-5.064-7.81-2.888-3.364-6.896-7.474-9.696-8.383-2.667-.867-10.996-3.382-17.93-7.385.375 3.565.428 11.232.019 21.065C-19.869.41-13.168 7.113-9.398 14.443c2.161 4.201 8.242 11.629 14.223 16.264.174-6.787-.179-17.233-3.142-27.37 6.234 8.564 13.367 14.004 18.185 17.042z"
           style={{
-            fill: (fills['triceps'] || fills['right-tricep']) ?? Activation.untargeted,
+            fill:
+              (fills["triceps"] || fills["right-tricep"]) ??
+              Activation.untargeted,
           }}
           transform="translate(904.629 240.651)"
         />
@@ -611,7 +662,7 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
       <g
         id="neck"
         style={{
-          display: 'block',
+          display: "block",
         }}
       >
         <path
@@ -619,7 +670,8 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="M-3.547 4.919h-.002c5.126 3.267 11.29 5.902 12.563 6.765.153.104.236.158.236.158L8.216-7.728c-.019-.251-.15-.481-.353-.697l-.018-.334c-.164-2.284-8.422-3.084-17.095-3.046.546 2.014 1.175 7.501 2.763 11.608.72 2.157 1.66 4.07 2.94 5.116z"
           style={{
-            fill: (fills['neck'] || fills['right-neck']) ?? Activation.untargeted,
+            fill:
+              (fills["neck"] || fills["right-neck"]) ?? Activation.untargeted,
           }}
           transform="translate(834.159 125.935)"
         />
@@ -628,62 +680,12 @@ const Anatomy: React.FC<{ fills: Activity }> = ({ fills }) => {
           fill="gray"
           d="m-7.846-8.759-.018.334c-.203.216-.336.446-.353.697l-1.032 19.571.235-.16c1.272-.862 7.437-3.497 12.562-6.764 1.28-1.046 2.219-2.96 2.94-5.116 1.588-4.107 2.215-9.594 2.761-11.607-8.673-.039-16.932.761-17.095 3.045z"
           style={{
-            fill: (fills['neck'] || fills['left-neck']) ?? Activation.untargeted,
+            fill:
+              (fills["neck"] || fills["left-neck"]) ?? Activation.untargeted,
           }}
           transform="translate(813.658 125.935)"
         />
       </g>
     </svg>
-  )
-}
-
-const AnatomyPage: NextPage<{ host: string; url: string }> = ({ host, url }) => {
-  return (
-    <>
-      <NextSeo
-        title="Anatomy"
-        canonical={url}
-        openGraph={{
-          title: 'guitton.co | Anatomy',
-          url: url,
-          type: 'profile',
-          profile: {
-            firstName: 'Louis',
-            lastName: 'Guitton',
-            gender: 'male',
-            username: 'louis_guitton',
-          },
-        }}
-        additionalMetaTags={[
-          { property: 'article:published_time', content: new Date(2019, 5, 14).toISOString() },
-          { property: 'article:modified_time', content: new Date().toISOString() },
-        ]}
-      />
-      <BreadcrumbJsonLd
-        itemListElements={[
-          {
-            position: 1,
-            name: 'guitton.co',
-            item: host,
-          },
-          {
-            position: 2,
-            name: 'anatomy',
-            item: url,
-          },
-        ]}
-      />
-
-      <section id="" className="pb-4 prose max-w-none">
-        <h2>Spinning</h2>
-        <Anatomy fills={spinning} />
-        <h2>Running</h2>
-        <Anatomy fills={running} />
-        <h2>Biceps Curl</h2>
-        <Anatomy fills={{ biceps: Activation.primary }} />
-      </section>
-    </>
-  )
-}
-
-export default AnatomyPage
+  );
+};

@@ -17,7 +17,7 @@ Urgent:
     - [x] posts list page
     - [x] post detail page
     - [ ] about page
-    - [ ] anatomy??
+    - [x] anatomy??
 
   - [ ] migrating routing hooks
   - [ ] migrating data fetching hooks
