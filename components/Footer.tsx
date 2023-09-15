@@ -31,11 +31,19 @@ const navigation: {
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/contact" },
   ],
-  api: [
-    { name: "/api/ga/featured-posts", href: "/api/ga/featured-posts" },
-    { name: "/api/ga/page-views", href: "/api/ga/page-views" },
-    { name: "/api/github/contributions", href: "/api/github/contributions" },
-    { name: "/api/github/stars", href: "/api/github/stars" },
+  mentions: [
+    {
+      name: "Reddit",
+      href: "https://www.reddit.com/search.json?sort=new&q=site:guitton.co%20OR%20author:laguitte%20OR%20selftext:%22guitton.co%22",
+    },
+    {
+      name: "Twitter",
+      href: "https://twitter.com/search?q=%22guitton.co%22%20OR%20%22louis%20guitton%22%20-from%3Alouis_guitton%20-%40louis_guitton%20-bag%20-purse%20-from%3Alouisguitton&src=typed_query&f=live",
+    },
+    {
+      name: "Hackernews",
+      href: "https://news.ycombinator.com/from?site=guitton.co",
+    },
   ],
   social: [
     {
