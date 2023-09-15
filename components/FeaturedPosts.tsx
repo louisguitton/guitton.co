@@ -1,9 +1,9 @@
 import { EyeIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
+import { Post } from "contentlayer/generated";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import { Post } from "../lib/types";
 import PostCategory from "./PostCategory";
 
 const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({

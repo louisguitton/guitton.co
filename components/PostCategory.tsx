@@ -1,21 +1,21 @@
-import clsx from 'clsx'
-import { FC } from 'react'
-import { BlogFrontMatter } from '../lib/types'
+import clsx from "clsx";
+import { Post } from "contentlayer/generated";
+import { FC } from "react";
 
 interface Dictionary<T> {
-  [Key: string]: T
+  [Key: string]: T;
 }
 
 const colors: Dictionary<string> = {
-  Data: 'bg-violet-500',
-  Code: 'bg-sky-500',
-  ML: 'bg-fuchsia-500',
-  Ideas: 'bg-red-500',
-  Projects: 'bg-amber-500',
-  Web3: 'bg-emerald-500',
-}
+  Data: "bg-violet-500",
+  Code: "bg-sky-500",
+  ML: "bg-fuchsia-500",
+  Ideas: "bg-red-500",
+  Projects: "bg-amber-500",
+  Web3: "bg-emerald-500",
+};
 
-const PostCategory: FC<{ post: BlogFrontMatter; className?: string }> = ({
+const PostCategory: FC<{ post: Post; className?: string }> = ({
   post,
   className,
   ...rest
@@ -25,18 +25,18 @@ const PostCategory: FC<{ post: BlogFrontMatter; className?: string }> = ({
       <span
         className={clsx(
           className,
-          'px-2 py-0.5',
+          "px-2 py-0.5",
           colors[post.categories[0]],
-          'inline relative',
-          'text-white text-xs uppercase'
+          "inline relative",
+          "text-white text-xs uppercase"
         )}
         {...rest}
       >
         {post.categories[0]}
       </span>
-    )
+    );
   }
-  return <></>
-}
+  return <></>;
+};
 
-export default PostCategory
+export default PostCategory;

@@ -1,8 +1,8 @@
+import { Post, allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import FeaturedPosts from "../../../components/FeaturedPosts";
 import Hero from "../../../components/Hero";
-import { getAllPosts } from "../../../lib/posts";
-import { Post, PostView } from "../../../lib/types";
+import { PostView } from "../../../lib/types";
 
 export const metadata: Metadata = {
   metadataBase: new URL("/", process.env.BASE_URL),
@@ -29,10 +29,9 @@ const featuredPosts: PostView[] = [
     since: "Last 12 months",
   },
 ];
-const allBlogs = getAllPosts();
 const posts: Post[] = [];
 featuredPosts.forEach((featuredPost) => {
-  const p = allBlogs.find(
+  const p = allPosts.find(
     (post) => `/posts/${post.slug}/` == featuredPost.page
   );
   if (p)

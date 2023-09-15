@@ -1,11 +1,18 @@
-import { CalendarIcon, CollectionIcon } from '@heroicons/react/solid'
-import moment from 'moment'
-import Image from 'next/image'
-import { Blog } from '../lib/types'
-import PostCategory from './PostCategory'
+import { CalendarIcon, CollectionIcon } from "@heroicons/react/solid";
+import { Post } from "contentlayer/generated";
+import { format, parseISO } from "date-fns";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import Image from "next/image";
+import PostCategory from "./PostCategory";
+import YoutubeEmbed from "./YoutubeEmbed";
+
+const mdxComponents = {
+  YoutubeEmbed,
+};
 
 // Ref: https://tailwindcss.com/docs/typography-plugin
-const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
+const BlogLayout: React.FC<{ post: Post }> = ({ post }) => {
+  const MDXContent = useMDXComponent(post.body.code);
   return (
     <article className="relative px-4 sm:px-6 lg:px-8 print:px-8">
       <div className="mx-auto text-lg max-w-prose">
@@ -21,9 +28,10 @@ const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
           {post.title}
         </h1>
         <p className="flex mt-8 text-xl leading-8 text-gray-500">
-          <span className="flex items-center">
-            <CalendarIcon className="w-5 h-5 mr-1" /> {moment(post.date).format('MMMM DD, YYYY')}
-          </span>
+          <time dateTime={post.date} className="flex items-center">
+            <CalendarIcon className="w-5 h-5 mr-1" />{" "}
+            {format(parseISO(post.date), "LLLL d, yyyy")}
+          </time>
           <span className="px-2" />
           <span className="flex items-center font-semibold">
             <CollectionIcon className="w-5 h-5 mr-1" />
@@ -31,9 +39,11 @@ const BlogLayout: React.FC<{ post: Blog }> = ({ post, children }) => {
           </span>
         </p>
       </div>
-      <div className="mx-auto mt-6 prose prose-indigo">{children}</div>
+      <div className="mx-auto mt-6 prose prose-indigo">
+        <MDXContent components={mdxComponents} />
+      </div>
     </article>
-  )
-}
+  );
+};
 
-export default BlogLayout
+export default BlogLayout;

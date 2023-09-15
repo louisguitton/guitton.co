@@ -1,5 +1,5 @@
-import clsx from 'clsx'
-import { FC } from 'react'
+import clsx from "clsx";
+import { FC } from "react";
 
 // Ref: https://dev.to/bravemaster619/simplest-way-to-embed-a-youtube-video-in-your-react-app-3bk2
 const YoutubeEmbed: FC<{ embedId: string; className?: string }> = ({
@@ -14,10 +14,10 @@ const YoutubeEmbed: FC<{ embedId: string; className?: string }> = ({
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
       title="Embedded youtube"
-      className={clsx(className, 'w-full aspect-video')}
+      className={clsx(className, "w-full aspect-video")}
       {...rest}
     />
-  )
-}
+  );
+};
 
-export default YoutubeEmbed
+export default YoutubeEmbed;
