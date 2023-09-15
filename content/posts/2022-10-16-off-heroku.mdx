@@ -1,18 +1,17 @@
 ---
-slug: off-heroku
-title: 'A quick and dirty guide if you need to migrate your project off of Heroku'
-date: '2022-10-16'
-lastmod: '2022-10-16'
+title: "A quick and dirty guide if you need to migrate your project off of Heroku"
+lastmod: "2022-10-16"
 summary: >
   In this post, I'll summarise your migrations options if you're facing.
 categories:
   - Code
 series:
-  - 
+  -
 image: /images/off-heroku/that-feeling-when-b41e92f404.jpg
 ---
 
 In a Aug 25th 2022 blogpost, Heroku has communicated about their ["Next Chapter"](https://blog.heroku.com/next-chapter#:~:text=Starting%20October%2026%2C%202022%2C%20we,free%20dynos%20and%20data%20services.):
+
 > Starting October 26, 2022, we will begin deleting inactive accounts and associated storage for accounts that have been inactive for over a year. Starting November 28, 2022, we plan to stop offering free product plans and plan to start shutting down free dynos and data services.
 
 If you're like me, you have grown up (as a developer) using Heroku's services, and you might find yourself with at least 1 service running on Heroku.
@@ -30,12 +29,13 @@ Heroku hence runs a server ("dyno") and a Postgres DB ("Postgres add-on") for yo
 But Heroku also does more. It is what's called a PaaS (platform as a service): continuous integration with Github, and no headaches integration of your services (e.g your DB and your server together).
 
 So when looking for a new solution, ask yourself:
+
 - do you need a hosted server?
 - do you need a hosted database?
 - do you need PaaS experience?
 
 **Second, understand the cost of cloud resources**
-Heroku hobby developers are spoiled because they get, for free, a server and a DB. 
+Heroku hobby developers are spoiled because they get, for free, a server and a DB.
 It's easy to assume that building a project should be free.
 But any project running on the cloud has costs that can be divided between **compute and storage**. _Someone_ is paying for those costs.
 
@@ -58,8 +58,8 @@ The cheapest server will be $25 per month. The cheapest database will be $50 per
 Many other developers are facing this situation.
 You can read more experiences in this post: [Ask HN: So you moved off Heroku, where did you go? | Hacker News](https://news.ycombinator.com/item?id=33077118)
 
-The rest of this article is an **opinionated** breakdown of alternatives I can recommend. 
-I expect this advice to grow stale with time: 
+The rest of this article is an **opinionated** breakdown of alternatives I can recommend.
+I expect this advice to grow stale with time:
 just like advising my friend to tie himself up with Heroku would have been fine 2 months ago and is not anymore (sorry Thibault 😂🙈), the following advice could become stale if the cited companies change their pricnig models, or if their VC cash runs out.
 
 ### (Ab)use serverless: [vercel.com](https://vercel.com/)
@@ -74,6 +74,7 @@ Vercel is a platform for web developers that provides a PaaS experience: it depl
 [Official Vercel Runtimes](https://vercel.com/docs/runtimes) are Node.js, Go, Python, Ruby.
 
 For the unlikely scenario in which you need to deploy a PHP application, here are useful links:
+
 - [vercel-community/php: 🐘 PHP Runtime for ▲ Vercel Serverless Functions](https://github.com/vercel-community/php)
 - [juicyfx/vercel-examples: 📦 Examples and sample projects using Vercel platform](https://github.com/juicyfx/vercel-examples)
 

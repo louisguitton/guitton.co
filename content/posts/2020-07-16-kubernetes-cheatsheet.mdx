@@ -1,8 +1,6 @@
 ---
-slug: kubernetes-cheatsheet
 title: Kubernetes Deployment Cheat Sheet
-date: '2020-07-16'
-lastmod: '2022-01-09'
+lastmod: "2022-01-09"
 categories:
   - Code
 summary: Get a Kubectl Cheat Sheet to use Kubernetes and Helm in practice. Troubleshoot your deployment and your application. Updated regularly.
@@ -131,13 +129,13 @@ kubectl get secrets <my-deployment> \
 
 ```yml
 apiVersion: apps/v1
-kind: Deployment  # create a deployment of a container
+kind: Deployment # create a deployment of a container
 ---
 apiVersion: v1
-kind: Service  # create a service, that allows us to connect to a given deployment
+kind: Service # create a service, that allows us to connect to a given deployment
 ---
 apiVersion: v1
-kind: PersistentVolume  # create a "disk" that provides space for pods to store data
+kind: PersistentVolume # create a "disk" that provides space for pods to store data
 ```
 
 ## References

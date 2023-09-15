@@ -1,8 +1,6 @@
 ---
-slug: spacy-stanza-russian-swedish
-title: 'How to use spaCy language models in Russian or Swedish'
-date: '2020-03-22'
-lastmod: '2022-01-09'
+title: "How to use spaCy language models in Russian or Swedish"
+lastmod: "2022-01-09"
 summary: I demo how you can use spaCy in 70+ languages by leveraging Stanza, a NLP toolkit by StandfordNLP. I give spaCy NER examples in Russian and Swedish.
 keywords:
   - stanza vs spacy
@@ -36,14 +34,24 @@ Fortunately, you can now expand beyond those 12 languages and **tap into languag
 This week, StanfordNLP released v1.0.0 of `Stanza`, their NLP toolkit in 70+ languages. [Paper](https://paperswithcode.com/paper/stanza-a-python-natural-language-processing)
 
 <blockquote className="twitter-tweet" data-lang="en">
-    <p lang="en" dir="ltr">Now also available for your spaCy pipeline: <br></br><br></br>spacy-stanza (formerly spacy-stanfordnlp)
-        integrates Stanza by <a href="https://twitter.com/stanfordnlp?ref_src=twsrc%5Etfw">@StanfordNLP</a> – with
-        support for more languages and NER 🚀<a href="https://t.co/vAvAIXojNm">https://t.co/vAvAIXojNm</a> <a
-            href="https://t.co/h0bYGh4tN5">https://t.co/h0bYGh4tN5</a> <a
-            href="https://t.co/1xFyd9il1d">pic.twitter.com/1xFyd9il1d</a></p>&mdash; spaCy (@spacy_io) <a
-        href="https://twitter.com/spacy_io/status/1239982230203764738?ref_src=twsrc%5Etfw">March 17, 2020</a>
+  <p lang="en" dir="ltr">
+    Now also available for your spaCy pipeline: <br></br>
+    <br></br>spacy-stanza (formerly spacy-stanfordnlp) integrates Stanza by <a href="https://twitter.com/stanfordnlp?ref_src=twsrc%5Etfw">
+      @StanfordNLP
+    </a> – with support for more languages and NER 🚀<a href="https://t.co/vAvAIXojNm">
+      https://t.co/vAvAIXojNm
+    </a> <a href="https://t.co/h0bYGh4tN5">https://t.co/h0bYGh4tN5</a> <a href="https://t.co/1xFyd9il1d">pic.twitter.com/1xFyd9il1d</a>
+  </p>
+  &mdash; spaCy (@spacy_io){" "}
+  <a href="https://twitter.com/spacy_io/status/1239982230203764738?ref_src=twsrc%5Etfw">
+    March 17, 2020
+  </a>
 </blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+<script
+  async
+  src="https://platform.twitter.com/widgets.js"
+  charSet="utf-8"
+></script>
 
 It was previously known as `StandfordNLP` and apparently went through a little renaming.
 Stanza has a meaning borrowed from poetry and starts with "stan" like Stanford I guess:
@@ -124,7 +132,7 @@ Downloading https://nlp.stanford.edu/software/stanza/1.0.0/ru/default.zip: 100%|
 >>> displacy.render(doc, style="ent")
 ```
 
-![arshavin](/images/spacy-stanza-russian-swedish/arshavin.png 'Russian document parsed with NER entities')
+![arshavin](/images/spacy-stanza-russian-swedish/arshavin.png "Russian document parsed with NER entities")
 
 ## Spacy in Swedish: How to Find Keywords
 
@@ -185,7 +193,7 @@ pip install pytextrank
 
 After writing a couple of convenience functions, here are the top 5 TextRank keywords highlighted in HTML:
 
-![zlatan](/images/spacy-stanza-russian-swedish/zlatan.png 'Swedish document parsed with top 5 keywords')
+![zlatan](/images/spacy-stanza-russian-swedish/zlatan.png "Swedish document parsed with top 5 keywords")
 
 ## Resources
 

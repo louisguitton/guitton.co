@@ -1,8 +1,6 @@
 ---
-slug: wikidata
 title: Learn SPARQL in 5 minutes and use it to query WikiData
-date: '2020-05-27'
-lastmod: '2022-01-09'
+lastmod: "2022-01-09"
 summary: >
   Learn how to fomulate questions to WikiData using SPARQL.
 categories:
@@ -50,7 +48,7 @@ WHERE
 [Try it](https://query.wikidata.org/#SELECT%20%3Ffruit%20%3FfruitLabel%0AWHERE%0A%7B%0A%20%20%23%20fruit%20hasColor%20yellow%0A%20%20%3Ffruit%20wdt%3AP462%20wd%3AQ943%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%22.%20%7D%0A%7D)
 
 - You can further filter this down by adding more triple conditions using `;` character
-e.g. you could filter for actual fruits by doing
+  e.g. you could filter for actual fruits by doing
 
 ```sparql
 # fruit instance of or subclass of a fruit
@@ -99,7 +97,7 @@ LIMIT 10
 ```
 
 - If you add more variables like population above, the query will filter out
-countries that don't have a population value. To fix this, use an `OPTIONAL` clause
+  countries that don't have a population value. To fix this, use an `OPTIONAL` clause
 
 ```sparql
 SELECT ?book ?title ?illustratorLabel ?publisherLabel ?published
