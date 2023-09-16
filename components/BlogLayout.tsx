@@ -14,7 +14,7 @@ const mdxComponents = {
 const BlogLayout: React.FC<{ post: Post }> = ({ post }) => {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <article className="relative px-4 sm:px-6 lg:px-8 print:px-8">
+    <article className="relative px-4 sm:px-6 lg:px-8 print:px-8 pt-12">
       <div className="mx-auto text-lg max-w-prose">
         <div className="relative w-full h-96">
           <Image

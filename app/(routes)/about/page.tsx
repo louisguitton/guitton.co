@@ -1,3 +1,4 @@
+import { PageIntro } from "@/components/layout/PageIntro";
 import { Button } from "@/components/ui/button";
 import { PaperClipIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
@@ -22,16 +23,51 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <>
-      <section id="about-card" className="pb-4">
-        <div className="overflow-hidden shadow sm:rounded-lg print:rounded-lg">
-          <div className="px-4 py-5 sm:px-6 print:px-6">
-            <h1 className="text-lg font-medium leading-6 text-gray-900">
-              About me
-            </h1>
-            <p className="max-w-2xl mt-1 text-sm text-gray-500">
-              No, I&apos;m not Louis Vuitton.
-            </p>
+      <PageIntro eyebrow="About me" title="No I'm not Louis Vuitton.">
+        <p className="prose">
+          I am a Software Engineer from France living in Berlin. I have{" "}
+          <i>freelance</i> and <i>entrepreneurial</i> experience. I have
+          experience with Natural Language Processing in Python, and let my
+          curiosity guide me to other topics.
+          <ol>
+            In general, I look for opportunities where I can:
+            <li>learn and grow as an engineer</li>
+            <li>influence the technology around me</li>
+          </ol>
+        </p>
+        <div
+          className={clsx(
+            "grid grid-cols-1 sm:grid-cols-12 gap-10 print:grid-cols-12"
+          )}
+        >
+          <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
+            <Image
+              layout="fill"
+              src="/images/ef_countdown.jpg"
+              alt="Entrepreneur First"
+              className="object-contain"
+            />
           </div>
+          <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
+            <Image
+              layout="fill"
+              src="/images/in_my_room.jpg"
+              alt="Playing Music"
+              className="object-contain"
+            />
+          </div>
+          <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
+            <Image
+              layout="fill"
+              src="/images/run.jpg"
+              alt="Singapore"
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </PageIntro>
+      <section id="about-card" className="pb-4 mt-4">
+        <div className="overflow-hidden shadow sm:rounded-lg print:rounded-lg">
           <div className="px-4 py-5 border-t border-gray-200 sm:px-6 print:px-6">
             <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 print:grid-cols-2">
               <div className="sm:col-span-1 print:col-span-1">
@@ -114,21 +150,6 @@ const AboutPage = () => {
                 </dd>
               </div>
               <div className="sm:col-span-2 print:col-span-2">
-                <dt className="text-sm font-medium text-gray-500">About</dt>
-                <dd className="mt-1 text-sm prose text-gray-900">
-                  I am a Software Engineer from France living in Berlin. I have{" "}
-                  <i>freelance</i> and <i>entrepreneurial</i> experience. I have
-                  experience with Natural Language Processing in Python, and let
-                  my curiosity guide me to other topics.
-                  <ol>
-                    In general, I look for opportunities where I can:
-                    <li>learn and grow as an engineer</li>
-                    <li>influence the technology around me</li>
-                  </ol>
-                  This is, for example, why I enjoy open source so much.
-                </dd>
-              </div>
-              <div className="sm:col-span-2 print:col-span-2">
                 <dt className="text-sm font-medium text-gray-500">
                   Attachments
                 </dt>
@@ -156,65 +177,11 @@ const AboutPage = () => {
               </div>
             </dl>
           </div>
-          <div
-            className={clsx(
-              "px-4 py-5 border-t border-gray-200 sm:px-6 print:px-6",
-              "grid grid-cols-1 sm:grid-cols-12 gap-10 print:grid-cols-12"
-            )}
-          >
-            <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
-              <Image
-                layout="fill"
-                src="/images/ef_countdown.jpg"
-                alt="Entrepreneur First"
-                className="object-contain"
-              />
-            </div>
-            <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
-              <Image
-                layout="fill"
-                src="/images/in_my_room.jpg"
-                alt="Playing Music"
-                className="object-contain"
-              />
-            </div>
-            <div className="relative w-auto h-60 sm:col-span-4 print:col-span-4">
-              <Image
-                layout="fill"
-                src="/images/singapore.jpg"
-                alt="Singapore"
-                className="object-contain"
-              />
-            </div>
-          </div>
         </div>
       </section>
       <section id="feed" className="pb-4 prose max-w-none">
         <h2>Latest Open Source Contributions</h2>
         <GithubContributions />
-      </section>
-      <section id="freelance" className="prose">
-        <h2>Freelance Services</h2>
-        Since 2015, I offer freelance services on the side of my main job.
-        <ol>
-          <li>
-            {" "}
-            <em>Data Solutions</em>: Built data stack for entrepreneurship NGO
-            and fintech startup. Deliver airflow workshop for automotive digital
-            lab.
-          </li>
-          <li>
-            <em>Teaching</em>: Built and taught ML and IoT classes for
-            engineering MBA in Paris.
-          </li>
-          <li>
-            <em>Websites or MVPs</em>: Built 10+ websites for friends and family
-            with either (in order of complexity) Google Sites, Wordpress, Hugo,
-            NextJS.
-          </li>
-        </ol>
-        If you&apos;re interested in my services,{" "}
-        <Link href={"/contact"}>feel free to reach out</Link>.
       </section>
     </>
   );

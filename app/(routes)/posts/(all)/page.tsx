@@ -1,3 +1,4 @@
+import { PageIntro } from "@/components/layout/PageIntro";
 import clsx from "clsx";
 import PostCategory from "components/PostCategory";
 import { allPosts, Post } from "contentlayer/generated";
@@ -21,12 +22,9 @@ const ListPostsPage = () => {
 
   return (
     <div className="col-span-12 md:col-span-8">
-      <div className="relative overflow-hidden border-b-2 border-primary">
-        <h1 className="px-3 py-1.5 bg-primary text-white uppercase text-sm inline-block font-medium">
-          Blog Posts
-        </h1>
-      </div>
-
+      <PageIntro eyebrow="Blog" title="Last articles and news">
+        <p>I write about Data, Machine Learning, Code, Projects or Ideas</p>
+      </PageIntro>
       {posts.map((post) => {
         return (
           <div

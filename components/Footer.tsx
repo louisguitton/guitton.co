@@ -28,6 +28,7 @@ const navigation: {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Resume", href: "/resume" },
+    { name: "Process", href: "/process" },
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/contact" },
   ],

@@ -12,6 +12,7 @@ import { px } from "../src/styles/constants";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Process", href: "/process" },
   { name: "Blog", href: "/posts" },
   { name: "Contact", href: "/contact" },
 ];
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <Disclosure as="header" className={clsx(px, "pb-12", "print:hidden")}>
+    <Disclosure as="header" className={clsx(px, "print:hidden")}>
       {({ open }) => (
         <nav aria-labelledby="primary-navigation">
           <div className="flex items-center justify-between h-16">
