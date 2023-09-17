@@ -2,7 +2,6 @@
 
 Urgent:
 
-- [ ] add Freelance Services page
 - [ ] add CRM
 
   - [ ] add newsletter signup pointing to Hubspot for Blog
