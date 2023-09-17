@@ -10,7 +10,6 @@ Urgent:
 
 High:
 
-- [ ] migrate components to src folder
 - [ ] add "Download CV" CTA for resume
 - [ ] add past work page
 - [ ] add precommit hooks

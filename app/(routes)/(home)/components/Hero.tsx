@@ -1,9 +1,13 @@
+import { Container } from "@/components/layout/Container";
 import clsx from "clsx";
 import Image from "next/image";
 
 function Hero() {
   return (
-    <section className="sm:grid sm:grid-cols-12 sm:gap-8 print:grid print:grid-cols-12 print:gap-8 pt-12">
+    <Container
+      as="section"
+      className="sm:grid sm:grid-cols-12 sm:gap-8 print:grid print:grid-cols-12 print:gap-8 pt-12"
+    >
       <div className="sm:col-span-6 print:col-span-6">
         <h1>
           <span
@@ -43,7 +47,7 @@ function Hero() {
           alt="Profile picture"
         />
       </button>
-    </section>
+    </Container>
   );
 }
 

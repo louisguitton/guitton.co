@@ -1,8 +1,8 @@
 import { Post, allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
-import FeaturedPosts from "../../../components/FeaturedPosts";
-import Hero from "../../../components/Hero";
 import { PostView } from "../../../lib/types";
+import FeaturedPosts from "./components/FeaturedPosts";
+import Hero from "./components/Hero";
 
 export const metadata: Metadata = {
   metadataBase: new URL("/", process.env.BASE_URL),

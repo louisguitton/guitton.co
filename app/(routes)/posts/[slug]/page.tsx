@@ -1,4 +1,4 @@
-import BlogLayout from "components/BlogLayout";
+import BlogLayout from "app/(routes)/posts/[slug]/components/BlogLayout";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { ArticleJsonLd } from "next-seo";

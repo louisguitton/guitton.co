@@ -1,10 +1,11 @@
+import PostCategory from "@/components/blog/PostCategory";
+import { Container } from "@/components/layout/Container";
 import { EyeIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
 import { Post } from "contentlayer/generated";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import PostCategory from "./PostCategory";
 
 const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
   post,
@@ -52,7 +53,7 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
 
 const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
   return (
-    <section className="relative pt-16 pb-10">
+    <Container as="section" className="relative pt-16 pb-10">
       <div className="flex justify-between w-full pb-5">
         <h2
           className={clsx(
@@ -72,7 +73,7 @@ const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
           />
         ))}
       </div>
-    </section>
+    </Container>
   );
 };
 

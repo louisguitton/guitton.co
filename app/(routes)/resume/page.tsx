@@ -1,3 +1,4 @@
+import { Container } from "@/components/layout/Container";
 import { Metadata } from "next";
 import { resume } from "../../../lib/resume";
 import PrintButton from "./components/PrintButton";
@@ -22,10 +23,9 @@ export const metadata: Metadata = {
 
 const Resume = () => {
   return (
-    <div>
+    <Container>
       <PrintButton />
-      <div className="py-1"></div>
-      <div className="max-w-2xl mx-auto">
+      <div>
         <Basics basics={resume.basics} />
         <Work works={resume.work} />
         <Projects projects={resume.projects} />
@@ -33,7 +33,7 @@ const Resume = () => {
         <Skills skills={resume.skills} />
         <Language languages={resume.languages} />
       </div>
-    </div>
+    </Container>
   );
 };
 

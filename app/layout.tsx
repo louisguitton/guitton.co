@@ -1,6 +1,7 @@
+import Footer from "@/components/navigation/Footer";
+import Header from "@/components/navigation/Header";
 import GAScript from "@/lib/ga/GAScript";
 import { cn } from "@/lib/utils";
-import { bg, px } from "@/styles/constants";
 import "@/styles/globals.css";
 import "@/styles/prism.css";
 import "@/styles/socials.css";
@@ -8,8 +9,6 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Metadata } from "next";
 import { SocialProfileJsonLd } from "next-seo";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 config.autoAddCss = false;
 
 export const metadata: Metadata = {
@@ -50,17 +49,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          "flex flex-col",
-          "h-screen",
-          "max-w-screen-md mx-auto",
-          bg
-        )}
-      >
+    <html
+      lang="en"
+      className={cn("h-full", "bg-background", "text-base antialiased")}
+    >
+      <body className={cn("flex flex-col", "min-h-full")}>
         <Header />
-        <main className={cn("flex-grow", px)}>{children}</main>
+        <main className={cn("flex-grow", "px-1 sm:px-8 print:px-8")}>
+          {children}
+        </main>
         <Footer />
         <GAScript />
         <SocialProfileJsonLd

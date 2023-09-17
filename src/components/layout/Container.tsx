@@ -16,13 +16,11 @@ export function Container<T extends React.ElementType = "div">({
 
   return (
     <Component
-      className={clsx(
-        "mx-auto max-w-7xl",
-        // "px-6 lg:px-8",
-        className
-      )}
+      className={clsx("mx-auto max-w-screen-md", "px-6 lg:px-8", className)}
     >
-      <div className="mx-auto max-w-2xl lg:max-w-none">{children}</div>
+      {/* <div className="mx-auto max-w-2xl lg:max-w-none"> */}
+      {children}
+      {/* </div> */}
     </Component>
   );
 }

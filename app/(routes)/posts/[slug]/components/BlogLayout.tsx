@@ -1,10 +1,11 @@
+import PostCategory from "@/components/blog/PostCategory";
+import YoutubeEmbed from "@/components/blog/YoutubeEmbed";
+import { Container } from "@/components/layout/Container";
 import { CalendarIcon, CollectionIcon } from "@heroicons/react/solid";
 import { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
-import PostCategory from "./PostCategory";
-import YoutubeEmbed from "./YoutubeEmbed";
 
 const mdxComponents = {
   YoutubeEmbed,
@@ -14,8 +15,11 @@ const mdxComponents = {
 const BlogLayout: React.FC<{ post: Post }> = ({ post }) => {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <article className="relative px-4 sm:px-6 lg:px-8 print:px-8 pt-12">
-      <div className="mx-auto text-lg max-w-prose">
+    <Container
+      as="article"
+      className="relative px-4 sm:px-6 lg:px-8 print:px-8 pt-12"
+    >
+      <div className="text-lg">
         <div className="relative w-full h-96">
           <Image
             src={post.image}
@@ -42,7 +46,7 @@ const BlogLayout: React.FC<{ post: Post }> = ({ post }) => {
       <div className="mx-auto mt-6 prose prose-indigo">
         <MDXContent components={mdxComponents} />
       </div>
-    </article>
+    </Container>
   );
 };
 

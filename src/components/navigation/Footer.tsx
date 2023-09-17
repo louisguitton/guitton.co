@@ -1,5 +1,6 @@
 // Ref: https://devdojo.com/tails/app#_ Footer 3
 
+import { Container } from "@/components/layout/Container";
 import {
   IconDefinition,
   faGithub,
@@ -10,7 +11,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import Link from "next/link";
-import { px } from "../src/styles/constants";
 
 function isExternal(href: string) {
   return href.startsWith("http");
@@ -76,8 +76,9 @@ const navigation: {
 
 const Footer: React.FC = () => {
   return (
-    <footer
-      className={clsx(px, "pt-12", "print:hidden")}
+    <Container
+      as="footer"
+      className="px-1 pt-12 w-full sm:px-8 print:px-8 print:hidden"
       aria-labelledby="footer-heading"
     >
       <div
@@ -127,7 +128,7 @@ const Footer: React.FC = () => {
           </p>
         </div>
       </div>
-    </footer>
+    </Container>
   );
 };
 
