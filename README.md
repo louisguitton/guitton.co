@@ -7,10 +7,11 @@ Urgent:
   - [ ] add newsletter signup pointing to Hubspot for Blog
   - [ ] replace contact form with leadgen form pointing to Hubspot for Freelance services
 
+- [ ] remove headlessui in favor of shadcn
+
 High:
 
 - [ ] add "Download CV" CTA for resume
-- [ ] add past work page
 - [ ] add precommit hooks
 
 Future:

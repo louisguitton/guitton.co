@@ -18,7 +18,7 @@ import { Switch } from "../ui/switch";
 import { Textarea } from "../ui/textarea";
 import { toast } from "../ui/use-toast";
 
-const formSchema = z.object({
+export const formSchema = z.object({
   "first-name": z.string().min(2).max(50),
   "last-name": z.string().min(2).max(50),
   email: z.string().email(),
@@ -35,6 +35,15 @@ const WorkInquiries = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    await fetch("/api/submit", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
     toast({
       title: "You submitted the following values:",
       description: (
@@ -166,7 +175,7 @@ const WorkInquiries = () => {
                     <FormLabel className="text-base text-white">
                       Privacy policy
                     </FormLabel>
-                    <FormDescription>
+                    <FormDescription className="text-base text-gray-300">
                       You agree to your data being processed by my website
                     </FormDescription>
                   </div>
