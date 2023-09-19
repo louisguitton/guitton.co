@@ -8,6 +8,8 @@ Urgent:
   - [ ] replace contact form with leadgen form pointing to Hubspot for Freelance services
 
 - [ ] remove headlessui in favor of shadcn
+  - [ ] migrate nav
+  - [ ] migrate mobile contact form
 
 High:
 

@@ -37,7 +37,6 @@
     "esbuild": "^0.14.10",
     "googleapis": "^126.0.1",
     "graphql": "^16.2.0",
-    "gray-matter": "^4.0.3",
     "hastscript": "^7.0.2",
     "lucide-react": "^0.263.1",
     "moment": "^2.29.1",
