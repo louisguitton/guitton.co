@@ -7,7 +7,7 @@ const Location: FC<{ location?: Location }> = ({ location }) => {
     return (
       <span className="flex font-bold text-gray-500">
         <LocationMarkerIcon className="w-4 h-4" />
-        <span className="">{`${location.city}, (${location.countryCode})`}</span>
+        <span className="">{`${location.city}, ${location.countryCode}`}</span>
       </span>
     );
   }

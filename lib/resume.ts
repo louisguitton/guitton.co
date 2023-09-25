@@ -150,6 +150,25 @@ export const resume: JsonResume = {
   work: [
     {
       highlights: [
+        "Explored the sustainability space to accelerate the energy transition of french companies with tech and data",
+        "Built a B2B SaaS prospecting tool for commercial solar carports installers",
+        "Included map view and table views, integration to CRM",
+        "Built prototype for Solar PV Monitoring software solution",
+        "Included data acquisition with Webdyn data logger using ModBus, real-time and batch data architectures",
+      ],
+      location: {
+        city: "Berlin",
+        countryCode: "DE",
+      },
+      name: "Alto Lab",
+      position: "Co-Founder and CTO",
+      startDate: "2023-04-03",
+      endDate: "2023-09-29",
+      summary: "B2B SaaS for Solar PV in France",
+      url: "https://expert.altolab.net/",
+    },
+    {
+      highlights: [
         "Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity",
         "Lead the company through steep headcount growth from 2 people to 45",
         "Hired and built 2 high-performing engineering teams over 3 months, managed 4 teams at peak",
