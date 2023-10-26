@@ -13,6 +13,7 @@ Urgent:
 
 High:
 
+- [ ] add <https://env.t3.gg/>
 - [ ] add "Download CV" CTA for resume
 - [ ] add precommit hooks
 
