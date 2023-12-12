@@ -27,9 +27,11 @@ function Hero() {
           </span>
         </h1>
         <p className="mt-3 text-sm text-gray-500 sm:mt-5 print:mt-5">
-          Building for myself first, for fun and learnings. Experienced with
-          Natural Language Processing, Recommenders Systems, MVP Building and
-          the Flow blockchain.
+          I am the ex-VP of Engineering at OneFootball Labs in Berlin, Germany.
+          I am experienced with Natural Language Processing, Recommenders
+          Systems, MVP Building and the Flow blockchain. I team up with clients
+          to design and build transformative digital solutions, in particular in
+          the Sustainability space.
         </p>
       </div>
       <button
