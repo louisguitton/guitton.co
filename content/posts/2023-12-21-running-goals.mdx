@@ -1,0 +1,239 @@
+---
+title: "How To Build and Interpret a Nomogram for Setting Better Running Goals"
+lastmod: "2023-12-21"
+summary: >
+    I built a tool called a Nomogram to help me set better running goals, which I will share in this article.
+    Using this tool can help you set difficult and specific goals.
+categories:
+  - Ideas
+series:
+  -
+image: /images/running-goals/step_3.png
+---
+
+Whether you're starting your fitness journey or planning your next running season,
+you will need to understand where you are, measure your progress and set running goals.
+I had to do it myself when I started running this summer, and I was lost.
+
+I turned to my Data Science and Engineering background and built a tool 
+called a Nomogram to assist me.
+
+This guide provides a nonstatistical audience with a methodological approach for building, 
+interpreting, and using nomograms to estimate running fitness and set difficult and specific goals.
+If you do not know what a Nomogram is, don't worry, 
+I will explain it step by step in the rest of the article.
+
+
+## Brief Review of Goal Setting Theory and Discussion on Performance
+
+Although this article deals with setting better goals, this is not a [Goal Setting](https://en.wikipedia.org/wiki/Goal_setting) blog post.
+Setting goals is part of any self-improvement approach, and fitness or running is no exception.
+
+When setting out to set your own goals, it's easy to get lost in the profusion of acronyms and fields in which goal setting is used: 
+- Psychology (e.g. WOOP: Wish, Outcome, Obstacle, Plan)
+- Self-help (e.g. SMART: Specific, Measurable, Achievable, Relevant, and Time-Bound)
+- Business (e.g. OKRs and KPIs: Objectives, Key Results, Key Performance Indicators)
+
+Sometimes, goals are even set for us, by our employer, our doctor, our coach, our family, our friends, our insurance company.
+For example, my health insurance gives me a few basic fitness advice:
+- "do 60k steps per week, use an app to track them"
+- "climb stairs"
+- "reduce stress (eustress vs distress)"
+- "take breaks at work, move 2h out of 8h of your workday"
+
+Although I'm no stranger to setting goals, I was lost when I started running this summer.
+Until I re-discovered the Locke theory of goal setting.
+In 1968, Edwin Locke published a paper called "Toward a Theory of Task Motivation and Incentives" in which he proposed that:
+
+> "After controlling for ability, goals that are difficult to achieve and specific
+tend to increase performance far more than easy goals, no goals or telling people to do their best.
+It therefore follows that the simplest motivational explanation of why some individuals
+outperform others is that they have different goals."
+
+The first part of this quote is key: "After controlling for ability".
+The verb [control is used in its statistical sense](https://en.wiktionary.org/wiki/control), meaning that the effect of ability is removed from the equation.
+In other words, we all have different running fitness levels, and we need to control for that when setting goals.
+
+The second part of the quote calls for a disclaimer: by following this approach, we bias ourselves towards performance.
+There are plenty of other motivations for running, and they are perfectly valid:
+
+<figure>
+    <img src="/images/running-goals/running_motivations.png" alt="Different valid motivations for running" />
+    <figcaption>It's not all about performance, there are other valid motivations for running</figcaption>
+</figure>
+
+But if for the rest of this post we focus on performance, we also need to realise that performance is a result of many factors.
+For example, the blog post ["Why are you so slow?"](https://www.allendowney.com/blog/2023/10/28/why-are-you-so-slow/) 
+uses a statistical model to reveal that running speeds for a 200m dash is influenced by 5 factors of which the weakest link is the limiting factor.
+In other words, if you want to improve your 200m dash time, you need to improve your height, weight, fast- and slow-twitch muscle mass, cardiovascular conditioning, flexibility and elasticity.
+The research paper [Factors associated with high-level endurance performance](https://pubmed.ncbi.nlm.nih.gov/36574415/) goes even further and lists 26 factors that influence endurance running performance.
+I will spare you the detail and leave only a figure from the paper that summarises the factors:
+
+<figure>
+    <img src="/images/running-goals/consensus_report_fendle_factors.png" alt="Consensus report on FENDLE factors: 26 factors that influence high-level running performance" />
+    <figcaption>Consensus report on the 26 factors (FENDLE) that influence high-level endurance running performance</figcaption>
+</figure>
+
+In don't know about you, but this is too many factors for it to be practical.
+So I started looking for a single numerical estimate of my running fitness that I could use to set goals.
+It should be easy to measure, easy to understand, and easy to compare to others.
+Most importantly, it should be tailored to my individual profile.
+
+## French Engineering for the Win with Nomograms
+
+[Nomograms](https://en.wikipedia.org/wiki/Nomogram) are graphical calculating devices that look like a 2D diagram
+and that allows approximate computations.
+> The field of nomography was invented in 1884 by the French engineer Philbert Maurice d'Ocagne (1862–1938) and used extensively for many years 
+to provide engineers with fast graphical calculations of complicated formulas to a practical precision. 
+
+Historically, they were used in civil engineering. Place yourself if 1843, you are a civil engineer, and you need to calculate the volume of earth to be moved for a road or a railway.
+You have a formula, but it's complicated and you don't have a computer to do the calculation for you.
+At that time, the French administration would send you a graphical table to help you with the calculation.
+Just a few years later in 1846, Léon Lalanne, a French engineer, published a nomogram called "Abaque ou compteur universel" in which he explains how to use a nomogram to do all sorts of calculations (he was an engineer from Ecole Polytechnique and [Ecole des Ponts](https://en.wikipedia.org/wiki/%C3%89cole_des_ponts_ParisTech)).
+
+<figure>
+<img src="/images/running-goals/abaque_calcul.png" alt="Abacus of the universal calculator by Leon Lalanne 1843" />
+<figcaption>Abacus of the universal calculator by Leon Lalanne 1843</figcaption>
+</figure>
+
+Later, in 1867, Eduard Lill, an Austrian engineer and Captain of [Military Engineering](https://en.wikipedia.org/wiki/Military_engineering), published a nomogram to solve quadratic equations (`x2 + px + q = 0`). 
+So yeah, this was not just a french thing.
+
+Recently, nomograms were used beyond civil engineering, 
+especially in the field of electrical engineering (e.g. for resistors, inductance), 
+mechanical engineering (e.g. for gears), 
+and chemical engineering (e.g. for material state changes).
+
+Today, they are mostly used for education purposes, their practical usage being replaced by computers.
+Except for a few domains, e.g. [cancer prognosis](https://ascopubs.org/doi/pdf/10.1200/JCO.2007.12.9791?role=tab).
+
+Being a french engineer, I have had the pleasure to study "Abaques" (the french word for Nomograms which would translate to Abacuses).
+I have in particular been influenced by the nomogram used in optical engineering for the [Lensmaker's equation](https://en.wikipedia.org/wiki/Lens#Lensmaker's_equation)
+and [level sets](https://en.wikipedia.org/wiki/Level_set) ("abaques de Pouchet" or "lignes de niveaux" in french)
+
+<figure>
+<img src="/images/running-goals/abaque_optique.png" alt="Nomogram used in optical engineering for the Lensmaker's equation" />
+<figcaption>Nomogram used in optical engineering for the Lensmaker's equation</figcaption>
+</figure>
+
+
+### the quest for the right 2D space
+
+- the need for a 2D space
+- requirements
+    - that lets you compare yourself to others -> professionals and amateurs share an axis -> it's a continuum
+    - lets you represent equivalence between type of runs or races -> from sprint to long endurance -> it's a continuum
+    - that can be used to summarise your progress with 1 KPI (e.g. out of 10 or out of 100, e.g. VO2max)
+- so far the most used single KPI to summarise my progress I had met was VO2max (on my Garmin watch + VO2max test with Demi-cooper or Vameval test)
+    - 6 min all-out effort
+    - look at the distance covered, multiply by 10
+    - this gives you vVO2max
+    - problem = you need to know your pace upfront so it's chicken and egg
+    - there are other ways to estinate VO2max (e.g. Garmin watch, or runner's world treadmill progressive VO2max test) 
+    - but for me VO2max started losing importance because my typical efforts (e.g. a 60min football game, a 2h bike tour, a 10km running race) are much longer than 6 minutes
+- but I started to feel that there were other KPIs able to summarise my progress
+- in particular, I noticed that my average pace on a 60min Z2 jog was improving 
+    - cf "heart rate training" trend
+    - stay in Z2 for 60 min, nasal breathing etc.
+    - look at the distance covered at the end, or the average pace, and you get a good 
+- enters the Critical Speed or Critical Power body of research
+- Critical Speed can replace vVO2max as a surrogate estimate of fitness
+- any measure of fitness is a proxy to detect physiological changes of states
+- [insert image from Upside Strength on 3 zones and physiological changes]
+- so far we know about 3 zone models and polarised trainings
+- 2 thresholds SV1 and SV2 are usually measured with lactate and ventilatory (SmO2)
+- [insert image of profilage physiologique from a youtubeur]
+- those methods are not affordable and invasive wich make them hard to conduct frequently to tryly measure progress
+- so what can we us non-youtubers do?
+    - SV1 can be proxied by nasal breathing as well as observing your HR and refining your HR zones
+    - for SV2, Critical speed on the other hand was found to be quite close to SV2 while being easy to calculate
+- fit hyperbola model to 400m, 800m, 5km of your personal TT ➝ cf https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7664951/ and https://www.remirivet.com/company/vcritique
+- it is tied to a physiological change and it ticks all the boxes from my requirements above
+
+### Let's build our own Nomogram
+
+### World records and the Valencia marathon
+    - let's get acquainted with the Abacus, and get a rough sense for the X and Y axis
+    - I've added a few World Records for men and women, in a few typical disciplines: 1mile, 5km, 10km, HM and Marathon
+        - puts the phrase "a world record athlete" in perspective: what would a world record athlete do?
+        - it forms the upper bound of our Y axis: above that line, no human has run faster
+        - note that line may move up in time due to training optimisation, new technology (shoes), doping drugs
+    - I've also looked at one of the fastest marathons: Valencia
+        - first for disqualification time
+            - although marathons welcome amateurs, they need to define a lower limit, for logistical reasons and economical reasons (maintain the brand value)
+            - la voiture balai
+            - this is the lower bound of our Y axis
+            - > the maximum official time for finishing the race being 5h:30:00, with this time limit not being exceeded under any circumstances.
+        - second for waves:
+            - at the start of a running event, the organiser staggers the athletes in so-called waves of people that hopefully run at a similar pace
+            - the main goal of waves is to limit the meandering needed to overtake a slower athlete, costing energy and time to the faster athelete overtaking
+            - an indirect benefit of waves is that it gives us the organiser's perspective on what they think the distribution of runners will be (if we assume they tried to dseign waves of comparable amount of athletes)  
+            - it's a definition along the Y axis
+        - third for sub elite
+            - what is a sub elite? what are the privileges? 
+            - official definition: > 6.4 Sub-elite bib status will apply to athletes who apply with times under 30:00 in a 10k race, 1h06:00 in a half marathon, or 2h20:00 in a marathon run in the last three years
+            - it's an interesting data point because it's a definition along the X axis
+
+### World Athletics disciplines
+- World athletics divides disciplines like this:
+    - Sprints, Hurdles and Relays: 100m 110mH 200m 300m 400m 400mH 4x100m 4x200m 4x400m
+    - Middle Distances (Courses de demi-fond): 600m 800m 1000m 1500m Mile 2000m
+    - Long Distances and Steeplechase (Courses de fond): 2000m SC 3000m 3000m SC 2 Miles 5000m 10000m
+    - Road Running: 10 km 15 km 10 Miles 20 km HM 25 km 30 km Marathon 100 km
+- most races organised in my area are 5km, 10km, HM and M. Very little or none for other disciplines
+- we create a context-aware grid that reflect these categories: 
+    - Road running -> 10km, HM, M
+    - Long Distance: 5km
+    - Middle distances: Mile
+    - Spint: we don't include it here because I'm less interested in sprinting and more towards endurance running. But the same principle would apply and we could use a 400m line
+- introduce a logarithmic view, explain why I keep the non-logarithmic one for simplicity
+
+
+### VDOT score
+- who is it from? -> a well reknomwn coach
+- how can it be used? -> calculator web or app
+- I have looked at the code from the web app and found the model in the code and used it to plot "iso-VDOT" curves
+    - along 1 such curve, the VDOT is always the same
+- the intervals were chosen to match the different VDOT levels in the app
+    - level 2 is VDOT = 40, level 3 is VDOT = 45 etc...
+    - I noticed that the levels were equally spaced at 5 points apart, so I have added 2 begineer friendly curves for VDOT 35 and 30 that bring us closer to the Valencia marathon disqualifying time
+- interpretation
+    - men world record athele is above VDOT 80
+    - women world record athlete is VDOT 75
+        - it seem the 5km women world record is underperforming the others
+        - I am predicting a new 5km women World Record at Paris 2024
+    - sub-elite athlete seems to be a bit above VDOT 70
+
+### IAAF points
+- Step 4: add IAAF points
+
+### Histogram of French athletes
+- Step 5: look at Base Athlé histogram
+
+### setting a difficult and specific goal
+- Step 6: add your own progression
+
+
+
+
+
+## Resources
+
+{/* A list of external sites you can link to */}
+1. [Goal setting - Wikipedia](https://en.wikipedia.org/wiki/Goal_setting)
+2. [control - Wiktionary, the free dictionary](https://en.wiktionary.org/wiki/control)
+3. [Why are you so slow? - Probably Overthinking It](https://www.allendowney.com/blog/2023/10/28/why-are-you-so-slow/)
+4. [Factors associated with high-level endurance performance: An expert consensus derived via the Delphi technique](https://pubmed.ncbi.nlm.nih.gov/36574415/)
+5. [Nomogram - Wikipedia](https://en.wikipedia.org/wiki/Nomogram)
+6. [Ecole des Ponts](https://en.wikipedia.org/wiki/%C3%89cole_des_ponts_ParisTech)
+7. [Military engineering - Wikipedia](https://en.wikipedia.org/wiki/Military_engineering)
+8. [How To Build and Interpret a Nomogram for Cancer Prognosis | Journal of Clinical Oncology](https://ascopubs.org/doi/pdf/10.1200/JCO.2007.12.9791?role=tab)
+9. [Lens - Wikipedia](https://en.wikipedia.org/wiki/Lens)
+10. [Level set - Wikipedia](https://en.wikipedia.org/wiki/Level_set)
+
+4. [A guide to heart rate training - Runner's World](https://www.runnersworld.com/uk/training/beginners/a760176/heart-rate-training-the-basics/)
+5. [Take your own VO2-max test - Runner's World](https://www.runnersworld.com/uk/training/a773454/take-your-own-vo2-max-test/)
+6. [User Profile Motivation - Garmin Connect](https://connect.garmin.com/modern/settings/publicProfile)
+7. [V.O2 Running Calculator](https://vdoto2.com/calculator/embed)
+8. [IAAF Scoring Calculator
+](https://caltaf.com/pointscalc/calc.html)
