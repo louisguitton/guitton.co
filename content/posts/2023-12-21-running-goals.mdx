@@ -221,7 +221,7 @@ multiple orders of magnitude but includes zero-valued data, like in this variant
 
 In the rest of the blog post, I decide to keep the linear scale as it makes the reading of the x-axis easier and puts more emphasis on endurance disciplines as opposed to sprint disciplines.
 
-## Adding a Y-axis grid
+## Adding a Y-axis grid with VDOT
 
 Here is the third version of our nomogram:
 <figure>
@@ -248,18 +248,67 @@ We can now interprete those curves. For example, Men world record atheles are ab
 It also seems that the 5km women world record is underperforming other women world records, which calls for a new world record at Paris 2024 maybe.
 The Valencia Broom Wagon has a VDOT of about 25, while sub-elite athletes seems to have a VDOT a little above 70.
 
-### IAAF points
-- Step 4: add IAAF points
+## IAAF points as an alternative to VDOT
 
-### Histogram of French athletes
-- Step 5: look at Base Athlé histogram
+World Athletics maintains a ranking of athletes based on their performance.
+They use a points system called IAAF points, similar to ATP points in Tennis.
+Here is an example of the [World Rankings | Women's Marathon](https://worldathletics.org/world-rankings/marathon/women?regionType=world&page=1&rankDate=2023-12-19):
 
-### setting a difficult and specific goal
-- Step 6: add your own progression
+<figure>
+<img src="/images/running-goals/iaaf_points.png" alt="World Athletics Rankings using IAAF points" />
+<figcaption>Example World Athletics Rankings using IAAF points</figcaption>
+</figure>
 
+**Do you know if you have scored your first IAAF point yet?**
+Go to this [IAAF Scoring Calculator](https://caltaf.com/pointscalc/calc.html) and enter your time for a given distance.
 
+Given that IAAF points are an official ranking, we could have plotted iso-IAAF curves on the monogram.
+But after trying that, I felt that this was not as clear as the VDOT curves.
+We can even show that the VDOT curves are a good approximation of the IAAF curves by plotting both on the same graph:
+<figure>
+<img src="/images/running-goals/step_4.png" alt="Relation between IAAF points and VDOT score" />
+<figcaption>Step 4: Relation between IAAF points and VDOT score</figcaption>
+</figure>
 
+Note: I was able to find the equation for IAAF curves by looking at the code of this [PHP library](https://github.com/GlaivePro/IaafPoints/tree/master) used by the Latvian Athletics Association and this [stackexchange answer](https://sports.stackexchange.com/questions/15533/how-to-calculate-iaaf-points).
 
+## Setting Realistic Goals by looking at French Athletics Open Data
+
+Now that we have a nomogram, we can use it to set a difficult and specific goal.
+Before that, we need to know what is a realistic performance.
+Turning to statistics, we can look at the distribution of performances of athletes in a given discipline.
+
+Thankfully, the French Athletics Federation has an [Open Data portal](https://bases.athle.fr/).
+We can crawl the data available at "Les Bilans" for a given discipline, and plot the distribution of performances.
+Here is the example of Men Half Marathon in 2023:
+<figure>
+<img src="/images/running-goals/step_5.png" alt="Step 5: Half Marathon performances for French men in 2023" />
+<figcaption>Step 5: Half Marathon performances for French men in 2023</figcaption>
+</figure>
+
+This looks like a log-normal distribution and we could certainly model this further and look at percentiles etc...
+However for this blog post, I will simply use a visual interpretation of a realistic performance.
+"Most people" seem to have a VDOT between 37 and 44.
+Therefore, **aiming for a VDOT of 45** seems like a difficult enough goal as a beginner to get ahead of the masses without setting the bar too high and being unrealistic.
+
+## Plotting your past performances and your future goals
+Here is the last stop on our nomogram journey:
+<figure>
+<img src="/images/running-goals/step_6.png" alt="Step 6: Running Nomogram with past performances and future goals" />
+<figcaption>Step 6: Running Nomogram with past performances and future goals</figcaption>
+</figure>
+
+Over the last few months, I have trained and raced a few times. I have added my past performances to the nomogram in orange.
+I have also added my future goals in blue. I will run my first Half Marathon in Berlin in April 2023, hoping to finish under 1h40, giving me a VDOT of 45.
+
+When you think about it, finishing a first Half-Marathon in under 1h40 is ambitious, but looking at the data here, I think it's a difficult and specific goal.
+I seem to already have a VDOT above 45, and I have a few months to train and improve my fitness further, specifically working on longer distance runs and making sure my VDOT score translates for bigger distances.
+
+## Conclusion
+
+This concludes my guide on how to build and interpret a nomogram to set better running goals.
+No matter your level in running, exercise physiology or statistics, I hope you have found something of value in this article.
+Feel free to use the nomogram I have built for your own goal setting, and let me know if you have any feedback.
 
 ## Resources
 
@@ -283,4 +332,8 @@ The Valencia Broom Wagon has a VDOT of about 25, while sub-elite athletes seems 
 17. [Regulations 42K 2024 · Valencia Ciudad del Running](https://www.valenciaciudaddelrunning.com/en/marathon/regulations-42k-2024/)
 18. [Jack Daniels (coach) - Wikipedia](https://en.wikipedia.org/wiki/Jack_Daniels_(coach)#VDOT)
 19. [V.O2 Running Calculator](https://vdoto2.com/calculator/embed)
-8. [IAAF Scoring Calculator](https://caltaf.com/pointscalc/calc.html)
+20. [World Rankings | Women's Marathon](https://worldathletics.org/world-rankings/marathon/women?regionType=world&page=1&rankDate=2023-12-19):
+21. [IAAF Scoring Calculator](https://caltaf.com/pointscalc/calc.html)
+22. [GlaivePro/IaafPoints: PHP library to calculate IAAF scoring points of athletics and IAAF scoring points for combined events.](https://github.com/GlaivePro/IaafPoints/tree/master)
+23. [statistics - How to calculate IAAF points? - Sports Stack Exchange](https://sports.stackexchange.com/questions/15533/how-to-calculate-iaaf-points)
+24. [Base de Données - Fédération Française d'Athlétisme](https://bases.athle.fr/)
