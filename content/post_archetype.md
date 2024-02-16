@@ -1,4 +1,16 @@
- # archetype
+---
+title: "Turning 30 and Time Perception"
+lastmod: "2023-10-26"
+summary: >
+  My perception of time has been a recurring object of introspection, and over the years I've noticed a few things that I share in this blog post as I'm about to turn 30 years old.
+categories:
+  - Ideas
+series:
+  -
+image: /images/turning-30/time_markers.png
+---
+
+# archetype
 
 ## headline
 
