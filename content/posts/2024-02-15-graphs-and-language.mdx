@@ -10,8 +10,8 @@ series:
 image: /images/graphs-and-language/talk.png
 ---
 
-A rising tide lifts all boats, and the recent advances in LLMs are no exception.
-In this blog post, we will explore how Knowledge Graphs can benefit from LLMs, and vice versa.
+**A rising tide lifts all boats**, and the recent advances in LLMs are no exception.
+In this blog post we will explore how Knowledge Graphs can benefit from LLMs, and vice versa.
 
 <figure>
   <img
@@ -19,32 +19,34 @@ In this blog post, we will explore how Knowledge Graphs can benefit from LLMs, a
     alt="Where do KGs fit with LLMs?"
   />
   <figcaption>
-    Where do Knowledge Graphs fit with Large Language Models
+    Where do Knowledge Graphs fit with Large Language Models?
   </figcaption>
 </figure>
 
 In particular, Knowledge Graphs can ground LLMs with facts using Graph RAG, which can be cheaper than Vector RAG.
-We'll have a look at a 10 line code example in LlamaIndex, and see how easy it is to get started.
+We'll look at a 10-line code example in LlamaIndex, and see how easy it is to get started.
 LLMs can help build automated KGs, which have been a bottleneck in the past.
-And Graphs can provide your Domain Experts with an interface to supervise your AI systems.
+Graphs can provide your Domain Experts with an interface to supervise your AI systems.
 
 _Note: this is a written version of a talk I gave at the [AI in Production online conference](https://home.mlops.community/home/events/ai-in-production-2024-02-15) on February 15th, 2024.
 You can watch the talk here (link coming)._
 
 <figure>
   <img src="/images/graphs-and-language/recap.png" alt="Talk overview" />
-  <figcaption>Summary of the talk</figcaption>
+  <figcaption>Overview of the talk</figcaption>
 </figure>
 
 ## A trip down memory lane at Spacy IRL 2019
 
 I've been working with Natural Language Processing for a few years now, and I've seen the rise of Large Language Models.
-The bulk of my NLP and Graphs work I did starting 2018, applied to the Sports Media domain, when I worked as Machine Learning Engineer at OneFootball, a football media company from Berlin, Germany.
+The start of my NLP and Graphs work dates back to 2018, applied to the Sports Media domain
+when I worked as Machine Learning Engineer at OneFootball, a football media company from Berlin, Germany.
 
-As a practioner with a practical business use case, I remember that time well because it was a time of great change in the NLP field.
-We were moving from the era of rule-based systems and word embeddings to the era of deep learning, moving from LSTMs to a slew of models like Elmo or ULMfit based on transformer architecture.
-I was one of the lucky fews that could attend the [Spacy IRL 2019](https://irl.spacy.io/2019/) conference in Berlin.
-There were corporate training workshops, as well as talks about Transformers, conversational AI assistants, and applied NLP in finance or media.
+As a practioner, I remember that time well because it was a time of great change in the NLP field.
+We were moving from the era of rule-based systems and word embeddings to the era of deep learning,
+moving from LSTMs to a slew of models like Elmo or ULMfit based on the transformer architecture.
+I was one of the lucky few that could attend the [Spacy IRL 2019](https://irl.spacy.io/2019/) conference in Berlin.
+There were corporate training workshops followed by talks about Transformers, conversational AI assistants, and applied NLP in finance or media.
 
 <div
   style={{
@@ -68,9 +70,12 @@ There were corporate training workshops, as well as talks about Transformers, co
 </div>
 
 In his keynote, [The missing elements in NLP (spaCy IRL 2019)](https://www.youtube.com/watch?v=e12danHhlic),
-Yoav Goldberg predicts that the next big thing in NLP will be to **enable non-experts to use NLP**, he was right ✅.
-He thought we would get there by **humans writing rules aided by Deep Learning resulting in transparent and debuggable models**, he was wrong on that one ❌.
-We got there with chat, and we now have less transparent and less debuggable models. In fact, we moved further right and down on his chart, to a place deeper than Deep Learning.
+Yoav Goldberg predicts that the next big development will be to **enable non-experts to use NLP**.
+He was right ✅.
+He thought we would get there by **humans writing rules aided by Deep Learning resulting in transparent and debuggable models**.
+He was wrong ❌.
+We got there with chat, and we now have less transparent and less debuggable models.
+In fact, we moved further right and down on his chart to a place deeper than Deep Learning.
 I believe, like him at the time, that there is still room to go to the bottom left.
 
 <figure>
@@ -83,19 +88,20 @@ I believe, like him at the time, that there is still room to go to the bottom le
   </figcaption>
 </figure>
 
-In the context of my employer at the time, OneFootball, a football media in 12 languages with 10 million monthly active users, we were using NLP to assist our newsroom and unlock new product features.
+In the context of my employer at the time, OneFootball, a football media in 12 languages with 10 million monthly active users,
+we used NLP to assist our newsroom and unlock new product features.
 I built systems to extract entities and relations from football articles, tag the news, and recommend articles to users.
-I talked about some of that work in a [previous talk](https://www.youtube.com/watch?v=QvNv402WBSY&t=1057s) at a Berlin NLP meetup.
+I shared some of that work in a [previous talk](https://www.youtube.com/watch?v=QvNv402WBSY&t=1057s) at a Berlin NLP meetup.
 We had medium data, not a lot. And we had partial labels in the form of "retags".
 We also could not pay for much compute. So we had to be creative.
-This was the realm of **Applied NLP**.
+It was the realm of **Applied NLP**.
 
 That's where I stumbled upon the beautiful world of Graphs, specifically the great work from my now friend [Paco Nathan](https://derwen.ai/paco)
 with his library <em>[pytextrank](https://spacy.io/universe/project/spacy-pytextrank)</em>.
 Graphs (along with rule-based matchers, weak supervision, and other NLP tricks I applied over the years) helped me
-work with **little** annotated data, and incorporate **declarative knowledge** from domain experts,
+work with **little** annotated data and incorporate **declarative knowledge** from domain experts
 while building a system that could be used and maintained by non-experts, with some level of **human+machine collaboration**.
-We shipped a much better tagging system, a new recommendation system, and I was hooked.
+We shipped a much better tagging system and a new recommendation system, and I was hooked.
 
 Today with the rise of LLMs, I see a lot of potential to combine the two worlds of Graphs and LLMs, and I want to share that with you.
 
@@ -104,38 +110,90 @@ Today with the rise of LLMs, I see a lot of potential to combine the two worlds 
 ### 1.1 Fine-tuning vs Retrieval-Augmented Generation
 
 The first place where Graphs and LLMs meet is in the area of fact grounding.
-LLMs have been found to suffer from a few issues like hallucination, knowledge cut-off, bias, and lack of control.
-In order to go around those issues, people have turned to their repositories of domain data.
-And soon 2 approaches where in front of us: Fine Tuning or Retrieval-Augmented Generation (RAG).
+LLMs suffer from a few issues like hallucination, knowledge cut-off, bias, and lack of control.
+To circumvent those issues, people have turned to their available domain data.
+And soon, two approaches were in front of us: Fine Tuning or Retrieval-Augmented Generation (RAG).
 
 In his talk at the AI Conference 3 months ago, [LLMs in Production](https://www.youtube.com/watch?v=xa7k9MUeIdk),
-Dr. Waleed Kadous, Chief Scientist at AnyScale sheds some light on how to navigate the trade-offs between the two approaches.
+Dr. Waleed Kadous, Chief Scientist at AnyScale, sheds some light on navigating the trade-offs between the two approaches.
 **"Fine-tuning is for form, not facts"**, [he says](https://www.anyscale.com/blog/fine-tuning-is-for-form-not-facts). **"RAG is for facts"**.
 
-Fine tuning will get easier and cheaper. Open source libraries like [OpenAccess-AI-Collective/axolotl](https://github.com/OpenAccess-AI-Collective/axolotl)
+Fine-tuning will get easier and cheaper. Open-source libraries like [OpenAccess-AI-Collective/axolotl](https://github.com/OpenAccess-AI-Collective/axolotl)
 and [huggingface/trl](https://github.com/huggingface/trl) already make this process easier.
-But it's still resource intensive and is something that requires more NLP maturity as a business. RAG is something that can be done today.
+But, it's still resource-intensive and requires more NLP maturity as a business. RAG is more accessible, on the other hand.
 
-And according to this Hacker News thread from 2 months ago, [Ask HN: How do I train a custom LLM/ChatGPT on my own documents in Dec 2023?](https://news.ycombinator.com/item?id=38759877)
-the vast majority of practitioners is indeed using RAG rather than fine-tuning.
+And according to this Hacker News thread from 2 months ago, [Ask HN: How do I train a custom LLM/ChatGPT on my documents in Dec 2023?](https://news.ycombinator.com/item?id=38759877)
+the vast majority of practitioners are indeed using RAG rather than fine-tuning.
 
 ### 1.2 Vector RAG vs Graph RAG
 
-- the other thing is that Vector RAG is quite costly, let's look at this tutorial from NebulaGraph
-- so first, there's not just 1 RAG; there's Structured vs Unstructured, Vector vs Graph etc... and your results depending on your architecture may vary
-- and then, Graph RAG is more concise and cheaper
+When people say RAG, they usually mean Vector RAG, which is a retrieval system based on a Vector Database.
+In their [blog post](https://www.nebula-graph.io/posts/graph-RAG) and accompanying [notebook tutorial](https://www.siwei.io/en/demos/graph-rag/),
+NebulaGraph introduces Graph RAG, which is a retrieval system based on a Graph Database (which they conveniently sell).
+They show that the facts retrieved by the RAG system will vary based on the chosen architecture.
+
+They also show in a separate [tutorial part of the LlamaIndex docs](https://docs.llamaindex.ai/en/v0.9.10/examples/index_structs/knowledge_graph/KnowledgeGraphIndex_vs_VectorStoreIndex_vs_CustomIndex_combined.html#comparison-of-results) that
+Graph RAG is **more concise** and hence **cheaper** in terms of tokens than Vector RAG.
 
 ### 1.3 RAG Zoo
 
-- I tried to make some diagrams to illustrate the differences and similarities of the RAG architectures
-- in all cases, we ask a question in NL, we get an answer in NL, and a LLM is used to generate an answer
-- but then they start to differ. On the top left Vector RAG embeds the query and retrieves documents from the Vector DB
-- On the top right, Graph RAG extract keywords from the query and retrieves triples from the graph that match the keyword
+To make sense of the different RAG architectures, consider the following diagrams I created:
+
+<figure>
+  <img src="/images/graphs-and-language/rag.png" alt="RAG Zoo" />
+  <figcaption>Differences and similarities of the RAG architectures</figcaption>
+</figure>
+
+In all cases, we ask a question in natural language Q<sub>NL</sub>
+and we get an answer in natural language A<sub>NL</sub>.
+In all cases, a LLM is used to generate the answer ("Answer Gen").
+
+**Vector RAG** embeds the query (usually with a smaller model than the LLM; something like FlagEmbeddings) into a vector v<sub>Q</sub>.
+It then retrieves the top-k document chunks from the Vector DB that are closest to v<sub>Q</sub> and returns the vectors and chunks (v<sub>j</sub>, C<sub>j</sub>).
+Those are passed along with Q<sub>NL</sub> to the LLM, which generates the answer A<sub>NL</sub>.
+
+**Graph RAG** extracts the keywords from the query k<sub>i</sub> and retrieves triples from the graph that match the keyword.
+It then passes the triples (s<sub>j</sub>, p<sub>j</sub>, o<sub>j</sub>) along with Q<sub>NL</sub> to the LLM, which generates the answer A<sub>NL</sub>.
+
+**Structured RAG** uses a model (LLM or smaller fine-tuned model) to generate a query in the database's query language.
+It could generate a SQL query for a RDBMS or a Cypher query for a Graph DB.
+For example, let's imagine we query a RDBMS. The model will generate Q<sub>SQL</sub> which is then passed to the database to retrieve the answer.
+We note the answer A<sub>SQL</sub> but it's basically data records that result from running Q<sub>SQL</sub> in the database.
+The answer A<sub>SQL</sub> as wel as Q<sub>NL</sub> are passed to the LLM to generate A<sub>NL</sub>.
+
+In the case of **Hybrid RAG**, the system uses a combination of the above.
 
 ### 1.4 Graph RAG implementation in LlamaIndex
 
-- here is what we can do with current frameworks, in particular LlamaIndex
-- that's 10 lines of python
+And now for the code, with the current frameworks we can build a Graph RAG system in 10 lines of python.
+
+```python
+from llama_index.llms import Ollama
+from llama_index import ServiceContext
+from llama_index import KnowledgeGraphIndex
+from llama_index.retrievers import (KnowledgeGraphRAGRetriever, KGTableRetriever)
+from llama_index.graph_stores import Neo4jGraphStore
+from llama_index.storage.storage_context import StorageContext
+from llama_index.query_engine import RetrieverQueryEngine
+from llama_index.data_structs.data_structs import KG
+from IPython.display import Markdown, display
+
+llm = Ollama(model='mistral', base_url="http://localhost:11434")
+service_context = ServiceContext.from_defaults(llm=llm, embed_model="local:BAAI/bge-small-en")
+
+graph_store = Neo4jGraphStore(username="neo4j", password="password", url="bolt://localhost:7687", database="neo4j")
+storage_context = StorageContext.from_defaults(graph_store=graph_store)
+
+kg_index = KnowledgeGraphIndex(index_struct=KG(index_id="vector"), service_context=service_context, storage_context=storage_context)
+graph_rag_retriever = KGTableRetriever(index=kg_index, retriever_mode="keyword")
+
+kg_rag_query_engine = RetrieverQueryEngine.from_args(retriever=graph_rag_retriever, service_context=service_context)
+
+response_graph_rag = kg_rag_query_engine.query("Tell me about Peter Quill.")
+display(Markdown(f"<b>{response_graph_rag}</b>"))
+```
+
+This snippet supposes you have Ollama serving a model called "mistral" and a Neo4j database running locally.
 
 ## 2. KG construction
 
@@ -246,12 +304,17 @@ and more importantly with a double human filter on top, thus working with machin
 
 ## Conclusion
 
-{/* jacques cousteau quote? */}
-I presented here a few ways in which Graphs and LLMs can work together.
-I remember those days from 2019 vividly, and although we've gone one level deeper into the abyss of Deep Learning,
-I believe there is still room for innovation to let Humans use NLP systems without expertise, with more control, and with more transparency.
+I remember those 2019 days vividly, moving from LSTMs to Transformers, and we thought _that_ was Deep Learning.
+Now, with LLMs, we've reached **Abysmal Learning**.
 
-Graphs can hopefully help with that, as they have in the past, and I'm excited to see what the future holds.
+More than ever, we need more control, more transparency, and ways for humans to work with machines.
+In this blog post, we've seen here a few ways in which Graphs and LLMs can work together to help with that, and
+I'm excited to see what the future holds.
+
+<figure>
+  <img src="/images/graphs-and-language/abysmal.png" alt="Abysmal Learning" />
+  <figcaption>Deeper than Deep Learning: Abysmal Learning</figcaption>
+</figure>
 
 ## Resources
 
