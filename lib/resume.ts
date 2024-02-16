@@ -22,7 +22,7 @@ export const resume: JsonResume = {
   basics: {
     email: "admin@guitton.co",
     image: "/images/louis.jpg",
-    label: "Engineering Manager",
+    label: "Solutions Architect",
     location: {
       city: "Berlin",
       countryCode: "DE",
@@ -150,33 +150,32 @@ export const resume: JsonResume = {
   work: [
     {
       highlights: [
-        "Explored the sustainability space to accelerate the energy transition of french companies with tech and data",
-        "Built a B2B SaaS prospecting tool for commercial solar carports installers",
-        "Included map view and table views, integration to CRM",
-        "Built prototype for Solar PV Monitoring software solution",
-        "Included data acquisition with Webdyn data logger using ModBus, real-time and batch data architectures",
+        "<b>Design and build transformative digital solutions</b> for clients",
+        "Digital integration and Product Strategy for a client in the precision livestock farming space",
+        "Explored the sustainability space and built a B2B SaaS prospecting tool for commercial solar carports installers",
+        "Built a prototype for Solar PV Monitoring software solution",
       ],
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
-      name: "Alto Lab",
-      position: "Co-Founder and CTO",
+      name: "guitton.co",
+      position: "Freelance Solutions Architect",
       startDate: "2023-04-03",
-      endDate: "2023-09-29",
-      summary: "B2B SaaS for Solar PV in France",
-      url: "https://expert.altolab.net/",
+      // endDate: "2023",
+      summary: "Self-employed",
+      url: "https://guitton.co/",
     },
     {
       highlights: [
         "Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity",
         "Lead the company through steep headcount growth from 2 people to 45",
-        "Hired and built 2 high-performing engineering teams over 3 months, managed 4 teams at peak",
+        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 4 teams at peak",
         // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
         // building teams that focus on impact, technical excellence, and transparency
-        "Built blockchain MVP including smart contract, frontend, and backend",
+        "<b>Architected the tech stack</b> and built blockchain MVP including smart contract, frontend, and backend",
         // delivered MVP 1 month before FIFA competitor
         // 20k MAUs, 115k at peak 21-27 Aug
         // 500k total revenue
@@ -190,17 +189,17 @@ export const resume: JsonResume = {
         countryCode: "DE",
       },
       name: "OneFootball Labs",
-      position: "Co-Founder and VP of Engineering",
+      position: "VP of Engineering and co-founder",
       startDate: "2022-01-31",
       endDate: "2023-03-31",
-      summary: "NFT marketplace for Seria A video moments.",
+      summary: "NFT marketplace for football video moments.",
       url: "https://aera.onefootball.com/",
     },
     {
       highlights: [
-        "Set the technical bar for Data Science, Data Engineering, and Data Analytics.",
-        "Designed and implemented a human-in-the-loop entity linking system for news tagging in 7 languages.",
-        "Used knowledge graphs, language models, text classification and topic modeling.",
+        "Set the technical bar for <b>Data Science, Data Engineering, and Data Analytics</b>.",
+        "Designed and implemented advanced human-in-the-loop <b>Natural Language Processing (NLP)</b> systems for news tagging in 7 languages.",
+        "Used knowledge graphs, language models, text classification, entity linking and topic modeling.",
         "Hired, managed and growed one MLE intern.",
         // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
         // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
