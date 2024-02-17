@@ -11,7 +11,7 @@ image: /images/graphs-and-language/talk.png
 ---
 
 **A rising tide lifts all boats**, and the recent advances in LLMs are no exception.
-In this blog post we will explore how Knowledge Graphs can benefit from LLMs, and vice versa.
+In this blog post, we will explore how Knowledge Graphs can benefit from LLMs, and vice versa.
 
 <figure>
   <img
@@ -24,7 +24,7 @@ In this blog post we will explore how Knowledge Graphs can benefit from LLMs, an
 </figure>
 
 In particular, Knowledge Graphs can ground LLMs with facts using Graph RAG, which can be cheaper than Vector RAG.
-We'll look at a 10-line code example in LlamaIndex, and see how easy it is to get started.
+We'll look at a 10-line code example in LlamaIndex and see how easy it is to start.
 LLMs can help build automated KGs, which have been a bottleneck in the past.
 Graphs can provide your Domain Experts with an interface to supervise your AI systems.
 
@@ -40,12 +40,12 @@ You can watch the talk here (link coming)._
 
 I've been working with Natural Language Processing for a few years now, and I've seen the rise of Large Language Models.
 The start of my NLP and Graphs work dates back to 2018, applied to the Sports Media domain
-when I worked as Machine Learning Engineer at OneFootball, a football media company from Berlin, Germany.
+when I worked as a Machine Learning Engineer at OneFootball, a football media company from Berlin, Germany.
 
-As a practioner, I remember that time well because it was a time of great change in the NLP field.
+As a practitioner, I remember that time well because it was a time of great change in the NLP field.
 We were moving from the era of rule-based systems and word embeddings to the era of deep learning,
 moving from LSTMs to a slew of models like Elmo or ULMfit based on the transformer architecture.
-I was one of the lucky few that could attend the [Spacy IRL 2019](https://irl.spacy.io/2019/) conference in Berlin.
+I was one of the lucky few who could attend the [Spacy IRL 2019](https://irl.spacy.io/2019/) conference in Berlin.
 There were corporate training workshops followed by talks about Transformers, conversational AI assistants, and applied NLP in finance or media.
 
 <div
@@ -75,7 +75,7 @@ He was right ✅.
 He thought we would get there by **humans writing rules aided by Deep Learning resulting in transparent and debuggable models**.
 He was wrong ❌.
 We got there with chat, and we now have less transparent and less debuggable models.
-In fact, we moved further right and down on his chart to a place deeper than Deep Learning.
+We moved further right and down on his chart to a place deeper than Deep Learning.
 The jury is still out on whether we can move towards more transparent models that work for non-experts and with little data.
 
 <figure>
@@ -112,7 +112,7 @@ Today with the rise of LLMs, I see a lot of potential to combine the two worlds 
 The first place where Graphs and LLMs meet is in the area of fact grounding.
 LLMs suffer from a few issues like hallucination, knowledge cut-off, bias, and lack of control.
 To circumvent those issues, people have turned to their available domain data.
-And in particular, two approaches emerged: Fine Tuning or Retrieval-Augmented Generation (RAG).
+In particular, two approaches emerged: Fine Tuning and Retrieval-Augmented Generation (RAG).
 
 In his talk [LLMs in Production](https://www.youtube.com/watch?v=xa7k9MUeIdk) at the AI Conference 3 months ago,
 Dr. Waleed Kadous, Chief Scientist at AnyScale, sheds some light on navigating the trade-offs between the two approaches.
@@ -122,7 +122,7 @@ Fine-tuning will get easier and cheaper. Open-source libraries like [OpenAccess-
 and [huggingface/trl](https://github.com/huggingface/trl) already make this process easier.
 But, it's still resource-intensive and requires more NLP maturity as a business. RAG is more accessible, on the other hand.
 
-And according to this Hacker News thread from 2 months ago, [Ask HN: How do I train a custom LLM/ChatGPT on my documents in Dec 2023?](https://news.ycombinator.com/item?id=38759877)
+According to this Hacker News thread from 2 months ago, [Ask HN: How do I train a custom LLM/ChatGPT on my documents in Dec 2023?](https://news.ycombinator.com/item?id=38759877),
 the vast majority of practitioners are indeed using RAG rather than fine-tuning.
 
 ### 1.2 Vector RAG vs Graph RAG
@@ -159,14 +159,14 @@ It then passes the triples (s<sub>j</sub>, p<sub>j</sub>, o<sub>j</sub>) along w
 **Structured RAG** uses a model (LLM or smaller fine-tuned model) to generate a query in the database's query language.
 It could generate a SQL query for a RDBMS or a Cypher query for a Graph DB.
 For example, let's imagine we query a RDBMS. The model will generate Q<sub>SQL</sub> which is then passed to the database to retrieve the answer.
-We note the answer A<sub>SQL</sub> but it's basically data records that result from running Q<sub>SQL</sub> in the database.
-The answer A<sub>SQL</sub> as wel as Q<sub>NL</sub> are passed to the LLM to generate A<sub>NL</sub>.
+We note the answer A<sub>SQL</sub> but those are data records that result from running Q<sub>SQL</sub> in the database.
+The answer A<sub>SQL</sub> as well as Q<sub>NL</sub> are passed to the LLM to generate A<sub>NL</sub>.
 
 In the case of **Hybrid RAG**, the system uses a combination of the above.
 
 ### 1.4 Graph RAG implementation in LlamaIndex
 
-And now for the code, with the current frameworks we can build a Graph RAG system in 10 lines of python.
+And now for the code, with the current frameworks, we can build a Graph RAG system in 10 lines of python.
 
 ```python
 from llama_index.llms import Ollama
@@ -286,11 +286,11 @@ However, if we have a look at the resulting KG for the movie "Guardians of the G
 
 Here is a table overview of the issues
 
-| #   | Observed                                                                                                                                          | Expected                                                                                                                                                                                   | Comment                                                                                    |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| 1.  | "Peter Quill / star-lord" vs "Quill" or "Guardians of the Galaxy" vs "Vol. 3" are separate entities                                               | Different synonyms should still disambiguate to the same entity                                                                                                                            | **Entity Linking** systems are used to disambiguate entities via collected "surface forms" |
-| 2.  | "plays role in" and "is part of cast in" are different relationships that mean the same thing                                                     | Relationships should be consistent or even better matching a provided controlled vocabulary                                                                                                | **Relation Extraction** systems are used to extract standardised relationships             |
-| 3.  | triples (Quill, speak uncensored language in, Guardians of the Galaxy) and (James Gunn, could not imagine, Guardians of the Galaxy) are imprecise | If a triple is found, it should resolve to the most important information. In this case (Quill, is present in, Guargians of the Galaxy) or (James Gunn, directed, Guardians of the Galaxy) | Could be mitigated by using a **controlled vocabulary** for relationships                  |
+| #   | Observed                                                                                                                                           | Expected                                                                                                                                                                                   | Comment                                                                                    |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 1.  | "Peter Quill / star-lord" vs "Quill" or "Guardians of the Galaxy" vs "Vol. 3" are separate entities                                                | Different synonyms should still disambiguate to the same entity                                                                                                                            | **Entity Linking** systems are used to disambiguate entities via collected "surface forms" |
+| 2.  | "plays role in" and "is part of the cast in" are different relationships that mean the same thing                                                  | Relationships should be consistent or even better matching a provided controlled vocabulary                                                                                                | **Relation Extraction** systems are used to extract standardised relationships             |
+| 3.  | triples (Quill, speaks uncensored language in, Guardians of the Galaxy) and (James Gunn, could not imagine, Guardians of the Galaxy) are imprecise | If a triple is found, it should resolve to the most important information. In this case (Quill, is present in, Guardians of the Galaxy) or (James Gunn, directed, Guardians of the Galaxy) | Could be mitigated by using a **controlled vocabulary** for relationships                  |
 
 This is to be compared with the Wikidata graph labelled by humans, which looks like this:
 
@@ -345,9 +345,9 @@ Who doesn't love a "Human vs AI" story? News headlines about "AGI" or "ChatGPT p
 </figure>
 
 I would encourage the reader to have a look at [this answer](https://aisnakeoil.com/p/gpt-4-and-professional-benchmarks) from the AI Snake Oil newsletter.
-They make a good point that models like ChatGPT **memorise the solutions rather than reason** about them, which make exams a bad way to compare humans with machines.
+They make a good point that models like ChatGPT **memorise the solutions rather than reason** about them, which makes exams a bad way to compare humans with machines.
 
-Goying beyond Memorisation, there is a whole area of research around what's called
+Going beyond Memorisation, there is a whole area of research around what's called
 Generalization, **Reasoning, Planning, Representation Learning**, and graphs can help with that.
 
 ### 3.2 Human + Machine: Visualisation
@@ -359,7 +359,7 @@ One key project that, in my opinion, moved the needle there was the [whatlies pa
 He used UMAP on embeddings to reveal quality issues in LLMs, and built a framework for others to audit their embeddings rather than blindly trust them.
 
 Similarly, Graph Databases come with a lot of visualisation tools out of the box. For example, they would add context with
-color, metadata, and different layout algorithms (force-based, sankey).
+colour, metadata, and different layout algorithms (force-based, Sankey).
 
 <div
   style={{
@@ -381,19 +381,19 @@ color, metadata, and different layout algorithms (force-based, sankey).
 
 Finally, how do we **address the lack of control** of Deep Learning models, and how do we **incorporate declarative knowledge** from domain experts?
 
-I like to refer to the phrase "the proof is in the pudding", and by that I mean that the value of a piece of tech must be judged based on its results in production.
+I like to refer to the phrase "the proof is in the pudding", and by that, I mean that the value of a piece of tech must be judged based on its results in production.
 And when we look at production systems, we see that LLMs or Deep Learning models are not used in isolation, but rather within **Human-in-the-Loop systems**.
 
 In a [project](https://security.googleblog.com/2024/01/scaling-security-with-ai-from-detection.html) and [paper](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/4fd3441fe40bb74e3f94f5203a17399af07b115c.pdf) from 2 weeks ago,
 Google has started using language models to help it find and spot bugs in its C/C++, Java, and Go code.
 The results have been encouraging: it has recently started using an LLM based on its Gemini model to
-“successfully fix 15% of sanitizer bugs discovered during unit tests, resulting in hundreds of bugs patched”.
+“successfully fix 15% of sanitiser bugs discovered during unit tests, resulting in hundreds of bugs patched”.
 Though the 15% acceptance rate sounds relatively small, it has a big effect at Google-scale.
 The bug pipeline yields better-than-human fixes - “approximately 95% of the commits sent to code owners
 were accepted without discussion,” Google writes. “This was a higher acceptance rate than human-generated
 code changes, which often provoke questions and comments”.
 
-The key takeway here for me has to do with their architecture:
+The key takeaway here for me has to do with their architecture:
 
 <figure>
   <img
