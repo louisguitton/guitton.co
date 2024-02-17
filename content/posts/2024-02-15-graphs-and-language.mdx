@@ -76,7 +76,7 @@ He thought we would get there by **humans writing rules aided by Deep Learning r
 He was wrong ❌.
 We got there with chat, and we now have less transparent and less debuggable models.
 In fact, we moved further right and down on his chart to a place deeper than Deep Learning.
-I believe, like him at the time, that there is still room to go to the bottom left.
+The jury is still out on whether we can move towards more transparent models that work for non-experts and with little data.
 
 <figure>
   <img
@@ -112,9 +112,9 @@ Today with the rise of LLMs, I see a lot of potential to combine the two worlds 
 The first place where Graphs and LLMs meet is in the area of fact grounding.
 LLMs suffer from a few issues like hallucination, knowledge cut-off, bias, and lack of control.
 To circumvent those issues, people have turned to their available domain data.
-And soon, two approaches were in front of us: Fine Tuning or Retrieval-Augmented Generation (RAG).
+And in particular, two approaches emerged: Fine Tuning or Retrieval-Augmented Generation (RAG).
 
-In his talk at the AI Conference 3 months ago, [LLMs in Production](https://www.youtube.com/watch?v=xa7k9MUeIdk),
+In his talk [LLMs in Production](https://www.youtube.com/watch?v=xa7k9MUeIdk) at the AI Conference 3 months ago,
 Dr. Waleed Kadous, Chief Scientist at AnyScale, sheds some light on navigating the trade-offs between the two approaches.
 **"Fine-tuning is for form, not facts"**, [he says](https://www.anyscale.com/blog/fine-tuning-is-for-form-not-facts). **"RAG is for facts"**.
 
@@ -129,7 +129,8 @@ the vast majority of practitioners are indeed using RAG rather than fine-tuning.
 
 When people say RAG, they usually mean Vector RAG, which is a retrieval system based on a Vector Database.
 In their [blog post](https://www.nebula-graph.io/posts/graph-RAG) and accompanying [notebook tutorial](https://www.siwei.io/en/demos/graph-rag/),
-NebulaGraph introduces Graph RAG, which is a retrieval system based on a Graph Database (which they conveniently sell).
+NebulaGraph introduces an alternative that they call Graph RAG, which is a retrieval system based on a Graph Database
+(disclaimer: they are a Graph database vendor).
 They show that the facts retrieved by the RAG system will vary based on the chosen architecture.
 
 They also show in a separate [tutorial part of the LlamaIndex docs](https://docs.llamaindex.ai/en/v0.9.10/examples/index_structs/knowledge_graph/KnowledgeGraphIndex_vs_VectorStoreIndex_vs_CustomIndex_combined.html#comparison-of-results) that
@@ -169,9 +170,8 @@ And now for the code, with the current frameworks we can build a Graph RAG syste
 
 ```python
 from llama_index.llms import Ollama
-from llama_index import ServiceContext
-from llama_index import KnowledgeGraphIndex
-from llama_index.retrievers import (KnowledgeGraphRAGRetriever, KGTableRetriever)
+from llama_index import ServiceContext, KnowledgeGraphIndex
+from llama_index.retrievers import KGTableRetriever
 from llama_index.graph_stores import Neo4jGraphStore
 from llama_index.storage.storage_context import StorageContext
 from llama_index.query_engine import RetrieverQueryEngine
@@ -193,40 +193,144 @@ response_graph_rag = kg_rag_query_engine.query("Tell me about Peter Quill.")
 display(Markdown(f"<b>{response_graph_rag}</b>"))
 ```
 
-This snippet supposes you have Ollama serving a model called "mistral" and a Neo4j database running locally.
+This snippet supposes you have Ollama serving the [mistral](https://huggingface.co/mistralai/Mistral-7B-v0.1) model and a Neo4j database running locally.
+It also assumes you have a Knowledge Graph in your Neo4j database, but if you don't we'll cover in the next section how to build one.
 
 ## 2. KG construction
 
 ### 2.1 Building a Knowledge Graph
 
-- the same way you build your Vector DB by chunking and embedding documents, you build your Graph by extracting Triples
-- Usually, you either use a fine-tuned model specialised in RE like REBEL
-- but people started using LLMs with prompt chains like "..."
-- poor quality and lack of control
+Before conducting inference, you need to index your data either in a Vector DB or a Graph DB.
 
-### 2.2 Building a KG in LlamaIndex
+<figure>
+  <img src="/images/graphs-and-language/indexing.png" alt="Indexing DBs" />
+  <figcaption>Indexing architectures for RAG</figcaption>
+</figure>
 
-- again with 10 lines of python we get to a working system
+The equivalent of chunking and embedding documents for Vector RAG is extracting Triples for Graph RAG.
+Triples are of the form (s, p, o) where s is the subject, p is the predicate, and o is the object.
+Subjects and objects are entities, and predicates are relationships.
+
+There are a few ways to extract Triples from text, but the most common way is to use a **Named Entity Recogniser (NER)** and a **Relation Extractor (RE)**.
+NER will extract entities like "Peter Quill" and "Guardians of the Galaxy vol 3", and RE will extract relationships like "plays role in" and "directed by".
+
+There are fine-tuned models specialised in RE like REBEL, but people started using LLMs to extract triples.
+Here is the default prompt chain of LlamaIndex for RE:
+
+```jinja
+Some text is provided below. Given the text, extract up to
+{max_knowledge_triplets}
+knowledge triplets in the form of (subject, predicate, object). Avoid stopwords.
+---------------------
+Example:
+Text: Alice is Bob's mother.
+Triplets: (Alice, is mother of, Bob)
+Text: Philz is a coffee shop founded in Berkeley in 1982.
+Triplets:
+(Philz, is, coffee shop)
+(Philz, founded in, Berkeley)
+(Philz, founded in, 1982)
+---------------------
+Text: {text}
+Triplets:
+```
+
+The issue with this approach is that first you have to parse the chat output with regexes,
+and second you have no control over the quality of entities or relationships extracted.
+
+### 2.2 Implementation in LlamaIndex
+
+With LlamaIndex however, you can build a KG in 10 lines of python.
+
+```python
+from llama_index.llms import Ollama
+from llama_index import ServiceContext, KnowledgeGraphIndex
+from llama_index.graph_stores import Neo4jGraphStore
+from llama_index.storage.storage_context import StorageContext
+from llama_index import download_loader
+
+llm = Ollama(model='mistral', base_url="http://localhost:11434")
+service_context = ServiceContext.from_defaults(llm=llm, embed_model="local:BAAI/bge-small-en")
+
+graph_store = Neo4jGraphStore(username="neo4j", password="password", url="bolt://localhost:7687", database="neo4j")
+storage_context = StorageContext.from_defaults(graph_store=graph_store)
+
+loader = download_loader("WikipediaReader")()
+documents = loader.load_data(pages=['Guardians of the Galaxy Vol. 3'], auto_suggest=False)
+
+kg_index = KnowledgeGraphIndex.from_documents(
+    documents,
+    storage_context=storage_context,
+    service_context=service_context,
+    max_triplets_per_chunk=5,
+    include_embeddings=False,
+    # to extract triplets, kg_triplet_extract_fn is used if not None,
+    kg_triplet_extract_fn=None,
+    # else, the LLM from the service context is used with the kg_triple_extract_template if not None
+    kg_triple_extract_template=None
+    # else the default triplet extract prompt is used
+)
+```
 
 ### 2.3 Automated KG construction is not yet there
 
-- but let's have a look at the results
-- this is the Neo4j bloom screenshot of an extract of the KG you get by throwing the Wikipedia page from Guardians of the Galaxy vol 3 to our system
-- Disambiguation issues between Nodes: Peter Quill and Quill are supposed to be the same
-- Disambiguation issues between Relationships: play roles in = is part of cast in
-- No information hierarchy: James Gunn is the director of the movie
+However, if we have a look at the resulting KG for the movie "Guardians of the Galaxy vol 3", we can note a few issues.
 
-- this is to be contrasted with what the Wikipedia KG looks like
+<figure>
+  <img
+    src="/images/graphs-and-language/kg_construction.png"
+    alt="Example constructed KG with LLM"
+  />
+  <figcaption>Neo4j Bloom screenshot of a KG constructed with a LLM</figcaption>
+</figure>
 
-  - Chris Pratt is the performer of Star-Lord
-  - James Gunn is the director of the movies
-  - the movies take place in the MCU of where Star Lord is present too
+Here is a table overview of the issues
+
+| #   | Observed                                                                                                                                          | Expected                                                                                                                                                                                   | Comment                                                                                    |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 1.  | "Peter Quill / star-lord" vs "Quill" or "Guardians of the Galaxy" vs "Vol. 3" are separate entities                                               | Different synonyms should still disambiguate to the same entity                                                                                                                            | **Entity Linking** systems are used to disambiguate entities via collected "surface forms" |
+| 2.  | "plays role in" and "is part of cast in" are different relationships that mean the same thing                                                     | Relationships should be consistent or even better matching a provided controlled vocabulary                                                                                                | **Relation Extraction** systems are used to extract standardised relationships             |
+| 3.  | triples (Quill, speak uncensored language in, Guardians of the Galaxy) and (James Gunn, could not imagine, Guardians of the Galaxy) are imprecise | If a triple is found, it should resolve to the most important information. In this case (Quill, is present in, Guargians of the Galaxy) or (James Gunn, directed, Guardians of the Galaxy) | Could be mitigated by using a **controlled vocabulary** for relationships                  |
+
+This is to be compared with the Wikidata graph labelled by humans, which looks like this:
+
+<figure>
+  <img src="/images/graphs-and-language/wikidata.png" alt="Human-labelled KG" />
+  <figcaption>
+    Human-labelled KG in Wikidata generated with
+    [metaphacts](https://wikidata.metaphacts.com/resource/wd:Q29226331?view=graph)
+  </figcaption>
+</figure>
 
 ### 2.4 Towards better KG construction
 
-- so where do we go from there?
-- here are a couple of libraries that are worth having a look at: textgraphs by Paco Nathan and zshot by IBM
-- Get better entities, get better relations, enable HITL systems by integrating with Graph DBs
+So where do we go from there?
+KGs are difficult to construct and evolve by nature, which challenges the existing methods
+in KGs to generate new facts and represent unseen knowledge.
+The paper [Unifying Large Language Models and Knowledge Graphs: A Roadmap](https://arxiv.org/pdf/2306.08302.pdf)
+provides a good overview of the current state of the art and the challenges ahead.
+
+> Knowledge graph construction involves creating a structured representation of knowledge within a specific domain.
+> This includes identifying entities and their relationships
+> with each other. The process of knowledge graph construction typically involves multiple stages, including 1) entity
+> discovery, 2) coreference resolution, and 3) relation extraction.
+> Fig 19 presents the general framework of applying LLMs for
+> each stage in KG construction. More recent approaches have
+> explored 4) end-to-end knowledge graph construction, which
+> involves constructing a complete knowledge graph in one
+> step or directly 5) distilling knowledge graphs from LLMs.
+
+Which is summarised in this figure from the paper:
+
+<figure>
+  <img
+    src="/images/graphs-and-language/llm_kg_construction.png"
+    alt="The general framework of LLM-based KG construction"
+  />
+  <figcaption>The general framework of LLM-based KG construction</figcaption>
+</figure>
+
+I've seen only a few projects that have tried to tackle this problem: [DerwenAI/textgraphs](https://github.com/DerwenAI/textgraphs) and [IBM/zshot](https://github.com/IBM/zshot).
 
 ## 3. Unlock Experts
 
@@ -318,11 +422,19 @@ I'm excited to see what the future holds.
 
 ## Resources
 
-1. [My link](url)
-
-## Checklist before publication
-
-- Review Headlines: Talk benefits, not details. Keep it short
-- Review Content skimming: Break it down with bullet points, bolding, spacing
-- Review Story: do I have a beginning, a middle, and end? do I tell my emotions?
-  e.g. storyline of a side project: life before the solution / my approach to solving it / complications I faced / end results / what would I do differently
+1. [Language, Graphs, and AI in industry](https://derwen.ai/s/mqqm) - Paco Nathan - Jan, 2024
+1. [Graph ML meets Language Models](https://blog.derwen.ai/visual-missives-from-the-latent-space-2023-10-16-d4bfa944b86c) - Paco Nathan - Oct 25, 2023
+1. [[2306.08302] Unifying Large Language Models and Knowledge Graphs: A Roadmap](https://arxiv.org/abs/2306.08302)
+1. [GitHub - RManLuo/Awesome-LLM-KG: Awesome papers about unifying LLMs and KGs](https://github.com/RManLuo/Awesome-LLM-KG) - Jun 14, 2023
+1. [Evaluating LLMs is a minefield](https://www.cs.princeton.edu/~arvindn/talks/evaluating_llms_minefield/)
+1. [GPT-4 and professional benchmarks: the wrong answer to the wrong question](https://www.aisnakeoil.com/p/gpt-4-and-professional-benchmarks) - AI Snake Oil - Oct 4, 2023
+1. [AI-powered patching: the future of automated vulnerability fixes](https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/4fd3441fe40bb74e3f94f5203a17399af07b115c.pdf) - Google Security - Jan 31, 2024
+1. [Graph & Geometric ML in 2024: Where We Are and What’s Next (Part II — Applications)](https://towardsdatascience.com/graph-geometric-ml-in-2024-where-we-are-and-whats-next-part-ii-applications-1ed786f7bf63) | by Michael Galkin - Jan 16, 2024
+1. [[2312.02783] Large Language Models on Graphs: A Comprehensive Survey](https://arxiv.org/abs/2312.02783) - Dec 5, 2023
+1. [ULTRA: Foundation Models for Knowledge Graph Reasoning | by Michael Galkin | Towards Data Science](https://towardsdatascience.com/ultra-foundation-models-for-knowledge-graph-reasoning-9f8f4a0d7f09) - Nov 3, 2023
+1. [Fine Tuning Is For Form, Not Facts | Anyscale](https://www.anyscale.com/blog/fine-tuning-is-for-form-not-facts) - July 5, 2023
+1. [GenAI Stack Walkthrough: Behind the Scenes With Neo4j, LangChain, and Ollama in Docker](https://neo4j.com/developer-blog/genai-app-how-to-build/) - Oct 05, 2023
+1. [NebulaGraph Launches Industry-First Graph RAG: Retrieval-Augmented Generation with LLM Based on Knowledge Graphs](https://www.nebula-graph.io/posts/graph-RAG) - Sep 6, 2023
+1. [RAG Using Unstructured Data & Role of Knowledge Graphs | Kùzu](https://kuzudb.com/docusaurus/blog/llms-graphs-part-2/) - Jan 15, 2024
+1. [Constructing knowledge graphs from text using OpenAI functions](https://bratanic-tomaz.medium.com/constructing-knowledge-graphs-from-text-using-openai-functions-096a6d010c17) | by Tomaz Bratanic - Oct 20, 2023
+1. [Knowledge graph from unstructured text | by Noah Mayerhofer | Neo4j Developer Blog](https://medium.com/neo4j/construct-knowledge-graphs-from-unstructured-text-877be33300a2) - Sep 21, 2023
