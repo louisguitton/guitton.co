@@ -2,7 +2,7 @@
 title: "Graphs and Language"
 lastmod: "2024-02-15"
 summary: >
-
+  In this blog post, we will explore how Knowledge Graphs can benefit from LLMs, and vice versa.
 categories:
   - ML
 series:
@@ -238,7 +238,7 @@ Triplets:
 The issue with this approach is that first you have to parse the chat output with regexes,
 and second you have no control over the quality of entities or relationships extracted.
 
-### 2.2 Implementation in LlamaIndex
+### 2.2 KG construction implementation in LlamaIndex
 
 With LlamaIndex however, you can build a KG in 10 lines of python.
 
@@ -272,7 +272,7 @@ kg_index = KnowledgeGraphIndex.from_documents(
 )
 ```
 
-### 2.3 Automated KG construction is not yet there
+### 2.3 Example failure modes of LLM-based KG construction
 
 However, if we have a look at the resulting KG for the movie "Guardians of the Galaxy vol 3", we can note a few issues.
 
