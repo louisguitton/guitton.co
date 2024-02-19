@@ -56,7 +56,7 @@ There were corporate training workshops followed by talks about Transformers, co
 >
   <figure style={{ width: "65%" }}>
     <img src="/images/graphs-and-language/spacy_irl.jpg" alt="Spacy IRL 2019" />
-    <figcaption>Spacy IRL 2019</figcaption>
+    <figcaption>Spacy IRL 2019 keynote by Sebastian Ruder</figcaption>
   </figure>
   <figure style={{ width: "30%" }}>
     <img
@@ -64,7 +64,7 @@ There were corporate training workshops followed by talks about Transformers, co
       alt="Me at Spacy IRL"
     />
     <figcaption>
-      Standing in the background, me at Spacy IRL, networking with a ghost
+      Me standing in the background, me at Spacy IRL, networking with a ghost
     </figcaption>
   </figure>
 </div>
@@ -75,7 +75,7 @@ He was right ✅.
 He thought we would get there by **humans writing rules aided by Deep Learning resulting in transparent and debuggable models**.
 He was wrong ❌.
 We got there with chat, and we now have less transparent and less debuggable models.
-We moved further right and down on his chart to a place deeper than Deep Learning.
+We moved further right and down on his chart (see below) to a place deeper than Deep Learning.
 The jury is still out on whether we can move towards more transparent models that work for non-experts and with little data.
 
 <figure>
@@ -162,7 +162,8 @@ For example, let's imagine we query a RDBMS. The model will generate Q<sub>SQL</
 We note the answer A<sub>SQL</sub> but those are data records that result from running Q<sub>SQL</sub> in the database.
 The answer A<sub>SQL</sub> as well as Q<sub>NL</sub> are passed to the LLM to generate A<sub>NL</sub>.
 
-In the case of **Hybrid RAG**, the system uses a combination of the above.
+In the case of **Hybrid RAG**, the system uses a combination of the above. There are multiple hybridation techniques that go beyond this blog post.
+The simple idea is that you pass more context to the LLM for Answer Gen, and you let it use its summarisation strength to generate the answer.
 
 ### 1.4 Graph RAG implementation in LlamaIndex
 
@@ -214,7 +215,7 @@ Subjects and objects are entities, and predicates are relationships.
 There are a few ways to extract Triples from text, but the most common way is to use a **Named Entity Recogniser (NER)** and a **Relation Extractor (RE)**.
 NER will extract entities like "Peter Quill" and "Guardians of the Galaxy vol 3", and RE will extract relationships like "plays role in" and "directed by".
 
-There are fine-tuned models specialised in RE like REBEL, but people started using LLMs to extract triples.
+There are fine-tuned models specialised in RE like [REBEL](https://huggingface.co/Babelscape/mrebel-large), but people started using LLMs to extract triples.
 Here is the default prompt chain of LlamaIndex for RE:
 
 ```jinja
@@ -240,7 +241,7 @@ and second you have no control over the quality of entities or relationships ext
 
 ### 2.2 KG construction implementation in LlamaIndex
 
-With LlamaIndex however, you can build a KG in 10 lines of python.
+With LlamaIndex however, you can build a KG in 10 lines of python using the following code snippet:
 
 ```python
 from llama_index.llms import Ollama
@@ -264,11 +265,8 @@ kg_index = KnowledgeGraphIndex.from_documents(
     service_context=service_context,
     max_triplets_per_chunk=5,
     include_embeddings=False,
-    # to extract triplets, kg_triplet_extract_fn is used if not None,
     kg_triplet_extract_fn=None,
-    # else, the LLM from the service context is used with the kg_triple_extract_template if not None
     kg_triple_extract_template=None
-    # else the default triplet extract prompt is used
 )
 ```
 
@@ -336,7 +334,7 @@ I've seen only a few projects that have tried to tackle this problem: [DerwenAI/
 
 ### 3.1 Human vs AI
 
-The final place where Graphs and LLMs meet is in the area of Human+Machine collaboration.
+The final place where Graphs and LLMs meet is **Human+Machine collaboration**.
 Who doesn't love a "Human vs AI" story? News headlines about "AGI" or "ChatGPT passing the bar exam" are everywhere.
 
 <figure style={{ width: "50%" }}>
@@ -409,7 +407,8 @@ and more importantly with a double human filter on top, thus working with machin
 ## Conclusion
 
 I remember those 2019 days vividly, moving from LSTMs to Transformers, and we thought _that_ was Deep Learning.
-Now, with LLMs, we've reached **Abysmal Learning**.
+Now, with LLMs, we've reached what I would describe as **Abysmal Learning**.
+And I like this image because it can mean both **"extremely deep"** as well as **"profoundly bad"**.
 
 More than ever, we need more control, more transparency, and ways for humans to work with machines.
 In this blog post, we've seen here a few ways in which Graphs and LLMs can work together to help with that, and
