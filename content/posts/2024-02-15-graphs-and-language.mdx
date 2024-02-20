@@ -149,7 +149,8 @@ In all cases, we ask a question in natural language Q<sub>NL</sub>
 and we get an answer in natural language A<sub>NL</sub>.
 In all cases, a LLM is used to generate the answer ("Answer Gen").
 
-**Vector RAG** embeds the query (usually with a smaller model than the LLM; something like FlagEmbeddings) into a vector v<sub>Q</sub>.
+**Vector RAG** embeds the query (usually with a smaller model than the LLM; something like FlagEmbeddings or any small of the models
+at the top of the [Huggingface Embeddings Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)) into a vector v<sub>Q</sub>.
 It then retrieves the top-k document chunks from the Vector DB that are closest to v<sub>Q</sub> and returns the vectors and chunks (v<sub>j</sub>, C<sub>j</sub>).
 Those are passed along with Q<sub>NL</sub> to the LLM, which generates the answer A<sub>NL</sub>.
 
