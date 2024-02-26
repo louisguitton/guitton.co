@@ -170,7 +170,7 @@ export const resume: JsonResume = {
       startDate: "2023-04-03",
       // endDate: "2023",
       summary:
-        "Design and build transformative digital solutions aligned with with customer's requirements",
+        "Design and build transformative digital solutions aligned with customer's requirements",
       url: "https://guitton.co/",
     },
     {
