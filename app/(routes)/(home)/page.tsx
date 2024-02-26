@@ -12,20 +12,21 @@ export const metadata: Metadata = {
   },
 };
 
+// https://analytics.google.com/analytics/web/#/p256193208/reports/explorer?params=_u..nav%3Dmaui%26_r.explorerCard..selmet%3D%5B%22screenPageViews%22%5D%26_r.explorerCard..seldim%3D%5B%22unifiedPagePathScreen%22%5D%26_u.dateOption%3Dlast12Months%26_u.comparisonOption%3Ddisabled%26_r.explorerCard..rowsPerPage%3D25&r=all-pages-and-screens&ruid=all-pages-and-screens,life-cycle,engagement&collectionId=life-cycle
 const featuredPosts: PostView[] = [
   {
+    page: "/posts/graphs-and-language/",
+    views: 50,
+    since: "Last 12 months",
+  },
+  {
     page: "/posts/fastapi-monitoring/",
-    views: 6078,
+    views: 4150,
     since: "Last 12 months",
   },
   {
     page: "/posts/dbt-artifacts/",
-    views: 2590,
-    since: "Last 12 months",
-  },
-  {
-    page: "/posts/football-strava/",
-    views: 500,
+    views: 1650,
     since: "Last 12 months",
   },
 ];

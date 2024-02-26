@@ -1,6 +1,5 @@
 import PostCategory from "@/components/blog/PostCategory";
 import { Container } from "@/components/layout/Container";
-import { EyeIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
 import { Post } from "contentlayer/generated";
 import moment from "moment";
@@ -39,13 +38,13 @@ const FeaturedPost: React.FC<{ post: Post; className?: string }> = ({
         <span className="mr-2">
           {moment(post.date).format("MMMM Do, YYYY")}
         </span>
-        ·
+        {/* ·
         <span className="ml-2 font-semibold align-middle has-tooltip">
           {post.views} <EyeIcon className="inline-block w-4 h-4 ml-1" />
           <span className="mt-4 -ml-16 text-xs tooltip w-28">
             (since 1 year)
           </span>
-        </span>
+        </span> */}
       </span>
     </Link>
   );
@@ -61,7 +60,7 @@ const FeaturedPosts: React.FC<{ posts: Post[] }> = ({ posts }) => {
             "text-sm font-medium text-white uppercase"
           )}
         >
-          Most Read Articles
+          Featured Articles
         </h2>
       </div>
       <div className="grid grid-cols-12 gap-1">
