@@ -61,7 +61,7 @@ There were corporate training workshops followed by talks about Transformers, co
       alt="Me at Spacy IRL"
     />
     <figcaption>
-      Me standing in the background, me at Spacy IRL, networking with a ghost
+      Me standing in the background, at Spacy IRL, networking with a ghost
     </figcaption>
   </figure>
 </div>
@@ -144,19 +144,20 @@ To make sense of the different RAG architectures, consider the following diagram
 
 In all cases, we ask a question in natural language Q<sub>NL</sub>
 and we get an answer in natural language A<sub>NL</sub>.
-In all cases, a LLM is used to generate the answer ("Answer Gen").
+In all cases, there is some kind of **Encoding** model that extracts structure from the question,
+coupled with some kind of **Generator** model ("Answer Gen") that generates the answer.
 
 **Vector RAG** embeds the query (usually with a smaller model than the LLM; something like FlagEmbeddings or any small of the models
-at the top of the [Huggingface Embeddings Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)) into a vector v<sub>Q</sub>.
-It then retrieves the top-k document chunks from the Vector DB that are closest to v<sub>Q</sub> and returns the vectors and chunks (v<sub>j</sub>, C<sub>j</sub>).
-Those are passed along with Q<sub>NL</sub> to the LLM, which generates the answer A<sub>NL</sub>.
+at the top of the [Huggingface Embeddings Leaderboard](https://huggingface.co/spaces/mteb/leaderboard)) into a vector embedding v<sub>Q</sub>.
+It then retrieves the top-k document chunks from the Vector DB that are closest to v<sub>Q</sub> and returns those as vectors and chunks (v<sub>j</sub>, C<sub>j</sub>).
+Those are passed along with Q<sub>NL</sub> as context to the LLM, which generates the answer A<sub>NL</sub>.
 
-**Graph RAG** extracts the keywords from the query k<sub>i</sub> and retrieves triples from the graph that match the keyword.
+**Graph RAG** extracts the keywords k<sub>i</sub> from the query and retrieves triples from the graph that match the keyword.
 It then passes the triples (s<sub>j</sub>, p<sub>j</sub>, o<sub>j</sub>) along with Q<sub>NL</sub> to the LLM, which generates the answer A<sub>NL</sub>.
 
-**Structured RAG** uses a model (LLM or smaller fine-tuned model) to generate a query in the database's query language.
+**Structured RAG** uses a Generator model (LLM or smaller fine-tuned model) to generate a query in the database's query language.
 It could generate a SQL query for a RDBMS or a Cypher query for a Graph DB.
-For example, let's imagine we query a RDBMS. The model will generate Q<sub>SQL</sub> which is then passed to the database to retrieve the answer.
+For example, let's imagine we query a RDBMS: the model will generate Q<sub>SQL</sub> which is then passed to the database to retrieve the answer.
 We note the answer A<sub>SQL</sub> but those are data records that result from running Q<sub>SQL</sub> in the database.
 The answer A<sub>SQL</sub> as well as Q<sub>NL</sub> are passed to the LLM to generate A<sub>NL</sub>.
 
@@ -206,11 +207,11 @@ Before conducting inference, you need to index your data either in a Vector DB o
   <figcaption>Indexing architectures for RAG</figcaption>
 </figure>
 
-The equivalent of chunking and embedding documents for Vector RAG is extracting Triples for Graph RAG.
+The equivalent of chunking and embedding documents for Vector RAG is extracting triples for Graph RAG.
 Triples are of the form (s, p, o) where s is the subject, p is the predicate, and o is the object.
 Subjects and objects are entities, and predicates are relationships.
 
-There are a few ways to extract Triples from text, but the most common way is to use a **Named Entity Recogniser (NER)** and a **Relation Extractor (RE)**.
+There are a few ways to extract triples from text, but the most common way is to use a combination of a **Named Entity Recogniser (NER)** and a **Relation Extractor (RE)**.
 NER will extract entities like "Peter Quill" and "Guardians of the Galaxy vol 3", and RE will extract relationships like "plays role in" and "directed by".
 
 There are fine-tuned models specialised in RE like [REBEL](https://huggingface.co/Babelscape/mrebel-large), but people started using LLMs to extract triples.
@@ -285,7 +286,7 @@ Here is a table overview of the issues
 | #   | Observed                                                                                                                                           | Expected                                                                                                                                                                                   | Comment                                                                                    |
 | --- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | 1.  | "Peter Quill / star-lord" vs "Quill" or "Guardians of the Galaxy" vs "Vol. 3" are separate entities                                                | Different synonyms should still disambiguate to the same entity                                                                                                                            | **Entity Linking** systems are used to disambiguate entities via collected "surface forms" |
-| 2.  | "plays role in" and "is part of the cast in" are different relationships that mean the same thing                                                  | Relationships should be consistent or even better matching a provided controlled vocabulary                                                                                                | **Relation Extraction** systems are used to extract standardised relationships             |
+| 2.  | "plays role in" and "is part of the cast in" are different relationships that mean the same thing                                                  | Relationships should be consistent or, even better, matching a provided controlled vocabulary                                                                                              | **Relation Extraction** systems are used to extract standardised relationships             |
 | 3.  | triples (Quill, speaks uncensored language in, Guardians of the Galaxy) and (James Gunn, could not imagine, Guardians of the Galaxy) are imprecise | If a triple is found, it should resolve to the most important information. In this case (Quill, is present in, Guardians of the Galaxy) or (James Gunn, directed, Guardians of the Galaxy) | Could be mitigated by using a **controlled vocabulary** for relationships                  |
 
 This is to be compared with the Wikidata graph labelled by humans, which looks like this:
