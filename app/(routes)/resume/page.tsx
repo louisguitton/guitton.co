@@ -1,6 +1,9 @@
 import { Container } from "@/components/layout/Container";
 import { Metadata } from "next";
 import { resume } from "../../../lib/resume";
+// import { resume } from "../../../lib/resume-em";
+// import { resume } from "../../../lib/resume-gpu";
+// import { resume } from "../../../lib/resume-sa";
 import PrintButton from "./components/PrintButton";
 import Basics from "./components/jsonresume/Basics";
 import Education from "./components/jsonresume/Education";

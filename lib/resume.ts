@@ -12,9 +12,8 @@ import { JsonResume } from "../app/(routes)/resume/components/jsonresume/types";
  * - keep it 1 page
  * - keep about section short, leave the rest on linkedin or website
  */
-const includeEducationCourse = false;
-const includeLanguages = false;
-const includeInternships = false;
+const includeLanguages = true;
+const includeInternships = true;
 export const resume: JsonResume = {
   $schema:
     "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
@@ -22,7 +21,9 @@ export const resume: JsonResume = {
   basics: {
     email: "admin@guitton.co",
     image: "/images/louis.jpg",
-    label: "Solutions Architect",
+    label: "Freelance Solutions Architect",
+    // label: "Engineering and Data Leader",
+    // label: "Freelance Solutions and Data Architect",
     location: {
       city: "Berlin",
       countryCode: "DE",
@@ -40,8 +41,10 @@ export const resume: JsonResume = {
         username: "louisguitton",
       },
     ],
-    summary: "",
-    // summary: 'Looking for an environment where I can grow as an engineer and influence technology.',
+    summary:
+      "With 1 year of experience as a Solutions Architect, and 7 years in AI and NLP, I build transformative digital solutions for my customers.",
+    // "With 2 years of experience as an Engineering Leader, and 7 years in AI and NLP, I build high-performing and transformative engineering teams.",
+    // "Having previously built the modern data stack of OneFootball as well as built a 4-people analytics team for OneFootball Labs, I bring 7 years of experience in AI and NLP to build transformative digital solutions for my customers.",
     url: "https://guitton.co/",
     website: "https://guitton.co/",
   },
@@ -49,11 +52,13 @@ export const resume: JsonResume = {
   education: [
     {
       area: "Executive Engineering",
-      courses: includeEducationCourse
-        ? [
-            "Thesis: Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers",
-          ]
-        : [],
+      courses: [
+        "Machine Learning",
+        "Big data",
+        "Econometrics",
+        "Mechatronics",
+        "Energy",
+      ],
       endDate: "2016-12-31",
       institution: "MINES ParisTech PSL",
       location: {
@@ -91,18 +96,15 @@ export const resume: JsonResume = {
   projects: [
     {
       entity: "guitton.co",
-      highlights: [],
-      keywords: [
-        "Static Site Generators",
-        "Serverless",
-        "SEO",
-        "Data Science",
-        "Open Source",
-      ],
       name: "Blogging and Freelance",
-      summary:
-        'Freelance Software Engineer and Data Scientist. Sharing my thougts with 1k+ users per month. Ranking #1 on google.com for <i>"fastapi monitoring"</i> and for <i>"amundsen dbt"</i>.',
       url: "https://guitton.co",
+      summary:
+        "Freelance Solutions Architect in the Sustainability and AI space. Sharing my thougts with ~1k MAUs.",
+      highlights: [
+        "Ranking on the first page of Google for <a href='https://guitton.co/posts/fastapi-monitoring'><i>fastapi monitoring</i></a> and <a href='https://guitton.co/posts/dbt-artifacts'><i>amundsen dbt</i></a> since 2020",
+        "NLP and Graph RAG with Generative AI with <a href='https://guitton.co/posts/graphs-and-language'>Graphs and Language</a>",
+        "Past clients include IFP Energies Nouvelles, a leading European player in the fields of energy, and the environment. <a href='https://guitton.co/process'>Freelance Process</a>",
+      ],
     },
   ],
   publications: [],
@@ -111,25 +113,27 @@ export const resume: JsonResume = {
     {
       keywords: [
         "python",
-        "AWS",
         "Postgres",
         "Redis",
         "terraform",
         "Kubernetes",
+        "Typesense",
       ],
       name: "Backend",
     },
     {
-      keywords: ["spaCy", "networkX", "pytextrank", "ElasticSearch"],
+      keywords: [
+        "transformers",
+        "llama-index",
+        "spaCy",
+        "networkX",
+        "pytextrank",
+        "ElasticSearch",
+      ],
       name: "NLP",
     },
     {
-      keywords: [
-        "mlflow",
-        "label-studio",
-        "SageMaker",
-        // 'optuna'
-      ],
+      keywords: ["mlflow", "bentoML", "argilla", "SageMaker"],
       name: "MLOps",
     },
     {
@@ -137,12 +141,7 @@ export const resume: JsonResume = {
       name: "Data Engineering",
     },
     {
-      keywords: [
-        "TypeScript",
-        "NextJS",
-        "TailwindCSS",
-        // 'ReactJS'
-      ],
+      keywords: ["TypeScript", "NextJS", "TailwindCSS"],
       name: "MVP Building",
     },
   ],
@@ -150,39 +149,43 @@ export const resume: JsonResume = {
   work: [
     {
       highlights: [
-        "<b>Design and build transformative digital solutions</b> for clients",
-        "Digital integration and Product Strategy for a client in the precision livestock farming space",
-        "Explored the sustainability space and built a B2B SaaS prospecting tool for commercial solar carports installers",
-        "Built a prototype for Solar PV Monitoring software solution",
+        "Pursuing open source projects and applied research in the space of Graphs and NLP <a href='https://www.youtube.com/watch?v=r9bjhkaNg5M&list=PLNodHTYsaGbLagG53yvtuQ0OfoaB2upvi&index=1'>recent talk at a conference</a>",
+        "Computer Vision and IoT data platform for Precision Livestock Farming (AgriTech)",
+        "GIS and B2B SaaS prospecting tool for commercial solar carports installers (CleanTech) <a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>video</a>",
+        "Digital twin protoype for Solar carports using Fronius, Grafana, Modbus, Webdyn, Sparklin, OCPP (CleanTech)",
+        //     'Data Solutions, teaching and open source',
+        //     '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
+        //     '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
+        //     '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
       ],
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
-      name: "guitton.co",
+      name: "Self-employed",
       position: "Freelance Solutions Architect",
       startDate: "2023-04-03",
       // endDate: "2023",
-      summary: "Self-employed",
+      summary:
+        "Design and build transformative digital solutions aligned with customer's requirements",
       url: "https://guitton.co/",
     },
     {
       highlights: [
         "Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity",
-        "Lead the company through steep headcount growth from 2 people to 45",
-        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 4 teams at peak",
+        "Lead the company through steep headcount growth from 2 people to 45 over 12 months",
+        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 4 eng teams at peak",
         // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
         // building teams that focus on impact, technical excellence, and transparency
-        "<b>Architected the tech stack</b> and built blockchain MVP including smart contract, frontend, and backend",
+        "<b>Architected the tech stack</b> and built blockchain MVP including smart contract, frontend, and backend; <a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>",
         // delivered MVP 1 month before FIFA competitor
         // 20k MAUs, 115k at peak 21-27 Aug
         // 500k total revenue
-        "Accountable for team performance (20k MAUs, 115k at peak) and business results ($500k revenue)",
-        "Accountable for product strategy and delivery",
+        "Accountable for product strategy, delivery and performance (115k MAUs peak) and business results ($500k revenue)",
         // • Managing cross department dependencies
-        "Provided leadership and coaching; responsible for people growth",
+        "Provided leadership and coaching; gave trainings on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>",
       ],
       location: {
         city: "Berlin",
@@ -192,15 +195,16 @@ export const resume: JsonResume = {
       position: "VP of Engineering and co-founder",
       startDate: "2022-01-31",
       endDate: "2023-03-31",
-      summary: "NFT marketplace for football video moments.",
+      summary:
+        "NFT marketplace for football video collectibles minted and dropped in-house",
       url: "https://aera.onefootball.com/",
     },
     {
       highlights: [
         "Set the technical bar for <b>Data Science, Data Engineering, and Data Analytics</b>.",
         "Designed and implemented advanced human-in-the-loop <b>Natural Language Processing (NLP)</b> systems for news tagging in 7 languages.",
-        "Used knowledge graphs, language models, text classification, entity linking and topic modeling.",
-        "Hired, managed and growed one MLE intern.",
+        "Used knowledge graphs, language models, text classification, entity linking, topic modeling and search.",
+        // "Hired, managed and growed one MLE intern.",
         // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
         // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
         // '<b>First Data Science hire</b>: Defined the Data Science project plan and the MLOps stack. Built quick wins like <i>prophet</i> forecasting or <i>XGBoost</i> classification for tabular data or templated news generation slackbot.',
@@ -219,29 +223,12 @@ export const resume: JsonResume = {
         "Football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.",
       url: "https://onefootball.com/",
     },
-    // {
-    //   highlights: [
-    //     'Data Solutions, teaching and open source',
-    //     '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
-    //     '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
-    //     '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
-    //   ],
-    //   location: {
-    //     city: 'Berlin',
-    //     countryCode: 'DE',
-    //   },
-    //   name: 'guitton.co',
-    //   position: 'Freelance Software Engineer and Data Scientist',
-    //   startDate: '2017-06-30',
-    //   summary: '',
-    //   url: 'https://guitton.co/about#freelance',
-    // },
     {
       endDate: "2018-06-30",
       highlights: [
-        // scalable hiring personality screening
+        // scalable hiring personality screening competitor to HireView
         // Worked with Isabelle Guyon's research group
-        "<b>Entrepreneurship</b>: Developed an idea using computer vision, pitch in front of angel investors.",
+        "<b>Entrepreneurship</b>: Developed an idea using CNNs on video, pitched in front of angel investors.",
       ],
       location: {
         city: "Berlin",
@@ -257,7 +244,7 @@ export const resume: JsonResume = {
     {
       endDate: "2018-03-31",
       highlights: [
-        "<b>Deep Learning & Big Data</b>: Built bettings odds models and a recommendation engine with <i>tensorflow</i>.",
+        "<b>Deep Learning & Big Data</b>: Trained MLP models in tensorflow and theano applied to recsys and bettings odds models.",
       ],
       location: {
         city: "Berlin",
@@ -295,7 +282,7 @@ export const resume: JsonResume = {
               countryCode: "UK",
             },
             name: "EDF Energy",
-            position: "R&D Engineer",
+            position: "R&D Engineer Intern",
             startDate: "2015-02-28",
             summary:
               "Software development within the Digital Innovation team of R&D UK centre of an energy leader.",
@@ -312,7 +299,7 @@ export const resume: JsonResume = {
             position: "R&D Engineer Intern",
             startDate: "2014-06-30",
             summary:
-              "Data mining for photovoltaics energy storage optimisation within he Power Electronics R&D team.",
+              "Data mining for photovoltaics energy storage optimisation within the Power Electronics R&D team.",
             url: "https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/",
           },
         ]
