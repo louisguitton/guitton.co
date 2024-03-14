@@ -21,7 +21,7 @@ export const resume: JsonResume = {
   basics: {
     email: "admin@guitton.co",
     image: "/images/louis.jpg",
-    label: "Solutions Architect, ML Engineer and Engineering Lead",
+    label: "Solutions Architect, ML Engineer & Engineering Lead",
     location: {
       city: "Berlin",
       countryCode: "DE",
@@ -39,8 +39,13 @@ export const resume: JsonResume = {
         username: "louisguitton",
       },
     ],
-    summary:
-      "With 1 year of experience as a Solutions Architect, and 7 years in AI and NLP, I build transformative digital solutions for my customers.",
+    summary: `Experienced engineer and technical leader with proven credentials in the design and delivery of end-to-end
+multitiered data products at scale. Hands-on expertise at all stages of the technical/data product life cycles, including data
+analysis, modelling and algorithms, data architecture/systems design and deployment.
+Track record of successful product delivery, ensuring software engineering best practices in a cross-functional environment.
+Track record in building and leading high-performing Web, ML and Data engineering teams,
+with a focus on excellent stakeholder management, clear communication, mentorship and team development.`,
+    // "With 1 year of experience as a Solutions Architect, and 7 years in AI and NLP, I build transformative digital solutions for my customers.",
     // "With 2 years of experience as an Engineering Leader, and 7 years in AI and NLP, I build high-performing and transformative engineering teams.",
     // "Having previously built the modern data stack of OneFootball as well as built a 4-people analytics team for OneFootball Labs, I bring 7 years of experience in AI and NLP to build transformative digital solutions for my customers.",
     url: "https://guitton.co/",
@@ -199,62 +204,67 @@ export const resume: JsonResume = {
   volunteer: [],
   work: [
     {
-      highlights: [
-        "Pursuing open source projects and applied research in the space of Graphs and NLP <a href='https://www.youtube.com/watch?v=r9bjhkaNg5M&list=PLNodHTYsaGbLagG53yvtuQ0OfoaB2upvi&index=1'>recent talk at a conference</a>",
-        "Computer Vision and IoT data platform for Precision Livestock Farming (AgriTech)",
-        "GIS and B2B SaaS prospecting tool for commercial solar carports installers (CleanTech) <a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>video</a>",
-        "Digital twin protoype for Solar carports using Fronius, Grafana, Modbus, Webdyn, Sparklin, OCPP (CleanTech)",
-        //     'Data Solutions, teaching and open source',
-        //     '<b>Data Solutions</b>: Built data stack for entrepreneurship NGO and fintech startup. Deliver <i>airflow</i> workshop for automotive digital lab.',
-        //     '<b>Teaching</b>: Built and taught ML and IoT classes for engineering MBA in Paris.',
-        //     '<b>Open Source</b>: Contribute to <i>pytextrank</i> and <i>kglab</i> of Paco Nathan. Contribute to <i>Apache Airflow</i>.',
-      ],
+      name: "Self-employed",
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
-      name: "Self-employed",
       position: "Freelance Solutions Architect",
+      url: "https://guitton.co/",
       startDate: "2023-04-03",
       // endDate: "2023",
       summary:
-        "Design and build transformative digital solutions aligned with customer's requirements",
-      url: "https://guitton.co/",
+        "Data and AI consultation services for multiple short-term, high velocity projects including:",
+      // Design and build transformative digital solutions aligned with customer's requirements",
+      highlights: [
+        "Web chatbot assistant leveraging retrieval-augmented generation for machine maintenance",
+        "Tech and Product strategy involving Computer Vision and IoT data for precision livestock farming",
+        "Design and delivery of a B2B SaaS prospecting tool for solar carports installers using geospatial computing (<a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>video</a>)",
+        "Design of a digital twin architecture for solar carports and EV chargers",
+        // "Write material and teach ML and IoT classes for engineering MBA in Paris",
+        // "Design and deliver <i>airflow</i> workshop for automotive digital lab",
+        // "Contribute to open source projects like <i>pytextrank</i>",
+      ],
     },
     {
-      highlights: [
-        "Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity",
-        "Lead the company through steep headcount growth from 2 people to 45 over 12 months",
-        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 2 external engineering teams for a total of 4",
-        // UX engineering team, Data team, Blockchain engineering team, Martech team
-        // • Accountable for staffing and personnel planning (incl. recruiting)
-        // managed and grown high-performing teams by focusing on the engineers.
-        // building teams that focus on impact, technical excellence, and transparency
-        "<b>Architected the tech stack</b> and <b>built the MVP</b> including smart contracts, frontend, and backend; <a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>",
-        // delivered MVP 1 month before FIFA competitor
-        // 20k MAUs, 115k at peak 21-27 Aug
-        // 500k total revenue
-        "Accountable for product strategy, delivery and performance (115k MAUs) and business results ($500k revenue)",
-        // • Managing cross department dependencies
-        "Provided leadership and coaching; gave trainings on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>",
-      ],
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
       name: "OneFootball Labs",
-      position: "VP of Engineering and co-founder",
+      position: "VP of Engineering",
       startDate: "2022-01-31",
       endDate: "2023-03-31",
-      summary:
-        "NFT marketplace for football video collectibles minted and dropped in-house",
+      summary: "NFT platform and marketplace for football video collectibles",
+      highlights: [
+        `Technical leadership, vision and strategy to design and build robust and scalable ecommerce marketplace and NFT
+platform, including smart contracts, minting and packing, full-stack web application, tracking and data analytics (<a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>)`,
+        `Established the Web3 business unit, 
+        defined the team structure for Product, Design, Engineering and Data,
+        identified and organised collaboration processes with the Go-to-Market teams`,
+        `Hired and Managed a cross-capability team of 20 colleagues:
+        conducted hiring interviews, provided leadership and coaching through 1-on-1s, and identified personal development plans;
+         managed resourcing demands, delivery timelines and incidents; developed technology roadmaps; gave trainings on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>`,
+        `Accountable for product strategy, delivery and performance (115k MAUs) and business results ($500k revenue)`,
+        // UX engineering team, Data team, Blockchain engineering team, Martech team
+        // • Accountable for staffing and personnel planning (incl. recruiting)
+        // managed and grown high-performing teams by focusing on the engineers.
+        // building teams that focus on impact, technical excellence, and transparency
+        // delivered MVP 1 month before FIFA competitor
+        // 20k MAUs, 115k at peak 21-27 Aug
+        // 500k total revenue
+        // • Managing cross department dependencies
+      ],
       url: "https://aera.onefootball.com/",
     },
     {
       highlights: [
-        "Set the technical bar for <b>Data Science, Data Engineering, and Data Analytics</b>.",
-        "Designed and implemented advanced human-in-the-loop <b>Natural Language Processing (NLP)</b> systems for news tagging in 7 languages.",
-        "Used knowledge graphs, language models, text classification, entity linking, topic modeling and search.",
+        `Technical lead for design, development and delivery of automated <b>news tagging</b> solution,
+        ultimately enabling the company to scale its news coverage to 12 languages, 5000 articles per day and 15 million MAUs.
+        Used knowledge graphs, language models, text classification, entity linking, topic modeling and search.`,
+        `Technical lead for <b>Data Engineering</b> and <b>Analytics Engineering</b>. Migration to a modern data stack, roll out of airflow, dbt, AWS LakeFormation, Snowplow.
+        Refactoring code, architecture design, code reviews, and mentoring.`,
+        `Led cross-team project to build recommenders systems for news and entity content, which increased user engagement.`,
         // "Hired, managed and growed one MLE intern.",
         // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
         // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
@@ -275,38 +285,34 @@ export const resume: JsonResume = {
       url: "https://onefootball.com/",
     },
     {
-      endDate: "2018-06-30",
-      highlights: [
-        // scalable hiring personality screening competitor to HireView
-        // Worked with Isabelle Guyon's research group
-        "<b>Entrepreneurship</b>: Developed an idea using CNNs on video, pitched in front of angel investors.",
-      ],
+      name: "Entrepreneur First",
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
-      name: "Entrepreneur First",
       position: "Entrepreneur in residence",
-      startDate: "2018-04-30",
-      summary:
-        "World-wide deep-tech incubator investing in early-career co-founders.",
       url: "https://www.joinef.com/",
+      startDate: "2018-04-30",
+      endDate: "2018-06-30",
+      // Worked with Isabelle Guyon's research group
+      // scalable hiring personality screening competitor to HireView
+      summary: `Joined the world-wide deep-tech incubator investing in early-career co-founders.
+        Applied deep learning CNN models to a scalable hiring personality screening tool for talent acquisition managers.`,
+      highlights: [],
     },
     {
-      endDate: "2018-03-31",
-      highlights: [
-        "<b>Deep Learning & Big Data</b>: Trained MLP models in tensorflow and theano applied to recsys and bettings odds models.",
-      ],
+      name: "DOJO Madness",
       location: {
         city: "Berlin",
         countryCode: "DE",
       },
-      name: "DOJO Madness",
       position: "Data Scientist",
-      startDate: "2016-08-31",
-      summary:
-        "ESports startup selling analytics and coaching tools to gamers.",
       url: "https://www.bayesholding.com/",
+      startDate: "2016-08-31",
+      endDate: "2018-03-31",
+      summary:
+        "Joined a deep-tech Esports startup. Trained deep learning MLP models for generating in-game recommendations and betting odds.",
+      highlights: [],
     },
   ].concat(
     includeInternships
@@ -322,7 +328,7 @@ export const resume: JsonResume = {
             position: "Data Science Intern",
             startDate: "2016-01-31",
             summary:
-              "Measuring online earned media for Automotive and Cosmetics brands using NLP and web crawlers.",
+              "Joined a Data Science Consultancy to measure online earned media for Automotive and Cosmetics brands using NLP and web crawlers.",
             url: "https://ekimetrics.com/",
           },
           {
