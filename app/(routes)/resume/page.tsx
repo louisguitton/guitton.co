@@ -6,6 +6,7 @@ import { resume } from "../../../lib/resume";
 // import { resume } from "../../../lib/resume-sa";
 import PrintButton from "./components/PrintButton";
 import Basics from "./components/jsonresume/Basics";
+import Certificates from "./components/jsonresume/Certificates";
 import Education from "./components/jsonresume/Education";
 import Language from "./components/jsonresume/Language";
 import Projects from "./components/jsonresume/Projects";
@@ -30,10 +31,11 @@ const Resume = () => {
       <PrintButton />
       <div>
         <Basics basics={resume.basics} />
-        <Work works={resume.work} />
-        <Projects projects={resume.projects} />
-        <Education educations={resume.education} />
         <Skills skills={resume.skills} />
+        <Work works={resume.work} />
+        <Certificates certificates={resume.certificates} />
+        <Education educations={resume.education} />
+        <Projects projects={resume.projects} />
         <Language languages={resume.languages} />
       </div>
     </Container>

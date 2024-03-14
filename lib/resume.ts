@@ -12,7 +12,7 @@ import { JsonResume } from "../app/(routes)/resume/components/jsonresume/types";
  * - keep it 1 page
  * - keep about section short, leave the rest on linkedin or website
  */
-const includeLanguages = true;
+const includeLanguages = false;
 const includeInternships = true;
 export const resume: JsonResume = {
   $schema:
@@ -21,9 +21,7 @@ export const resume: JsonResume = {
   basics: {
     email: "admin@guitton.co",
     image: "/images/louis.jpg",
-    label: "Freelance Solutions Architect",
-    // label: "Engineering and Data Leader",
-    // label: "Freelance Solutions and Data Architect",
+    label: "Solutions Architect, ML Engineer and Engineering Lead",
     location: {
       city: "Berlin",
       countryCode: "DE",
@@ -48,7 +46,20 @@ export const resume: JsonResume = {
     url: "https://guitton.co/",
     website: "https://guitton.co/",
   },
-  certificates: [],
+  certificates: [
+    {
+      name: "Natural Language Processing Specialization",
+      date: "Oct 2020",
+      url: "https://www.coursera.org/account/accomplishments/specialization/VV58EVYSVZJ3",
+      issuer: "DeepLearning.AI (Coursera)",
+    },
+    {
+      name: "Supervised Machine Learning",
+      date: "Mar 2016",
+      url: "https://www.coursera.org/account/accomplishments/verify/S2967XDV68D6",
+      issuer: "DeepLearning.AI (Coursera)",
+    },
+  ],
   education: [
     {
       area: "Executive Engineering",
@@ -95,16 +106,27 @@ export const resume: JsonResume = {
   },
   projects: [
     {
+      name: "Speaking engagements",
+      highlights: [
+        "'Graphs and Language' lightning talk at MLOps.community AI in Production conference, Feb 2024",
+        "'When Natural Language Processing meets Football' at Unstructured meetup by Tilores, Mar 2022",
+      ],
+      summary: "Public speaking, verbal communication and knowledge sharing",
+    },
+    {
       entity: "guitton.co",
-      name: "Blogging and Freelance",
+      name: "Blogging",
       url: "https://guitton.co",
-      summary:
-        "Freelance Solutions Architect in the Sustainability and AI space. Sharing my thougts with ~1k MAUs.",
+      summary: "Written communication, and knowledge sharing with ~1k MAUs.",
       highlights: [
         "Ranking on the first page of Google for <a href='https://guitton.co/posts/fastapi-monitoring'><i>fastapi monitoring</i></a> and <a href='https://guitton.co/posts/dbt-artifacts'><i>amundsen dbt</i></a> since 2020",
         "NLP and Graph RAG with Generative AI with <a href='https://guitton.co/posts/graphs-and-language'>Graphs and Language</a>",
-        "Past clients include IFP Energies Nouvelles, a leading European player in the fields of energy, and the environment. <a href='https://guitton.co/process'>Freelance Process</a>",
       ],
+    },
+    {
+      name: "Mentoring",
+      summary:
+        "Code review, blog post review, and career advice for junior engineers and data professionals",
     },
   ],
   publications: [],
@@ -174,16 +196,16 @@ export const resume: JsonResume = {
       highlights: [
         "Co-founded a joint venture between OneFootball and Animoca Brands on a new strategic opportunity",
         "Lead the company through steep headcount growth from 2 people to 45 over 12 months",
-        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 4 eng teams at peak",
+        "Hired and <b>built 2 high-performing engineering teams</b> over 3 months, managed 2 external engineering teams for a total of 4",
         // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
         // building teams that focus on impact, technical excellence, and transparency
-        "<b>Architected the tech stack</b> and built blockchain MVP including smart contract, frontend, and backend; <a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>",
+        "<b>Architected the tech stack</b> and <b>built the MVP</b> including smart contracts, frontend, and backend; <a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>",
         // delivered MVP 1 month before FIFA competitor
         // 20k MAUs, 115k at peak 21-27 Aug
         // 500k total revenue
-        "Accountable for product strategy, delivery and performance (115k MAUs peak) and business results ($500k revenue)",
+        "Accountable for product strategy, delivery and performance (115k MAUs) and business results ($500k revenue)",
         // • Managing cross department dependencies
         "Provided leadership and coaching; gave trainings on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>",
       ],
