@@ -125,13 +125,16 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
       summary: "Written communication, and knowledge sharing with ~1k MAUs.",
       highlights: [
         "Ranking on the first page of Google for <a href='https://guitton.co/posts/fastapi-monitoring'><i>fastapi monitoring</i></a> and <a href='https://guitton.co/posts/dbt-artifacts'><i>amundsen dbt</i></a> since 2020",
-        "NLP and Graph RAG with Generative AI with <a href='https://guitton.co/posts/graphs-and-language'>Graphs and Language</a>",
+        "NLP, LLMs and Graph RAG with <a href='https://guitton.co/posts/graphs-and-language'>Graphs and Language</a>",
       ],
     },
     {
       name: "Mentoring",
       summary:
         "Code review, blog post review, and career advice for junior engineers and data professionals",
+      highlights: [
+        "Coached Analytics Engineer to successful completion of <a href='https://medium.com/@marielestavel/how-i-have-set-up-a-cost-effective-modern-data-stack-for-a-charity-3fe7e7c9162'>Data for Good project</a> in May 2022",
+      ],
     },
   ],
   publications: [],
@@ -290,7 +293,7 @@ platform, including smart contracts, minting and packing, full-stack web applica
         city: "Berlin",
         countryCode: "DE",
       },
-      position: "Entrepreneur in residence",
+      position: "Entrepreneur in Residence",
       url: "https://www.joinef.com/",
       startDate: "2018-04-30",
       endDate: "2018-06-30",
