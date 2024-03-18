@@ -53,6 +53,12 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
   },
   certificates: [
     {
+      name: "Enterprise Design Thinking Practitioner",
+      date: "Mar 2024",
+      url: "https://www.credly.com/earner/earned/badge/09c441c8-52ac-48c8-b24e-34a27c284481",
+      issuer: "IBM",
+    },
+    {
       name: "Natural Language Processing Specialization",
       date: "Oct 2020",
       url: "https://www.coursera.org/account/accomplishments/specialization/VV58EVYSVZJ3",
