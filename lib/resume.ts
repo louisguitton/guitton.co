@@ -1,6 +1,8 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { JsonResume } from "../app/(routes)/resume/components/jsonresume/types";
 
+// copy to https://app.standardresume.co/resumes/r6V5I1YFIhYoOL5BWvnYr/write
+
 /**
  * ref: https://huyenchip.com/2023/01/24/what-we-look-for-in-a-candidate.html
  * Ref: https://leerob.io/blog/resume
@@ -39,12 +41,16 @@ export const resume: JsonResume = {
         username: "louisguitton",
       },
     ],
-    summary: `Experienced engineer and technical leader with proven credentials in the design and delivery of end-to-end
-multitiered data products at scale. Hands-on expertise at all stages of the technical/data product life cycles, including data
-analysis, modelling and algorithms, data architecture/systems design and deployment.
-Track record of successful product delivery, ensuring software engineering best practices in a cross-functional environment.
-Track record in building and leading high-performing Web, ML and Data engineering teams,
-with a focus on excellent stakeholder management, clear communication, mentorship and team development.`,
+    summary: `
+    Engineering and technical leader who provides strategic guidance while motivating teams to excellence.
+    Louis knows how to successfully innovate, build, launch, scale and maintain multi-tiered data products.
+    `,
+    // summary: `Experienced engineer and technical leader with proven credentials in the design and delivery of end-to-end
+    // multitiered data products at scale. Hands-on expertise at all stages of the technical/data product life cycles, including data
+    // analysis, modelling and algorithms, data architecture/systems design and deployment.
+    // Track record of successful product delivery, ensuring software engineering best practices in a cross-functional environment.
+    // Track record in building and leading high-performing Web, ML and Data engineering teams,
+    // with a focus on excellent stakeholder management, clear communication, mentorship and team development.`,
     // "With 1 year of experience as a Solutions Architect, and 7 years in AI and NLP, I build transformative digital solutions for my customers.",
     // "With 2 years of experience as an Engineering Leader, and 7 years in AI and NLP, I build high-performing and transformative engineering teams.",
     // "Having previously built the modern data stack of OneFootball as well as built a 4-people analytics team for OneFootball Labs, I bring 7 years of experience in AI and NLP to build transformative digital solutions for my customers.",
@@ -53,9 +59,9 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
   },
   certificates: [
     {
-      name: "Enterprise Design Thinking Practitioner",
+      name: "Enterprise Design Thinking Co-Creator",
       date: "Mar 2024",
-      url: "https://www.credly.com/earner/earned/badge/09c441c8-52ac-48c8-b24e-34a27c284481",
+      url: "https://www.credly.com/badges/4335532b-023d-4506-8033-af5f054d8ce0",
       issuer: "IBM",
     },
     {
@@ -120,7 +126,8 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
       name: "Speaking engagements",
       highlights: [
         "'Graphs and Language' lightning talk at MLOps.community AI in Production conference, Feb 2024",
-        "'When Natural Language Processing meets Football' at Unstructured meetup by Tilores, Mar 2022",
+        "'When Natural Language Processing meets Football' at Unstructured Data meetup, Mar 2022",
+        "'Graph Data Science' at The Knowledge Graph Conference, May 2021",
       ],
       summary: "Public speaking, verbal communication and knowledge sharing",
     },
@@ -211,6 +218,8 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
     },
   ],
   volunteer: [],
+  // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
+  // in 2 lines
   work: [
     {
       name: "Self-employed",
@@ -223,13 +232,14 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
       startDate: "2023-04-03",
       // endDate: "2023",
       summary:
-        "Data and AI consultation services for multiple short-term, high velocity projects including:",
-      // Design and build transformative digital solutions aligned with customer's requirements",
+        "Data and AI consultation services for multiple short-term, high-velocity projects including:",
       highlights: [
-        "Web chatbot assistant leveraging retrieval-augmented generation for machine maintenance",
-        "Tech and Product strategy involving Computer Vision and IoT data for precision livestock farming",
-        "Design and delivery of a B2B SaaS prospecting tool for solar carports installers using geospatial computing (<a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>video</a>)",
-        "Design of a digital twin architecture for solar carports and EV chargers",
+        // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
+        // in 2 lines
+        "Built reference architecture for AI chatbot, using RAG and LLMs, unlocking my client's new product vision",
+        "Delivered user-centred technical strategy for Agriculture 4.0 and precision livestock farming, helping my client secure funding from Bpifrance",
+        "Delivered a prospecting tool for a leading French solar carport installer, using geospatial computing (<a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>details</a>), speeding up the sales process",
+        "Built digital twin architecture for solar carports and EV chargers, making real-time monitoring and smart charging possible",
         // "Write material and teach ML and IoT classes for engineering MBA in Paris",
         // "Design and deliver <i>airflow</i> workshop for automotive digital lab",
         // "Contribute to open source projects like <i>pytextrank</i>",
@@ -246,15 +256,16 @@ with a focus on excellent stakeholder management, clear communication, mentorshi
       endDate: "2023-03-31",
       summary: "NFT platform and marketplace for football video collectibles",
       highlights: [
-        `Technical leadership, vision and strategy to design and build robust and scalable ecommerce marketplace and NFT
-platform, including smart contracts, minting and packing, full-stack web application, tracking and data analytics (<a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>)`,
-        `Established the Web3 business unit, 
-        defined the team structure for Product, Design, Engineering and Data,
-        identified and organised collaboration processes with the Go-to-Market teams`,
-        `Hired and Managed a cross-capability team of 20 colleagues:
-        conducted hiring interviews, provided leadership and coaching through 1-on-1s, and identified personal development plans;
-         managed resourcing demands, delivery timelines and incidents; developed technology roadmaps; gave trainings on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>`,
-        `Accountable for product strategy, delivery and performance (115k MAUs) and business results ($500k revenue)`,
+        // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
+        // in 2 lines
+        `Managed 4 remote and hybrid teams for engineering, data, product and design of 20 staff`,
+        `Delivered robust and scalable e-commerce NFT marketplace, including smart contracts, minting and packing (<a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>)
+        enabling the business to execute on a new strategic opportunity in a highly technical space`,
+        `Found product-market fit for NFT marketplace, leading to $500k revenue and 115k MAUs`,
+        `Established the Web3 business unit of OneFootball and defined the structure of teams and processes, bringing solutions in a fast-paced environment`,
+        `Hired and coached talent, built a culture of excellence and transparency, and gave training on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>`,
+        // conducted hiring interviews, provided leadership and coaching through 1-on-1s, and identified personal development plans;
+        //  managed resourcing demands, delivery timelines and incidents; developed technology roadmaps;
         // UX engineering team, Data team, Blockchain engineering team, Martech team
         // • Accountable for staffing and personnel planning (incl. recruiting)
         // managed and grown high-performing teams by focusing on the engineers.
@@ -268,12 +279,13 @@ platform, including smart contracts, minting and packing, full-stack web applica
     },
     {
       highlights: [
-        `Technical lead for design, development and delivery of automated <b>news tagging</b> solution,
-        ultimately enabling the company to scale its news coverage to 12 languages, 5000 articles per day and 15 million MAUs.
-        Used knowledge graphs, language models, text classification, entity linking, topic modeling and search.`,
-        `Technical lead for <b>Data Engineering</b> and <b>Analytics Engineering</b>. Migration to a modern data stack, roll out of airflow, dbt, AWS LakeFormation, Snowplow.
-        Refactoring code, architecture design, code reviews, and mentoring.`,
-        `Led cross-team project to build recommenders systems for news and entity content, which increased user engagement.`,
+        // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
+        // in 2 lines
+        `Delivered innovative <b>news tagging</b> solution using NLP, enabling the company to scale its news coverage to 12 languages, 5000 articles per day`,
+        `Built the company's first knowledge graph, unlocking new entity types like Players and Games, and enabling new high-engagement features like <b>news recommendations</b>`,
+        `Migrated the company's data stack to a modern data stack, including airflow, dbt, AWS LakeFormation, Snowplow, enabling the company to scale its data processing and analytics`,
+        `Mentored and coached 2 engineers and 4 analysts, enabling them to grow their skills and take on more responsibilities`,
+        // `Led cross-team project to build recommenders systems for news and entity content, which increased user engagement.`,
         // "Hired, managed and growed one MLE intern.",
         // '<b>News tagging</b>: Researched, designed, built and deployed a custom human-in-the-loop entity linking service for tagging football news in 7 languages. Final solution makes use of <i>referent graphs</i>. Applied other NLP techniques like language models, NER, text classification, topic modeling. I favour data-centric ML over model-centric.',
         // '<b>Recommenders systems</b>: Built recommender systems PoCs using both custom and off-the-shelf algorithms.',
@@ -305,8 +317,8 @@ platform, including smart contracts, minting and packing, full-stack web applica
       endDate: "2018-06-30",
       // Worked with Isabelle Guyon's research group
       // scalable hiring personality screening competitor to HireView
-      summary: `Joined the world-wide deep-tech incubator investing in early-career co-founders.
-        Applied deep learning CNN models to a scalable hiring personality screening tool for talent acquisition managers.`,
+      summary: `Developed a scalable personality screening tool for talent acquisition managers using 
+      deep learning Computer Vision models and the resources of a worldwide deep-tech incubator for early-career founders.`,
       highlights: [],
     },
     {
@@ -319,8 +331,7 @@ platform, including smart contracts, minting and packing, full-stack web applica
       url: "https://www.bayesholding.com/",
       startDate: "2016-08-31",
       endDate: "2018-03-31",
-      summary:
-        "Joined a deep-tech Esports startup. Trained deep learning MLP models for generating in-game recommendations and betting odds.",
+      summary: `Built and maintained a real-time deep-learning recommendations pipeline for 1 million daily users of a mobile app.`,
       highlights: [],
     },
   ].concat(
@@ -337,7 +348,7 @@ platform, including smart contracts, minting and packing, full-stack web applica
             position: "Data Science Intern",
             startDate: "2016-01-31",
             summary:
-              "Joined a Data Science Consultancy to measure online earned media for Automotive and Cosmetics brands using NLP and web crawlers.",
+              "Researched applications of NLP and web crawlers to the economy of online earned media for Automotive and Cosmetics brands.",
             url: "https://ekimetrics.com/",
           },
           {
@@ -351,7 +362,7 @@ platform, including smart contracts, minting and packing, full-stack web applica
             position: "R&D Engineer Intern",
             startDate: "2015-02-28",
             summary:
-              "Software development within the Digital Innovation team of R&D UK centre of an energy leader.",
+              "Researched applications of software development and data science to the digital innovation of an energy leader.",
             url: "https://www.edfenergy.com/about/research-development",
           },
           {
@@ -365,7 +376,7 @@ platform, including smart contracts, minting and packing, full-stack web applica
             position: "R&D Engineer Intern",
             startDate: "2014-06-30",
             summary:
-              "Data mining for photovoltaics energy storage optimisation within the Power Electronics R&D team.",
+              "Researched applications of Data Science to storage optimisation of photovoltaics energy within the Power Electronics R&D team.",
             url: "https://www.bosch.com.sg/our-company/bosch-in-singapore/bishan/",
           },
         ]
