@@ -4,7 +4,6 @@ import { Post, allPosts } from "contentlayer/generated";
 import { Linkedin } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
-import FeaturedPosts from "../(home)/components/FeaturedPosts";
 import LogoCloud from "../process/components/LogoCloud";
 import FourFeatures from "./components/FourFeatures";
 import ThreeContent from "./components/ThreeContent";
@@ -67,7 +66,6 @@ export default function Process() {
         <FourFeatures />
         <ThreeContent />
       </div>
-      <FeaturedPosts posts={posts} />
     </>
   );
 }
