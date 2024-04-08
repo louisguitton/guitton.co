@@ -6,7 +6,7 @@ const features = [
   {
     name: "Precision Livestock Farming platform with IoT.",
     description:
-      "For the french ventilation manufacturer Sodistra, I have developed the product strategy of a precision livestock farming platform leveraging IoT and Computer Vision.",
+      "For the french HVAC manufacturer Sodistra, I have developed the product strategy of a precision livestock farming platform leveraging IoT and Computer Vision.",
     icon: Wifi,
   },
   {
