@@ -7,6 +7,7 @@ import Link from "next/link";
 import FeaturedPosts from "../(home)/components/FeaturedPosts";
 import LogoCloud from "../process/components/LogoCloud";
 import FourFeatures from "./components/FourFeatures";
+import ThreeContent from "./components/ThreeContent";
 import ThreeProjects from "./components/ThreeProjects";
 
 export const metadata: Metadata = {
@@ -64,6 +65,7 @@ export default function Process() {
       <div className="[counter-reset:section] space-y-12">
         <ThreeProjects />
         <FourFeatures />
+        <ThreeContent />
       </div>
       <FeaturedPosts posts={posts} />
     </>

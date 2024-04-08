@@ -10,7 +10,7 @@ const features = [
   {
     name: "Design Thinking",
     description:
-      "I am a IBM-certified Enterprise Design Thinking co-creator, innovating in constant 'Observe, Reflect, Make' cycles, and collaborating with Product and Design teams.",
+      "I am a IBM-certified Enterprise Design Thinking co-creator, innovating in constant 'Observe, Reflect, Make' cycles and collaborating with Product and Design teams.",
     icon: Infinity,
   },
   {
@@ -36,11 +36,7 @@ export default function FourFeatures() {
             More than NLP
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Other skills I bring to the table
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            My past experiences and skills offer a unique combination that can
-            help GROPYUS thrive.
+            Other skills I bring to the table to help GROPYUS thrive
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
