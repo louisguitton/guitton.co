@@ -34,7 +34,7 @@ export default function ThreeProjects() {
                 Relevant Experiences
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                My recent projects are relevant to GROPYUS.
+                My recent projects are relevant to GROPYUS
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                 {features.map((feature) => (
