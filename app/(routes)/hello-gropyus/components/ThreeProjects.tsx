@@ -18,7 +18,7 @@ const features = [
   {
     name: "News tagging with Knowledge Graphs.",
     description:
-      "For OneFootball, I have designed, built and maintained a news tagging platform using Knowledge Graphs, unlocking growth through multi-lingual and automated news tagging and enabling news features like recommendations.",
+      "For OneFootball, I have designed, built and maintained a news tagging platform using Knowledge Graphs, unlocking growth through multi-lingual and automated news tagging and enabling new features like recommendations.",
     icon: Newspaper,
   },
 ];

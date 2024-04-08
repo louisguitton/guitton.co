@@ -36,7 +36,7 @@ export default function FourFeatures() {
             More than NLP
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Other skills I bring to the table to help GROPYUS thrive
+            Other skills I bring to the table can help GROPYUS thrive
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
