@@ -172,7 +172,7 @@ export default function Pricing() {
           partner with my customers to design, create, operate and accelerate
           capabilities that generate the greatest possible impact.
         </p>
-        <p>
+        <p className="prose mt-4">
           I offer different packages:
           <ul>
             <li>
@@ -180,13 +180,13 @@ export default function Pricing() {
               project
             </li>
             <li>
-              <b>Retainer based</b>: I am willing to offer hours of availability
+              <b>Retainer-based</b>: I am willing to offer hours of availability
               each month for a retainer
             </li>
             <li>
               <b>Cascading rate</b>: I will give you an upfront estimate of the
-              time to complete a given project, and if we go over this initial
-              estimate, I will work at a different rate (not necessarily
+              time needed to complete a given project, and if we go over this
+              initial estimate, I will work at a different rate (not necessarily
               superior) for subsequent hours
             </li>
           </ul>
