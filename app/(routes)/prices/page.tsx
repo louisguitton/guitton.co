@@ -172,6 +172,25 @@ export default function Pricing() {
           partner with my customers to design, create, operate and accelerate
           capabilities that generate the greatest possible impact.
         </p>
+        <p>
+          I offer different packages:
+          <ul>
+            <li>
+              <b>Project-based</b>: I work for a lump sum upon completion of the
+              project
+            </li>
+            <li>
+              <b>Retainer based</b>: I am willing to offer hours of availability
+              each month for a retainer
+            </li>
+            <li>
+              <b>Cascading rate</b>: I will give you an upfront estimate of the
+              time to complete a given project, and if we go over this initial
+              estimate, I will work at a different rate (not necessarily
+              superior) for subsequent hours
+            </li>
+          </ul>
+        </p>
       </PageIntro>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* xs to lg */}
