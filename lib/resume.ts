@@ -235,7 +235,7 @@ export const resume: JsonResume = {
         city: "Berlin",
         countryCode: "DE",
       },
-      position: "Freelance Solutions Architect",
+      position: "Freelance Solutions Architect and Machine Learning Engineer",
       url: "https://guitton.co/",
       startDate: "2023-04-03",
       // endDate: "2023",
@@ -259,18 +259,19 @@ export const resume: JsonResume = {
         countryCode: "DE",
       },
       name: "OneFootball Labs",
-      position: "VP of Engineering",
+      position: "Senior Engineering Manager",
       startDate: "2022-01-31",
       endDate: "2023-03-31",
       summary: "NFT platform and marketplace for football video collectibles",
       highlights: [
         // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
         // in 2 lines
-        `Managed 4 remote and hybrid teams for engineering, data, product and design of 20 staff`,
+        `Architected and developed backend systems using Python, Node, Go, PostgreSQL, and ElasticSearch taking product from concept to production with paying customers.`,
         `Delivered robust and scalable e-commerce NFT marketplace, including smart contracts, minting and packing (<a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>)
         enabling the business to execute on a new strategic opportunity in a highly technical space`,
         `Found product-market fit for NFT marketplace, leading to $500k revenue and 115k MAUs`,
         `Established the Web3 business unit of OneFootball and defined the structure of teams and processes, bringing solutions in a fast-paced environment`,
+        `Managed 4 remote and hybrid teams for engineering, data, product and design of 20 staff`,
         `Hired and coached talent, built a culture of excellence and transparency, and gave training on <a href='https://www.youtube.com/watch?v=A-XM22C2E2I'>blockchain firefighting</a> or <a href='https://www.youtube.com/watch?v=H_qXFZmBn2o'>technical SEO</a>`,
         // conducted hiring interviews, provided leadership and coaching through 1-on-1s, and identified personal development plans;
         //  managed resourcing demands, delivery timelines and incidents; developed technology roadmaps;

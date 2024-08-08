@@ -1,0 +1,112 @@
+---
+title: "Functional Programming for Data Engineering Pipelines that use Python Pandas dataframes"
+lastmod: "2024-08-08"
+summary: >
+  In this post I give tips on how to write pandas code for Data Engineering.
+categories:
+  - Data
+series:
+  -
+image: /images/functional-pandas/patrick-hendry-Tv5lpMsuvoI-unsplash.jpg
+---
+
+If you're maintaining a codebase that uses pandas dataframes heavily, you might have felt this pain already.
+Your files are getting longer, debugging the data transformations is getting slower.
+
+When it comes to Data Engineering, Functional Programming has proven its value already and I won't come back on this in this post.
+If you're not convinced, just have a look at the seminal piece by Maxime Beauchemin (creator of Apache Airflow and Apache Superset)
+[Functional Data Engineering — a modern paradigm for batch data processing](https://maximebeauchemin.medium.com/functional-data-engineering-a-modern-paradigm-for-batch-data-processing-2327ec32c42a).
+
+But, of all the Data Engineering or Machine Learning Operations tools, one is at the same time used a lot, and harder to adopt functional programming with: pandas dataframes.
+I will show more niche ways to write pandas code that has served me well in previous roles or at previous clients to reduce tech debt, and make Data Engineering in pandas more fun.
+
+## Functional Programming in Python
+
+For an in depth look, have a read at [Functional Programming in Python: When and How to Use It](https://realpython.com/python-functional-programming/).
+
+```python
+>>> animals = ["ferret", "vole", "dog", "gecko"]
+>>> sorted(animals, key=lambda s: -len(s))
+['ferret', 'gecko', 'vole', 'dog']
+```
+
+## Functional Programming in Pandas
+
+For an intro to the topic, have a read at [Method chaining across multiple lines in Python](https://note.nkmk.me/en/python-method-chain-line-break/).
+
+Let's use this dataframe as an example:
+
+```python
+import pandas as pd
+
+df = pd.DataFrame.from_records([
+    {"name": "Alice", "age": 24, "state": "NY", "point": 64},
+    {"name": "Bob", "age": 42, "state": "CA", "point": 92},
+    {"name": "Charlie", "age": 18, "state": "CA", "point": 70}
+])
+```
+
+### Bad: entry-level pandas
+
+```python
+df["point_ratio"] = df['point'] / 100
+df["surrogate_key"] = df["name"] + "-" + df["age"].astype(str) + "-" + df["state"]
+df = df.drop(columns='state')
+df = df.sort_values('age')
+df = df.head(3)
+```
+
+While still maintaining one transformation per line, there are mentions of `df` everywhere.
+We are not explicit about the fact that we rely on the transformations to happen in the order we wrote them.
+Also, you can see with the `surrogate_key` transformation that the readability of the code decreases when the transformation complexity increases.
+
+### Better: pandas functional API
+
+```python
+result = (
+    df
+    .assign(point_ratio=lambda d: d['point'] / 100)
+    .assign(surrogate_key=lambda d: d.apply(lambda r: f"{r['name']}-{r['age']}-{r['state']}", axis=1))
+    .drop(columns='state')
+    .sort_values('age')
+    .head(3)
+)
+```
+
+Using `.assign` and parenthesis `()`, we anchor our approach in functional programming.
+Each transformation is on its own line, and there are no more mentions of `df`.
+We are explicit about the transformations order.
+
+On the other hand, the `surrogate_key` transformation is hard to write:
+
+- There are two nested `lambda` functions
+- we iterate on rows using `.apply` and `axis=1`, which adds complexity
+- we are using unspoken rules like naming `d` the parameter of type `pd.DataFrame`, and naming `r` the parameter which
+  is a "Row" of the dataframe.
+
+Because code is read more than it's written, investing the time to write this code is still worth it for teams.
+But we can do better
+
+### Best: use `pandas.DataFrame.itertuples` with the functional API
+
+```python
+result = (
+    df
+    .assign(point_ratio=lambda d: d['point'] / 100)
+    .assign(surrogate_key=lambda d: [f"{user.name}-{user.age}-{user.state}" for user in d.itertuples(name="User")])
+    .drop(columns='state')
+    .sort_values('age')
+    .head(3)
+)
+```
+
+We take the same approach as before, but we tweak the `surrogate_key` transformation.
+This time:
+
+- no nested `lambda`
+- we iterate over rows using `itertuples`, which maintains `dtypes` of the rows and that gives us `NamedTuple` objects
+- explicit variable name `user` instead of `r` previously
+
+## Conclusion
+
+In this short article, I have showed you a new way to write your pandas data pipelines that can be leveraged to write more explicit and maintainable code for Data Engineering.
