@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Pricing() {
+export default function Imprint() {
   return (
     <>
       <PageIntro

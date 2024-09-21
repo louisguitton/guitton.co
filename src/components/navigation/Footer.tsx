@@ -26,26 +26,14 @@ const navigation: {
 } = {
   site: [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Resume", href: "/resume" },
-    { name: "Process", href: "/process" },
     { name: "Blog", href: "/posts" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Imprint", href: "/impressum" },
   ],
-  mentions: [
-    {
-      name: "Reddit",
-      href: "https://www.reddit.com/search.json?sort=new&q=site:guitton.co%20OR%20author:laguitte%20OR%20selftext:%22guitton.co%22",
-    },
-    {
-      name: "Twitter",
-      href: "https://twitter.com/search?q=%22guitton.co%22%20-from%3Alouis_guitton%20-%40louis_guitton%20-bag%20-purse%20-from%3Alouisguitton&src=typed_query&f=live",
-    },
-    {
-      name: "Hackernews",
-      href: "https://news.ycombinator.com/from?site=guitton.co",
-    },
+  services: [
+    { name: "Imprint", href: "/impressum" },
+    { name: "Résumé", href: "/resume" },
+    { name: "Process", href: "/process" },
   ],
   social: [
     {
@@ -125,7 +113,7 @@ const Footer: React.FC = () => {
         })}
         <div className="col-span-4">
           <p className="mb-6 text-sm text-gray-500">
-            © Copyright 2022 Louis Guitton. All Rights Reserved.
+            © Copyright 2024 Louis Guitton. All Rights Reserved.
           </p>
         </div>
       </div>

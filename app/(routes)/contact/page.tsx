@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "guitton.co | Contact",
   },
+  robots: {
+    index: false,
+  },
 };
 
 const ContactPage = () => {
