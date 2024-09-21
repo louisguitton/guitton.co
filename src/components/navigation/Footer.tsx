@@ -31,6 +31,7 @@ const navigation: {
     { name: "Process", href: "/process" },
     { name: "Blog", href: "/posts" },
     { name: "Contact", href: "/contact" },
+    { name: "Imprint", href: "/impressum" },
   ],
   mentions: [
     {
