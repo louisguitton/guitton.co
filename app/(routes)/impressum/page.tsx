@@ -35,7 +35,7 @@ export default function Imprint() {
                     Legal form
                   </dt>
                   <dd className="mt-1 text-sm text-gray-900">
-                    Freiberufler (Auto-entrepreneur)
+                    Freiberufler (Entreprise Individuelle)
                   </dd>
                 </div>
                 <div className="sm:col-span-1 print:col-span-1">
