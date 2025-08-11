@@ -1,4 +1,8 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faGitlab,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import { JsonResume } from "../app/(routes)/resume/components/jsonresume/types";
 
 // copy to https://app.standardresume.co/resumes/r6V5I1YFIhYoOL5BWvnYr/write
@@ -21,9 +25,9 @@ export const resume: JsonResume = {
     "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   awards: [],
   basics: {
-    email: "admin@guitton.co",
+    email: "louis@guitton.co",
     image: "/images/louis.jpg",
-    label: "Solutions Architect, ML Engineer & Engineering Lead",
+    label: "Solutions Architect and ML Engineer",
     location: {
       city: "Berlin",
       countryCode: "DE",
@@ -40,11 +44,19 @@ export const resume: JsonResume = {
         url: "https://github.com/louisguitton",
         username: "louisguitton",
       },
+      {
+        icon: faGitlab,
+        url: "https://gitlab.com/louisguitton",
+        username: "louisguitton",
+      },
     ],
     summary: `
-    Engineering and technical leader who provides strategic guidance while motivating teams to excellence.
-    Louis knows how to successfully innovate, build, launch, scale and maintain multi-tiered data products.
+    I'm an experienced Solutions Architect and Machine Learning Engineer with a passion for building transformative digital solutions.
+    I have a strong background in AI, NLP, and Data Engineering, with a focus on
+    delivering high-quality, scalable, and maintainable software. I am a self-starter with a track record of successfully leading projects on frontier technologies.
     `,
+    //  You are a self-starter with interest in growth, passion for continuous learning and sharing findings across the team
+    //  I have a proven track record of successfully leading and mentoring teams, and I am always looking for new challenges to tackle.
     // summary: `Experienced engineer and technical leader with proven credentials in the design and delivery of end-to-end
     // multitiered data products at scale. Hands-on expertise at all stages of the technical/data product life cycles, including data
     // analysis, modelling and algorithms, data architecture/systems design and deployment.
@@ -58,6 +70,18 @@ export const resume: JsonResume = {
     website: "https://guitton.co/",
   },
   certificates: [
+    {
+      name: "Neo4j & Generative AI Fundamentals",
+      date: "Jul 2025",
+      url: "https://graphacademy.neo4j.com/c/18d37270-473f-41bd-bf51-3fb95bd194f7/",
+      issuer: "Neo4j",
+    },
+    {
+      name: "Foundry & AIP Builder Foundations",
+      date: "Jan 2025",
+      url: "https://verify.skilljar.com/c/nzpahe3wcsce",
+      issuer: "Palantir Technologies",
+    },
     {
       name: "Enterprise Design Thinking Co-Creator",
       date: "Mar 2024",
@@ -123,8 +147,18 @@ export const resume: JsonResume = {
   },
   projects: [
     {
+      name: "Applied Research",
+      summary: "Interest in NLP with Knowledge Graphs.",
+      highlights: [
+        "Investigating Panama Papers using Entity Resolution in Senwing and Entity Linking in lancedb and spaCy, Oct 20, 2024",
+        "Reviewing my first research paper on EasyChair, as a PC member for SofLiM24 (ISWC24). The title: 'Dynamic ontology serialization using ontology mapping paths', Aug 27, 2024",
+      ],
+    },
+    {
       name: "Speaking engagements",
       highlights: [
+        "'(non) Alternatives to dbt' talk at dbt Meetup Berlin, Sep 2024",
+        "'NER models in Argilla' talk at Argilla Meetup, May 2024",
         "'Graphs and Language' lightning talk at MLOps.community AI in Production conference, Feb 2024",
         "'When Natural Language Processing meets Football' at Unstructured Data meetup, Mar 2022",
         "'Graph Data Science' at The Knowledge Graph Conference, May 2021",
@@ -141,14 +175,14 @@ export const resume: JsonResume = {
         "NLP, LLMs and Graph RAG with <a href='https://guitton.co/posts/graphs-and-language'>Graphs and Language</a>",
       ],
     },
-    {
-      name: "Mentoring",
-      summary:
-        "Code review, blog post review, and career advice for junior engineers and data professionals",
-      highlights: [
-        "Coached Analytics Engineer to successful completion of <a href='https://medium.com/@marielestavel/how-i-have-set-up-a-cost-effective-modern-data-stack-for-a-charity-3fe7e7c9162'>Data for Good project</a> in May 2022",
-      ],
-    },
+    // {
+    //   name: "Mentoring",
+    //   summary:
+    //     "Code review, blog post review, and career advice for junior engineers and data professionals",
+    //   highlights: [
+    //     "Coached Analytics Engineer to successful completion of <a href='https://medium.com/@marielestavel/how-i-have-set-up-a-cost-effective-modern-data-stack-for-a-charity-3fe7e7c9162'>Data for Good project</a> in May 2022",
+    //   ],
+    // },
   ],
   publications: [],
   references: [],
@@ -159,15 +193,17 @@ export const resume: JsonResume = {
         "System Design",
         "Data Pipelines",
         // "Google Cloud Platform",
-        // "Microsoft Azure",
+        "Microsoft Azure",
         "Amazon Web Services",
-        "Serverless",
+        // "Serverless",
         "Microservices",
         "MLOps",
         "DataOps",
         "Docker",
         "Kubernetes",
         "AirFlow",
+        "Terraform",
+        "ArgoCD",
       ],
     },
     {
@@ -209,6 +245,7 @@ export const resume: JsonResume = {
         "TypeScript",
         "NextJS",
         "TailwindCSS",
+        "C++",
       ],
     },
     {
@@ -239,14 +276,17 @@ export const resume: JsonResume = {
       url: "https://guitton.co/",
       startDate: "2023-04-03",
       // endDate: "2023",
-      summary:
-        "Data and AI consultation services for multiple short-term, high-velocity projects including:",
+      summary: "Data and AI consultation services for multiple customers:",
       highlights: [
         // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
         // in 2 lines
-        "Built reference architecture for AI chatbot, using RAG and LLMs, unlocking my client's new product vision",
+        "Develop and demonstrate solutions using GenAI software like langchain, vercel ai sdk, copilotkit",
+        "Work with customers to understand their challenges and provide the best solutions based on open-source data products",
+        "Build RAG and GraphRAG solutions using Neo4j, lancedb, and Postgres",
+        "Deploy a LLMOps platform using kubernetes, terraform, helmfile, Arize phoenix, mlflow",
+        "Architect and build data pipelines using dbt, Trino, Spark, Iceberg, Airflow, ArgoCD, terraform, kubernetes",
         "Delivered user-centred technical strategy for Agriculture 4.0 and precision livestock farming, helping my client secure funding from Bpifrance",
-        "Delivered a prospecting tool for a leading French solar carport installer, using geospatial computing (<a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>details</a>), speeding up the sales process",
+        "Delivered a prospecting tool for a leading French solar carport installer, using geospatial computing (GIS) (<a href='https://www.youtube.com/watch?v=FWtXAqEPao0'>details</a>), speeding up the sales process",
         "Built digital twin architecture for solar carports and EV chargers, making real-time monitoring and smart charging possible",
         // "Write material and teach ML and IoT classes for engineering MBA in Paris",
         // "Design and deliver <i>airflow</i> workshop for automotive digital lab",
@@ -259,14 +299,16 @@ export const resume: JsonResume = {
         countryCode: "DE",
       },
       name: "OneFootball Labs",
-      position: "Senior Engineering Manager",
+      position: "Head of Engineering",
       startDate: "2022-01-31",
       endDate: "2023-03-31",
-      summary: "NFT platform and marketplace for football video collectibles",
+      summary:
+        "Built and lead Engineering for the Blockchain division of OneFootball",
+      // "NFT platform and marketplace for football video collectibles",
       highlights: [
         // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
         // in 2 lines
-        `Architected and developed backend systems using Python, Node, Go, PostgreSQL, and ElasticSearch taking product from concept to production with paying customers.`,
+        `Architected and developed backend systems using Python, Node, Go, PostgreSQL, and Typesense (ElasticSearch) taking product from concept to production with paying customers.`,
         `Delivered robust and scalable e-commerce NFT marketplace, including smart contracts, minting and packing (<a href='https://www.youtube.com/watch?v=QXkFb7BUwh0'>video</a>)
         enabling the business to execute on a new strategic opportunity in a highly technical space`,
         `Found product-market fit for NFT marketplace, leading to $500k revenue and 115k MAUs`,
@@ -290,6 +332,8 @@ export const resume: JsonResume = {
       highlights: [
         // {action verb} {deliverable/achievement} {impact (quantifiable if possible}} {tech used (if applicable)}
         // in 2 lines
+        //  Experience with training, fine tuning of transformer-based architectures for language or vision
+        `Trained and fined tuned transformer-based architectures for language, including BERT, using PyTorch, Hugging Face and spaCy`,
         `Delivered innovative <b>news tagging</b> solution using NLP, enabling the company to scale its news coverage to 12 languages, 5000 articles per day`,
         `Built the company's first knowledge graph, unlocking new entity types like Players and Games, and enabling new high-engagement features like <b>news recommendations</b>`,
         `Migrated the company's data stack to a modern data stack, including airflow, dbt, AWS LakeFormation, Snowplow, enabling the company to scale its data processing and analytics`,
@@ -311,7 +355,7 @@ export const resume: JsonResume = {
       startDate: "2018-10-31",
       endDate: "2022-01-31",
       summary:
-        "Football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.",
+        "Built and lead the AI practice of OneFootball, a football media platform serving 15 million MAUs with news, OTT streaming, DFS and NFTs in 12 languages.",
       url: "https://onefootball.com/",
     },
     {
@@ -326,8 +370,8 @@ export const resume: JsonResume = {
       endDate: "2018-06-30",
       // Worked with Isabelle Guyon's research group
       // scalable hiring personality screening competitor to HireView
-      summary: `Developed a scalable personality screening tool for talent acquisition managers using 
-      deep learning Computer Vision and the resources of a worldwide deep-tech incubator for early-career founders.`,
+      summary: `Developed a scalable personality screening tool for talent acquisition managers using fined-tuned 
+      deep learning networks for Computer Vision in pytorch, and the resources of a worldwide deep-tech incubator for early-career founders.`,
       highlights: [],
     },
     {
