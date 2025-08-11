@@ -14,7 +14,10 @@ import Skills from "./components/jsonresume/Skills";
 import Work from "./components/jsonresume/Work";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("/resume", process.env.BASE_URL),
+  metadataBase: new URL(
+    "/resume",
+    process.env.BASE_URL || "http://localhost:3000"
+  ),
   title: "Resumé",
   description:
     "My CV is generated based on data that follows the Jsonschema at https://jsonresume.org/. It is then passed to ReactJS components.",

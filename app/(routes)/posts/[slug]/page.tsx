@@ -13,7 +13,10 @@ export async function generateMetadata({
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
 
-  const url = new URL(post.url, process.env.BASE_URL);
+  const url = new URL(
+    post.url,
+    process.env.BASE_URL || "http://localhost:3000"
+  );
   return {
     title: post.title,
     description: post.summary,

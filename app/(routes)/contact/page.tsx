@@ -5,7 +5,10 @@ import { PageIntro } from "@/components/layout/PageIntro";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("/contact", process.env.BASE_URL),
+  metadataBase: new URL(
+    "/contact",
+    process.env.BASE_URL || "http://localhost:3000"
+  ),
   title: "Contact",
   openGraph: {
     title: "guitton.co | Contact",

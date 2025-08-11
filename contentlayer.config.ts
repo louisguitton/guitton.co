@@ -54,11 +54,13 @@ export const Post = defineDocumentType(() => ({
     },
     url: {
       type: "string",
-      resolve: (doc) =>
-        new URL(
+      resolve: (doc) => {
+        const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+        return new URL(
           `/posts/${doc._raw.flattenedPath.substring(11)}`,
-          process.env.BASE_URL
-        ).href,
+          baseUrl
+        ).href;
+      },
     },
   },
 }));

@@ -5,7 +5,7 @@ import FeaturedPosts from "./components/FeaturedPosts";
 import Hero from "./components/Hero";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("/", process.env.BASE_URL),
+  metadataBase: new URL("/", process.env.BASE_URL || "http://localhost:3000"),
   title: "Home",
   openGraph: {
     title: "guitton.co | Home",

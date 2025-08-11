@@ -9,7 +9,10 @@ import Link from "next/link";
 import GithubContributions from "./components/GithubContributions";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("/about", process.env.BASE_URL),
+  metadataBase: new URL(
+    "/about",
+    process.env.BASE_URL || "http://localhost:3000"
+  ),
   title: "About",
   openGraph: {
     title: "guitton.co | About",

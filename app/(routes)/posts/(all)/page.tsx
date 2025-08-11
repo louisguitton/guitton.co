@@ -9,7 +9,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("/posts", process.env.BASE_URL),
+  metadataBase: new URL(
+    "/posts",
+    process.env.BASE_URL || "http://localhost:3000"
+  ),
   title: "Blog",
   openGraph: {
     title: "guitton.co | Blog",
